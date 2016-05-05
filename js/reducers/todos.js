@@ -30,6 +30,11 @@ const todos = (state = [], action) => {
       return state.map(t =>
         todo(t, action)
       )
+    case 'DELETE_TODO':
+      return [
+        ...state.slice(0, action.id),
+        ...state.slice(action.id + 1)
+      ]
     default:
       return state
   }

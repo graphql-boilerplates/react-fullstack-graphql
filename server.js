@@ -3,7 +3,7 @@ import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-const APP_PORT = 3000;
+const APP_PORT = 4000;
 
 // Serve the Relay app
 var compiler = webpack({
