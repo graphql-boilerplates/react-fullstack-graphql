@@ -13,7 +13,7 @@ class Todo extends React.Component {
   }
 
   state = {
-    isEditing: false
+    isEditing: false,
   }
 
   _handleCompleteChange = (e) => {
@@ -108,11 +108,10 @@ const mapDispatchToProps = (dispatch) => {
     toggleTodo: (todo) => {
       // TODO: use toggleTodo action
       console.log('toggleTodo...')
-    }
+    },
   }
 }
 
-const TodoConnection = connect((state => state), mapDispatchToProps)(Todo)
-
+const TodoConnection = connect(state => state, mapDispatchToProps)(Todo)
 
 export default TodoConnection

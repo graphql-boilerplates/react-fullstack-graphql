@@ -1,14 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import Footer from './Footer'
 import AddTodo from '../containers/AddTodo'
 import TodoList from '../components/TodoList'
 
 class TodoApp extends React.Component {
-
-  static propTypes = {
-
-  }
-
   render () {
     return (
       <div>

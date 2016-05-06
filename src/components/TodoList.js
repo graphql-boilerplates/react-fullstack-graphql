@@ -6,11 +6,11 @@ import { toggleTodo } from '../actions'
 class TodoList extends React.Component {
   static propTypes = {
     todos: PropTypes.array.isRequired,
-    params: PropTypes.object.isRequired
+    params: PropTypes.object.isRequired,
   }
 
   state = {
-    todos: this.props.todos
+    todos: this.props.todos,
   }
 
   _filterTodos = (todo) => (
@@ -21,33 +21,33 @@ class TodoList extends React.Component {
       : true
     )
 
-    renderTodos () {
-      // TODO: inject todo
-      return this.props.todos
-        .filter(this._filterTodos)
-        .reverse()
-        .map((todo) =>
-          <TodoConnection
-            key={todo.id}
-            todo={todo}
-          />
-        )
-    }
-
-    render () {
-      return (
-        <section className='main'>
-          <ul className='todo-list'>
-            {this.renderTodos()}
-          </ul>
-        </section>
+  renderTodos () {
+    // TODO: inject todo
+    return this.props.todos
+      .filter(this._filterTodos)
+      .reverse()
+      .map((todo) =>
+        <TodoConnection
+          key={todo.id}
+          todo={todo}
+        />
       )
-    }
+  }
+
+  render () {
+    return (
+      <section className='main'>
+        <ul className='todo-list'>
+          {this.renderTodos()}
+        </ul>
+      </section>
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
   todos: state.todos,
-  params: {status: state.visibilityFilter}
+  params: {status: state.visibilityFilter},
 })
 
 export default connect(mapStateToProps)(TodoList)

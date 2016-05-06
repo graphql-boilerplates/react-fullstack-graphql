@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 import TodoTextInput from './TodoTextInput'
 
-
 class AddTodo extends React.Component {
   static propTypes = {
     onCancel: PropTypes.func,
@@ -11,7 +10,7 @@ class AddTodo extends React.Component {
     onSave: PropTypes.func.isRequired,
   }
 
-  render() {
+  render () {
     return (
       <TodoTextInput
         className='new-todo'
@@ -25,10 +24,10 @@ class AddTodo extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
   onSave: (text) => {
     dispatch(addTodo(text))
-  }
+  },
 })
 
 export default connect(
-  (state => state),
-  mapDispatchToProps
+  state => state,
+  mapDispatchToProps,
 )(AddTodo)
