@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import TodoTextInput from '../containers/TodoTextInput'
+import TodoTextInput from '../components/TodoTextInput'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
 import { deleteTodo, toggleTodo } from '../actions'
@@ -112,6 +112,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const TodoConnection = connect(state => state, mapDispatchToProps)(Todo)
-
-export default TodoConnection
+export default connect(
+  state => state,
+  mapDispatchToProps
+)(Todo)

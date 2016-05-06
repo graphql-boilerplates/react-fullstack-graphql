@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
-import TodoTextInput from './TodoTextInput'
+import TodoTextInput from '../components/TodoTextInput'
 
 class AddTodo extends React.Component {
   static propTypes = {

@@ -15,6 +15,4 @@ let DeleteTodo = ({ dispatch, id }) => {
     </div>
   )
 }
-DeleteTodo = connect()(DeleteTodo)
-
-export default DeleteTodo
+export default connect()(DeleteTodo)

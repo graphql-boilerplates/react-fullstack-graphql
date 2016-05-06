@@ -50,4 +50,6 @@ const mapStateToProps = (state) => ({
   params: {status: state.visibilityFilter},
 })
 
-export default connect(mapStateToProps)(TodoList)
+export default connect(
+  mapStateToProps
+)(TodoList)
