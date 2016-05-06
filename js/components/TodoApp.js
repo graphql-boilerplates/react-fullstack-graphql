@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
+import AddTodoConnection from '../containers/AddTodo'
+import TodoListConnection from '../components/TodoList'
 
-const App = () => (
-  <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
-)
+class TodoApp extends React.Component {
 
-export default App
+  static propTypes = {
+
+  }
+
+  render () {
+    return (
+      <div>
+        <section className='todoapp'>
+          <header className='header'>
+            <AddTodoConnection />
+          </header>
+          <TodoListConnection />
+          <Footer />
+        </section>
+        <footer className='info'>
+          <p>
+            Click a todo to mark or unmark it as completed
+          </p>
+        </footer>
+      </div>
+    )
+  }
+}
+
+export default TodoApp

@@ -22,6 +22,7 @@ export const toggleTodo = (id) => {
 }
 
 export const deleteTodo = (id) => {
+  nextTodoId--
   return {
     type: 'DELETE_TODO',
     id

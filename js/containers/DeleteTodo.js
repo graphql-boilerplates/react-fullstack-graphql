@@ -5,12 +5,13 @@ import { deleteTodo } from '../actions'
 let DeleteTodo = ({ dispatch, id }) => {
   return (
     <div>
-        <button onClick={e => {
+      <button
+        className='destroy'
+        onClick={e => {
           console.log('Dispatch action')
           dispatch(deleteTodo(id))
-        }}>
-          Remove Todo
-        </button>
+        }}
+      />
     </div>
   )
 }

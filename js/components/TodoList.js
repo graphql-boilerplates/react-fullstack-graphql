@@ -1,25 +1,59 @@
 import React, { PropTypes } from 'react'
-import Todo from './Todo'
+import TodoConnection from './Todo'
+import { connect } from 'react-redux'
+import { toggleTodo } from '../actions'
 
-const TodoList = ({ todos, onTodoClick }) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => onTodoClick(todo.id)}
-      />
-    )}
-  </ul>
-)
+class TodoList extends React.Component {
+  static propTypes = {
+    todos: PropTypes.array.isRequired,
+    params: PropTypes.object.isRequired
+  }
 
-TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  onTodoClick: PropTypes.func.isRequired
+  state = {
+    todos: this.props.todos
+  }
+
+  _filterTodos = (todo) => (
+    this.props.params.status === 'active'
+    ? todo.complete !== true
+    : this.props.params.status === 'completed'
+      ? todo.complete === true
+      : true
+    )
+
+    renderTodos () {
+      // TODO: inject todo
+      return this.props.todos
+        .filter(this._filterTodos)
+        .reverse()
+        .map((todo) =>
+          <TodoConnection
+            key={todo.id}
+            todo={todo}
+          />
+        )
+    }
+
+    render () {
+      return (
+        <section className='main'>
+          <ul className='todo-list'>
+            {this.renderTodos()}
+          </ul>
+        </section>
+      )
+    }
 }
 
-export default TodoList
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+    params: {status: state.visibilityFilter}
+  }
+}
+
+const TodoListConnection = connect(
+  mapStateToProps
+)(TodoList)
+
+export default TodoListConnection
