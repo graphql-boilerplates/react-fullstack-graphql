@@ -22,17 +22,13 @@ class AddTodo extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSave: (text) => {
-      dispatch(addTodo(text))
-    }
+const mapDispatchToProps = (dispatch) => ({
+  onSave: (text) => {
+    dispatch(addTodo(text))
   }
-}
+})
 
-const AddTodoConnection = connect(
+export default connect(
   (state => state),
   mapDispatchToProps
 )(AddTodo)
-
-export default AddTodoConnection

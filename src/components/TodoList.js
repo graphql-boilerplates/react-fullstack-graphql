@@ -45,15 +45,9 @@ class TodoList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-    params: {status: state.visibilityFilter}
-  }
-}
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+  params: {status: state.visibilityFilter}
+})
 
-const TodoListConnection = connect(
-  mapStateToProps
-)(TodoList)
-
-export default TodoListConnection
+export default connect(mapStateToProps)(TodoList)

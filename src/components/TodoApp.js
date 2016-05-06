@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Footer from './Footer'
-import AddTodoConnection from '../containers/AddTodo'
-import TodoListConnection from '../components/TodoList'
+import AddTodo from '../containers/AddTodo'
+import TodoList from '../components/TodoList'
 
 class TodoApp extends React.Component {
 
@@ -14,9 +14,9 @@ class TodoApp extends React.Component {
       <div>
         <section className='todoapp'>
           <header className='header'>
-            <AddTodoConnection />
+            <AddTodo />
           </header>
-          <TodoListConnection />
+          <TodoList />
           <Footer />
         </section>
         <footer className='info'>
