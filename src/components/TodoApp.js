@@ -1,9 +1,10 @@
 import React from 'react'
-import Footer from './Footer'
+import TodoListFooter from './TodoListFooter'
 import AddTodo from '../containers/AddTodo'
 import TodoList from '../containers/TodoList'
 
 class TodoApp extends React.Component {
+
   render () {
     return (
       <div>
@@ -12,11 +13,11 @@ class TodoApp extends React.Component {
             <AddTodo />
           </header>
           <TodoList />
-          <Footer />
+          <TodoListFooter />
         </section>
         <footer className='info'>
           <p>
-            Click a todo to mark or unmark it as completed
+            Double-click to edit a todo
           </p>
         </footer>
       </div>

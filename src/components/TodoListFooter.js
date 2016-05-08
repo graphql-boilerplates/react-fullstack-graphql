@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterLink from '../containers/FilterLink'
 
-const Footer = () => (
+const TodoListFooter = () => (
   <p>
     Show:
     {" "}
@@ -19,4 +19,4 @@ const Footer = () => (
   </p>
 )
 
-export default Footer
+export default TodoListFooter
