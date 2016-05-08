@@ -1,6 +1,19 @@
+import Model from '../models/model'
+
+const model = new Model()
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
+      model.addTodo(
+        {complete: false, text: action.text, id: action.id},
+        todos => {
+          todos.then(t => {
+            return t
+          })
+        }
+      )
+
       return {
         id: action.id,
         text: action.text,
@@ -22,6 +35,7 @@ const todo = (state, action) => {
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
+      console.log(state)
       return [
         ...state,
         todo(undefined, action),
