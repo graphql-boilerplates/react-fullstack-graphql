@@ -14,6 +14,14 @@ export const setVisibilityFilter = (filter) => {
   }
 }
 
+export const renameTodo = (id, text) => {
+  return {
+    type: 'RENAME_TODO',
+    id,
+    text,
+  }
+}
+
 export const toggleTodo = (id) => {
   return {
     type: 'TOGGLE_TODO',

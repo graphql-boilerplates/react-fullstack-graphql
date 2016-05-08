@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import TodoTextInput from '../components/TodoTextInput'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
-import { deleteTodo, toggleTodo } from '../actions'
+import { deleteTodo, toggleTodo, renameTodo } from '../actions'
 
 class Todo extends React.Component {
   // TODO: only require dispatch and import actions instead of requiring every action dispatching
@@ -43,7 +43,7 @@ class Todo extends React.Component {
   _handleTextInputSave = (newText) => {
     this._setEditMode(false)
     const todo = this.props.todo
-    this.props.renameTodo({todo, newText})
+    this.props.renameTodo(todo, newText)
   }
 
   _removeTodo () {
@@ -100,6 +100,7 @@ const mapDispatchToProps = (dispatch) => {
     renameTodo: (todo, text) => {
       // TODO: create new renameTodo action
       console.log('renameTodo...')
+      dispatch(renameTodo(todo.id, text))
     },
     deleteTodo: (todo) => {
       console.log('dispatching delete...')

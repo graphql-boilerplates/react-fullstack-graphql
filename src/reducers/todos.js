@@ -4,6 +4,7 @@ const model = new Model()
 
 const todo = (state, action) => {
   switch (action.type) {
+    // TODO: use thunk
     case 'ADD_TODO':
       model.addTodo(
         {complete: false, text: action.text, id: action.id},
@@ -27,6 +28,22 @@ const todo = (state, action) => {
       return Object.assign({}, state, {
         completed: !state.completed,
       })
+    case 'RENAME_TODO':
+    // TODO: use thunk
+      if (state.id !== action.id) {
+        return state
+      }
+
+      model.renameTodo(
+        {complete: false, text: action.text, id: action.id},
+        todo => {
+          todos
+        }
+      )
+
+      return Object.assign({}, state, {
+        text: action.text,
+      })
     default:
       return state
   }
@@ -41,6 +58,10 @@ const todos = (state = [], action) => {
         todo(undefined, action),
       ]
     case 'TOGGLE_TODO':
+      return state.map(t =>
+        todo(t, action),
+      )
+    case 'RENAME_TODO':
       return state.map(t =>
         todo(t, action),
       )
