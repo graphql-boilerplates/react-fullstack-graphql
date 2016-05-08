@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { deleteTodo, toggleTodo } from '../actions'
 
 class Todo extends React.Component {
+  // TODO: only require dispatch and import actions instead of requiring every action dispatching
   static propTypes ={
     todo: PropTypes.object.isRequired,
     renameTodo: PropTypes.func.isRequired,
