@@ -9,22 +9,8 @@ class TodoApp extends React.Component {
   static propTypes = {
     mutations: PropTypes.object.isRequired,
     todos: PropTypes.object.isRequired,
-  }
-
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      filter: 'SHOW_ALL',
-    }
-  }
-
-  fetchTodos () {
-    this.props.todos.refetch()
-  }
-
-  setFilter (filter) {
-    this.setState({filter})
+    filter: PropTypes.string.isRequired,
+    setFilter: PropTypes.func.isRequired,
   }
 
   render () {
@@ -36,12 +22,12 @@ class TodoApp extends React.Component {
           </header>
           <TodoList
             todos={this.props.todos.allTodos || []}
-            filter={this.state.filter}
+            filter={this.props.filter}
             renameTodo={this.props.mutations.renameTodo}
             deleteTodo={this.props.mutations.deleteTodo}
             toggleTodo={this.props.mutations.toggleTodo}
           />
-          <TodoListFooter setFilter={::this.setFilter} />
+          <TodoListFooter setFilter={this.props.setFilter} />
         </section>
         <footer className='info'>
           <p>
@@ -53,13 +39,22 @@ class TodoApp extends React.Component {
   }
 }
 
-const todoFragment = `
-  id
-  complete
-  text
-`
-
 const TodoAppLinked = connect({
+  mapStateToProps (state) {
+    return {
+      filter: state.filter,
+    }
+  },
+  mapDispatchToProps (dispatch) {
+    return {
+      setFilter: (filter) => {
+        dispatch({
+          type: 'SET_FILTER',
+          filter,
+        })
+      },
+    }
+  },
   mapMutationsToProps () {
     return {
       addTodo: (text) => ({
@@ -110,7 +105,9 @@ const TodoAppLinked = connect({
         query: gql`
           {
             allTodos {
-              ${todoFragment}
+              id
+              complete
+              text
             }
           }
         `,
