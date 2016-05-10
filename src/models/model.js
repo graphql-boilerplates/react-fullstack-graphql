@@ -40,9 +40,7 @@ export default class Model {
         }
       }
     `)
-    .then(data => {
-      return data.todo
-    })
+      .then(data => data.todo)
   }
 
   deleteTodo (id) {
@@ -55,9 +53,7 @@ export default class Model {
         }
       }
     `)
-    .then(data => {
-      return data.todo
-    })
+    .then(data => data.todo)
   }
 
   toggleCompleteStatus (id, complete) {
@@ -71,9 +67,7 @@ export default class Model {
         }
       }
     `)
-    .then(data => {
-      return data.todo
-    })
+    .then(data => data.todo)
   }
 
   // get all the items but we clone the content inside the promise
