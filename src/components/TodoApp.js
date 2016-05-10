@@ -3,10 +3,9 @@ import TodoListFooter from './TodoListFooter'
 import AddTodo from '../containers/AddTodo'
 import TodoList from '../containers/TodoList'
 
-import { connect } from 'react-apollo';
+import { connect } from 'react-apollo'
 
 class TodoApp extends React.Component {
-
   constructor (props) {
     super(props)
 
@@ -16,7 +15,7 @@ class TodoApp extends React.Component {
   }
 
   fetchTodos () {
-    this.props.todos.refetch();
+    this.props.todos.refetch()
   }
 
   setFilter (filter) {
@@ -56,7 +55,7 @@ const todoFragment = `
 `
 
 const TodoAppLinked = connect({
-  mapMutationsToProps() {
+  mapMutationsToProps () {
     return {
       addTodo: (text) => ({
         mutation: gql`
@@ -84,7 +83,7 @@ const TodoAppLinked = connect({
           }
         `,
         variables: {
-          id: todo.id
+          id: todo.id,
         },
       }),
       toggleTodo: (todo, complete) => ({
@@ -97,10 +96,10 @@ const TodoAppLinked = connect({
           id: todo.id,
           complete,
         },
-      })
-    };
+      }),
+    }
   },
-  mapQueriesToProps() {
+  mapQueriesToProps () {
     return {
       todos: {
         query: gql`
@@ -113,8 +112,8 @@ const TodoAppLinked = connect({
         forceFetch: false,
         pollInterval: 1000,
       },
-    };
+    }
   },
-})(TodoApp);
+})(TodoApp)
 
 export default TodoAppLinked

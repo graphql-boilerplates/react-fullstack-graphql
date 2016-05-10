@@ -15,5 +15,8 @@
     "react/jsx-no-bind": [1, {
       "allowArrowFunctions": true
     }]
+  },
+  "globals": {
+    "gql": true
   }
 }
