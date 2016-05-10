@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import TodoListFooter from './TodoListFooter'
 import AddTodo from '../containers/AddTodo'
 import TodoList from '../containers/TodoList'
@@ -6,6 +6,11 @@ import TodoList from '../containers/TodoList'
 import { connect } from 'react-apollo'
 
 class TodoApp extends React.Component {
+  static propTypes = {
+    mutations: PropTypes.object.isRequired,
+    todos: PropTypes.object.isRequired,
+  }
+
   constructor (props) {
     super(props)
 
