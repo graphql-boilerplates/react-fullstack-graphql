@@ -7,7 +7,6 @@ export default class AddTodo extends React.Component {
   }
 
   _handleSave (text) {
-    console.log(this.props)
     this.props.addTodo(text)
   }
 

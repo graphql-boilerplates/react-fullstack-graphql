@@ -17,7 +17,6 @@ const client = new ApolloClient({
   networkInterface,
 });
 
-
 render(
   <ApolloProvider client={client}>
     <TodoApp />

@@ -2,7 +2,6 @@ import React from 'react'
 import TodoListFooter from './TodoListFooter'
 import AddTodo from '../containers/AddTodo'
 import TodoList from '../containers/TodoList'
-import Model from '../models/model'
 
 import { connect } from 'react-apollo';
 
@@ -14,33 +13,10 @@ class TodoApp extends React.Component {
     this.state = {
       filter: 'SHOW_ALL',
     }
-
-    this._model = new Model()
   }
 
   fetchTodos () {
     this.props.todos.refetch();
-  }
-
-  renameTodo (todo, text) {
-    this._model.renameTodo(todo.id, text)
-    .then((todo) => {
-      this.fetchTodos()
-    })
-  }
-
-  deleteTodo (todo) {
-    this._model.deleteTodo(todo.id)
-    .then((todo) => {
-      this.fetchTodos()
-    })
-  }
-
-  toggleTodo (todo, complete) {
-    this._model.toggleCompleteStatus(todo.id, complete)
-    .then((todo) => {
-      this.fetchTodos()
-    })
   }
 
   setFilter (filter) {
@@ -57,9 +33,9 @@ class TodoApp extends React.Component {
           <TodoList
             todos={this.props.todos.allTodos || []}
             filter={this.state.filter}
-            renameTodo={::this.renameTodo}
-            deleteTodo={::this.deleteTodo}
-            toggleTodo={::this.toggleTodo}
+            renameTodo={this.props.mutations.renameTodo}
+            deleteTodo={this.props.mutations.deleteTodo}
+            toggleTodo={this.props.mutations.toggleTodo}
           />
           <TodoListFooter setFilter={::this.setFilter} />
         </section>
@@ -90,6 +66,38 @@ const TodoAppLinked = connect({
         `,
         variables: { text },
       }),
+      renameTodo: (todo, text) => ({
+        mutation: gql`
+          mutation renameTodo($id: ID!, $text: String!) {
+            updateTodo(id: $id, text: $text) { id }
+          }
+        `,
+        variables: {
+          id: todo.id,
+          text,
+        },
+      }),
+      deleteTodo: (todo) => ({
+        mutation: gql`
+          mutation deleteTodo($id: ID!) {
+            deleteTodo(id: $id) { id }
+          }
+        `,
+        variables: {
+          id: todo.id
+        },
+      }),
+      toggleTodo: (todo, complete) => ({
+        mutation: gql`
+          mutation toggleTodo($id: ID!, $complete: Boolean!) {
+            updateTodo(id: $id, complete: $complete) { id }
+          }
+        `,
+        variables: {
+          id: todo.id,
+          complete,
+        },
+      })
     };
   },
   mapQueriesToProps() {
