@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
-import TodoConnection from './Todo'
-import { connect } from 'react-redux'
-import { toggleTodo } from '../actions'
+import Todo from './Todo'
 
-class TodoList extends React.Component {
+export default class TodoList extends React.Component {
   static propTypes = {
     todos: PropTypes.array.isRequired,
-    params: PropTypes.object.isRequired,
+    renameTodo: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
+    //params: PropTypes.object.isRequired,
   }
 
   state = {
@@ -24,12 +24,14 @@ class TodoList extends React.Component {
   renderTodos () {
     // TODO: inject todo
     return this.props.todos
-      .filter(this._filterTodos)
+      //.filter(this._filterTodos)
       .reverse()
       .map((todo) =>
-        <TodoConnection
+        <Todo
           key={todo.id}
           todo={todo}
+          renameTodo={this.props.renameTodo}
+          deleteTodo={this.props.deleteTodo}
         />
       )
   }
@@ -44,12 +46,3 @@ class TodoList extends React.Component {
     )
   }
 }
-
-const mapStateToProps = (state) => ({
-  todos: state.todos,
-  params: {status: state.visibilityFilter},
-})
-
-export default connect(
-  mapStateToProps
-)(TodoList)

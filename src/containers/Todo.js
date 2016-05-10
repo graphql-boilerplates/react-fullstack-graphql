@@ -1,16 +1,14 @@
 import React, { PropTypes } from 'react'
 import TodoTextInput from '../components/TodoTextInput'
 import classnames from 'classnames'
-import { connect } from 'react-redux'
-import { deleteTodo, toggleTodo, renameTodo } from '../actions'
 
-class Todo extends React.Component {
+export default class Todo extends React.Component {
   // TODO: only require dispatch and import actions instead of requiring every action dispatching
   static propTypes ={
     todo: PropTypes.object.isRequired,
     renameTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired,
+    // toggleTodo: PropTypes.func.isRequired,
   }
 
   state = {
@@ -20,7 +18,7 @@ class Todo extends React.Component {
   _handleCompleteChange = (e) => {
     var complete = e.target.checked
     const todo = this.props.todo
-    this.props.toggleTodo({todo, complete})
+    // this.props.toggleTodo({todo, complete})
   }
 
   _handleDestroyClick = () => {
@@ -42,13 +40,11 @@ class Todo extends React.Component {
 
   _handleTextInputSave = (newText) => {
     this._setEditMode(false)
-    const todo = this.props.todo
-    this.props.renameTodo(todo, newText)
+    this.props.renameTodo(this.props.todo, newText)
   }
 
   _removeTodo () {
-    const todo = this.props.todo
-    this.props.deleteTodo(todo)
+    this.props.deleteTodo(this.props.todo)
   }
 
   _setEditMode = (shouldEdit) => {
@@ -94,27 +90,3 @@ class Todo extends React.Component {
     )
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    renameTodo: (todo, text) => {
-      // TODO: create new renameTodo action
-      console.log('renameTodo...')
-      dispatch(renameTodo(todo.id, text))
-    },
-    deleteTodo: (todo) => {
-      console.log('dispatching delete...')
-      console.log('id: ' + todo.id)
-      dispatch(deleteTodo(todo.id))
-    },
-    toggleTodo: (todo) => {
-      // TODO: use toggleTodo action
-      console.log('toggleTodo...')
-    },
-  }
-}
-
-export default connect(
-  state => state,
-  mapDispatchToProps
-)(Todo)

@@ -63,12 +63,12 @@ export default class Model {
       })
   }
 
-  renameTodo (renamedTodo, afterRenamed) {
-    this.client.mutate(`
+  renameTodo (id, text) {
+    return this.client.mutate(`
       {
         todo: updateTodo(
-            id: ${renamedTodo.id},
-            text: "${renamedTodo.text}",
+            id: "${id}",
+            text: "${text}",
         ) {
           id
           complete
@@ -77,49 +77,38 @@ export default class Model {
       }
     `)
     .then(data => {
-      data.todo
+      return data.todo
     })
-    .then(todo => {
-      // TODO: rename todo in dataPromise
-      this.dataPromise = this.getAll().then(todos => {
-        todo => {
-          if (todo.id === renamedTodo.id) {
-            console.log('found it!')
-          } else {
-            console.log('not found it!')
-          }
-        }
-      })
-    }, error => {
-      // if there is an error, we simply log it
-      console.error('Error renaming todo:', error)
-    })
-    // delay 600ms to show changes from optimistic updates
-    .then(() => {
-      return new Promise(resolve => setTimeout(resolve, 600))
-    })
-    .then(() => {
-      // trigger the afterAdded callback with the updated data promise
-      afterRenamed(this.getAll())
-    })
+  }
 
-    // TODO: rename todo in dataPromise
-    // Add the item temporary to the data array to achieve
-    // optimistic updates
-    return this
-      .getAll()
-      .then(todos => {
-        todo => {
-          if (todo.id === renamedTodo.id) {
-            todo = renamedTodo
-          }
+  deleteTodo (id) {
+    return this.client.mutate(`
+      {
+        todo: deleteTodo(
+            id: "${id}",
+        ) {
+          id
+          complete
+          text
         }
-      })
+      }
+    `)
+    .then(data => {
+      return data.todo
+    })
   }
 
   // get all the items but we clone the content inside the promise
   getAll () {
-    return this.dataPromise
-      .then(allTodos => allTodos.concat([]))
+    return this.client.query(`
+      {
+        allTodos {
+          id
+          complete
+          text
+        }
+      }
+    `)
+    .then(res => res.allTodos)
   }
 }
