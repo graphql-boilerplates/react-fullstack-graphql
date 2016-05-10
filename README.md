@@ -1,2 +1,2 @@
-# react-lokka-todo-example
-:memo: Todo example app built with React &amp; Lokka
+# react-apollo-todo-example
+:memo: Todo example app built with React &amp; Apollo Client
