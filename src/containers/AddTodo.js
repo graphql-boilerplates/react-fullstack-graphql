@@ -1,33 +1,23 @@
 import React, {PropTypes} from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../actions'
 import TodoTextInput from '../components/TodoTextInput'
 
-class AddTodo extends React.Component {
+export default class AddTodo extends React.Component {
   static propTypes = {
-    onCancel: PropTypes.func,
-    onDelete: PropTypes.func,
-    onSave: PropTypes.func.isRequired,
+    addTodo: PropTypes.func.isRequired,
+  }
+
+  _handleSave (text) {
+    console.log(this.props)
+    this.props.addTodo(text)
   }
 
   render () {
     return (
       <TodoTextInput
         className='new-todo'
-        onSave={this.props.onSave}
+        onSave={::this._handleSave}
         placeholder='Add...'
       />
     )
   }
 }
-
-const mapDispatchToProps = (dispatch) => ({
-  onSave: (text) => {
-    dispatch(addTodo(text))
-  },
-})
-
-export default connect(
-  state => state,
-  mapDispatchToProps,
-)(AddTodo)

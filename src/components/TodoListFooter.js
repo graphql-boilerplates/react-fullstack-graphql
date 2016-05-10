@@ -1,22 +1,25 @@
-import React from 'react'
-import FilterLink from '../containers/FilterLink'
+import React, { PropTypes } from 'react'
 
-const TodoListFooter = () => (
-  <p>
+const TodoListFooter = (props) => (
+  <p className='filter'>
     Show:
-    {" "}
-    <FilterLink filter="SHOW_ALL">
+    {' '}
+    <a onClick={() => props.setFilter('SHOW_ALL')}>
       All
-    </FilterLink>
-    {", "}
-    <FilterLink filter="SHOW_ACTIVE">
+    </a>
+    {', '}
+    <a onClick={() => props.setFilter('SHOW_ACTIVE')}>
       Active
-    </FilterLink>
-    {", "}
-    <FilterLink filter="SHOW_COMPLETED">
+    </a>
+    {', '}
+    <a onClick={() => props.setFilter('SHOW_COMPLETED')}>
       Completed
-    </FilterLink>
+    </a>
   </p>
 )
+
+TodoListFooter.propTypes = {
+  setFilter: PropTypes.func.isRequired,
+}
 
 export default TodoListFooter

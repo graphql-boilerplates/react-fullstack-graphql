@@ -11,6 +11,7 @@ class TodoApp extends React.Component {
 
     this.state = {
       todos: [],
+      filter: 'SHOW_ALL',
     }
 
     this._model = new Model()
@@ -36,19 +37,39 @@ class TodoApp extends React.Component {
     })
   }
 
+  toggleTodo (todo, complete) {
+    this._model.toggleCompleteStatus(todo.id, complete)
+    .then((todo) => {
+      this.fetchTodos()
+    })
+  }
+
+  addTodo (text) {
+    this._model.addTodo(text)
+    .then((todo) => {
+      this.fetchTodos()
+    })
+  }
+
+  setFilter (filter) {
+    this.setState({filter})
+  }
+
   render () {
     return (
       <div>
         <section className='todoapp'>
-          {/*<header className='header'>
-            <AddTodo />
-          </header>*/}
+          <header className='header'>
+            <AddTodo addTodo={::this.addTodo} />
+          </header>
           <TodoList
             todos={this.state.todos}
+            filter={this.state.filter}
             renameTodo={::this.renameTodo}
             deleteTodo={::this.deleteTodo}
+            toggleTodo={::this.toggleTodo}
           />
-          {/*<TodoListFooter />*/}
+          <TodoListFooter setFilter={::this.setFilter} />
         </section>
         <footer className='info'>
           <p>

@@ -3,12 +3,11 @@ import TodoTextInput from '../components/TodoTextInput'
 import classnames from 'classnames'
 
 export default class Todo extends React.Component {
-  // TODO: only require dispatch and import actions instead of requiring every action dispatching
   static propTypes ={
     todo: PropTypes.object.isRequired,
     renameTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
-    // toggleTodo: PropTypes.func.isRequired,
+    toggleTodo: PropTypes.func.isRequired,
   }
 
   state = {
@@ -17,8 +16,7 @@ export default class Todo extends React.Component {
 
   _handleCompleteChange = (e) => {
     var complete = e.target.checked
-    const todo = this.props.todo
-    // this.props.toggleTodo({todo, complete})
+    this.props.toggleTodo(this.props.todo, complete)
   }
 
   _handleDestroyClick = () => {
@@ -67,12 +65,12 @@ export default class Todo extends React.Component {
     return (
       <li
         className={classnames({
-          completed: this.props.todo.completed,
+          completed: this.props.todo.complete,
           editing: this.state.isEditing,
         })}>
         <div className='view'>
           <input
-            checked={this.props.todo.completed}
+            checked={this.props.todo.complete}
             className='toggle'
             onChange={this._handleCompleteChange}
             type='checkbox'

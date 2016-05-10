@@ -6,25 +6,21 @@ export default class TodoList extends React.Component {
     todos: PropTypes.array.isRequired,
     renameTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
-    //params: PropTypes.object.isRequired,
-  }
-
-  state = {
-    todos: this.props.todos,
+    toggleTodo: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired,
   }
 
   _filterTodos = (todo) => (
-    this.props.params.status === 'active'
+    this.props.filter === 'SHOW_ACTIVE'
     ? todo.complete !== true
-    : this.props.params.status === 'completed'
+    : this.props.filter === 'SHOW_COMPLETED'
       ? todo.complete === true
       : true
     )
 
   renderTodos () {
-    // TODO: inject todo
     return this.props.todos
-      //.filter(this._filterTodos)
+      .filter(this._filterTodos)
       .reverse()
       .map((todo) =>
         <Todo
@@ -32,6 +28,7 @@ export default class TodoList extends React.Component {
           todo={todo}
           renameTodo={this.props.renameTodo}
           deleteTodo={this.props.deleteTodo}
+          toggleTodo={this.props.toggleTodo}
         />
       )
   }
