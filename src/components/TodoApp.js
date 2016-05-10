@@ -4,23 +4,22 @@ import AddTodo from '../containers/AddTodo'
 import TodoList from '../containers/TodoList'
 import Model from '../models/model'
 
+import { connect } from 'react-apollo';
+
 class TodoApp extends React.Component {
 
   constructor (props) {
     super(props)
 
     this.state = {
-      todos: [],
       filter: 'SHOW_ALL',
     }
 
     this._model = new Model()
-
-    this.fetchTodos()
   }
 
   fetchTodos () {
-    this._model.getAll().then((todos) => this.setState({todos}))
+    this.props.todos.refetch();
   }
 
   renameTodo (todo, text) {
@@ -44,13 +43,6 @@ class TodoApp extends React.Component {
     })
   }
 
-  addTodo (text) {
-    this._model.addTodo(text)
-    .then((todo) => {
-      this.fetchTodos()
-    })
-  }
-
   setFilter (filter) {
     this.setState({filter})
   }
@@ -60,10 +52,10 @@ class TodoApp extends React.Component {
       <div>
         <section className='todoapp'>
           <header className='header'>
-            <AddTodo addTodo={::this.addTodo} />
+            <AddTodo addTodo={this.props.mutations.addTodo} />
           </header>
           <TodoList
-            todos={this.state.todos}
+            todos={this.props.todos.allTodos || []}
             filter={this.state.filter}
             renameTodo={::this.renameTodo}
             deleteTodo={::this.deleteTodo}
@@ -81,4 +73,40 @@ class TodoApp extends React.Component {
   }
 }
 
-export default TodoApp
+const todoFragment = `
+  id
+  complete
+  text
+`
+
+const TodoAppLinked = connect({
+  mapMutationsToProps() {
+    return {
+      addTodo: (text) => ({
+        mutation: gql`
+          mutation addTodo($text: String!) {
+            createTodo(complete: false, text: $text) { id }
+          }
+        `,
+        variables: { text },
+      }),
+    };
+  },
+  mapQueriesToProps() {
+    return {
+      todos: {
+        query: gql`
+          {
+            allTodos {
+              ${todoFragment}
+            }
+          }
+        `,
+        forceFetch: false,
+        pollInterval: 1000,
+      },
+    };
+  },
+})(TodoApp);
+
+export default TodoAppLinked

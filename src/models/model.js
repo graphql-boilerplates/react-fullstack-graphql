@@ -11,7 +11,7 @@ const todoFragment = `
 export default class Model {
   constructor () {
     this.client = new Lokka({
-      transport: new Transport('https://api.graph.cool/simple/v1/UHJvamVjdDpjaW55dHNwNjQwMDJvMDFxcDkwejI5MGhs'),
+      transport: new Transport('https://api.graph.cool/simple/v1/UHJvamVjdDpjaW53NHM0dDcwMmZwMDFtdDIxbHU1ZTh0'),
     })
   }
 
