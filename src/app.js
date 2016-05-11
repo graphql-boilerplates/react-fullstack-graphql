@@ -13,7 +13,7 @@ import './style.css'
 registerGqlTag()
 
 const networkInterface =
-  createNetworkInterface('https://api.graph.cool/simple/v1/UHJvamVjdDpjaW53NHM0dDcwMmZwMDFtdDIxbHU1ZTh0')
+  createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')
 
 const client = new ApolloClient({
   networkInterface,
