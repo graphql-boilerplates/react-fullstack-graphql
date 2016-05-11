@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import TodoListFooter from './TodoListFooter'
-import AddTodo from '../containers/AddTodo'
-import TodoList from '../containers/TodoList'
+import AddTodo from './AddTodo'
+import TodoList from './TodoList'
 
 import { connect } from 'react-apollo'
 
