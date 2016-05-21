@@ -15,8 +15,7 @@ To run this example, please create a [graph.cool](http://graph.cool) account and
 Open `src/app.js` and paste your `PROJECT_ID` to the following line:
 
 ```js
-const networkInterface =
-  createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')
+const networkInterface = createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')
 ```
 
 
