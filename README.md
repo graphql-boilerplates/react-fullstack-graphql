@@ -9,6 +9,14 @@ After [downloading this example](https://github.com/graphcool-examples/react-apo
 
 To run this example, please create a [graph.cool](http://graph.cool) account and **copy your `PROJECT_ID`**. This shouldn't take longer than a minute. We promise!
 
+This is how our GraphQL data model looks like:
+
+```graphql
+type Todo {
+  text: String!
+  complete: Boolean!
+}
+```
 
 ### 2. Configure app data endpoint
 
