@@ -9,7 +9,8 @@
     "react": "^15.0.1",
     "react-apollo": "^0.3.3",
     "react-dom": "^15.0.1",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",

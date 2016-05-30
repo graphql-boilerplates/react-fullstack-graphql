@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/app.js',
+  entry: ['whatwg-fetch', './src/app.js'],
   output: {
     publicPath: '/'
   },
