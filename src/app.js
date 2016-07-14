@@ -3,14 +3,10 @@ import { render } from 'react-dom'
 import TodoApp from './components/TodoApp'
 
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { registerGqlTag } from 'apollo-client/gql'
 import { ApolloProvider } from 'react-apollo'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
 import './style.css'
-
-// Globally register gql template literal tag
-registerGqlTag()
 
 const networkInterface =
   createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')

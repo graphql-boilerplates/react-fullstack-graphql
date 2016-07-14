@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react'
 import TodoListFooter from './TodoListFooter'
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
+import gql from 'graphql-tag'
 
 import { connect } from 'react-apollo'
 
