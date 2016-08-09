@@ -22,7 +22,7 @@ class TodoApp extends React.Component {
             <AddTodo addTodo={this.props.mutations.addTodo} />
           </header>
           <TodoList
-            todos={this.props.todos.allTodos || []}
+            todos={this.props.todos.allTodoes || []}
             filter={this.props.filter}
             renameTodo={this.props.mutations.renameTodo}
             deleteTodo={this.props.mutations.deleteTodo}
@@ -105,7 +105,7 @@ const TodoAppLinked = connect({
       todos: {
         query: gql`
           {
-            allTodos {
+            allTodoes {
               id
               complete
               text
