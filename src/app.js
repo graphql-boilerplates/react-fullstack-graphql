@@ -11,6 +11,17 @@ import './style.css'
 const networkInterface =
   createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')
 
+networkInterface.use([{
+  applyMiddleware (req, next) {
+    if (!req.options.headers) {
+      // Create the header object if needed.
+      req.options.headers = {}
+    }
+    req.options.headers['x-graphcool-source'] = 'example:react-apollo-todo'
+    next()
+  },
+}])
+
 const client = new ApolloClient({
   networkInterface,
 })
