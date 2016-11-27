@@ -113,7 +113,6 @@ const TodoAppLinked = connect({
           }
         `,
         forceFetch: false,
-        pollInterval: 1000,
       },
     }
   },
