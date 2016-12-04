@@ -8,6 +8,8 @@ export default class TodoList extends React.Component {
     deleteTodo: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
     filter: PropTypes.string.isRequired,
+    refetch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
   }
 
   _filterTodos = (todo) => (
@@ -19,6 +21,9 @@ export default class TodoList extends React.Component {
     )
 
   renderTodos () {
+    if (this.props.loading) {
+      return (<div>Loading</div>)
+    }
     return this.props.todos
       .filter(this._filterTodos)
       .reverse()
@@ -29,6 +34,7 @@ export default class TodoList extends React.Component {
           renameTodo={this.props.renameTodo}
           deleteTodo={this.props.deleteTodo}
           toggleTodo={this.props.toggleTodo}
+          refetch={this.props.refetch}
         />
       )
   }

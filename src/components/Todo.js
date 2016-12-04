@@ -8,6 +8,7 @@ export default class Todo extends React.Component {
     renameTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
   }
 
   state = {
@@ -15,8 +16,10 @@ export default class Todo extends React.Component {
   }
 
   _handleCompleteChange = (e) => {
+    const id = this.props.todo.id
     var complete = e.target.checked
-    this.props.toggleTodo(this.props.todo, complete)
+    this.props.toggleTodo({variables: {id, complete}})
+      .then(this.props.refetch())
   }
 
   _handleDestroyClick = () => {
@@ -36,13 +39,17 @@ export default class Todo extends React.Component {
     this._removeTodo()
   }
 
-  _handleTextInputSave = (newText) => {
+  _handleTextInputSave = (text) => {
     this._setEditMode(false)
-    this.props.renameTodo(this.props.todo, newText)
+    const id = this.props.todo.id
+    this.props.renameTodo({variables: {id, text}})
+      .then(this.props.refetch())
   }
 
   _removeTodo () {
-    this.props.deleteTodo(this.props.todo)
+    const id = this.props.todo.id
+    this.props.deleteTodo({variables: {id}})
+      .then(this.props.refetch())
   }
 
   _setEditMode = (shouldEdit) => {

@@ -4,7 +4,7 @@ import TodoApp from './components/TodoApp'
 
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 
 import './style.css'
 
@@ -41,8 +41,12 @@ const store = createStore(
     filter,
     apollo: client.reducer(),
   }),
-  applyMiddleware(client.middleware()),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  // initial state
+  {},
+  compose(
+    applyMiddleware(client.middleware()),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
 )
 
 render(
