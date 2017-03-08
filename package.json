@@ -1,7 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server -d --hot --inline --no-info --port 3000"
+    "start": "REACT_APP_GRAPHQL_ENDPOINT=${REACT_APP_GRAPHQL_ENDPOINT:=https://api.graph.cool/simple/v1/__PROJECT_ID__} react-scripts start",
+    "build": "REACT_APP_GRAPHQL_ENDPOINT=${REACT_APP_GRAPHQL_ENDPOINT:=https://api.graph.cool/simple/v1/__PROJECT_ID__} react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "apollo-client": "^0.5.10",
@@ -12,28 +15,9 @@
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-core": "^6.10.4",
-    "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "6.5.0",
-    "css-loader": "^0.23.1",
-    "eslint": "3.0.1",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-config-standard-react": "^3.0.0",
-    "eslint-loader": "^1.4.1",
-    "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-promise": "^2.0.0",
-    "eslint-plugin-react": "^5.2.2",
-    "eslint-plugin-standard": "^2.0.0",
-    "html-webpack-plugin": "^2.22.0",
-    "style-loader": "^0.13.1",
-    "webpack": "1.13.1",
-    "webpack-dev-server": "1.14.1"
+    "react-scripts": "^0.9.4"
   }
 }
