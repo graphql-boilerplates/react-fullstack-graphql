@@ -8,8 +8,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 
 import './style.css'
 
-const networkInterface =
-  createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')
+const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/regalsnake-lynx-593' });
 
 // The x-graphcool-source header is to let the server know that the example app has started.
 // (Not necessary for normal projects)
