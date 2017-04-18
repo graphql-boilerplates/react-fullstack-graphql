@@ -4,9 +4,9 @@
 * [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
 * [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
-## Example ([Live demo](https://demo-react-apollo-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/simple/v1/todo-example))
+## Example ([Live demo](https://demo-react-apollo-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/simple/v1/cj1nq71xyfabv0199bp3a7hhf))
 
-> TODO: Create GIF for final prodduct
+![](http://imgur.com/1PkNnTx.gif)
 
 ## Quickstart
 
