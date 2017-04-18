@@ -10,7 +10,7 @@ import './style.css'
 
 // Paste your endpoint for the Simple API here.
 // Info: https://github.com/graphcool-examples/react-apollo-todo-example#2-create-graphql-api-with-graphcool
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/cj1nq71xyfabv0199bp3a7hhf' })
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 
 const client = new ApolloClient({
   networkInterface,
