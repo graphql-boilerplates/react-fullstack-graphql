@@ -3,3 +3,4 @@ npm-debug.log
 data/schema.graphql
 node_modules
 .idea
+.netlify
