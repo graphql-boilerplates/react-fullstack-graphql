@@ -8,21 +8,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 
 import './style.css'
 
-const networkInterface =
-  createNetworkInterface('https://api.graph.cool/simple/v1/__PROJECT_ID__')
-
-// The x-graphcool-source header is to let the server know that the example app has started.
-// (Not necessary for normal projects)
-networkInterface.use([{
-  applyMiddleware (req, next) {
-    if (!req.options.headers) {
-      // Create the header object if needed.
-      req.options.headers = {}
-    }
-    req.options.headers['x-graphcool-source'] = 'example:react-apollo-todo'
-    next()
-  },
-}])
+// Paste your endpoint for the Simple API here.
+// Info: https://github.com/graphcool-examples/react-apollo-todo-example#2-create-graphql-api-with-graphcool
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 
 const client = new ApolloClient({
   networkInterface,
