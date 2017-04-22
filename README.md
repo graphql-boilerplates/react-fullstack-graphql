@@ -26,7 +26,7 @@ cd react-apollo-todo-example
 npm install -g graphcool
 
 # Create a new project based on the Todo schema
-graphcool init --url graph.cool/schema/todo 
+graphcool init --url http://graphqlbin.com/todo.graphql
 ```
 
 This creates a GraphQL API for the following schema:
