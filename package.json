@@ -11,7 +11,7 @@
     "classnames": "2.2.5",
     "graphql-tag": "^1.1.2",
     "react": "^15.2.1",
-    "react-apollo": "^0.6.0",
+    "react-apollo": "^1.1.2",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0",
