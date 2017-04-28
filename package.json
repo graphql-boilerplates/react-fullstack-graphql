@@ -7,7 +7,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "apollo-client": "^0.5.10",
+    "apollo-client": "^1.1.1",
     "classnames": "2.2.5",
     "graphql-tag": "^1.1.2",
     "react": "^15.2.1",
