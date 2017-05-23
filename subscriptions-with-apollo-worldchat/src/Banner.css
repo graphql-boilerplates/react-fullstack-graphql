@@ -1,0 +1,30 @@
+.Banner {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(255,255,255,.75);
+    left: 20px;
+    top: 20px;
+    height: 42px;
+    border-radius: 2px;
+    padding-left: 12px;
+    box-shadow: 0 0 4px rgba(0,0,0,.2);
+}
+
+.InfoText {
+    color: rgba(224,0,151,1);
+    font-weight: 300;
+    margin-left: 10px;
+}
+
+.ReadTutorialButton {
+    display: flex;
+    align-items: center;
+    background-color: rgba(224,0,151,.75);
+    color: white;
+    margin-left: 10px;
+    padding: 0 12px 0 12px;
+    border-radius: 2px;
+    height: 100%;
+    cursor: pointer;
+}

@@ -1,0 +1,20 @@
+{
+  "parser": "babel-eslint",
+    "extends": [
+      "standard",
+    "standard-react"
+    ],
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "semi": [2, "never"],
+      "comma-dangle": [2, "always-multiline"],
+      "space-infix-ops": 0,
+      "max-len": [2, 120, 2],
+      "react/jsx-no-bind": [1, {
+        "allowArrowFunctions": true
+      }],
+      "jsx-quotes": [2, "prefer-single"]
+    }
+}

@@ -1,0 +1,14 @@
+.WorldChat {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+.MarkerInfoWindow {
+    border-radius: 2px;
+    border-width: 1px;
+    border-color: rgba(0,89,33,1);
+    background-color: rgba(39,174,96,1);
+    color: white;
+}
+
