@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom'
 import { gql, graphql } from 'react-apollo'
 
 class Post extends React.Component {
-  static propTypes = {
-    post: React.PropTypes.object,
-    mutate: React.PropTypes.func,
-    history: React.PropTypes.func,
-  }
 
   render() {
     return (

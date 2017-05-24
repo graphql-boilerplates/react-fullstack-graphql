@@ -5,10 +5,6 @@ import Modal from 'react-modal'
 import modalStyle from '../constants/modalStyle'
 
 class CreatePage extends React.Component {
-  static propTypes = {
-    router: React.PropTypes.object,
-    addPost: React.PropTypes.func,
-  }
 
   state = {
     description: '',

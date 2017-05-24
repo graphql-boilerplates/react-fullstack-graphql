@@ -13,9 +13,6 @@ const detailModalStyle = {
 }
 
 class DetailPage extends React.Component {
-  static propTypes = {
-    data: React.PropTypes.object,
-  }
 
   render() {
     if (this.props.data.loading) {

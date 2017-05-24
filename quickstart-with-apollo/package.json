@@ -7,17 +7,16 @@
     "react-scripts": "0.9.0"
   },
   "dependencies": {
-    "apollo-client": "^1.0.2",
     "react": "^15.4.2",
-    "react-apollo": "^1.0.1",
+    "react-apollo": "^1.2.0",
     "react-dom": "^15.3.1",
     "react-modal": "^1.6.5",
     "react-router-dom": "^4.0.0",
     "tachyons": "^4.3.1"
   },
   "scripts": {
-    "start": "REACT_APP_GRAPHQL_ENDPOINT=${REACT_APP_GRAPHQL_ENDPOINT:=https://api.graph.cool/simple/v1/cj2kias0f6mys014122t32cb0} react-scripts start",
-    "build": "REACT_APP_GRAPHQL_ENDPOINT=${REACT_APP_GRAPHQL_ENDPOINT:=https://api.graph.cool/simple/v1/cj2kias0f6mys014122t32cb0} react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prettier": "prettier-eslint --write \"src/**/*.+(js|jsx)\"",
