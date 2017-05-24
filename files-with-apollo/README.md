@@ -12,7 +12,7 @@ You can learn more about file management with Graphcool in our [documentation](h
 
 ```sh
 git clone https://github.com/graphcool-examples/react.git
-cd react/files-with-apollo
+cd react-graphql/files-with-apollo
 ```
 
 ### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
