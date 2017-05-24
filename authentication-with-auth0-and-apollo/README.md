@@ -1,7 +1,5 @@
 # Auth0 Example (with React & Apollo)
 
-<img src="http://openid.net/wordpress-content/uploads/2016/05/auth0-logo-blue.png" height=50>
-
 * [Auth0](https://auth0.com/): Powerful authentication provider
 * [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
 * [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
