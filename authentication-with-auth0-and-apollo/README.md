@@ -12,7 +12,7 @@ You can read the **full tutorial** about this example [here](https://www.graph.c
 
 ```sh
 git clone https://github.com/graphcool-examples/react.git
-cd react/authentication-with-auth0-and-apollo
+cd react-graphql/authentication-with-auth0-and-apollo
 ```
 
 ### 2. Setting up the Graphcool project
