@@ -13,7 +13,7 @@ const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT_')
 
 // __SIMPLE_API_ENDPOINT_ looks similar to: `https://api.graph.cool/simple/v1/<PROJECT_ID>`
 const networkInterface = createNetworkInterface({
-  uri: '__SIMPLE_API_ENDPOINT_',
+  uri: '__SIMPLE_API_ENDPOINT__',
 })
 
 const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
