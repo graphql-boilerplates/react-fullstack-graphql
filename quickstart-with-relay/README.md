@@ -15,7 +15,7 @@ For more information on how to get started [refer to the full react-relay-instag
 ### 1. Clone example repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react.git
+git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/quickstart-with-relay
 ```
 

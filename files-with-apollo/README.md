@@ -11,7 +11,7 @@ You can learn more about file management with Graphcool in our [documentation](h
 ### 1. Clone example repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react.git
+git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/files-with-apollo
 ```
 
