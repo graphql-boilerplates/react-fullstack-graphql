@@ -16,7 +16,7 @@ Subscriptions allow you to bring realtime functionality into your app. You can l
 ### 1. Clone example repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react.git
+git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/subscriptions-with-apollo-worldchat
 ```
 

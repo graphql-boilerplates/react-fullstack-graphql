@@ -10,7 +10,7 @@ You can read the **full tutorial** about this example [here](https://www.graph.c
 ### 1. Clone example repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react.git
+git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/authentication-with-email-and-apollo
 ```
 
