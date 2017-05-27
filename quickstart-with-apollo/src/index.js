@@ -10,7 +10,7 @@ import './index.css'
 
 const networkInterface = createNetworkInterface({
 // __SIMPLE_API_ENDPOINT_ looks similar to: `https://api.graph.cool/simple/v1/<PROJECT_ID>`
-  uri: '__SIMPLE_API_ENDPOINT_'
+  uri: '__SIMPLE_API_ENDPOINT__'
 })
 
 const client = new ApolloClient({networkInterface})
