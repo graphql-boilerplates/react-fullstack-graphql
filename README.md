@@ -10,12 +10,14 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 
 <p align="center"><img src="http://imgur.com/G9mMBFT.png" /></p>
 
+The examples above cover the following technologies:
+
 * [GraphQL](http://graphql.org/)
 * [Apollo Client](http://dev.apollodata.com/react/)
 * [Relay Modern/Relay Classic](https://facebook.github.io/relay/)
 * [Auth0 Lock](https://github.com/auth0/lock)
-* GraphQL subscriptions
-* File upload
+* [GraphQL subscriptions](https://www.graph.cool/docs/reference/simple-api/subscriptions-aip7oojeiv/)
+* [File upload](https://www.graph.cool/docs/reference/file-handling/overview-eer4wiang0/)
 * ...
 
 > Are you looking for another example? [Request it here](https://github.com/graphcool-examples/react-graphql/issues/new).
