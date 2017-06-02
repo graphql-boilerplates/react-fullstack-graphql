@@ -4,7 +4,7 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 
 <hr>
 
-Select an example from the list above to get started ⤴️
+<center>**Select an example from the list above to get started** ⤴️</center>
 
 <hr>
 
