@@ -29,6 +29,30 @@ The examples above cover the following technologies:
 * [User Authentication with Auth0 for React and Apollo](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/)
 * [Learn Relay](https://www.learnrelay.org/) / [Learn Apollo](https://www.learnapollo.com/)
 
+## Contributors
+
+A big thank you to all contributors and supporters of this repository 💚 
+
+<a href="https://github.com/nikolasburk/" target="_blank">
+  <img src="https://github.com/nikolasburk.png?size=64" width="64" height="64" alt="nikolasburk">
+</a>
+<a href="https://github.com/schickling/" target="_blank">
+  <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
+</a>
+<a href="https://github.com/marktani/" target="_blank">
+  <img src="https://github.com/marktani.png?size=64" width="64" height="64" alt="marktani">
+</a>
+<a href="https://github.com/stubailo/" target="_blank">
+  <img src="https://github.com/stubailo.png?size=64" width="64" height="64" alt="stubailo">
+</a>
+<a href="https://github.com/kuldarkalvik/" target="_blank">
+  <img src="https://github.com/kuldarkalvik.png?size=64" width="64" height="64" alt="kuldarkalvik">
+</a>
+<a href="https://github.com/gsans/" target="_blank">
+  <img src="https://github.com/gsans.png?size=64" width="64" height="64" alt="gsans">
+</a>
+
+
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
 Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
