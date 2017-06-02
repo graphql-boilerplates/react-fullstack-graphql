@@ -1,6 +1,8 @@
 # React & GraphQL examples
 
-Code examples & starter kits to see how React works with GraphQL and other technologies. 
+Code examples & starter kits to see how React works with GraphQL and other technologies.
+
+Select an example from the list above to get started ⤴️
 
 ## Frameworks & technologies
 
