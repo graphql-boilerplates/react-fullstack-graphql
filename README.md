@@ -6,7 +6,7 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 
 ## Frameworks & technologies
 
-![](http://imgur.com/rFxUHyp.png)
+![](http://imgur.com/G9mMBFT.png)
 
 * [GraphQL](http://graphql.org/)
 * [Apollo Client](http://dev.apollodata.com/react/)
