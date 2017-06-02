@@ -1,4 +1,4 @@
-**<p align="center">Select an example** from the list above to get started ⤴️</p>
+**<p align="center">⤴️ Select an example** from the list above to get started ⤴️</p>
 
 <hr>
 
