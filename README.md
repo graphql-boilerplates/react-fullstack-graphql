@@ -4,7 +4,7 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 
 > Select an example from the list above to get started ⤴️
 
-## Frameworks & technologies
+## Used frameworks & technologies
 
 ![](http://imgur.com/G9mMBFT.png)
 
@@ -18,7 +18,12 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 
 > Are you looking for another example? [Request it here](https://github.com/graphcool-examples/react-graphql/issues/new).
 
-## Quickstart
+## Tutorials
+
+* [How to use `create-react-app` with GraphQL & Apollo](https://www.graph.cool/docs/tutorials/create-react-apps-with-apollo-client-aidae4aeg5/)
+* [Freecom: Building Intercom with GraphQL and Apollo](https://www.graph.cool/docs/tutorials/freecom-overview-intercom-tutorial-e8a6ajt8ax/)
+* [User Authentication with Auth0 for React and Apollo](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/)
+* [Learn Relay](https://www.learnrelay.org/) / [Learn Apollo](https://www.learnapollo.com/)
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
