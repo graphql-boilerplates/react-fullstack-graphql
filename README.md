@@ -8,7 +8,7 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 
 <hr>
 
-![](http://imgur.com/G9mMBFT.png)
+<p align="center"><img src="http://imgur.com/G9mMBFT.png" /></p>
 
 * [GraphQL](http://graphql.org/)
 * [Apollo Client](http://dev.apollodata.com/react/)
