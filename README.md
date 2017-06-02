@@ -1,12 +1,10 @@
+**<p align="center">Select an example** from the list above to get started ⤴️</p>
+
+<hr>
+
 # React & GraphQL examples
 
 Code examples & starter kits to see how React works with GraphQL and other technologies.
-
-<hr>
-
-**<p align="center">Select an example from the list above to get started ⤴️</p>**
-
-<hr>
 
 ## Used frameworks & technologies
 
