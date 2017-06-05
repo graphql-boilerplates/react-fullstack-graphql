@@ -53,6 +53,7 @@ return fetch('__RELAY_API_ENDPOINT__', {
 
 ```sh
 yarn install
+yarn relay # invoke relay compiler
 yarn start # open http://localhost:3000 in your browser
 ```
 
