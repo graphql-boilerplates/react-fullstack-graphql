@@ -77,7 +77,16 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-### 5. Install depdendencies & run locally
+### 5. Connect the app to Auth0
+
+Copy the `clientId` and `domain` from you Auth0 app settings page to `./src/components/app.js`:
+
+```js
+const clientId = '__AUTH0_CLIENT_ID__'
+const domain='__AUTH0_DOMAIN__'
+```
+
+### 6. Install depdendencies & run locally
 
 ```sh
 yarn install
