@@ -61,7 +61,10 @@ A big thank you to all contributors and supporters of this repository 💚
   <img src="https://github.com/sebasibarguen.png?size=64" width="64" height="64" alt="sebasibarguen">
 </a>
 <a href="https://github.com/heymartinadams/" target="_blank">
-  <img src="https://github.com/heymartinadams.png?size=64" width="64" height="64" alt="sebasibarguen">
+  <img src="https://github.com/heymartinadams.png?size=64" width="64" height="64" alt="heymartinadams">
+</a>
+<a href="https://github.com/100ideas/" target="_blank">
+  <img src="https://github.com/100ideas.png?size=64" width="64" height="64" alt="100ideas">
 </a>
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
