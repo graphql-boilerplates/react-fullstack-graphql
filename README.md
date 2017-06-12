@@ -66,6 +66,9 @@ A big thank you to all contributors and supporters of this repository 💚
 <a href="https://github.com/100ideas/" target="_blank">
   <img src="https://github.com/100ideas.png?size=64" width="64" height="64" alt="100ideas">
 </a>
+<a href="https://github.com/brene/" target="_blank">
+  <img src="https://github.com/brene.png?size=64" width="64" height="64" alt="brene">
+</a>
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
