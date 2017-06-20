@@ -25,9 +25,6 @@ export default function DeletePostMutation(postId, viewerId) {
     {
       mutation,
       variables,
-      onCompleted: (response) => {
-        console.log('DeletePostMutation - onCompleted - environment', environment, response)
-      },
       onError: err => console.error(err),
       updater: (proxyStore) => {
         const deletePostField = proxyStore.getRootField('deletePost')
