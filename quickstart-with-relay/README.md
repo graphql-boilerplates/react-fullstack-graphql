@@ -40,7 +40,7 @@ type Post {
 
 ### 3. Connect the app with your GraphQL API
 
-Copy the `Relay API` endpoint to `./src/app.js` as the argument for the constructor of `Relay.DefaultNetworkLayer`, replacing `__RELAY_API_ENDPOINT__ `:
+Copy the `Relay API` endpoint to `./src/index.js` as the argument for the constructor of `Relay.DefaultNetworkLayer`, replacing `__RELAY_API_ENDPOINT__ `:
 
 ```js
 // replace `__RELAY_API_ENDPOINT__ ` with the endpoint from the previous step
