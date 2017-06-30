@@ -10,7 +10,7 @@ import './index.css'
 // Paste your endpoint for the Relay API here.
 // Info: https://github.com/graphcool-examples/react-relay-instagram-example#2-create-graphql-api-with-graphcool
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/cj0sbl2tvob630118pvaotzrl')
+  new Relay.DefaultNetworkLayer('__RELAY_API_ENDPOINT__')
 )
 
 const ViewerQueries = { viewer: () => Relay.QL`query { viewer }` }
