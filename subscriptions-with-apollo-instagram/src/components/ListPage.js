@@ -83,7 +83,7 @@ const FeedQuery = gql`query allPosts {
 
 const ListPageWithData = graphql(FeedQuery, {
   options: {
-    forceFetch: true
+    forcePolicy: 'cache-and-network'
   }
 })(ListPage)
 

@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "react": "^15.3.1",
-    "react-apollo": "^1.2.0",
+    "react-apollo": "^1.4.3",
     "react-dom": "^15.3.1",
     "react-router": "^2.8.0",
     "subscriptions-transport-ws": "^0.5.0",
