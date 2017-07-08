@@ -55,6 +55,8 @@ return fetch('__RELAY_API_ENDPOINT__', {
 yarn install
 yarn relay # invoke relay compiler
 yarn start # open http://localhost:3000 in your browser
+
+yarn relay-start # invoke relay-compiler, then start dev server if successful
 ```
 
 ## Next steps

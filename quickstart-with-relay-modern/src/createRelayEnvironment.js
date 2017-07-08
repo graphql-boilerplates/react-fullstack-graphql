@@ -11,7 +11,7 @@ function fetchQuery(
   variables,
 ) {
   
-  return fetch('__RELAY_API_ENDPOINT__ ', {
+  return fetch('__RELAY_API_ENDPOINT__', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
