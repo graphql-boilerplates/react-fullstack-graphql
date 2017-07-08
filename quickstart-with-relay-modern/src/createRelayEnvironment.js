@@ -10,6 +10,7 @@ function fetchQuery(
   operation,
   variables,
 ) {
+  
   return fetch('__RELAY_API_ENDPOINT__', {
     method: 'POST',
     headers: {

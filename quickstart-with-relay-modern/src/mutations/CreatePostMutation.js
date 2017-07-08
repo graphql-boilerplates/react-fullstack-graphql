@@ -2,7 +2,7 @@ import {
   commitMutation,
   graphql,
 } from 'react-relay'
-import environment from './createRelayEnvironment'
+import environment from '../createRelayEnvironment'
 import {ConnectionHandler} from 'relay-runtime'
 
 const mutation = graphql`
@@ -15,11 +15,15 @@ const mutation = graphql`
       }
     }
   }
-`
+`;
 
-let tempID = 0
+let tempID = 0;
 
-export default function CreatePostMutation(description, imageUrl, callback) {
+export default function CreatePostMutation(
+  description, 
+  imageUrl, 
+  viewerId, 
+  callback) {
   const variables = {
     input: {
       description,
