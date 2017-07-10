@@ -19,7 +19,7 @@ const mutation = graphql`
 
 let tempID = 0
 
-export default function CreatePostMutation(description, imageUrl, callback) {
+export default function CreatePostMutation(description, imageUrl, viewerId, callback) {
   const variables = {
     input: {
       description,
