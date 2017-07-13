@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { graphql, gql } from 'react-apollo'
 import Dropzone from 'react-dropzone'
+import AvatarEditor from 'react-avatar-editor'
 
 class CreatePage extends React.Component {
 
@@ -11,12 +12,15 @@ class CreatePage extends React.Component {
   }
 
   state = {
+    file: {},
     description: '',
     imageUrl: '',
     imageId: '',
+    imagePreview: ''
   }
 
   render () {
+    const { imageId, imageUrl, description, cropState, file } = this.state
     return (
       <div className='w-100 pa4 flex justify-center'>
         <div style={{ maxWidth: 400 }} className=''>
@@ -26,7 +30,7 @@ class CreatePage extends React.Component {
             placeholder='Description'
             onChange={(e) => this.setState({description: e.target.value})}
           />
-          {!this.state.imageId &&
+          {!imageId &&
           <Dropzone
             onDrop={this.onDrop}
             accept='image/*'
@@ -34,10 +38,25 @@ class CreatePage extends React.Component {
           >
             <div>Drop an image or click to choose</div>
           </Dropzone>}
-          {this.state.imageUrl &&
-            <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
+          {cropState &&
+            <div>
+              <AvatarEditor
+                ref='avatar'
+                image={file.preview}
+                crossOrigin='anonymous'
+                width={250}
+                height={250}
+                border={0}
+                borderRadius={250}
+                color={[0, 0, 0, 0.3]}
+              />
+              <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handleCrop}>Crop</button>
+            </div>
           }
-          {this.state.description && this.state.imageUrl &&
+          {imageUrl &&
+            <img src={imageUrl} role='presentation' className='w-100 mv3' />
+          }
+          {description && imageUrl &&
             <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handlePost}>Post</button>
           }
         </div>
@@ -46,9 +65,15 @@ class CreatePage extends React.Component {
   }
 
   onDrop = (files) => {
+    this.setState({ file: files[0], cropState: true })
+  }
+
+  handleCrop = () => {
+    const image = this.refs.avatar.getImageScaledToCanvas().toDataURL()
+    const blob = this.dataURItoBlob(image)
     // prepare form data, use data key!
     let data = new FormData()
-    data.append('data', files[0])
+    data.append('data', blob)
 
     // use the file endpoint
     fetch('__FILE_API_ENDPOINT__', {
@@ -60,6 +85,7 @@ class CreatePage extends React.Component {
       this.setState({
         imageId: image.id,
         imageUrl: image.url,
+        cropState: false
       })
     })
   }
