@@ -4,6 +4,7 @@ import { createRefetchContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
 import { Link } from 'react-router'
 import DeletePostMutation from '../mutations/DeletePostMutation'
+import NewPostSubscription from '../subscriptions/NewPostSubscription'
 
 class PostList extends React.Component {
   state = {
@@ -58,6 +59,10 @@ class PostList extends React.Component {
 
   _handleDelete = postId => {
     DeletePostMutation(postId)
+  }
+
+  async componentDidMount() {
+    NewPostSubscription()
   }
 
   render() {
