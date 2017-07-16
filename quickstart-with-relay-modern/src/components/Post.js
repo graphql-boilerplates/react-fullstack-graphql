@@ -2,8 +2,9 @@ import React from 'react'
 import {
   createFragmentContainer,
   graphql
-} from 'react-relay'
-import DeletePostMutation from './DeletePostMutation'
+} from 'react-relay';
+import DeletePostMutation from '../mutations/DeletePostMutation';
+import { withRouter } from 'react-router-dom';
 
 class Post extends React.Component {
 
@@ -20,7 +21,10 @@ class Post extends React.Component {
         />
         <div className='pt3'>
           {this.props.post.description}&nbsp;
-          <span className='red f6 pointer dim' onClick={this._handleDelete}>Delete</span>
+          <span 
+            className='red f6 pointer dim' 
+            onClick={this._handleDelete}
+          >Delete</span>
         </div>
       </div>
     )
@@ -31,7 +35,7 @@ class Post extends React.Component {
   }
 }
 
-export default createFragmentContainer(Post, graphql`
+const FragmentContainer =  createFragmentContainer(Post, graphql`
   fragment Post_viewer on Viewer {
     id
   }
@@ -41,3 +45,5 @@ export default createFragmentContainer(Post, graphql`
     imageUrl
   }
 `)
+
+export default withRouter(FragmentContainer);
