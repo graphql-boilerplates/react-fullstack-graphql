@@ -264,10 +264,10 @@ interface Node {
 # Information about pagination in a connection.
 type PageInfo {
   # When paginating forwards, are there more items?
-  hasNextPage: Boolean!
+  hasNextPage: Boolean
 
   # When paginating backwards, are there more items?
-  hasPreviousPage: Boolean!
+  hasPreviousPage: Boolean
 
   # When paginating backwards, the cursor to continue.
   startCursor: String
@@ -287,7 +287,7 @@ type Post implements Node {
 # A connection to a list of items.
 type PostConnection {
   # Information to aid in pagination.
-  pageInfo: PageInfo!
+  pageInfo: PageInfo
 
   # A list of edges.
   edges: [PostEdge]
@@ -299,10 +299,10 @@ type PostConnection {
 # An edge in a connection.
 type PostEdge {
   # The item at the end of the edge.
-  node: Post!
+  node: Post
 
   # A cursor for use in pagination.
-  cursor: String!
+  cursor: String
 }
 
 input PostFilter {
@@ -561,7 +561,7 @@ enum UserOrderBy {
 # This is the famous Relay viewer object
 type Viewer {
   allFiles(filter: FileFilter, orderBy: FileOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
-  allPosts(filter: PostFilter, orderBy: PostOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  allPosts(filter: PostFilter, orderBy: PostOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection
   allUsers(filter: UserFilter, orderBy: UserOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   user: User
   File(id: ID, secret: String, url: String): File
@@ -569,4 +569,3 @@ type Viewer {
   User(id: ID): User
   id: ID!
 }
-

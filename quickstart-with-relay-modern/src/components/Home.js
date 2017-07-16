@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
-import './App.css'
 import {
   QueryRenderer,
   graphql
 } from 'react-relay'
-import environment from './createRelayEnvironment'
+import environment from '../createRelayEnvironment'
 import ListPage from './ListPage'
 
-const AppAllPostQuery = graphql`
-  query AppAllPostQuery {
+const HomeAllPostQuery = graphql`
+  query HomeAllPostQuery {
     viewer {
       ...ListPage_viewer
     }
   }
 `
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <QueryRenderer
           environment={environment}
-          query={AppAllPostQuery}
+          query={HomeAllPostQuery}
           render={({error, props}) => {
             if (error) {
               return <div>{error.message}</div>
@@ -36,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Home
