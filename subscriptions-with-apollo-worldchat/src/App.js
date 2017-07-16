@@ -8,6 +8,7 @@ import {SubscriptionClient, addGraphQLSubscriptions} from 'subscriptions-transpo
 // __SUBSCRIPTIONS_API_ENDPOINT__ looks similar to: `wss://subscriptions.graph.cool/v1/<PROJECT_ID>`
 const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT__', {
   reconnect: true,
+  timeout: 20000
 })
 
 // __SIMPLE_API_ENDPOINT__ looks similar to: `https://api.graph.cool/simple/v1/<PROJECT_ID>`
