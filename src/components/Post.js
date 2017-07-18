@@ -1,8 +1,20 @@
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Link } from 'react-router'
+import TextInput from './TextInput'
+import UpdatePostMutation from '../mutations/UpdatePostMutation'
 
 class Post extends React.Component {
+  state = {
+    editing: false
+  }
+  _updatePost = description => {
+    const { id, imageUrl } = this.props.post
+    UpdatePostMutation(id, description, imageUrl, () => {
+      this.setState({ editing: false })
+    })
+  }
+
   render() {
     const { id, imageUrl, description } = this.props.post
     return (
@@ -17,7 +29,22 @@ class Post extends React.Component {
             }}
           />
         </Link>
-        <div className="pt3">{description}&nbsp;</div>
+        {this.state.editing ? (
+          <TextInput
+            className="pt3"
+            initialValue={description}
+            onSave={this._updatePost}
+          />
+        ) : (
+          <div
+            className="pt3"
+            onClick={() => {
+              this.setState({ editing: true })
+            }}
+          >
+            {description}&nbsp;
+          </div>
+        )}
       </div>
     )
   }
