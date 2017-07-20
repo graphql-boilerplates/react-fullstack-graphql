@@ -11,11 +11,15 @@ class CreateUser extends React.Component {
     data: React.PropTypes.object.isRequired,
   }
 
-  state = {
-    email: this.props.location.query.email || '',
-    password: '',
-    name: '',
-    emailSubscription: false,
+  constructor(props) {
+    super()
+
+    this.state = {
+      email: props.location.query.email || '',
+      password: '',
+      name: '',
+      emailSubscription: false,
+    }
   }
 
   render () {
