@@ -49,7 +49,7 @@ return fetch('__RELAY_API_ENDPOINT__', {
 })  
 ```
 
-### 4. Install depdendencies & run locally
+### 4. Install dependencies & run locally
 
 ```sh
 yarn install
