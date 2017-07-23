@@ -22,7 +22,7 @@ export default createFragmentContainer(
   graphql`
     fragment PostList_viewer on Viewer {
       id
-      allPosts(first: 2147483647, orderBy: createdAt_DESC)
+      allPosts(first: 1000, orderBy: createdAt_DESC)
         @connection(key: "PostList_allPosts", filters: []) {
         edges {
           node {
