@@ -1,6 +1,7 @@
 import React from 'react'
 import Post from './Post'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { createRefetchContainer, graphql } from 'react-relay'
+import { ITEM_PER_PAGE } from '../constants'
 
 class PostList extends React.Component {
   _loadAll = () => {
@@ -11,7 +12,14 @@ class PostList extends React.Component {
   }
 
   _nextPage = () => {
-    // here pagination action
+    this._loadMore()
+  }
+
+  _loadMore = () => {
+    const refetchVariables = fragmentVariables => ({
+      first: fragmentVariables.first + ITEM_PER_PAGE
+    })
+    this.props.relay.refetch(refetchVariables)
   }
 
   render() {
@@ -50,19 +58,27 @@ class PostList extends React.Component {
   }
 }
 
-export default createFragmentContainer(
+export default createRefetchContainer(
   PostList,
-  graphql`
-    fragment PostList_viewer on Viewer {
-      id
-      allPosts(first: 1000, orderBy: createdAt_DESC)
-        @connection(key: "PostList_allPosts", filters: []) {
-        edges {
-          node {
-            id
-            ...Post_post
+  {
+    viewer: graphql.experimental`
+      fragment PostList_viewer on Viewer
+        @argumentDefinitions(first: { type: "Int", defaultValue: 1 }) {
+        allPosts(first: $first) {
+          edges {
+            node {
+              id
+              ...Post_post
+            }
           }
         }
+      }
+    `
+  },
+  graphql.experimental`
+    query PostListQuery($first: Int) {
+      viewer {
+        ...PostList_viewer @arguments(first: $first)
       }
     }
   `
