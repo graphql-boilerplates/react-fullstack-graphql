@@ -4,21 +4,38 @@ import { createRefetchContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
 
 class PostList extends React.Component {
-  _loadAll = () => {
-    // here pagination action
+  state = {
+    skip: 0,
+    first: ITEM_PER_PAGE
   }
+
+  _loadAll = () => {
+    this.setState({ skip: 0, first: 1000 }, () => {
+      this._loadMore()
+    })
+  }
+
   _previousPage = () => {
-    // here pagination action
+    const { skip, first } = this.state
+    if (skip > 0) {
+      this.setState({ skip: skip - first }, () => {
+        this._loadMore()
+      })
+    }
   }
 
   _nextPage = () => {
-    this._loadMore()
+    const { skip, first } = this.state
+    this.setState({ skip: skip + first }, () => {
+      this._loadMore()
+    })
   }
 
   _loadMore = () => {
-    const refetchVariables = fragmentVariables => ({
-      first: fragmentVariables.first + ITEM_PER_PAGE
-    })
+    const refetchVariables = {
+      skip: this.state.skip,
+      first: this.state.first
+    }
     this.props.relay.refetch(refetchVariables)
   }
 
@@ -63,8 +80,11 @@ export default createRefetchContainer(
   {
     viewer: graphql.experimental`
       fragment PostList_viewer on Viewer
-        @argumentDefinitions(first: { type: "Int", defaultValue: 1 }) {
-        allPosts(first: $first) {
+        @argumentDefinitions(
+          skip: { type: "Int", defaultValue: 0 }
+          first: { type: "Int", defaultValue: 2 }
+        ) {
+        allPosts(skip: $skip, first: $first) {
           edges {
             node {
               id
@@ -76,9 +96,9 @@ export default createRefetchContainer(
     `
   },
   graphql.experimental`
-    query PostListQuery($first: Int) {
+    query PostListQuery($skip: Int, $first: Int) {
       viewer {
-        ...PostList_viewer @arguments(first: $first)
+        ...PostList_viewer @arguments(skip: $skip, first: $first)
       }
     }
   `
