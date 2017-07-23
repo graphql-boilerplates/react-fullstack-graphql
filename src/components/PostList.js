@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post'
+import TextInput from './TextInput'
 import { createRefetchContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
 import { Link } from 'react-router'
@@ -12,7 +13,14 @@ class PostList extends React.Component {
   state = {
     skip: 0,
     first: ITEM_PER_PAGE,
-    orderBy: 'createdAt_DESC'
+    orderBy: 'createdAt_DESC',
+    filter: ''
+  }
+
+  _search = filter => {
+    this.setState({ skip: 0, first: ITEM_PER_PAGE, filter }, () => {
+      this._loadMore()
+    })
   }
 
   _hasPreviousPage = () => {
@@ -27,7 +35,7 @@ class PostList extends React.Component {
   }
 
   _loadAll = () => {
-    this.setState({ skip: 0, first: 1000 }, () => {
+    this.setState({ skip: 0, first: 1000, filter: '' }, () => {
       this._loadMore()
     })
   }
@@ -52,9 +60,8 @@ class PostList extends React.Component {
 
   _loadMore = () => {
     const refetchVariables = {
-      skip: this.state.skip,
-      first: this.state.first,
-      orderBy: this.state.orderBy
+        ...this.state,
+        filter: { description_contains: this.state.filter }
     }
     this.props.relay.refetch(refetchVariables)
   }
@@ -103,6 +110,14 @@ class PostList extends React.Component {
             + New
           </Link>
         </div>
+        <div className="w-100 flex flex-row justify-center">
+          <TextInput
+            className="pt3"
+            placeholder={'search by descriptions'}
+            initialValue={this.state.filter}
+            onSave={this._search}
+          />
+        </div>
         <div className="w-100 flex flex-column items-center">
           {viewer.allPosts.edges.map(({ node }) => (
             <div className="w-60" key={node.id}>
@@ -130,9 +145,14 @@ export default createRefetchContainer(
           skip: { type: "Int", defaultValue: 0 }
           first: { type: "Int", defaultValue: 2 }
           orderBy: { type: "PostOrderBy", defaultValue: "createdAt_DESC" }
+          filter: { type: "PostFilter" }
         ) {
-        allPosts(skip: $skip, first: $first, orderBy: $orderBy)
-          @connection(key: "PostList_allPosts", filters: []) {
+        allPosts(
+          skip: $skip
+          first: $first
+          orderBy: $orderBy
+          filter: $filter
+        ) @connection(key: "PostList_allPosts", filters: []) {
           count
           edges {
             node {
@@ -145,10 +165,20 @@ export default createRefetchContainer(
     `
   },
   graphql.experimental`
-    query PostListQuery($skip: Int, $first: Int, $orderBy: PostOrderBy) {
+    query PostListQuery(
+      $skip: Int
+      $first: Int
+      $orderBy: PostOrderBy
+      $filter: PostFilter
+    ) {
       viewer {
         ...PostList_viewer
-          @arguments(skip: $skip, first: $first, orderBy: $orderBy)
+          @arguments(
+            skip: $skip
+            first: $first
+            orderBy: $orderBy
+            filter: $filter
+          )
       }
     }
   `
