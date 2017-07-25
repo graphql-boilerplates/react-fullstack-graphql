@@ -36,7 +36,6 @@ type Post {
 
 type User {
   name: String!
-  email: String!
   emailSubscription: Boolean!
 }
 ```
