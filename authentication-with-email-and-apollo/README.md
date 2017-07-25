@@ -23,7 +23,7 @@ cd react-graphql/authentication-with-email-and-apollo
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/insta-auth0.graphql 
+graphcool init --schema https://graphqlbin.com/insta-email.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -36,7 +36,6 @@ type Post {
 
 type User {
   name: String!
-  email: String!
   emailSubscription: Boolean!
 }
 ```
