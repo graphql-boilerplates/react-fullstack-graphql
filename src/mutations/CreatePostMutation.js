@@ -1,65 +1,58 @@
-import {
-  commitMutation,
-  graphql,
-} from 'react-relay'
-import environment from '../createRelayEnvironment'
-import {ConnectionHandler} from 'relay-runtime'
+import { commitMutation, graphql } from 'react-relay'
+import environment from '../Environment'
+import { ConnectionHandler } from 'relay-runtime'
 
 const mutation = graphql`
   mutation CreatePostMutation($input: CreatePostInput!) {
     createPost(input: $input) {
       post {
-        id
-        description
-        imageUrl
+        ...Post_post
       }
     }
   }
-`;
+`
 
-let tempID = 0;
+let nextClientMutationId = 0
 
 export default function CreatePostMutation(description, imageUrl, callback) {
+  const clientMutationId = nextClientMutationId++
+
   const variables = {
     input: {
       description,
       imageUrl,
-      clientMutationId: ""
-    },
-  }
-  const sharedUpdater = (proxyStore, newPost) => {
-    const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
-    const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
-    if (connection) {
-        ConnectionHandler.insertEdgeAfter(connection, newPost)
+      clientMutationId: ''
     }
   }
-  commitMutation(
-    environment,
-    {
-      mutation,
-      variables,
-      onCompleted: callback && callback(),
-      onError: err => console.error(err),
-      optimisticUpdater: (proxyStore) => {
-        // 1 - create the `newPost` as a mock that can be added to the store
-        const id = 'client:newPost:' + tempID++
-        const newPost = proxyStore.create(id, 'Post')
-        newPost.setValue(id, 'id')
-        newPost.setValue(description, 'description')
-        newPost.setValue(imageUrl, 'imageUrl')
 
-        // 2 - add `newPost` to the store
-        sharedUpdater(proxyStore, newPost)
-      },
-      updater: (proxyStore) => {
-        // 1 - retrieve the `newPost` from the server response
-        const createPostField = proxyStore.getRootField('createPost')
-        const newPost = createPostField.getLinkedRecord('post')
+  const sharedUpdater = (proxyStore, newPost) => {
+    const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
+    const connection = ConnectionHandler.getConnection(
+      viewerProxy,
+      'PostList_allPosts'
+    )
+    if (connection) {
+      ConnectionHandler.insertEdgeBefore(connection, newPost)
+    }
+  }
 
-        // 2 - add `newPost` to the store
-        sharedUpdater(proxyStore, newPost)
-      },
+  commitMutation(environment, {
+    mutation,
+    variables,
+    onCompleted: response => callback && callback(),
+    onError: err => console.error(err),
+    optimisticUpdater: proxyStore => {
+      const id = `client:newPost:${clientMutationId}`
+      const newPost = proxyStore.create(id, 'Post')
+      newPost.setValue(id, 'id')
+      newPost.setValue(description, 'description')
+      newPost.setValue(imageUrl, 'imageUrl')
+      sharedUpdater(proxyStore, newPost)
     },
-  )
+    updater: proxyStore => {
+      const createPostField = proxyStore.getRootField('createPost')
+      const newPost = createPostField.getLinkedRecord('post')
+      sharedUpdater(proxyStore, newPost)
+    }
+  })
 }

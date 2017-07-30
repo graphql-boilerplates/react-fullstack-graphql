@@ -2,6 +2,7 @@ import React from 'react'
 import Post from './Post'
 import { createRefetchContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
+import { Link } from 'react-router'
 
 class PostList extends React.Component {
   state = {
@@ -81,6 +82,12 @@ class PostList extends React.Component {
               Next
             </span>
           ) : null}
+          <Link
+            to="/create"
+            className="bg-white w-25 pa4 ttu dim black no-underline"
+          >
+            + New
+          </Link>
         </div>
         <div className="w-100 flex flex-column items-center">
           {viewer.allPosts.edges.map(({ node }) => (
