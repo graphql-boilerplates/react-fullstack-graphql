@@ -3,6 +3,7 @@ import Post from './Post'
 import { createRefetchContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
 import { Link } from 'react-router'
+import DeletePostMutation from '../mutations/DeletePostMutation'
 
 class PostList extends React.Component {
   state = {
@@ -55,6 +56,10 @@ class PostList extends React.Component {
     this.props.relay.refetch(refetchVariables)
   }
 
+  _handleDelete = postId => {
+    DeletePostMutation(postId)
+  }
+
   render() {
     const { viewer } = this.props
     return (
@@ -93,6 +98,12 @@ class PostList extends React.Component {
           {viewer.allPosts.edges.map(({ node }) => (
             <div className="w-60" key={node.id}>
               <Post post={node} />
+              <span
+                className="red f6 pointer dim"
+                onClick={() => this._handleDelete(node.id)}
+              >
+                Delete
+              </span>
             </div>
           ))}
         </div>
