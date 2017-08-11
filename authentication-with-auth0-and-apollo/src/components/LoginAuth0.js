@@ -30,12 +30,12 @@ class LoginAuth0 extends Component {
   render() {
     return (
       <div>
-        <span
+        <button
           onClick={this._showLogin}
           className='dib pa3 white bg-blue dim pointer'
         >
           Log in with Auth0
-        </span>
+        </button>
       </div>
     )
   }
