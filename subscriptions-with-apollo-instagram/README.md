@@ -23,7 +23,7 @@ cd react-graphql/subscriptions-with-apollo-instagram
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+graphcool init --schema https://graphqlbin.com/instagram.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -39,25 +39,25 @@ type Post {
 
 #### 3.1. Simple API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `Simple API` endpoint to `.env` as the `REACT_APP_GRAPHQL_URI`:
 
-```js
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
-#### 3.1. Susbcriptions API
+#### 3.1. Subscriptions API
 
-Copy the `Susbcriptions API` endpoint to `./src/index.js` as the argument for the constructor of the `SubscriptionClient`:
+Copy the `Subscriptions API` endpoint to `.env` as `REACT_APP_SUBSCRIPTIONS_URI`:
 
-```js
-const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT__')
+```
+REACT_APP_SUBSCRIPTIONS_URI=wss://subscriptions.graph.cool/v1/__PROJECT_ID_
 ```
 
 You can obtain the `Susbcriptions API` endpoint by calling `graphcool endpoints` in the same directory where you called `graphcool init --schema https://graphqlbin.com/insta-files.graphql` before or by clicking the **Endpoints** button in the bottom-left of the [Graphcool Console](https://console.graph.cool).
 
-### 4. Install dedendencies & run locally
+### 4. Install dependencies & run locally
 
-You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. 
+You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser.
 
 ```sh
 yarn install
