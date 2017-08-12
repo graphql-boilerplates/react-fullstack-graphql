@@ -4,12 +4,12 @@
   "private": true,
   "devDependencies": {
     "prettier-eslint-cli": "^3.2.0",
-    "react-scripts": "0.9.0"
+    "react-scripts": "^1.0.11"
   },
   "dependencies": {
-    "react": "^15.4.2",
+    "react": "^15.6.1",
     "react-apollo": "^1.2.0",
-    "react-dom": "^15.3.1",
+    "react-dom": "^15.6.1",
     "react-modal": "^1.6.5",
     "react-router-dom": "^4.0.0",
     "tachyons": "^4.3.1"
