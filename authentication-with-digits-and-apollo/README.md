@@ -18,10 +18,11 @@ To run this example, please create a [graph.cool](http://graph.cool) account and
 
 ### 2. Configure app data endpoint
 
-Open `src/index.js` and paste your endpoint to the following line:
+Open `.env` and paste your endpoint and Digits consumer key.
 
-```js
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__' })
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
+REACT_APP_DIGITS_CONSUMER_KEY=__CONSUMER_KEY__
 ```
 
 ### 3. Run the example
