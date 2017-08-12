@@ -13,12 +13,10 @@ To run this example, please create a [graph.cool](http://graph.cool) account and
 
 ### 2. Configure app data endpoint
 
-Open `src/models/Todo.js` and paste your `PROJECT_ID` to the following line:
+Copy the `Simple API` endpoint to `.env` as the `REACT_APP_GRAPHQL_URI`:
 
-```js
-const client = new Lokka({
-  transport: new Transport('https://api.graph.cool/simple/v1/__PROJECT_ID__'),
-})
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
 
