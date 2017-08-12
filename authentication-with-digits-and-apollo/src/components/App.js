@@ -9,7 +9,7 @@ import LoginDigits from './LoginDigits'
 class App extends React.Component {
   componentDidMount() {
     if (!window.digitsInitialized) {
-      Digits.init({ consumerKey: '__CONSUMER_KEY__' }) // eslint-disable-line no-undef
+      Digits.init({ consumerKey: process.env.REACT_APP_DIGITS_CONSUMER_KEY }) // eslint-disable-line no-undef
         .done(() => {
           window.digitsInitialized = true
           console.log('Digits is initialized')
