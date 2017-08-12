@@ -7,7 +7,7 @@ import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apol
 import 'tachyons'
 import './index.css'
 
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+const networkInterface = createNetworkInterface({ uri: process.env.REACT_APP_GRAPHQL_URI })
 
 const client = new ApolloClient({ networkInterface })
 
