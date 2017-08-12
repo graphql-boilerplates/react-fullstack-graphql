@@ -81,7 +81,7 @@ export default class App extends Component {
             <div className='pv3'>
               <h3>Step 1:</h3>
               <LoginAuth0
-                clientId={cid}
+                clientId={clientId}
                 domain={domain}
                 onLogin={this._onLoginAuth0}
               />
