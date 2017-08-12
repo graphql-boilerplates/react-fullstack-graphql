@@ -26,7 +26,7 @@ cd react-graphql/quickstart-with-apollo
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+graphcool init --schema https://graphqlbin.com/instagram.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -40,14 +40,13 @@ type Post {
 
 ### 3. Connect the app with your GraphQL API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `Simple API` endpoint to `.env` as the `REACT_APP_GRAPHQL_URI`:
 
-```js
-// replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
-### 4. Install depdendencies & run locally
+### 4. Install dependencies & run locally
 
 ```sh
 yarn install
