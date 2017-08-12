@@ -22,7 +22,7 @@ cd react-graphql/files-with-apollo
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/insta-files.graphql 
+graphcool init --schema https://graphqlbin.com/insta-files.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -42,36 +42,24 @@ type File {
 
 #### 3.1. Simple API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `Simple API` endpoint to `.env` as `REACT_APP_GRAPHQL_URI`
 
-```js
-// replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
 #### 3.2. File API
 
-Copy the endpoint for the `File API` into the call to fetch in `./src/components/CreatePage.js` replacing the current placeholder `__FILE_API_ENDPOINT__` (in the method `onDrop`):
+Copy the endpoint for the `File API` to `.env` as `REACT_APP_FILE_URI`:
 
-```js
-// use the file endpoint
-fetch('__FILE_API_ENDPOINT__', {
-  method: 'POST',
-  body: data
-}).then(response => {
-  return response.json()
-}).then(image => {
-  this.setState({
-    imageId: image.id,
-    imageUrl: image.url,
-  })
-})
+```
+REACT_APP_FILE_URI=https://api.graph.cool/file/v1/__PROJECT_ID_
 ```
 
 You can obtain the `File API` endpoint by calling `graphcool endpoints` in the same directory where you called `graphcool init --schema https://graphqlbin.com/insta-files.graphql` before or by clicking the **Endpoints** button in the bottom-left of the [Graphcool Console](https://console.graph.cool).
 
 
-### 4. Install depdendencies & run locally
+### 4. Install dependencies & run locally
 
 ```sh
 yarn install

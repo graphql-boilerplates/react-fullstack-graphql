@@ -56,10 +56,10 @@ In the [Graphcool Console](https://console.graph.cool), select the **Integration
 
 ### 4. Connect the app with your GraphQL API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `Simple API` endpoint to `.env` as `REACT_APP_GRAPHQL_URI`:
 
-```js
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
 ### 5. Install depdendencies & run locally
