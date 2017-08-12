@@ -13,7 +13,7 @@ class App extends React.Component {
   _logout = () => {
     // remove token from local storage and reload page to reset apollo client
     window.localStorage.removeItem('graphcoolToken')
-    location.reload()
+    window.location.reload()
   }
 
   _showLogin = () => {
