@@ -10,7 +10,7 @@ const todoFragment = `
 `
 
 const client = new Lokka({
-  transport: new Transport('https://api.graph.cool/simple/v1/__PROJECT_ID__'),
+  transport: new Transport(process.env.REACT_APP_GRAPHQL_URI),
 })
 
 
