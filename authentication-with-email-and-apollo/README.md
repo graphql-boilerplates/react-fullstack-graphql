@@ -62,7 +62,7 @@ Copy the `Simple API` endpoint to `.env` as `REACT_APP_GRAPHQL_URI`:
 REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
-### 5. Install depdendencies & run locally
+### 5. Install dependencies & run locally
 
 ```sh
 yarn install
