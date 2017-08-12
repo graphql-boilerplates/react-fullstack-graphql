@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom'
 import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
 
-const clientId = '__AUTH0_CLIENT_ID__'
-const domain='__AUTH0_DOMAIN__'
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
 
 class App extends React.Component {
   static propTypes = {

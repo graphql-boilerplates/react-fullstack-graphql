@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
 import 'tachyons'
 
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+const networkInterface = createNetworkInterface({ uri: process.env.REACT_APP_GRAPHQL_URI })
 
 // use the auth0IdToken in localStorage for authorized requests
 networkInterface.use([{
