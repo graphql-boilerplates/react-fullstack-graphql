@@ -60,6 +60,8 @@ Go to the [Auth0 website](https://auth0.com/) and log into your Auth0 account. C
 
 Make sure to add `http://localhost:3000` to the _allowed callback URLs_ as well.
 
+Update **JsonWebToken Signature Algorithm** to `HS256` *(Clients > YOUR_CLIENT > Show Advanced Settings > OAuth)*.
+
 ### 3.2 Configure Auth0 with Graphcool
 
 Back in the [console](https://console.graph.cool), open the **Integrations** tab in the side-menu and click on the Auth0 integration.
