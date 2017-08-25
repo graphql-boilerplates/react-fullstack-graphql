@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.6.1"
+    "react-scripts": "^1.0.11"
   },
   "dependencies": {
     "auth0-lock": "^10.4.0",
@@ -12,8 +12,8 @@
     "isomorphic-fetch": "^2.2.1",
     "lokka": "^1.7.0",
     "lokka-transport-http": "^1.4.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "tachyons": "^4.5.3"
   },
   "scripts": {

@@ -4,7 +4,7 @@
 * [Relay](https://facebook.github.io/relay/): Powerful GraphQL client developed by Facebook
 * [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
-## Example 
+## Example
 
 ![](http://imgur.com/3S6fUeI.gif)
 
@@ -26,7 +26,7 @@ cd react-graphql/quickstart-with-relay-modern
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+graphcool init --schema https://graphqlbin.com/instagram.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -40,13 +40,10 @@ type Post {
 
 ### 3. Connect the app with your GraphQL API
 
-Copy the `Relay API` endpoint to `./src/createRelayEnvironment.js` as the argument for the call to `fetch` replacing `__RELAY_API_ENDPOINT__ `:
+Copy the `Relay API` endpoint to `.env` as `REACT_APP_GRAPHQL_URI`:
 
-```js
-// replace `__RELAY_API_ENDPOINT__ ` with the endpoint from the previous step
-return fetch('__RELAY_API_ENDPOINT__', {
- ...
-})  
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/relay/v1/__PROJECT_ID_
 ```
 
 ### 4. Install dependencies & run locally

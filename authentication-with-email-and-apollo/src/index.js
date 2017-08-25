@@ -8,7 +8,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
 import 'tachyons'
 
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+const networkInterface = createNetworkInterface({ uri: process.env.REACT_APP_GRAPHQL_URI })
 
 networkInterface.use([{
   applyMiddleware (req, next) {

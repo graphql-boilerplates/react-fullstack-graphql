@@ -3,6 +3,8 @@ import { withRouter } from 'react-router'
 import { graphql, gql } from 'react-apollo'
 import Dropzone from 'react-dropzone'
 
+const fileUri = process.env.REACT_APP_FILE_URI
+
 class CreatePage extends React.Component {
 
   static propTypes = {
@@ -51,7 +53,7 @@ class CreatePage extends React.Component {
     data.append('data', files[0])
 
     // use the file endpoint
-    fetch('__FILE_API_ENDPOINT__', {
+    fetch(fileUri, {
       method: 'POST',
       body: data
     }).then(response => {

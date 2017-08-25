@@ -8,7 +8,7 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import 'tachyons'
 
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID_' })
+const networkInterface = createNetworkInterface({ uri: process.env.REACT_APP_GRAPHQL_URI })
 
 // use the graphcoolToken in localStorage for authorized requests
 networkInterface.use([{

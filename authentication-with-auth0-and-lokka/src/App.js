@@ -4,9 +4,9 @@ import { Transport } from 'lokka-transport-http'
 import LoginAuth0 from './LoginAuth0'
 import Playground from './Playground'
 
-const cid = 'FEwANg8Qaoq7f5uUibvQ6cwJIF4Mf3hr' // Change this
-const domain = 'marktani.eu.auth0.com' // Change this
-const graphcoolEndpoint = 'https://api.graph.cool/simple/v1/cizmlqn9jn0u101082zrfcl1a' // Change this
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const graphcoolEndpoint = process.env.REACT_APP_GRAPHQL_URI
 
 export default class App extends Component {
 
@@ -81,7 +81,7 @@ export default class App extends Component {
             <div className='pv3'>
               <h3>Step 1:</h3>
               <LoginAuth0
-                clientId={cid}
+                clientId={clientId}
                 domain={domain}
                 onLogin={this._onLoginAuth0}
               />

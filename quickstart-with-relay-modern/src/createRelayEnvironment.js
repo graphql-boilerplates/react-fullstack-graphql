@@ -5,12 +5,13 @@ const {
   Store,
 } = require('relay-runtime')
 
+const uri = process.env.REACT_APP_GRAPHQL_URI
 
 function fetchQuery(
   operation,
   variables,
 ) {
-  return fetch('__RELAY_API_ENDPOINT__', {
+  return fetch(uri, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

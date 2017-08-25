@@ -24,7 +24,7 @@ cd react-graphql/authentication-with-auth0-and-apollo
 npm install -g graphcool
 
 # Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/insta-auth0.graphql 
+graphcool init --schema https://graphqlbin.com/insta-auth0.graphql
 ```
 
 This creates a GraphQL API for the following schema:
@@ -73,22 +73,22 @@ Now copy over your **domain**, **client id** and **client secret** from the prev
 
 ### 4. Connect the app with your GraphQL API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `Simple API` endpoint to `.env` as `REACT_APP_GRAPHQL_URI`.
 
-```js
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+```
+REACT_APP_GRAPHQL_URI=https://api.graph.cool/simple/v1/__PROJECT_ID_
 ```
 
 ### 5. Connect the app to Auth0
 
-Copy the `clientId` and `domain` from you Auth0 app settings page to `./src/components/app.js`:
+Copy the `clientId` and `domain` from you Auth0 app settings page to `.env` as `REACT_APP_AUTH0_CLIENT_ID` and `REACT_APP_AUTH0_DOMAIN`
 
-```js
-const clientId = '__AUTH0_CLIENT_ID__'
-const domain='__AUTH0_DOMAIN__'
+```
+REACT_APP_AUTH0_CLIENT_ID=__AUTH0_CLIENT_ID__
+REACT_APP_AUTH0_DOMAIN=__AUTH0_DOMAIN__
 ```
 
-### 6. Install depdendencies & run locally
+### 6. Install dependencies & run locally
 
 ```sh
 yarn install
