@@ -43,7 +43,7 @@ class ListPage extends React.Component {
             />
             <div>New Post</div>
           </Link>
-          {this.props.data.allPosts.map(post => (
+          {this.props.data.allPosts && this.props.data.allPosts.map(post => (
             <Post
               key={post.id}
               post={post}

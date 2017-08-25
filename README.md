@@ -78,6 +78,9 @@ A big thank you to all contributors and supporters of this repository 💚
 <a href="https://github.com/jurosh/" target="_blank">
   <img src="https://github.com/jurosh.png?size=64" width="64" height="64" alt="jurosh">
 </a>
+<a href="https://github.com/mstruebing/" target="_blank">
+  <img src="https://github.com/mstruebing.png?size=64" width="64" height="64" alt="mstruebing">
+</a>
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
