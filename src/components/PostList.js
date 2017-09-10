@@ -5,6 +5,7 @@ import { ITEM_PER_PAGE } from '../constants'
 import { Link } from 'react-router'
 import DeletePostMutation from '../mutations/DeletePostMutation'
 import NewPostSubscription from '../subscriptions/NewPostSubscription'
+import UpdatePostSubscription from '../subscriptions/UpdatePostSubscription'
 import DeletePostSubscription from '../subscriptions/DeletePostSubscription'
 
 class PostList extends React.Component {
@@ -64,6 +65,7 @@ class PostList extends React.Component {
 
   async componentDidMount() {
     NewPostSubscription()
+    UpdatePostSubscription()
     DeletePostSubscription()
   }
 
