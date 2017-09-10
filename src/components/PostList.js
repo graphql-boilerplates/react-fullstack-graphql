@@ -6,7 +6,8 @@ import { ITEM_PER_PAGE } from '../constants'
 class PostList extends React.Component {
   state = {
     skip: 0,
-    first: ITEM_PER_PAGE
+    first: ITEM_PER_PAGE,
+    orderBy: 'createdAt_DESC'
   }
 
   _hasPreviousPage = () => {
@@ -47,7 +48,8 @@ class PostList extends React.Component {
   _loadMore = () => {
     const refetchVariables = {
       skip: this.state.skip,
-      first: this.state.first
+      first: this.state.first,
+      orderBy: this.state.orderBy
     }
     this.props.relay.refetch(refetchVariables)
   }
@@ -100,8 +102,9 @@ export default createRefetchContainer(
         @argumentDefinitions(
           skip: { type: "Int", defaultValue: 0 }
           first: { type: "Int", defaultValue: 2 }
+          orderBy: { type: "PostOrderBy", defaultValue: "createdAt_DESC" }
         ) {
-        allPosts(skip: $skip, first: $first)
+        allPosts(skip: $skip, first: $first, orderBy: $orderBy)
           @connection(key: "PostList_allPosts", filters: []) {
           count
           edges {
@@ -115,9 +118,10 @@ export default createRefetchContainer(
     `
   },
   graphql.experimental`
-    query PostListQuery($skip: Int, $first: Int) {
+    query PostListQuery($skip: Int, $first: Int, $orderBy: PostOrderBy) {
       viewer {
-        ...PostList_viewer @arguments(skip: $skip, first: $first)
+        ...PostList_viewer
+          @arguments(skip: $skip, first: $first, orderBy: $orderBy)
       }
     }
   `
