@@ -101,7 +101,8 @@ export default createRefetchContainer(
           skip: { type: "Int", defaultValue: 0 }
           first: { type: "Int", defaultValue: 2 }
         ) {
-        allPosts(skip: $skip, first: $first) {
+        allPosts(skip: $skip, first: $first)
+          @connection(key: "PostList_allPosts", filters: []) {
           count
           edges {
             node {
