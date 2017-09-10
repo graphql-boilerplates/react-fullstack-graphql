@@ -9,6 +9,17 @@ class PostList extends React.Component {
     first: ITEM_PER_PAGE
   }
 
+  _hasPreviousPage = () => {
+    const { skip } = this.state
+    return 0 < skip
+  }
+
+  _hasNextPage = () => {
+    const { skip, first } = this.state
+    const { count } = this.props.viewer.allPosts
+    return skip < count - first
+  }
+
   _loadAll = () => {
     this.setState({ skip: 0, first: 1000 }, () => {
       this._loadMore()
@@ -17,7 +28,7 @@ class PostList extends React.Component {
 
   _previousPage = () => {
     const { skip, first } = this.state
-    if (skip > 0) {
+    if (this._hasPreviousPage()) {
       this.setState({ skip: skip - first }, () => {
         this._loadMore()
       })
@@ -26,9 +37,11 @@ class PostList extends React.Component {
 
   _nextPage = () => {
     const { skip, first } = this.state
-    this.setState({ skip: skip + first }, () => {
-      this._loadMore()
-    })
+    if (this._hasNextPage()) {
+      this.setState({ skip: skip + first }, () => {
+        this._loadMore()
+      })
+    }
   }
 
   _loadMore = () => {
@@ -50,18 +63,22 @@ class PostList extends React.Component {
           >
             Load All
           </span>
-          <span
-            className="bg-white w-25 pa4 ttu dim black no-underline"
-            onClick={() => this._previousPage()}
-          >
-            Previous
-          </span>
-          <span
-            className="bg-white w-25 pa4 ttu dim black no-underline"
-            onClick={() => this._nextPage()}
-          >
-            Next
-          </span>
+          {this._hasPreviousPage() ? (
+            <span
+              className="bg-white w-25 pa4 ttu dim black no-underline"
+              onClick={() => this._previousPage()}
+            >
+              Previous
+            </span>
+          ) : null}
+          {this._hasNextPage() ? (
+            <span
+              className="bg-white w-25 pa4 ttu dim black no-underline"
+              onClick={() => this._nextPage()}
+            >
+              Next
+            </span>
+          ) : null}
         </div>
         <div className="w-100 flex flex-column items-center">
           {viewer.allPosts.edges.map(({ node }) => (
@@ -85,6 +102,7 @@ export default createRefetchContainer(
           first: { type: "Int", defaultValue: 2 }
         ) {
         allPosts(skip: $skip, first: $first) {
+          count
           edges {
             node {
               id
