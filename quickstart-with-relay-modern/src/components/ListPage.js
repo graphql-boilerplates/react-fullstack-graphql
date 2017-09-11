@@ -31,8 +31,6 @@ export default createFragmentContainer(ListPage, graphql`
       edges {
         node {
           id
-          description
-          imageUrl
           ...Post_post
         }
       }
