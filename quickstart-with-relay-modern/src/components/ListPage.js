@@ -9,7 +9,6 @@ import {
 class ListPage extends React.Component {
 
   render () {
-    console.log('ListPage - render - environment', this.props.relay.environment)
     return (
       <div className='w-100 flex justify-center'>
         <Link to='/create' className='fixed bg-white top-0 right-0 pa4 ttu dim black no-underline'>

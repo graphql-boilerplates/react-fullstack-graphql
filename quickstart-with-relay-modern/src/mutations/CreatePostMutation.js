@@ -32,10 +32,7 @@ export default function CreatePostMutation(description, imageUrl, viewerId, call
     {
       mutation,
       variables,
-      onCompleted: (response) => {
-        console.log(response, environment)
-        callback()
-      },
+      onCompleted: callback && callback(),
       onError: err => console.error(err),
       optimisticUpdater: (proxyStore) => {
         // 1 - create the `newPost` as a mock that can be added to the store
