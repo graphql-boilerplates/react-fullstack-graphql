@@ -19,7 +19,7 @@ const mutation = graphql`
 
 let tempID = 0;
 
-export default function CreatePostMutation(description, imageUrl, viewerId, callback) {
+export default function CreatePostMutation(description, imageUrl, callback) {
   const variables = {
     input: {
       description,
@@ -43,7 +43,7 @@ export default function CreatePostMutation(description, imageUrl, viewerId, call
         newPost.setValue(imageUrl, 'imageUrl')
 
         // 2 - add `newPost` to the store
-        const viewerProxy = proxyStore.get(viewerId)
+        const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
         const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
         if (connection) {
           ConnectionHandler.insertEdgeAfter(connection, newPost)
@@ -55,7 +55,7 @@ export default function CreatePostMutation(description, imageUrl, viewerId, call
         const newPost = createPostField.getLinkedRecord('post')
 
         // 2 - add `newPost` to the store
-        const viewerProxy = proxyStore.get(viewerId)
+        const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
         const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
         if (connection) {
           ConnectionHandler.insertEdgeAfter(connection, newPost)

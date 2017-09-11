@@ -13,7 +13,7 @@ const mutation = graphql`
   }
 `;
 
-export default function DeletePostMutation(postId, viewerId) {
+export default function DeletePostMutation(postId) {
   const variables = {
     input: {
       id: postId,
@@ -29,7 +29,7 @@ export default function DeletePostMutation(postId, viewerId) {
       updater: (proxyStore) => {
         const deletePostField = proxyStore.getRootField('deletePost')
         const deletedId = deletePostField.getValue('deletedId')
-        const viewerProxy = proxyStore.get(viewerId)
+        const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
         const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
         ConnectionHandler.deleteNode(connection, deletedId)
       }
