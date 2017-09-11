@@ -27,6 +27,13 @@ export default function CreatePostMutation(description, imageUrl, callback) {
       clientMutationId: ""
     },
   }
+  const sharedUpdater = (proxyStore, newPost) => {
+    const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
+    const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
+    if (connection) {
+        ConnectionHandler.insertEdgeAfter(connection, newPost)
+    }
+  }
   commitMutation(
     environment,
     {
@@ -43,11 +50,7 @@ export default function CreatePostMutation(description, imageUrl, callback) {
         newPost.setValue(imageUrl, 'imageUrl')
 
         // 2 - add `newPost` to the store
-        const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
-        const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
-        if (connection) {
-          ConnectionHandler.insertEdgeAfter(connection, newPost)
-        }
+        sharedUpdater(proxyStore, newPost)
       },
       updater: (proxyStore) => {
         // 1 - retrieve the `newPost` from the server response
@@ -55,11 +58,7 @@ export default function CreatePostMutation(description, imageUrl, callback) {
         const newPost = createPostField.getLinkedRecord('post')
 
         // 2 - add `newPost` to the store
-        const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
-        const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
-        if (connection) {
-          ConnectionHandler.insertEdgeAfter(connection, newPost)
-        }
+        sharedUpdater(proxyStore, newPost)
       },
     },
   )
