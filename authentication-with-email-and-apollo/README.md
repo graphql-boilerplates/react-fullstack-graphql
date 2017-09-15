@@ -1,60 +1,34 @@
 # Email Authentication Example (with React & Apollo)
 
-* [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
-* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+> **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. 
 
-You can read the **full tutorial** about this example [here](https://www.graph.cool/docs/tutorials/react-apollo-email-oopheesaj9/) or try out the [hosted version](http://apollo-email.netlify.com).
+This is an authentication example based on the simple [Email & Password Authentication](https://github.com/graphcool/modules/tree/master/authentication/email-password) module.
 
 ## Getting Started
 
-### 1. Clone example repository
+### 1. Clone the repository
 
 ```sh
-git clone https://github.com/graphcool-examples/react-graphql.git
-cd react-graphql/authentication-with-email-and-apollo
+git clone git@github.com:graphcool-examples/graphcool-examples.git
+cd graphcool-examples/authentication-with-email-and-apollo/graphcool
 ```
 
-### 2. Setting up the Graphcool project
-
-#### 2.1. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+### 2. Create your Graphcool project
 
 ```sh
-# Install Graphcool CLI
-npm install -g graphcool
+# Install latest version of the Graphcool CLI
+npm install -g graphcool@beta
 
-# Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/insta-email.graphql
+# Create project
+graphcool init
 ```
 
-This creates a GraphQL API for the following schema:
+This will add a `.graphcoolrc` with a default `dev` environment to the project directory. This environment is backed by a new Graphcool project that was created in your Graphcool account.
 
-```graphql
-type Post {
-  description: String!
-  imageUrl: String!
-}
-
-type User {
-  name: String!
-  emailSubscription: Boolean!
-}
-```
-
-#### 2.2 Setting the permissions
-
-To make our application behave correctly we have to setup permissions for the `Post` type in our project. Select the **Permissions** tab in the side-menu of the [Graphcool Console](https://console.graph.cool).
-
-As we want to restrict the creation of posts only to _authenticated_ users, we have to create the according permission for `CREATE` on the `Post` type.
-
-<img src="http://imgur.com/VwEazGR.png" height=400>
+The project's schema is created based on the type definitions in [`./types.graphql`](./types.graphql) and [`./graphcool/modules/email-password/types.graphql`](./graphcool/modules/email-password/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
 
 
-### 3. Configure Email-Password Authentication
-
-In the [Graphcool Console](https://console.graph.cool), select the **Integrations** tab in the left side-menu. Then select **Email-Password Auth** and click **Enable** in the popup.
-
-
-### 4. Connect the app with your GraphQL API
+#### 3. Connect the app with your GraphQL API
 
 Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
@@ -62,12 +36,16 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-### 5. Install depdendencies & run locally
+
+### 4. Install dependencies & run locally
 
 ```sh
 yarn install
-yarn start # open http://localhost:3000 in your browser
+yarn start 
 ```
+
+You can now use the app at `http://localhost:3000`.
+
 
 ## Next steps
 

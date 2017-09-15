@@ -1,0 +1,21 @@
+types: ./types.graphql
+
+functions:
+  authenticatedEmailUser:
+    type: resolver
+    schema: ./schemas/authenticatedEmailUser.graphql
+    handler:
+      code:
+        src: ./code/authenticatedEmailUser.js
+modules:
+  email-password: modules/email-password/graphcool.yml
+
+permissions:
+  - operation: EmailUser.create
+  - operation: Post.read
+  - operation: Post.create
+    authenticated: true
+  - operation: UsersPosts.*
+    authenticated: true
+
+rootTokens: []

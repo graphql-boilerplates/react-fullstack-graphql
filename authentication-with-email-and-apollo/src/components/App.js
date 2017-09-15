@@ -5,6 +5,7 @@ import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
 
 class App extends React.Component {
+
   static propTypes = {
     router: React.PropTypes.object.isRequired,
     data: React.PropTypes.object.isRequired,
@@ -12,7 +13,7 @@ class App extends React.Component {
 
   _logout = () => {
     // remove token from local storage and reload page to reset apollo client
-    window.localStorage.removeItem('graphcoolToken')
+    localStorage.removeItem('graphcoolToken')
     location.reload()
   }
 
@@ -25,15 +26,18 @@ class App extends React.Component {
   }
 
   _isLoggedIn = () => {
-    return this.props.data.user
+    return this.props.data.authenticatedEmailUser && this.props.data.authenticatedEmailUser.id !== ''
   }
 
   render () {
+
     if (this.props.data.loading) {
       return (<div>Loading</div>)
     }
 
+    console.log(this.props)
     if (this._isLoggedIn()) {
+      console.log(`is lgged in`)
       return this.renderLoggedIn()
     } else {
       return this.renderLoggedOut()
@@ -44,7 +48,7 @@ class App extends React.Component {
     return (
       <div>
         <span>
-          Logged in as {this.props.data.user.name}
+          Logged in as {this.props.data.authenticatedEmailUser.id}
         </span>
         <div className='pv3'>
           <span
@@ -90,9 +94,8 @@ class App extends React.Component {
 
 const userQuery = gql`
   query {
-    user {
+    authenticatedEmailUser {
       id
-      name
     }
   }
 `

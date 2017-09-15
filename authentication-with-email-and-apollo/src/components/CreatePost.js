@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql } from 'react-apollo'
+import { graphql, gql, compose } from 'react-apollo'
+
 
 class CreatePost extends React.Component {
 
@@ -18,12 +19,6 @@ class CreatePost extends React.Component {
   render () {
     if (this.props.data.loading) {
       return (<div>Loading</div>)
-    }
-
-    // redirect if no user is logged in
-    if (!this.props.data.user) {
-      console.warn('only logged in users can create new posts')
-      this.props.router.replace('/')
     }
 
     return (
@@ -52,18 +47,25 @@ class CreatePost extends React.Component {
     )
   }
 
-  handlePost = () => {
-    const {description, imageUrl} = this.state
-    this.props.mutate({variables: {description, imageUrl}})
-      .then(() => {
-        this.props.router.replace('/')
-      })
+  handlePost = async () => {
+
+    // redirect if no user is logged in
+    if (!this.props.data.authenticatedEmailUser) {
+      console.warn('only logged in users can create new posts')
+      return
+    }
+
+    const { description, imageUrl } = this.state
+    const authorId = this.props.data.authenticatedEmailUser.id
+
+    await this.props.mutate({variables: { description, imageUrl, authorId }})
+    this.props.router.replace('/')
   }
 }
 
 const createPost = gql`
-  mutation ($description: String!, $imageUrl: String!) {
-    createPost(description: $description, imageUrl: $imageUrl) {
+  mutation ($description: String!, $imageUrl: String!, $authorId: ID!) {
+    createPost(description: $description, imageUrl: $imageUrl, authorId: $authorId) {
       id
     }
   }
@@ -71,12 +73,13 @@ const createPost = gql`
 
 const userQuery = gql`
   query {
-    user {
+    authenticatedEmailUser {
       id
     }
   }
 `
 
-export default graphql(createPost)(
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }} )(withRouter(CreatePost))
-)
+export default compose(
+  graphql(createPost),
+  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})
+)(withRouter(CreatePost))

@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql } from 'react-apollo'
+import { graphql, gql, compose } from 'react-apollo'
 
 class CreateLogin extends React.Component {
 
@@ -51,23 +51,18 @@ class CreateLogin extends React.Component {
     )
   }
 
-  signinUser = () => {
+  signinUser = async () => {
     const {email, password} = this.state
 
-    this.props.signinUser({variables: {email, password}})
-      .then((response) => {
-        window.localStorage.setItem('graphcoolToken', response.data.signinUser.token)
-        this.props.router.replace('/')
-      }).catch((e) => {
-        console.error(e)
-        this.props.router.replace('/')
-      })
+    const response = await this.props.signinUser({variables: {email, password}})
+    localStorage.setItem('graphcoolToken', response.data.authenticateEmailUser.token)
+    this.props.router.replace('/')
   }
 }
 
 const signinUser = gql`
   mutation ($email: String!, $password: String!) { 
-    signinUser(email: {email: $email, password: $password}) {
+    authenticateEmailUser(email: $email, password: $password) {
       token
     }
   }
@@ -75,12 +70,13 @@ const signinUser = gql`
 
 const userQuery = gql`
   query {
-    user {
+    authenticatedEmailUser {
       id
     }
   }
 `
 
-export default graphql(signinUser, {name: 'signinUser'})(
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})(withRouter(CreateLogin))
-)
+export default compose(
+  graphql(signinUser, {name: 'signinUser'}),
+  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})
+)(withRouter(CreateLogin))

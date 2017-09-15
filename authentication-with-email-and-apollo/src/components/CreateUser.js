@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql } from 'react-apollo'
+import { graphql, gql, compose } from 'react-apollo'
 
 class CreateUser extends React.Component {
 
@@ -75,29 +75,28 @@ class CreateUser extends React.Component {
     )
   }
 
-  createUser = () => {
-    const {email, password, name, emailSubscription} = this.state
+  createUser = async () => {
+    const { email, password, name } = this.state
 
-    this.props.createUser({variables: {email, password, name, emailSubscription}})
-      .then((response) => {
-        this.props.signinUser({variables: {email, password}})
-          .then((response) => {
-            window.localStorage.setItem('graphcoolToken', response.data.signinUser.token)
-            this.props.router.replace('/')
-          }).catch((e) => {
-            console.error(e)
-            this.props.router.replace('/')
-          })
-      }).catch((e) => {
-        console.error(e)
-        this.props.router.replace('/')
-      })
+    try {
+      const user = await this.props.createUser({variables: {email, password, name}})
+      console.log(`Created user: `, user)
+      const tokenData = await this.props.signinUser({variables: {email, password}})
+      console.log(`Received token data: `, tokenData)
+
+      localStorage.setItem('graphcoolToken', tokenData.data.authenticateEmailUser.token)
+      this.props.router.replace('/')
+    } catch (e) {
+      console.error(`An error occured: `, e)
+      this.props.router.replace('/')
+    }
+
   }
 }
 
-const createUser = gql`
-  mutation ($email: String!, $password: String!, $name: String!, $emailSubscription: Boolean!) {
-    createUser(authProvider: {email: {email: $email, password: $password}}, name: $name, emailSubscription: $emailSubscription) {
+const createEmailUser = gql`
+  mutation ($email: String!, $password: String!, $name: String) {
+    signupEmailUser(email: $email, password: $password, name: $name) {
       id
     }
   }
@@ -105,7 +104,7 @@ const createUser = gql`
 
 const signinUser = gql`
   mutation ($email: String!, $password: String!) {
-    signinUser(email: {email: $email, password: $password}) {
+    authenticateEmailUser(email: $email, password: $password) {
       token
     }
   }
@@ -119,9 +118,8 @@ const userQuery = gql`
   }
 `
 
-export default graphql(createUser, {name: 'createUser'})(
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})(
-    graphql(signinUser, {name: 'signinUser'})(
-      withRouter(CreateUser))
-    )
-)
+export default compose(
+  graphql(createEmailUser, {name: 'createUser'}),
+  graphql(userQuery, { options: { fetchPolicy: 'network-only' }}),
+  graphql(signinUser, {name: 'signinUser'})
+)(withRouter(CreateUser))

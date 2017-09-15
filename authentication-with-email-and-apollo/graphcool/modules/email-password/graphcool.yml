@@ -1,0 +1,26 @@
+# GraphQL types
+types: ./types.graphql
+
+# functions
+functions:
+  signup:
+    handler:
+      code:
+        src: ./code/signup.js
+    type: resolver
+    schema: ./schemas/signup.graphql
+  authenticate:
+    handler:
+      code:
+        src: ./code/authenticate.js
+    type: resolver
+    schema: ./schemas/authenticate.graphql
+
+permissions:
+  - operation: EmailUser.read
+  - operation: EmailUser.create
+  - operation: EmailUser.update
+  - operation: EmailUser.delete
+
+# Permanent Auth Token / Root Tokens
+rootTokens: []
