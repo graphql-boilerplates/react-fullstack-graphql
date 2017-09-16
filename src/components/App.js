@@ -3,6 +3,7 @@ import '../asserts/App.css'
 import { QueryRenderer, graphql } from 'react-relay'
 import environment from '../Environment'
 import PostListFilter from './PostListFilter'
+import { ITEM_PER_PAGE } from '../constants'
 
 class App extends Component {
   render() {
@@ -11,12 +12,13 @@ class App extends Component {
         <QueryRenderer
           environment={environment}
           query={graphql`
-            query AppAllPostQuery {
+            query AppAllPostQuery($count: Int!, $cursor: String) {
               viewer {
                 ...PostListFilter_viewer
               }
             }
           `}
+          variables={{ cursor: null, count: ITEM_PER_PAGE }}
           render={({ error, props }) => {
             if (props) {
               return <PostListFilter viewer={props.viewer} />

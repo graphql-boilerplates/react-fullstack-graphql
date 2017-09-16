@@ -1,53 +1,20 @@
 import React from 'react'
 import Post from './Post'
-import { createRefetchContainer, graphql } from 'react-relay'
+import { createPaginationContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
 import DeletePostMutation from '../mutations/DeletePostMutation'
 
 class PostList extends React.Component {
-  state = {
-    skip: 0,
-    first: ITEM_PER_PAGE
-  }
-
-  _hasPreviousPage = () => {
-    const { skip } = this.state
-    return 0 < skip
-  }
-
   _hasNextPage = () => {
-    const { skip, first } = this.state
-    const { count } = this.props.viewer.allPosts
-    return skip < count - first
-  }
-
-  _loadAll = () => {
-    this.setState({ skip: 0, first: 1000, filter: '' }, () => {
-      this._loadMore()
-    })
-  }
-
-  _previousPage = () => {
-    const { skip, first } = this.state
-    if (this._hasPreviousPage()) {
-      this.setState({ skip: skip - first }, () => {
-        this._loadMore()
-      })
-    }
-  }
-
-  _nextPage = () => {
-    const { skip, first } = this.state
-    if (this._hasNextPage()) {
-      this.setState({ skip: skip + first }, () => {
-        this._loadMore()
-      })
-    }
+    return this.props.relay.hasMore()
   }
 
   _loadMore = () => {
-    const refetchVariables = this.state
-    this.props.relay.refetch(refetchVariables)
+    if (!this.props.relay.hasMore() || this.props.relay.isLoading()) {
+      return
+    }
+
+    this.props.relay.loadMore(ITEM_PER_PAGE)
   }
 
   _handleDelete = postId => {
@@ -59,26 +26,12 @@ class PostList extends React.Component {
     return (
       <div>
         <div className="w-100 flex flex-row justify-between">
-          <span
-            className="bg-white w-25 pa4 ttu dim black no-underline"
-            onClick={() => this._loadAll()}
-          >
-            Load All
-          </span>
-          {this._hasPreviousPage() ? (
-            <span
-              className="bg-white w-25 pa4 ttu dim black no-underline"
-              onClick={() => this._previousPage()}
-            >
-              Previous
-            </span>
-          ) : null}
           {this._hasNextPage() ? (
             <span
               className="bg-white w-25 pa4 ttu dim black no-underline"
-              onClick={() => this._nextPage()}
+              onClick={() => this._loadMore()}
             >
-              Next
+              Load More
             </span>
           ) : null}
         </div>
@@ -100,33 +53,51 @@ class PostList extends React.Component {
   }
 }
 
-export default createRefetchContainer(
+export default createPaginationContainer(
   PostList,
   {
     viewer: graphql.experimental`
-      fragment PostList_viewer on Viewer
-        @argumentDefinitions(
-          skip: { type: "Int", defaultValue: 0 }
-          first: { type: "Int", defaultValue: 2 }
-        ) {
-        allPosts(skip: $skip, first: $first)
+      fragment PostList_viewer on Viewer {
+        allPosts(first: $count, after: $cursor)
           @connection(key: "PostList_allPosts", filters: []) {
-          count
           edges {
             node {
               id
               ...Post_post
             }
+            cursor
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
           }
         }
       }
     `
   },
-  graphql.experimental`
-    query PostListQuery($skip: Int, $first: Int) {
-      viewer {
-        ...PostList_viewer @arguments(skip: $skip, first: $first)
+  {
+    direction: 'forward',
+    getConnectionFromProps(props) {
+      return props.viewer && props.viewer.allPosts
+    },
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount
       }
-    }
-  `
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      return {
+        count,
+        cursor
+      }
+    },
+    query: graphql.experimental`
+      query PostListQuery($count: Int!, $cursor: String) {
+        viewer {
+          ...PostList_viewer
+        }
+      }
+    `
+  }
 )
