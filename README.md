@@ -1,90 +1,71 @@
-# React & GraphQL examples
+# Quickstart with Relay Modern
 
-Code examples & starter kits to see how React works with GraphQL and other technologies.
+* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
+* [Relay](https://facebook.github.io/relay/): Powerful GraphQL client developed by Facebook
+* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
 
-<hr>
+## Example 
 
-**<p align="center">Select an example** from the list above to get started ⤴️</p>
+![](http://imgur.com/3S6fUeI.gif)
 
-<hr>
+## Quickstart
 
-<p align="center"><img src="http://imgur.com/G9mMBFT.png" /></p>
+For more information on how to get started [refer to the full react-relay-instagram tutorial](https://www.graph.cool/docs/quickstart/react-relay-instagram/).
 
-The examples above cover the following technologies:
+### 1. Clone example repository
 
-* [GraphQL](http://graphql.org/)
-* [Apollo Client](http://dev.apollodata.com/react/)
-* [Relay Modern/Relay Classic](https://facebook.github.io/relay/)
-* [Auth0 Lock](https://github.com/auth0/lock)
-* [GraphQL subscriptions](https://www.graph.cool/docs/reference/simple-api/subscriptions-aip7oojeiv/)
-* [File upload](https://www.graph.cool/docs/reference/file-handling/overview-eer4wiang0/)
-* ...
+```sh
+git clone https://github.com/graphcool-examples/react-graphql.git
+cd react-graphql/quickstart-with-relay-modern
+```
 
-> Are you looking for another example? [Request it here](https://github.com/graphcool-examples/react-graphql/issues/new).
+### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
-## Tutorials
+```sh
+# Install Graphcool CLI
+npm install -g graphcool
 
-* [How to use `create-react-app` with GraphQL & Apollo](https://www.graph.cool/docs/tutorials/create-react-apps-with-apollo-client-aidae4aeg5/)
-* [Freecom: Building Intercom with GraphQL and Apollo](https://www.graph.cool/docs/tutorials/freecom-overview-intercom-tutorial-e8a6ajt8ax/)
-* [User Authentication with Auth0 for React and Apollo](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/)
-* [Learn Relay](https://www.learnrelay.org/) / [Learn Apollo](https://www.learnapollo.com/)
+# Create a new project based on the Instagram schema
+graphcool init --schema https://graphqlbin.com/instagram.graphql 
+```
 
-## Contributors
+This creates a GraphQL API for the following schema:
 
-A big thank you to all contributors and supporters of this repository 💚 
+```graphql
+type Post {
+  description: String!
+  imageUrl: String!
+}
+```
 
-<a href="https://github.com/nikolasburk/" target="_blank">
-  <img src="https://github.com/nikolasburk.png?size=64" width="64" height="64" alt="nikolasburk">
-</a>
-<a href="https://github.com/schickling/" target="_blank">
-  <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
-</a>
-<a href="https://github.com/marktani/" target="_blank">
-  <img src="https://github.com/marktani.png?size=64" width="64" height="64" alt="marktani">
-</a>
-<a href="https://github.com/stubailo/" target="_blank">
-  <img src="https://github.com/stubailo.png?size=64" width="64" height="64" alt="stubailo">
-</a>
-<a href="https://github.com/kuldarkalvik/" target="_blank">
-  <img src="https://github.com/kuldarkalvik.png?size=64" width="64" height="64" alt="kuldarkalvik">
-</a>
-<a href="https://github.com/gsans/" target="_blank">
-  <img src="https://github.com/gsans.png?size=64" width="64" height="64" alt="gsans">
-</a>
-<a href="https://github.com/kbrandwijk/" target="_blank">
-  <img src="https://github.com/kbrandwijk.png?size=64" width="64" height="64" alt="kbrandwijk">
-</a>
-<a href="https://github.com/fresh5447/" target="_blank">
-  <img src="https://github.com/fresh5447.png?size=64" width="64" height="64" alt="fresh5447">
-</a>
-<a href="https://github.com/sebasibarguen/" target="_blank">
-  <img src="https://github.com/sebasibarguen.png?size=64" width="64" height="64" alt="sebasibarguen">
-</a>
-<a href="https://github.com/heymartinadams/" target="_blank">
-  <img src="https://github.com/heymartinadams.png?size=64" width="64" height="64" alt="heymartinadams">
-</a>
-<a href="https://github.com/100ideas/" target="_blank">
-  <img src="https://github.com/100ideas.png?size=64" width="64" height="64" alt="100ideas">
-</a>
-<a href="https://github.com/brene/" target="_blank">
-  <img src="https://github.com/brene.png?size=64" width="64" height="64" alt="brene">
-</a>
-<a href="https://github.com/chrisgchambers/" target="_blank">
-  <img src="https://github.com/chrisgchambers.png?size=64" width="64" height="64" alt="chrisgchambers">
-</a>
-<a href="https://github.com/wesbos/" target="_blank">
-  <img src="https://github.com/wesbos.png?size=64" width="64" height="64" alt="wesbos">
-</a>
-<a href="https://github.com/jurosh/" target="_blank">
-  <img src="https://github.com/jurosh.png?size=64" width="64" height="64" alt="jurosh">
-</a>
-<a href="https://github.com/mstruebing/" target="_blank">
-  <img src="https://github.com/mstruebing.png?size=64" width="64" height="64" alt="mstruebing">
-</a>
+### 3. Connect the app with your GraphQL API
+
+Copy the `Relay API` endpoint to `./src/createRelayEnvironment.js` as the argument for the call to `fetch` replacing `__RELAY_API_ENDPOINT__ `:
+
+```js
+// replace `__RELAY_API_ENDPOINT__ ` with the endpoint from the previous step
+return fetch('__RELAY_API_ENDPOINT__', {
+ ...
+})  
+```
+
+### 4. Install dependencies & run locally
+
+```sh
+yarn install
+yarn relay # invoke relay compiler
+yarn start # open http://localhost:3000 in your browser
+```
+
+## Next steps
+
+* [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
+* [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
+* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
+
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
 Say hello in our [Slack](http://slack.graph.cool/) or visit the [Graphcool Forum](https://www.graph.cool/forum) if you run into issues or have questions. We love talking to you!
 
 ![](http://i.imgur.com/5RHR6Ku.png)
-
