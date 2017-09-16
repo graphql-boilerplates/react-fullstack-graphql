@@ -31,14 +31,11 @@ class Post extends React.Component {
   }
 
   _handleDelete = () => {
-    DeletePostMutation(this.props.post.id, this.props.viewer.id)
+    DeletePostMutation(this.props.post.id)
   }
 }
 
 const FragmentContainer =  createFragmentContainer(Post, graphql`
-  fragment Post_viewer on Viewer {
-    id
-  }
   fragment Post_post on Post {
     id
     description

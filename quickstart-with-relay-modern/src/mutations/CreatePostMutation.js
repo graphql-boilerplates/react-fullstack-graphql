@@ -19,7 +19,7 @@ const mutation = graphql`
 
 let tempID = 0;
 
-export default function CreatePostMutation(description, imageUrl, viewerId, callback) {
+export default function CreatePostMutation(description, imageUrl, callback) {
   const variables = {
     input: {
       description,
@@ -27,15 +27,19 @@ export default function CreatePostMutation(description, imageUrl, viewerId, call
       clientMutationId: ""
     },
   }
+  const sharedUpdater = (proxyStore, newPost) => {
+    const viewerProxy = proxyStore.getRoot().getLinkedRecord('viewer')
+    const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
+    if (connection) {
+        ConnectionHandler.insertEdgeAfter(connection, newPost)
+    }
+  }
   commitMutation(
     environment,
     {
       mutation,
       variables,
-      onCompleted: (response) => {
-        console.log(response, environment)
-        callback()
-      },
+      onCompleted: callback && callback(),
       onError: err => console.error(err),
       optimisticUpdater: (proxyStore) => {
         // 1 - create the `newPost` as a mock that can be added to the store
@@ -46,11 +50,7 @@ export default function CreatePostMutation(description, imageUrl, viewerId, call
         newPost.setValue(imageUrl, 'imageUrl')
 
         // 2 - add `newPost` to the store
-        const viewerProxy = proxyStore.get(viewerId)
-        const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
-        if (connection) {
-          ConnectionHandler.insertEdgeAfter(connection, newPost)
-        }
+        sharedUpdater(proxyStore, newPost)
       },
       updater: (proxyStore) => {
         // 1 - retrieve the `newPost` from the server response
@@ -58,11 +58,7 @@ export default function CreatePostMutation(description, imageUrl, viewerId, call
         const newPost = createPostField.getLinkedRecord('post')
 
         // 2 - add `newPost` to the store
-        const viewerProxy = proxyStore.get(viewerId)
-        const connection = ConnectionHandler.getConnection(viewerProxy, 'ListPage_allPosts')
-        if (connection) {
-          ConnectionHandler.insertEdgeAfter(connection, newPost)
-        }
+        sharedUpdater(proxyStore, newPost)
       },
     },
   )

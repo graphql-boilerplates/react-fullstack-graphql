@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "babel-plugin-relay": "^1.1.0",
-    "relay-compiler": "^1.1.0",
     "autoprefixer": "7.1.0",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.0.0",
+    "babel-plugin-relay": "^1.3.0",
     "babel-preset-react-app": "^3.0.0",
     "babel-runtime": "6.23.0",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
@@ -34,6 +33,7 @@
     "promise": "7.1.1",
     "react-dev-utils": "^3.0.0",
     "react-error-overlay": "^1.0.7",
+    "relay-compiler": "^1.3.0",
     "style-loader": "0.17.0",
     "sw-precache-webpack-plugin": "0.9.1",
     "url-loader": "0.5.8",
@@ -45,7 +45,7 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-relay": "^1.1.0",
+    "react-relay": "^1.3.0",
     "react-router-dom": "^4.1.1"
   },
   "scripts": {
@@ -84,11 +84,10 @@
       "react-app"
     ],
     "plugins": [
-    "relay"
+      "relay"
     ]
   },
   "eslintConfig": {
     "extends": "react-app"
   }
 }
-

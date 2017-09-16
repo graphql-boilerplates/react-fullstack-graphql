@@ -53,7 +53,7 @@ class CreatePage extends React.Component {
                     />
                   }
                   {this.state.description && this.state.imageUrl &&
-                    <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={() => this._handlePost(props.viewer.id)}>Post</button>
+                    <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={() => this._handlePost()}>Post</button>
                   }
                   <div style={{textAlign: "center", color: "red"}}>
                     <Link to="/" >Cancel</Link>
@@ -68,9 +68,9 @@ class CreatePage extends React.Component {
     )
   }
 
-  _handlePost = (viewerId) => {
+  _handlePost = () => {
     const {description, imageUrl} = this.state
-    CreatePostMutation(description, imageUrl, viewerId,  () => this.props.history.replace('/'))
+    CreatePostMutation(description, imageUrl, () => this.props.history.replace('/'))
   }
 
 }

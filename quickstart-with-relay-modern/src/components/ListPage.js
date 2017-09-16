@@ -9,7 +9,6 @@ import {
 class ListPage extends React.Component {
 
   render () {
-    console.log('ListPage - render - environment', this.props.relay.environment)
     return (
       <div className='w-100 flex justify-center'>
         <Link to='/create' className='fixed bg-white top-0 right-0 pa4 ttu dim black no-underline'>
@@ -27,13 +26,10 @@ class ListPage extends React.Component {
 
 export default createFragmentContainer(ListPage, graphql`
   fragment ListPage_viewer on Viewer {
-    ...Post_viewer
     allPosts(last: 100, orderBy: createdAt_DESC) @connection(key: "ListPage_allPosts", filters: []) {
       edges {
         node {
           id
-          description
-          imageUrl
           ...Post_post
         }
       }
