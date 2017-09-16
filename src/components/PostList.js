@@ -1,26 +1,13 @@
 import React from 'react'
 import Post from './Post'
-import TextInput from './TextInput'
 import { createRefetchContainer, graphql } from 'react-relay'
 import { ITEM_PER_PAGE } from '../constants'
-import { Link } from 'react-router'
 import DeletePostMutation from '../mutations/DeletePostMutation'
-import NewPostSubscription from '../subscriptions/NewPostSubscription'
-import UpdatePostSubscription from '../subscriptions/UpdatePostSubscription'
-import DeletePostSubscription from '../subscriptions/DeletePostSubscription'
 
 class PostList extends React.Component {
   state = {
     skip: 0,
-    first: ITEM_PER_PAGE,
-    orderBy: 'createdAt_DESC',
-    filter: ''
-  }
-
-  _search = filter => {
-    this.setState({ skip: 0, first: ITEM_PER_PAGE, filter }, () => {
-      this._loadMore()
-    })
+    first: ITEM_PER_PAGE
   }
 
   _hasPreviousPage = () => {
@@ -59,21 +46,12 @@ class PostList extends React.Component {
   }
 
   _loadMore = () => {
-    const refetchVariables = {
-        ...this.state,
-        filter: { description_contains: this.state.filter }
-    }
+    const refetchVariables = this.state
     this.props.relay.refetch(refetchVariables)
   }
 
   _handleDelete = postId => {
     DeletePostMutation(postId)
-  }
-
-  async componentDidMount() {
-    NewPostSubscription()
-    UpdatePostSubscription()
-    DeletePostSubscription()
   }
 
   render() {
@@ -103,20 +81,6 @@ class PostList extends React.Component {
               Next
             </span>
           ) : null}
-          <Link
-            to="/create"
-            className="bg-white w-25 pa4 ttu dim black no-underline"
-          >
-            + New
-          </Link>
-        </div>
-        <div className="w-100 flex flex-row justify-center">
-          <TextInput
-            className="pt3"
-            placeholder={'search by descriptions'}
-            initialValue={this.state.filter}
-            onSave={this._search}
-          />
         </div>
         <div className="w-100 flex flex-column items-center">
           {viewer.allPosts.edges.map(({ node }) => (
@@ -144,15 +108,9 @@ export default createRefetchContainer(
         @argumentDefinitions(
           skip: { type: "Int", defaultValue: 0 }
           first: { type: "Int", defaultValue: 2 }
-          orderBy: { type: "PostOrderBy", defaultValue: "createdAt_DESC" }
-          filter: { type: "PostFilter" }
         ) {
-        allPosts(
-          skip: $skip
-          first: $first
-          orderBy: $orderBy
-          filter: $filter
-        ) @connection(key: "PostList_allPosts", filters: []) {
+        allPosts(skip: $skip, first: $first)
+          @connection(key: "PostList_allPosts", filters: []) {
           count
           edges {
             node {
@@ -165,20 +123,9 @@ export default createRefetchContainer(
     `
   },
   graphql.experimental`
-    query PostListQuery(
-      $skip: Int
-      $first: Int
-      $orderBy: PostOrderBy
-      $filter: PostFilter
-    ) {
+    query PostListQuery($skip: Int, $first: Int) {
       viewer {
-        ...PostList_viewer
-          @arguments(
-            skip: $skip
-            first: $first
-            orderBy: $orderBy
-            filter: $filter
-          )
+        ...PostList_viewer @arguments(skip: $skip, first: $first)
       }
     }
   `

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../asserts/App.css'
 import { QueryRenderer, graphql } from 'react-relay'
 import environment from '../Environment'
-import PostList from './PostList'
+import PostListFilter from './PostListFilter'
 
 class App extends Component {
   render() {
@@ -13,13 +13,13 @@ class App extends Component {
           query={graphql`
             query AppAllPostQuery {
               viewer {
-                ...PostList_viewer
+                ...PostListFilter_viewer
               }
             }
           `}
           render={({ error, props }) => {
             if (props) {
-              return <PostList viewer={props.viewer} />
+              return <PostListFilter viewer={props.viewer} />
             } else if (error) {
               return <div>{error.message}</div>
             }
