@@ -67,7 +67,7 @@ cd graphcool
 graphcool deploy
 ```
 
-The `Post` type is now added to your data model and the corresponding CRUD operations are generted.
+The `Post` type is now added to your data model and the corresponding CRUD operations are generated.
 
 ### 3. Connect the app with your GraphQL API
 
