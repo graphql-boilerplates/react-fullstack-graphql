@@ -1,6 +1,6 @@
 # Email Authentication Example (with React & Apollo)
 
-> **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. 
+> **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. For more information on the CLI Beta, read [the feedback thread in the forum](https://www.graph.cool/forum/t/feedback-new-cli-beta/949).
 
 This is an authentication example based on the simple [Email & Password Authentication](https://github.com/graphcool/modules/tree/master/authentication/email-password) module.
 
