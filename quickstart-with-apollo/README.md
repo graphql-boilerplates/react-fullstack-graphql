@@ -78,7 +78,7 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-### 4. Install depdendencies & run locally
+### 4. Install dependencies & run locally
 
 ```sh
 yarn install
