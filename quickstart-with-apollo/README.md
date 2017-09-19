@@ -2,7 +2,7 @@
 
 * [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
 * [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
-* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+* [Graphcool](https://www.graph.cool): Flexible backend framework combining GraphQL + AWS Lambda
 
 ## Example ([GraphQL Playground](https://api.graph.cool/simple/v1/cj1erhgba0uxi0109k14mdght))
 
@@ -21,22 +21,51 @@ cd react-graphql/quickstart-with-apollo
 
 ### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
+#### 2.1. Create Graphcool project
+
 ```sh
 # Install Graphcool CLI
 npm install -g graphcool
 
-# Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+# Create a new "blank" project inside a directory called "graphcool"
+graphcool init graphcool --template blank
 ```
 
-This creates a GraphQL API for the following schema:
+This creates a new project inside your Graphcool account as well as the local file structure:
+
+```
+.
+├── code
+│   ├── hello.graphql
+│   └── hello.js
+├── graphcool.yml
+└── types.graphql
+```
+
+Read the documentation to learn more about the file structure and [project configuration](https://www.graph.cool/docs/reference/basics/project-configuration-t%28yaml%29-opheidaix3).
+
+#### 2.2. Configure data model
+
+Open `./graphcool/types.graphql` and add the following type definition to it:
 
 ```graphql
 type Post {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
   description: String!
   imageUrl: String!
 }
 ```
+
+Now apply the changes you just made locally to the remote project in your Graphcool account:
+
+```sh
+cd graphcool
+graphcool deploy
+```
+
+The `Post` type is now added to your data model and the corresponding CRUD operations are generted.
 
 ### 3. Connect the app with your GraphQL API
 
@@ -56,9 +85,10 @@ yarn start # open http://localhost:3000 in your browser
 
 ## Next steps
 
-* [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
-* [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
-* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
+* [Advanced GraphQL features](https://blog.graph.cool/advanced-graphql-features-of-the-graphcool-api-5b8db3b0a71)
+* [Authentication & Permissions](https://www.graph.cool/docs/reference/auth/overview-ohs4aek0pe/)
+* [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-aiw4aimie9/)
+* [Dive deeper into GraphQL on How to GraphQL](https://www.howtographql.com)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
