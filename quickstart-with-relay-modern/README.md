@@ -81,7 +81,7 @@ graphcool info
 
 This commands prints metadata about your project, including the different endpoints that you can access.
 
-#### 3.2. Pase the `Relay API` endpoint into the app
+#### 3.2. Paste the `Relay API` endpoint into the app
 
 Copy the `Relay API` endpoint to `./src/createRelayEnvironment.js` as the argument for the call to `fetch` replacing `__RELAY_API_ENDPOINT__ `:
 
