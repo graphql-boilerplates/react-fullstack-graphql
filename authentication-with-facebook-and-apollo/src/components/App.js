@@ -6,8 +6,8 @@ import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
 import { gql, graphql, compose } from 'react-apollo'
 
-const FACEBOOK_APP_ID = '1198643746903564'
-const FACEBOOK_API_VERSION = 'v2.10'
+const FACEBOOK_APP_ID = ''
+const FACEBOOK_API_VERSION = ''
 
 class App extends React.Component {
 
