@@ -25,7 +25,7 @@ graphcool init
 
 This will add a `.graphcoolrc` with a default `dev` environment to the project directory. This environment is backed by a new Graphcool project that was created in your Graphcool account.
 
-The project's schema is created based on the type definitions in [`./types.graphql`](./types.graphql) and [`./graphcool/modules/facebook/types.graphql`](./graphcool/modules/facebook/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
+The project's schema is created based on the type definitions in [`./graphcool/types.graphql`](./types.graphql) and [`./graphcool/modules/facebook/types.graphql`](./graphcool/modules/facebook/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
 
 
 #### 3. Connect the app with your GraphQL API
