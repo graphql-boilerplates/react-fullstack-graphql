@@ -1,4 +1,4 @@
-# Email Authentication Example (with React & Apollo)
+# Facebook Authentication Example (with React & Apollo)
 
 > **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. 
 
@@ -10,7 +10,7 @@ This is an authentication example based on the simple [Facebook Authentication](
 
 ```sh
 git clone git@github.com:graphcool-examples/graphcool-examples.git
-cd graphcool-examples/authentication-with-email-and-apollo/graphcool
+cd graphcool-examples/authentication-with-facebook-and-apollo/graphcool
 ```
 
 ### 2. Create your Graphcool project
@@ -25,7 +25,7 @@ graphcool init
 
 This will add a `.graphcoolrc` with a default `dev` environment to the project directory. This environment is backed by a new Graphcool project that was created in your Graphcool account.
 
-The project's schema is created based on the type definitions in [`./types.graphql`](./types.graphql) and [`./graphcool/modules/email-password/types.graphql`](./graphcool/modules/email-password/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
+The project's schema is created based on the type definitions in [`./types.graphql`](./types.graphql) and [`./graphcool/modules/facebook/types.graphql`](./graphcool/modules/facebook/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
 
 
 #### 3. Connect the app with your GraphQL API
