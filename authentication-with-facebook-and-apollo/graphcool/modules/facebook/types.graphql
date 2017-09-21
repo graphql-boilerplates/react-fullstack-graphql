@@ -1,0 +1,10 @@
+type FacebookUser implements Node {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  facebookUserId: String @isUnique
+  facebookEmail: String
+
+  # custom fields
+  posts: [Post!]! @relation(name: "PostsByUser")
+}
