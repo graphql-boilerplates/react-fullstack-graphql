@@ -40,7 +40,9 @@ class CreatePost extends React.Component {
   }
 
   handlePost = async () => {
+
   }
+
 }
 
 export default withRouter(CreatePost)
