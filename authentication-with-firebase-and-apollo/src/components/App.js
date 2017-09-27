@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
-import { gql, graphql, compose } from 'react-apollo'
+import { gql, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 
 class App extends React.Component {
@@ -82,6 +82,4 @@ const LOGGED_IN_USER = gql`
   }
 `
 
-export default compose(
-  graphql(LOGGED_IN_USER, { options: { fetchPolicy: 'network-only'} })
-) (withRouter(App))
+export default graphql(LOGGED_IN_USER, { options: { fetchPolicy: 'network-only'} })(withRouter(App))
