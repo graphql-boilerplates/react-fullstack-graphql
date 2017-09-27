@@ -7,7 +7,7 @@ import 'tachyons'
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
 import FirebaseLogin from './components/FirebaseLogin'
 
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/cj81e906c0k9r0125g3019lhq' })
+const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 
 networkInterface.use([{
   applyMiddleware (req, next) {
