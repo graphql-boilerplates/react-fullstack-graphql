@@ -1,0 +1,18 @@
+types: ./types.graphql
+
+functions:
+  authenticateFirebaseUser:
+    handler:
+      code:
+        src: ./code/authenticateFirebaseUser.js
+    type: resolver
+    schema: ./code/authenticateFirebaseUser.graphql
+  loggedInUser:
+    handler:
+      code:
+        src: ./code/loggedInUser.js
+    type: resolver
+    schema: ./code/loggedInUser.graphql
+
+rootTokens:
+- firebase-authentication

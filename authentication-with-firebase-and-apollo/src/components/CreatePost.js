@@ -1,15 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { gql, graphql, compose } from 'react-apollo'
 
 class CreatePost extends React.Component {
-
-  static propTypes = {
-    router: React.PropTypes.object,
-    mutate: React.PropTypes.func,
-    data: React.PropTypes.object,
-  }
 
   state = {
     description: '',
@@ -18,13 +11,7 @@ class CreatePost extends React.Component {
 
   render () {
     if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    }
-
-    // redirect if no user is logged in
-    if (!this.props.data.user) {
-      console.warn('only logged in users can create new posts')
-      this.props.router.replace('/')
+      return <div>Loading</div>
     }
 
     return (
@@ -53,31 +40,41 @@ class CreatePost extends React.Component {
     )
   }
 
-  handlePost = () => {
-    const {description, imageUrl} = this.state
-    this.props.mutate({variables: {description, imageUrl}})
-      .then(() => {
-        this.props.router.replace('/')
-      })
+  handlePost = async () => {
+    const loggedInUser = this.props.data.loggedInUser
+
+    // redirect if no user is logged in
+    if (!loggedInUser) {
+      console.warn('Only logged in users can create new posts')
+      this.props.history.push('/')
+      return
+    }
+
+    const { description, imageUrl } = this.state
+    const authorId = loggedInUser.id
+
+    await this.props.CreatePostMutation({variables: { description, imageUrl, authorId }})
+    this.props.history.push('/')
   }
 }
 
-const createPost = gql`
-  mutation ($description: String!, $imageUrl: String!) {
-    createPost(description: $description, imageUrl: $imageUrl) {
+const LOGGED_IN_USER = gql`
+  query LoggedInUser {
+    loggedInUser {
       id
     }
   }
 `
 
-const userQuery = gql`
-  query {
-    user {
+const CREATE_POST = gql`
+  mutation CreatePostMutation ($description: String!, $imageUrl: String!, $authorId: ID!) {
+    createPost(description: $description, imageUrl: $imageUrl, authorId: $authorId) {
       id
     }
   }
 `
 
-export default graphql(createPost)(
-  graphql(userQuery, { options: { forceFetch: true }} )(withRouter(CreatePost))
-)
+export default compose(
+  graphql(LOGGED_IN_USER, { options: {fetchPolicy: 'network-only'}}),
+  graphql(CREATE_POST, {name: 'CreatePostMutation'}),
+)(withRouter(CreatePost))
