@@ -9,8 +9,8 @@ This is an authentication example based on the simple [Email & Password Authenti
 ### 1. Clone the repository
 
 ```sh
-git clone git@github.com:graphcool-examples/graphcool-examples.git
-cd graphcool-examples/authentication-with-email-and-apollo/graphcool
+git clone git@github.com:graphcool-examples/react-graphql.git
+cd react-graphql/authentication-with-email-and-apollo/graphcool
 ```
 
 ### 2. Create your Graphcool project
