@@ -2,15 +2,15 @@ const fromEvent = require('graphcool-lib').fromEvent
 const bcrypt = require('bcrypt')
 
 function getGraphcoolUser(api, email) {
-  return api.request(`
-    query {
-      EmailUser(email: "${email}"){
-        id
-        password
-        email
-      }
-    }`)
-    .then((userQueryResult) => {
+  return api
+    .request(
+      `query {
+        EmailUser(email: "${email}"){
+          id
+        }
+      }`,
+    )
+    .then(userQueryResult => {
       if (userQueryResult.error) {
         return Promise.reject(userQueryResult.error)
       } else {
@@ -20,22 +20,26 @@ function getGraphcoolUser(api, email) {
 }
 
 module.exports = function(event) {
-  const email = event.data.email
-  const password = event.data.password
+  if (!event.context.graphcool.pat) {
+    return { error: 'Email Authentication not configured correctly.' }
+  }
+
+  const { email, password } = event.data
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
 
   return getGraphcoolUser(api, email)
-    .then((graphcoolUser) => {
+    .then(graphcoolUser => {
       if (graphcoolUser === null) {
-        return Promise.reject("Invalid Credentials") //returning same generic error so user can't find out what emails are registered.
+        return Promise.reject('Invalid Credentials') //returning same generic error so user can't find out what emails are registered.
       } else {
-        return bcrypt.compare(password, graphcoolUser.password)
+        return bcrypt
+          .compare(password, graphcoolUser.password)
           .then(passwordCorrect => {
             if (passwordCorrect) {
               return graphcoolUser.id
             } else {
-              return Promise.reject("Invalid Credentials")
+              return Promise.reject('Invalid Credentials')
             }
           })
       }

@@ -3,13 +3,7 @@ import { withRouter } from 'react-router'
 import { graphql, gql, compose } from 'react-apollo'
 
 class CreateLogin extends React.Component {
-
-  static propTypes = {
-    router: React.PropTypes.object.isRequired,
-    signinUser: React.PropTypes.func.isRequired,
-    data: React.PropTypes.object.isRequired,
-  }
-
+  
   state = {
     email: '',
     password: '',
@@ -21,7 +15,7 @@ class CreateLogin extends React.Component {
     }
 
     // redirect if user is logged in
-    if (this.props.data.user) {
+    if (this.props.data.loggedInUser.id) {
       console.warn('already logged in')
       this.props.router.replace('/')
     }
@@ -70,7 +64,7 @@ const signinUser = gql`
 
 const userQuery = gql`
   query {
-    authenticatedEmailUser {
+    loggedInUser {
       id
     }
   }

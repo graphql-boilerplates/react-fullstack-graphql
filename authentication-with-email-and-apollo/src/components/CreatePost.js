@@ -5,12 +5,6 @@ import { graphql, gql, compose } from 'react-apollo'
 
 class CreatePost extends React.Component {
 
-  static propTypes = {
-    router: React.PropTypes.object,
-    mutate: React.PropTypes.func,
-    data: React.PropTypes.object,
-  }
-
   state = {
     description: '',
     imageUrl: '',
@@ -50,13 +44,13 @@ class CreatePost extends React.Component {
   handlePost = async () => {
 
     // redirect if no user is logged in
-    if (!this.props.data.authenticatedEmailUser) {
+    if (!this.props.data.loggedInUser) {
       console.warn('only logged in users can create new posts')
       return
     }
 
     const { description, imageUrl } = this.state
-    const authorId = this.props.data.authenticatedEmailUser.id
+    const authorId = this.props.data.loggedInUser.id
 
     await this.props.mutate({variables: { description, imageUrl, authorId }})
     this.props.router.replace('/')
@@ -73,7 +67,7 @@ const createPost = gql`
 
 const userQuery = gql`
   query {
-    authenticatedEmailUser {
+    loggedInUser {
       id
     }
   }

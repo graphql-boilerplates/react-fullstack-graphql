@@ -1,14 +1,24 @@
 types: ./types.graphql
 
 functions:
-  authenticatedEmailUser:
+  signup:
     type: resolver
-    schema: ./schemas/authenticatedEmailUser.graphql
+    schema: ./src/email-password/signup.graphql
     handler:
       code:
-        src: ./code/authenticatedEmailUser.js
-modules:
-  email-password: modules/email-password/graphcool.yml
+        src: ./src/email-password/signup.js
+  authenticate:
+    type: resolver
+    schema: ./src/email-password/authenticate.graphql
+    handler:
+      code:
+        src: ./src/email-password/authenticate.js
+  loggedInUser:
+    type: resolver
+    schema: ./src/email-password/loggedInUser.graphql
+    handler:
+      code:
+        src: ./src/email-password/loggedInUser.js
 
 permissions:
   - operation: EmailUser.create
@@ -18,4 +28,7 @@ permissions:
   - operation: UsersPosts.*
     authenticated: true
 
-rootTokens: []
+rootTokens: 
+  - authenticate
+  - signup
+  - loggedInUser

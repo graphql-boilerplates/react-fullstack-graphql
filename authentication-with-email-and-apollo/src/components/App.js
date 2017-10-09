@@ -6,11 +6,6 @@ import NewPostLink from './NewPostLink'
 
 class App extends React.Component {
 
-  static propTypes = {
-    router: React.PropTypes.object.isRequired,
-    data: React.PropTypes.object.isRequired,
-  }
-
   _logout = () => {
     // remove token from local storage and reload page to reset apollo client
     localStorage.removeItem('graphcoolToken')
@@ -26,7 +21,7 @@ class App extends React.Component {
   }
 
   _isLoggedIn = () => {
-    return this.props.data.authenticatedEmailUser && this.props.data.authenticatedEmailUser.id !== null
+    return this.props.data.loggedInUser && this.props.data.loggedInUser.id !== null
   }
 
   render () {
@@ -37,7 +32,6 @@ class App extends React.Component {
 
     console.log(this.props)
     if (this._isLoggedIn()) {
-      console.log(`is lgged in`)
       return this.renderLoggedIn()
     } else {
       return this.renderLoggedOut()
@@ -48,7 +42,7 @@ class App extends React.Component {
     return (
       <div>
         <span>
-          Logged in as {this.props.data.authenticatedEmailUser.id}
+          User ID: {this.props.data.loggedInUser.id}
         </span>
         <div className='pv3'>
           <span
@@ -68,7 +62,7 @@ class App extends React.Component {
     return (
       <div>
         <div className='pv3'>
-          <div>
+          <div className='w-100 pa4 flex justify-center'>
             <span
               onClick={this._showLogin}
               className='dib pa3 white bg-blue dim pointer'
@@ -76,8 +70,7 @@ class App extends React.Component {
               Log in with Email
             </span>
           </div>
-          <span>Log in to create new posts</span>
-          <div>
+          <div className='w-100 flex justify-center'>
             <span
               onClick={this._showSignup}
               className='dib pa3 white bg-blue dim pointer'
@@ -94,7 +87,7 @@ class App extends React.Component {
 
 const userQuery = gql`
   query {
-    authenticatedEmailUser {
+    loggedInUser {
       id
     }
   }

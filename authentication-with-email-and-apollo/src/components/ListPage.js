@@ -4,10 +4,6 @@ import { graphql, gql } from 'react-apollo'
 
 class ListPage extends React.Component {
 
-  static propTypes = {
-    data: React.PropTypes.object,
-  }
-
   render () {
     if (this.props.data.loading) {
       return (<div>Loading</div>)

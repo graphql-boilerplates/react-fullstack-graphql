@@ -1,12 +1,14 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
-function getEmailUser(api, userId) {
-  return api.request(`
-    query {
-      EmailUser(id: "${userId}"){
-        id
-      }
-    }`)
+function getUser(api, userId) {
+  return api
+    .request(
+      `query {
+        EmailUser(id: "${userId}"){
+          id
+        }
+      }`,
+    )
     .then(userQueryResult => {
       console.log(userQueryResult)
       return userQueryResult.EmailUser
@@ -18,17 +20,16 @@ function getEmailUser(api, userId) {
     })
 }
 
-module.exports = function authenticatedEmailUser(event) {
-
+module.exports = function loggedInUser(event) {
   if (!event.context.auth || !event.context.auth.nodeId) {
-    return {data: {id: null}}
+    return { data: { id: null } }
   }
 
   const userId = event.context.auth.nodeId
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
 
-  return getEmailUser(api, userId)
+  return getUser(api, userId)
     .then(emailUser => {
       if (!emailUser) {
         return { error: `No user with id: ${userId}` }
@@ -40,5 +41,4 @@ module.exports = function authenticatedEmailUser(event) {
       console.log(error)
       return { error: `An unexpected error occured` }
     })
-
 }
