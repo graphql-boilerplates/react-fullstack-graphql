@@ -1,8 +1,6 @@
 # Email Authentication Example (with React & Apollo)
 
-> **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. For more information on the CLI Beta, read [the feedback thread in the forum](https://www.graph.cool/forum/t/feedback-new-cli-beta/949).
-
-This is an authentication example based on the simple [Email & Password Authentication](https://github.com/graphcool/modules/tree/master/authentication/email-password) module.
+This is an authentication example based on the simple [Email & Password Authentication](https://github.com/graphcool/modules/tree/master/authentication/email-password) template.
 
 ## Getting Started
 
@@ -17,15 +15,15 @@ cd react-graphql/authentication-with-email-and-apollo/graphcool
 
 ```sh
 # Install latest version of the Graphcool CLI
-npm install -g graphcool@beta
+npm install -g graphcool@next
 
-# Create project
-graphcool init
+# Deploy service
+graphcool deploy
 ```
 
-This will add a `.graphcoolrc` with a default `dev` environment to the project directory. This environment is backed by a new Graphcool project that was created in your Graphcool account.
+This will add a `.graphcoolrc` with a default `dev` environment to the service directory. This environment is backed by a new Graphcool service that was created in your Graphcool account.
 
-The project's schema is created based on the type definitions in [`./types.graphql`](./types.graphql) and [`./graphcool/modules/email-password/types.graphql`](./graphcool/modules/email-password/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
+The service's schema is created based on the type definitions in [`./types.graphql`](./types.graphql). 
 
 
 #### 3. Connect the app with your GraphQL API
@@ -36,6 +34,8 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
+> Note: You can get access to your endpoint using the `graphcool info` command.
+
 
 ### 4. Install dependencies & run locally
 
@@ -45,7 +45,6 @@ yarn start
 ```
 
 You can now use the app at `http://localhost:3000`.
-
 
 ## Next steps
 
