@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   _isLoggedIn = () => {
-    return this.props.data.authenticatedEmailUser && this.props.data.authenticatedEmailUser.id !== ''
+    return this.props.data.authenticatedEmailUser && this.props.data.authenticatedEmailUser.id !== null
   }
 
   render () {
