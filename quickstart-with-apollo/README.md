@@ -10,7 +10,9 @@
 
 ## Quickstart
 
+<!--
 For more information on how to get started [refer to the full react-apollo-instagram tutorial](https://www.graph.cool/docs/quickstart/react-apollo-instagram/) or watch the corresponding [video](https://www.youtube.com/watch?v=OoPQl8hcIug).
+-->
 
 ### 1. Clone example repository
 
@@ -22,23 +24,69 @@ cd react-graphql/quickstart-with-apollo
 ### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
 ```sh
-# Install Graphcool CLI
-npm install -g graphcool
+# Install Graphcool Framework CLI
+npm install -g graphcool@next
 
-# Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+# Create a new service inside a directory called `server`
+graphcool init server
 ```
 
-This creates a GraphQL API for the following schema:
+This created the following file structure:
+
+```
+.
+└── graphcool
+    ├── graphcool.yml
+    ├── types.graphql
+    ├── .graphcoolrc
+    └── code
+        ├── hello.graphql
+        └── hello.js
+```
+
+### 3. Create your GraphQL Server
+
+#### 3.1. Define data model
+
+Next, you need to define your data model inside the newly created `types.graphql`-file.
+
+Replace the current contents in `types.graphql` with the following type definition (you can delete the predefined `User` type):
 
 ```graphql
 type Post {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
   description: String!
   imageUrl: String!
 }
 ```
 
-### 3. Connect the app with your GraphQL API
+#### 3.2. Deploy the service
+
+You're now ready to put your Graphcool service into production! Navigate into the `server` directory and _deploy_ the service:
+
+```sh
+cd server
+graphcool deploy
+```
+
+> Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
+
+
+### 4. Connect the frontend app with your GraphQL API
+
+#### 4.1. Get your API endpoint
+
+You now need access to your GraphQL API's endpoint. Run the following command from inside the `server` directory:
+
+```sh
+graphcool info
+```
+
+You need to use the endpoint for the `Simple API`.
+
+#### 4.2. Set the endpoint to configure Apollo Client
 
 Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
@@ -47,7 +95,7 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-### 4. Install depdendencies & run locally
+### 5. Install dependencies & run locally
 
 ```sh
 yarn install
