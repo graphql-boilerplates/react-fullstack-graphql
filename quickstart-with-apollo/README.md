@@ -84,7 +84,7 @@ You now need access to your GraphQL API's endpoint. Run the following command fr
 graphcool info
 ```
 
-You need to use the endpoint for the `Simple API`.
+From the output, you need to use the endpoint for the `Simple API`.
 
 #### 4.2. Set the endpoint to configure Apollo Client
 
