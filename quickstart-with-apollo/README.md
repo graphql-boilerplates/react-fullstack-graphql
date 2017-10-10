@@ -85,7 +85,7 @@ Copy the `GraphQL API` endpoint from the previous step to `./src/index.js` as th
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-> **Note**: If you ever loose your endpoint, you can get access to it with the `graphcool info` command.
+> **Note**: If you ever lose your endpoint, you can get access to it again with the `graphcool info` command.
 
 ### 5. Install dependencies & run locally
 
