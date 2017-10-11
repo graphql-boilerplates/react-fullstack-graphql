@@ -72,28 +72,20 @@ cd server
 graphcool deploy
 ```
 
+Save the HTTP endpoint for the `GraphQL API` from the output, you'll need it in the next step.
+
 > Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
 
 ### 4. Connect the frontend app with your GraphQL API
 
-#### 4.1. Get your API endpoint
-
-You now need access to your GraphQL API's endpoint. Run the following command from inside the `server` directory:
-
-```sh
-graphcool info
-```
-
-From the output, you need to use the endpoint for the `Simple API`.
-
-#### 4.2. Set the endpoint to configure Apollo Client
-
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `GraphQL API` endpoint from the previous step to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
 ```js
 // replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
+
+> **Note**: If you ever lose your endpoint, you can get access to it again with the `graphcool info` command.
 
 ### 5. Install dependencies & run locally
 
@@ -104,13 +96,8 @@ yarn start # open http://localhost:3000 in your browser
 
 ## Next steps
 
+* [Docs](https://docs-next.graph.cool)
 * [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
 * [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
 * [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
 
-
-## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
-
-Say hello in our [Slack](http://slack.graph.cool/) or visit the [Graphcool Forum](https://www.graph.cool/forum) if you run into issues or have questions. We love talking to you!
-
-![](http://i.imgur.com/5RHR6Ku.png)
