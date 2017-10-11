@@ -21,7 +21,7 @@ git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/quickstart-with-relay-modern
 ```
 
-### 2. Create Graphcool service with the [`Graphcool CLI`](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go)
+### 2. Create Graphcool service with the [Graphcool CLI](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go)
 
 ```sh
 # Install Graphcool Framework CLI
