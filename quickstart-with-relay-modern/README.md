@@ -71,7 +71,7 @@ graphcool deploy
 
 Save the HTTP endpoint for the `Relay API` from the output, you'll need it in the next step.
 
-> Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations. Note that the Playground by default is running against the `Simple API`.
+> **Note**: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations. Note that the Playground by default is running against the `Simple API`.
 
 
 ### 5. Connect the app with your GraphQL API

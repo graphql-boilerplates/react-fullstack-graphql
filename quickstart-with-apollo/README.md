@@ -71,7 +71,7 @@ graphcool deploy
 
 Save the HTTP endpoint for the `Simple API` from the output, you'll need it in the next step.
 
-> Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
+> **Note**: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
 
 ### 5. Connect the frontend app with your GraphQL API
 
