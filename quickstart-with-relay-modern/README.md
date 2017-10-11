@@ -21,17 +21,17 @@ git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/quickstart-with-relay-modern
 ```
 
-### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+### 2. Create Graphcool service with the [`Graphcool CLI`](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go)
 
 ```sh
-# Install Graphcool CLI
+# Install Graphcool Framework CLI
 npm install -g graphcool@next
 
 # Create a new service inside a directory called `server`
 graphcool init server
 ```
 
-This created the following file structure:
+This created the following file structure in the current directory:
 
 ```
 .
@@ -44,11 +44,39 @@ This created the following file structure:
         └── hello.js
 ```
 
+### 3. Define data model
+
+Next, you need to define your data model inside the newly created `types.graphql`-file.
+
+Replace the current contents in `types.graphql` with the following type definition (you can delete the predefined `User` type):
+
+```graphql
+type Post {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  description: String!
+  imageUrl: String!
+}
+```
+
+### 4. Deploy the GraphQL server
+
+You're now ready to put your Graphcool service into production! Navigate into the `server` directory and [deploy](https://docs-next.graph.cool/reference/graphcool-cli/commands-aiteerae6l#graphcool-deploy) the service:
+
+```sh
+cd server
+graphcool deploy
+```
+
+Save the HTTP endpoint for the `Relay API` from the output, you'll need it in the next step.
+
+> Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations. Note that the Playground by default is running against the `Simple API`.
 
 
-### 3. Connect the app with your GraphQL API
+### 5. Connect the app with your GraphQL API
 
-Copy the `Relay API` endpoint to `./src/createRelayEnvironment.js` as the argument for the call to `fetch` replacing `__RELAY_API_ENDPOINT__ `:
+Paste the `Relay API` endpoint to `./src/createRelayEnvironment.js` as the argument for the call to `fetch` replacing `__RELAY_API_ENDPOINT__ `:
 
 ```js
 // replace `__RELAY_API_ENDPOINT__ ` with the endpoint from the previous step
@@ -57,6 +85,7 @@ return fetch('__RELAY_API_ENDPOINT__', {
 })  
 ```
 
+> **Note**: If you ever lose your endpoint, you can get access to it again with the `graphcool info` command.6
 ### 4. Install dependencies & run locally
 
 ```sh
@@ -67,6 +96,7 @@ yarn start # open http://localhost:3000 in your browser
 
 ## Next steps
 
+* [Documentation](https://docs-next.graph.cool)
 * [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
 * [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
 * [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)

@@ -21,7 +21,7 @@ git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/quickstart-with-apollo
 ```
 
-### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+### 2. Create Graphcool service with the [`Graphcool CLI`](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go)
 
 ```sh
 # Install Graphcool Framework CLI
@@ -31,7 +31,7 @@ npm install -g graphcool@next
 graphcool init server
 ```
 
-This created the following file structure:
+This created the following file structure in the current directory:
 
 ```
 .
@@ -44,10 +44,7 @@ This created the following file structure:
         └── hello.js
 ```
 
-
-### 3. Create your GraphQL Server
-
-#### 3.1. Define data model
+### 3. Define data model
 
 Next, you need to define your data model inside the newly created `types.graphql`-file.
 
@@ -63,22 +60,22 @@ type Post {
 }
 ```
 
-#### 3.2. Deploy the service
+### 4. Deploy the GraphQL server
 
-You're now ready to put your Graphcool service into production! Navigate into the `server` directory and _deploy_ the service:
+You're now ready to put your Graphcool service into production! Navigate into the `server` directory and [deploy](https://docs-next.graph.cool/reference/graphcool-cli/commands-aiteerae6l#graphcool-deploy) the service:
 
 ```sh
 cd server
 graphcool deploy
 ```
 
-Save the HTTP endpoint for the `GraphQL API` from the output, you'll need it in the next step.
+Save the HTTP endpoint for the `Simple API` from the output, you'll need it in the next step.
 
 > Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
 
-### 4. Connect the frontend app with your GraphQL API
+### 5. Connect the frontend app with your GraphQL API
 
-Copy the `GraphQL API` endpoint from the previous step to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Paste the `Simple API` endpoint from the previous step to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
 ```js
 // replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
@@ -87,7 +84,7 @@ const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__'
 
 > **Note**: If you ever lose your endpoint, you can get access to it again with the `graphcool info` command.
 
-### 5. Install dependencies & run locally
+### 6. Install dependencies & run locally
 
 ```sh
 yarn install
@@ -96,8 +93,16 @@ yarn start # open http://localhost:3000 in your browser
 
 ## Next steps
 
-* [Docs](https://docs-next.graph.cool)
+* [Documentation](https://docs-next.graph.cool)
 * [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
 * [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
 * [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
+
+
+## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
+
+Say hello in our [Slack](http://slack.graph.cool/) or visit the [Graphcool Forum](https://www.graph.cool/forum) if you run into issues or have questions. We love talking to you!
+
+![](http://i.imgur.com/5RHR6Ku.png)
+
 
