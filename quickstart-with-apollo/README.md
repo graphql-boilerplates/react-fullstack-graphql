@@ -2,9 +2,9 @@
 
 * [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
 * [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
-* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+* [Graphcool](https://www.graph.cool): Backend development framework based on GraphQL + Serverless
 
-## Example ([GraphQL Playground](https://api.graph.cool/simple/v1/cj1erhgba0uxi0109k14mdght))
+## Example
 
 ![](http://imgur.com/3S6fUeI.gif)
 
@@ -35,14 +35,15 @@ This created the following file structure:
 
 ```
 .
-└── graphcool
+└── server
     ├── graphcool.yml
     ├── types.graphql
     ├── .graphcoolrc
-    └── code
+    └── src
         ├── hello.graphql
         └── hello.js
 ```
+
 
 ### 3. Create your GraphQL Server
 
@@ -72,7 +73,6 @@ graphcool deploy
 ```
 
 > Note: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
-
 
 ### 4. Connect the frontend app with your GraphQL API
 
