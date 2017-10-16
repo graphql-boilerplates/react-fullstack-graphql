@@ -1,6 +1,6 @@
 # Facebook Authentication Example (with React & Apollo)
 
-This is an authentication example based on the simple [Facebook Authentication](https://github.com/graphcool/modules/tree/master/authentication/facebook) module.
+This is an authentication example based on the simple [Facebook Authentication](https://github.com/graphcool/templates/tree/master/auth/facebook) template.
 
 ## Getting Started
 
