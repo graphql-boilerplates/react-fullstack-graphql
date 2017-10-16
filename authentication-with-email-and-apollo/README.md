@@ -4,11 +4,11 @@ This is an authentication example based on the simple [Email & Password Authenti
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Download the repository
 
 ```sh
-git clone git@github.com:graphcool-examples/react-graphql.git
-cd react-graphql/authentication-with-email-and-apollo/graphcool
+curl https://codeload.github.com/graphcool-examples/react-graphql/tar.gz/master | tar -xz --strip=1 react-graphql-master/authentication-with-email-and-apollo
+cd authentication-with-email-and-apollo/server
 ```
 
 ### 2. Create your Graphcool project
