@@ -50,7 +50,7 @@ class CreateUser extends React.Component {
           />
 
           {this.state.name && this.state.email && this.state.password &&
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.createUser}>Log in</button>
+          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.createUser}>Sign up</button>
           }
         </div>
       </div>
@@ -62,8 +62,8 @@ class CreateUser extends React.Component {
 
     try {
       const user = await this.props.createUser({variables: {email, password, name}})
-
-      localStorage.setItem('graphcoolToken', user.data.signupEmailUser.token)
+      console.log(`received response: `, user)
+      localStorage.setItem('graphcoolToken', user.data.signupUser.token)
       this.props.router.replace('/')
     } catch (e) {
       console.error(`An error occured: `, e)
@@ -73,9 +73,9 @@ class CreateUser extends React.Component {
   }
 }
 
-const createEmailUser = gql`
+const createUser = gql`
   mutation ($email: String!, $password: String!, $name: String) {
-    signupEmailUser(email: $email, password: $password, name: $name) {
+    signupUser(email: $email, password: $password, name: $name) {
       id
       token
     }
@@ -91,6 +91,6 @@ const userQuery = gql`
 `
 
 export default compose(
-  graphql(createEmailUser, {name: 'createUser'}),
+  graphql(createUser, {name: 'createUser'}),
   graphql(userQuery, { options: { fetchPolicy: 'network-only' }}),
 )(withRouter(CreateUser))

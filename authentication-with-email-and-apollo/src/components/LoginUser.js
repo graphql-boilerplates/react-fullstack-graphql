@@ -49,14 +49,14 @@ class CreateLogin extends React.Component {
     const {email, password} = this.state
 
     const response = await this.props.signinUser({variables: {email, password}})
-    localStorage.setItem('graphcoolToken', response.data.authenticateEmailUser.token)
+    localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
     this.props.router.replace('/')
   }
 }
 
 const signinUser = gql`
   mutation ($email: String!, $password: String!) { 
-    authenticateEmailUser(email: $email, password: $password) {
+    authenticateUser(email: $email, password: $password) {
       token
     }
   }
