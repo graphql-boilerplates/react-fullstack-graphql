@@ -11,19 +11,20 @@ curl https://codeload.github.com/graphcool-examples/react-graphql/tar.gz/master 
 cd authentication-with-email-and-apollo/server
 ```
 
-### 2. Create your Graphcool project
+### 2. Create your Graphcool service
 
 ```sh
 # Install latest version of the Graphcool CLI
 npm install -g graphcool@next
 
-# Deploy service
+# Install dependencies and deploy service
+yarn install
 graphcool deploy
 ```
 
-This will add a `.graphcoolrc` with a default `dev` environment to the service directory. This environment is backed by a new Graphcool service that was created in your Graphcool account.
+When prompted which cluster you want to deploy to, choose any of the `Backend-as-a-Service` options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
-The service's schema is created based on the type definitions in [`./types.graphql`](./types.graphql). 
+> Note: The service's schema is created based on the type definitions in [`./types.graphql`](./types.graphql).
 
 
 #### 3. Connect the app with your GraphQL API
@@ -39,7 +40,10 @@ const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__'
 
 ### 4. Install dependencies & run locally
 
+Navigate back into the root directory of the project, install the dependencies and run the app:
+
 ```sh
+cd ..
 yarn install
 yarn start 
 ```
