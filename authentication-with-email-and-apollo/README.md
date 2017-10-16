@@ -4,7 +4,7 @@ This is an authentication example based on the simple [Email & Password Authenti
 
 ## Getting Started
 
-### 1. Download the repository
+### 1. Download the example
 
 ```sh
 curl https://codeload.github.com/graphcool-examples/react-graphql/tar.gz/master | tar -xz --strip=1 react-graphql-master/authentication-with-email-and-apollo

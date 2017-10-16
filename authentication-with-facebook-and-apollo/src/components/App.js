@@ -7,7 +7,7 @@ import NewPostLink from './NewPostLink'
 import { gql, graphql, compose } from 'react-apollo'
 
 const FACEBOOK_APP_ID = ''
-const FACEBOOK_API_VERSION = ''
+const FACEBOOK_API_VERSION = '' // e.g. v2.10
 
 class App extends React.Component {
 
@@ -36,7 +36,6 @@ class App extends React.Component {
 
   _handleFBLogin = () => {
     FB.login(response => {
-      console.log(response)
       this._facebookCallback(response)
     }, {scope: 'public_profile,email'})
   }
@@ -44,8 +43,8 @@ class App extends React.Component {
   _facebookCallback = async facebookResponse => {
     if (facebookResponse.status === 'connected') {
       const facebookToken = facebookResponse.authResponse.accessToken
-      const graphcoolResponse = await this.props.authenticateFacebookUserMutation({variables: { facebookToken }})
-      const graphcoolToken = graphcoolResponse.data.authenticateFacebookUser.token
+      const graphcoolResponse = await this.props.authenticateUserMutation({variables: { facebookToken }})
+      const graphcoolToken = graphcoolResponse.data.authenticateUser.token
       localStorage.setItem('graphcoolToken', graphcoolToken)
       window.location.reload()
     } else {
@@ -54,7 +53,9 @@ class App extends React.Component {
   }
 
   _isLoggedIn = () => {
-    return this.props.data.loggedInUser && this.props.data.loggedInUser.id !== ''
+    return this.props.data.loggedInUser && 
+      this.props.data.loggedInUser.id && 
+      this.props.data.loggedInUser.id !== ''
   }
 
   _logout = () => {
@@ -64,7 +65,6 @@ class App extends React.Component {
 
 
   render () {
-
     if (this._isLoggedIn()) {
       return this.renderLoggedIn()
     } else {
@@ -122,14 +122,14 @@ const LOGGED_IN_USER = gql`
 `
 
 const AUTHENTICATE_FACEBOOK_USER = gql`
-  mutation AuthenticateFacebookUserMutation($facebookToken: String!) {
-    authenticateFacebookUser(facebookToken: $facebookToken) {
+  mutation AuthenticateUserMutation($facebookToken: String!) {
+    authenticateUser(facebookToken: $facebookToken) {
       token
     }
   }
 `
 
 export default compose(
-  graphql(AUTHENTICATE_FACEBOOK_USER, { name: 'authenticateFacebookUserMutation' }),
+  graphql(AUTHENTICATE_FACEBOOK_USER, { name: 'authenticateUserMutation' }),
   graphql(LOGGED_IN_USER, { options: { fetchPolicy: 'network-only'}})
 ) (withRouter(App))

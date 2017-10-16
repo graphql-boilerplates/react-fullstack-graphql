@@ -1,15 +1,15 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
-function getFacebookUser(api, userId) {
+function getUser(api, userId) {
   return api.request(`
     query {
-      FacebookUser(id: "${userId}"){
+      User(id: "${userId}"){
         id
       }
     }`)
     .then(userQueryResult => {
       console.log(userQueryResult)
-      return userQueryResult.FacebookUser
+      return userQueryResult.User
     })
     .catch(error => {
       // Log error but don't expose to caller
@@ -18,7 +18,7 @@ function getFacebookUser(api, userId) {
     })
 }
 
-module.exports = function loggedInUser(event) {
+module.exports = event => {
 
   if (!event.context.auth || !event.context.auth.nodeId) {
     return {data: {id: null}}
@@ -28,12 +28,12 @@ module.exports = function loggedInUser(event) {
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
 
-  return getFacebookUser(api, userId)
-    .then(facebookUser => {
-      if (!facebookUser) {
+  return getUser(api, userId)
+    .then(user => {
+      if (!user) {
         return { error: `No user with id: ${userId}` }
       }
-      return { data: facebookUser }
+      return { data: user }
     })
     .catch(error => {
       // Log error but don't expose to caller

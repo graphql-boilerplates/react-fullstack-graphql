@@ -1,6 +1,6 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
-module.exports = function(event) {
+module.exports = event => {
   if (!event.context.graphcool.pat) {
     console.log('Please provide a valid root token!')
     return { error: 'Facebook Authentication not configured correctly.'}
@@ -25,28 +25,25 @@ module.exports = function(event) {
   }
 
   function getGraphcoolUser(facebookUser) {
-    console.log(`get Graphcool user: ${JSON.stringify(facebookUser)}`)
     return api.request(`
     query {
-      FacebookUser(facebookUserId: "${facebookUser.id}") {
+      User(facebookUserId: "${facebookUser.id}") {
         id
       }
     }`)
       .then((userQueryResult) => {
-      console.log(`user query result: ${JSON.stringify(userQueryResult)}`)
         if (userQueryResult.error) {
           return Promise.reject(userQueryResult.error)
         } else {
-          return userQueryResult.FacebookUser
+          return userQueryResult.User
         }
       })
   }
 
   function createGraphcoolUser(facebookUser) {
-    console.log(`Create new graphcool user from FB user: ${JSON.stringify(facebookUser)}`)
     return api.request(`
       mutation {
-        createFacebookUser(
+        createUser(
           facebookUserId: "${facebookUser.id}"
           facebookEmail: "${facebookUser.email}"
         ) {
@@ -54,15 +51,18 @@ module.exports = function(event) {
         }
       }`)
       .then((userMutationResult) => {
-        return userMutationResult.createFacebookUser.id
+        return userMutationResult.createUser.id
       })
+  }
+
+  function generateGraphcoolToken(graphcoolUserId) {
+    return graphcool.generateAuthToken(graphcoolUserId, 'User')
   }
 
   return getFacebookAccountData(facebookToken)
     .then((facebookUser) => {
       return getGraphcoolUser(facebookUser)
         .then((graphcoolUser) => {
-          console.log(`checked graphcool user: ${JSON.stringify(graphcoolUser)}`)
           if (!graphcoolUser) {
             return createGraphcoolUser(facebookUser)
           } else {
@@ -70,9 +70,8 @@ module.exports = function(event) {
           }
         })
     })
-    .then(graphcoolUserId => graphcool.generateAuthToken(graphcoolUserId, 'FacebookUser'))
+    .then(generateGraphcoolToken)
     .then((token) => {
-      console.log(`generated auth token: ${token}`)
       return {
         data: {
           token: token

@@ -1,31 +1,30 @@
 # Facebook Authentication Example (with React & Apollo)
 
-> **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. 
-
 This is an authentication example based on the simple [Facebook Authentication](https://github.com/graphcool/modules/tree/master/authentication/facebook) module.
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Download the example
 
 ```sh
-git clone git@github.com:graphcool-examples/graphcool-examples.git
-cd graphcool-examples/authentication-with-facebook-and-apollo/graphcool
+curl https://codeload.github.com/graphcool-examples/react-graphql/tar.gz/master | tar -xz --strip=1 react-graphql-master/authentication-with-facebook-and-apollo
+cd authentication-with-facebook-and-apollo/server
 ```
 
 ### 2. Create your Graphcool project
 
 ```sh
 # Install latest version of the Graphcool CLI
-npm install -g graphcool@beta
+npm install -g graphcool@next
 
-# Create project
-graphcool init
+# Install dependencies and deploy service
+yarn install
+graphcool deploy
 ```
 
-This will add a `.graphcoolrc` with a default `dev` environment to the project directory. This environment is backed by a new Graphcool project that was created in your Graphcool account.
+When prompted which cluster you want to deploy to, choose any of the `Backend-as-a-Service` options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
-The project's schema is created based on the type definitions in [`./graphcool/types.graphql`](./graphcool/types.graphql) and [`./graphcool/modules/facebook/types.graphql`](./graphcool/modules/facebook/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
+> Note: The service's schema is created based on the type definitions in [`./types.graphql`](./types.graphql).
 
 
 ### 3. Connect the app with your GraphQL API
@@ -58,6 +57,7 @@ Open the **Dashboard** in the sidebar of your Facebook app and copy the **App ID
 ### 5. Install dependencies & run locally
 
 ```sh
+cd ..
 yarn install
 yarn start 
 ```
