@@ -1,32 +1,31 @@
 # Firebase Authentication Example (with React & Apollo)
 
-> **Attention**: This example uses the latest beta version of the CLI! Authentication is implemented using a `resolver` function instead of an authentication provider. 
+This is an authentication example based on the simple [Firebase Authentication](https://github.com/graphcool/templates/tree/master/auth/firebase) template.
 
-This is an authentication example based on the simple [Firebase Authentication](https://github.com/graphcool/modules/tree/master/authentication/firebase) module.
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Download the example
 
 ```sh
-git clone git@github.com:graphcool-examples/graphcool-examples.git
-cd graphcool-examples/authentication-with-firebase-and-apollo/graphcool
+curl https://codeload.github.com/graphcool-examples/react-graphql/tar.gz/master | tar -xz --strip=1 react-graphql-master/authentication-with-firebase-and-apollo
+cd authentication-with-firebase-and-apollo/server
 ```
 
-### 2. Create your Graphcool project
+### 2. Create your Graphcool service
 
 ```sh
 # Install latest version of the Graphcool CLI
-npm install -g graphcool@beta
+npm install -g graphcool@next
 
-# Create project
-graphcool init
+# Install dependencies and deploy service
+yarn install
+graphcool deploy
 ```
 
-This will add a `.graphcoolrc` with a default `dev` environment to the project directory. This environment is backed by a new Graphcool project that was created in your Graphcool account.
+When prompted which cluster you want to deploy to, choose any of the `Backend-as-a-Service` options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
-The project's schema is created based on the type definitions in [`./graphcool/types.graphql`](./graphcool/types.graphql) and [`./graphcool/modules/firebase/types.graphql`](./graphcool/modules/firebase/types.graphql). The Graphcool CLI simply merges all `types.graphql`-files it finds in the project structure to generate the API.
-
+> Note: The service's schema is created based on the type definitions in [`./server/types.graphql`](./server/types.graphql).
 
 ### 3. Connect the app with your GraphQL API
 
@@ -40,16 +39,45 @@ const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__'
 
 #### 4.1. Create your Firebase app
 
-...
+In the [Firebase Console](https://console.firebase.google.com/u/0/), create a new project:
 
-#### 4.2. Enter Firebase app data
+![](https://imgur.com/OHYmxmb.png)
 
-Configure  `serviceAccount` in [`./graphcool/modules/firebase/code/authenticateFirebaseUser.js`](./graphcool/modules/firebase/code/authenticateFirebaseUser.js).
+#### 4.2. Enable Phone Authentication
 
+In the [Firebase Console](https://console.firebase.google.com/u/0/), navigate to the **Authentication**-section of your project. 
+
+Then go to the **SIGN-IN METHOD**-tab and enable the **Phone** authentication provider:
+
+![](https://imgur.com/P68pNzk.png)
+
+#### 4.3. Enter Firebase app data
+
+##### Frontend
+
+Open to the **Overview** page of your Firebase app in the [Firebase Console](https://console.firebase.google.com/u/0/).
+
+Then click **Add Firebase to your web app**.
+
+![](https://imgur.com/xQ3WMtz.png)
+
+From the resulting popup, copy over all the values for `apiKey`, `authDomain`, `databaseURL`, `projectId`, `storageBucket` and `messagingSenderId` into the corresponding fields of the `config` object inside [`./src/firebase.js`](./src/firebase.js#L3).
+
+
+##### Backend
+
+Navigate to the project settings of your Firebase project by clicking the _Settings_-icon at the top of the side-menu.
+
+Then go to the **SERVICE ACCOUNTS**-tab and click the **GENERATE NEW PRIVATE KEY**-button:
+
+![](https://imgur.com/qgi9Pmx.png)
+
+Once you generated a new private key, the corresponding data (in JSON format) will be downloaded automatically. Use the downloaded JSON object as the value for the `serviceAccount` constant defined in [`./server/firebase/code/authenticateFirebaseUser.js`](./server/firebase/code/authenticateFirebaseUser.js#L5).
 
 ### 5. Install dependencies & run locally
 
 ```sh
+cd ..
 yarn install
 yarn start 
 ```

@@ -1,0 +1,28 @@
+type User @model {
+  # Required system field:
+  id: ID! @isUnique # read-only (managed by Graphcool)
+
+  # Optional system fields (remove if not needed):
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
+  firebaseUserId: String! @isUnique
+
+  posts: [Post!]! @relation(name: "UserPosts")
+}
+
+
+type Post @model {
+  # Required system field:
+  id: ID! @isUnique
+
+  # Optional system fields (remove if not needed):
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
+  description: String!
+  imageUrl: String!
+
+  author: User! @relation(name: "UserPosts")
+}
+

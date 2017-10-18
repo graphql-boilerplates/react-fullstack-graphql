@@ -15,12 +15,15 @@ class FirebaseUI extends React.Component {
         'signInSuccess': async currentUser => {
 
           const firebaseIdToken = await currentUser.getIdToken()
-          const authenticateUserResult = await this.props.authenticateFirebaseUser({
+          console.log(`signInSuccess - firebaseIdToken:`, firebaseIdToken)
+          const authenticateUserResult = await this.props.authenticateUser({
             variables: { firebaseIdToken }
           })
 
-          if (authenticateUserResult.data.authenticateFirebaseUser.token) {
-            localStorage.setItem('graphcoolToken', authenticateUserResult.data.authenticateFirebaseUser.token)
+          console.log(`signInSuccess - currentUser:`, currentUser)
+          console.log(`signInSuccess - authenticateUserResult:`, authenticateUserResult)
+          if (authenticateUserResult.data.authenticateUser.token) {
+            localStorage.setItem('graphcoolToken', authenticateUserResult.data.authenticateUser.token)
           } else {
             console.error(`No token received from Graphcool`)
           }
@@ -30,13 +33,14 @@ class FirebaseUI extends React.Component {
         }
       },
       'signInOptions': [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         {
           // https://github.com/firebase/firebaseui-web#configure-phone-provider
           provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
           recaptchaParameters: {
             size: ''
-          }
+          },
+         // to also use Google Login, enable the corresponding provider in the Firebase Console
+         // firebase.auth.GoogleAuthProvider.PROVIDER_ID,s
         }
       ]
     }
@@ -56,13 +60,13 @@ class FirebaseUI extends React.Component {
 }
 
 const AUTHENTICATE_FIREBASE_USER = gql`
-  mutation AuthenticateFirebaseUserMutation($firebaseIdToken: String!) {
-    authenticateFirebaseUser(firebaseIdToken: $firebaseIdToken) {
+  mutation AuthenticateUserMutation($firebaseIdToken: String!) {
+    authenticateUser(firebaseIdToken: $firebaseIdToken) {
       token
     }
   }
 `
 
 export default graphql(AUTHENTICATE_FIREBASE_USER, {
-  name: 'authenticateFirebaseUser'
+  name: 'authenticateUser'
 })(withRouter(FirebaseUI))

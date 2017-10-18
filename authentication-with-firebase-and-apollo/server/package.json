@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^4.5.1",
+    "firebase-admin": "^5.4.2",
+    "graphcool-lib": "^0.0.3"
+  }
+}

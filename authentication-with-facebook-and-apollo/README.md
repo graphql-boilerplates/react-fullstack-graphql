@@ -1,6 +1,6 @@
 # Facebook Authentication Example (with React & Apollo)
 
-This is an authentication example based on the simple [Facebook Authentication](https://github.com/graphcool/templates/tree/master/auth/facebook) template.
+This is an authentication example based on the [Facebook Authentication](https://github.com/graphcool/templates/tree/master/auth/facebook) template.
 
 ## Getting Started
 
@@ -11,7 +11,7 @@ curl https://codeload.github.com/graphcool-examples/react-graphql/tar.gz/master 
 cd authentication-with-facebook-and-apollo/server
 ```
 
-### 2. Create your Graphcool project
+### 2. Create your Graphcool service
 
 ```sh
 # Install latest version of the Graphcool CLI

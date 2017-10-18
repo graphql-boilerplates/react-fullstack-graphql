@@ -1,15 +1,15 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
-function getFirebaseUser(api, userId) {
+function getUser(api, userId) {
   return api.request(`
     query {
-      FirebaseUser(id: "${userId}"){
+      User(id: "${userId}"){
         id
       }
     }`)
     .then(userQueryResult => {
       console.log(userQueryResult)
-      return userQueryResult.FirebaseUser
+      return userQueryResult.User
     })
     .catch(error => {
       // Log error but don't expose to caller
@@ -29,12 +29,12 @@ module.exports = event => {
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
 
-  return getFirebaseUser(api, userId)
-    .then(firebaseUser => {
-      if (!firebaseUser) {
+  return getUser(api, userId)
+    .then(user => {
+      if (!user) {
         return { error: `No user with id: ${userId}` }
       }
-      return { data: firebaseUser }
+      return { data: user }
     })
     .catch(error => {
       // Log error but don't expose to caller

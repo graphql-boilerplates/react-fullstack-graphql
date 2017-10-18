@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 export const config = {
-  apiKey: 'AIzaSyD2I6rKupGrUicg_Vm8-JxQTiOb1RHJi1M',
-  authDomain: 'gc-auth-demo.firebaseapp.com',
-  databaseURL: 'https://gc-auth-demo.firebaseio.com',
-  projectId: 'gc-auth-demo',
-  storageBucket: 'gc-auth-demo.appspot.com',
-  messagingSenderId: '1084092471083'
+  apiKey: "AIzaSyB1b5wUTCEIF8Cl6zd-O4CBc4cIzNQQaTo",
+  authDomain: "authdemo-530c5.firebaseapp.com",
+  databaseURL: "https://authdemo-530c5.firebaseio.com",
+  projectId: "authdemo-530c5",
+  storageBucket: "authdemo-530c5.appspot.com",
+  messagingSenderId: "428600433491"
 }
 
 firebase.initializeApp(config)

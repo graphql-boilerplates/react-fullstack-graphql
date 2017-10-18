@@ -1,7 +1,0 @@
-type FirebaseUser {
-  id: ID! @isUnique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  firebaseUserId: String! @isUnique
-  posts: [Post!]! @relation(name: "UsersPosts")
-}
