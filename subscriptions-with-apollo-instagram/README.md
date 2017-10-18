@@ -16,28 +16,64 @@ git clone https://github.com/graphcool-examples/react-graphql.git
 cd react-graphql/subscriptions-with-apollo-instagram
 ```
 
-### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+### 2. Create Graphcool service with the [Graphcool CLI](https://docs-next.graph.cool/reference/graphcool-cli/overview-zboghez5go)
 
 ```sh
-# Install Graphcool CLI
-npm install -g graphcool
+# Install Graphcool Framework CLI
+npm install -g graphcool@next
 
-# Create a new project based on the Instagram schema
-graphcool init --schema https://graphqlbin.com/instagram.graphql 
+# Create a new service inside a directory called `server`
+graphcool init server
 ```
 
-This creates a GraphQL API for the following schema:
+This created the following file structure in the current directory:
+
+```
+.
+└── server
+    ├── graphcool.yml
+    ├── types.graphql
+    └── src
+        ├── hello.graphql
+        └── hello.js
+```
+
+### 3. Define data model
+
+Next, you need to define your data model inside the newly created `types.graphql`-file.
+
+Replace the current contents in `types.graphql` with the following type definition (you can delete the predefined `User` type):
 
 ```graphql
-type Post {
+type Post @model {
+  # Required system field
+  id: ID! @isUnique # read-only (managed by Graphcool)
+
+  # Optional system fields (remove if not needed)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
   description: String!
   imageUrl: String!
 }
 ```
 
-### 3. Connect the app with your GraphQL API
+### 4. Deploy the GraphQL server
 
-#### 3.1. Simple API
+You're now ready to put your Graphcool service into production! Navigate into the `server` directory and [deploy](https://docs-next.graph.cool/reference/graphcool-cli/commands-aiteerae6l#graphcool-deploy) the service:
+
+```sh
+cd server
+graphcool deploy
+```
+
+Save the HTTP endpoint for the `Simple API` from the output as well as the websocket endpoint for the `Subscriptions API`, you'll need them in the next step.
+
+> **Note**: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
+
+### 5. Connect the app with your GraphQL API
+
+#### 5.1. Simple API
 
 Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
 
@@ -45,28 +81,29 @@ Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
-#### 3.1. Susbcriptions API
+#### 5.2. Subscriptions API
 
-Copy the `Susbcriptions API` endpoint to `./src/index.js` as the argument for the constructor of the `SubscriptionClient`:
+Copy the `Subscriptions API` endpoint to `./src/index.js` as the argument for the constructor of the `SubscriptionClient`:
 
 ```js
 const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT__')
 ```
 
-You can obtain the `Susbcriptions API` endpoint by calling `graphcool endpoints` in the same directory where you called `graphcool init --schema https://graphqlbin.com/insta-files.graphql` before or by clicking the **Endpoints** button in the bottom-left of the [Graphcool Console](https://console.graph.cool).
+> **Note**: If you ever lose your endpoints, you can get access to them again with the `graphcool info` command.
 
-### 4. Install dedendencies & run locally
+### 6. Install dependencies & run locally
 
 You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. 
 
 ```sh
+cd ..
 yarn install
 yarn start
 ```
 
 Make sure to open two or more tabs with the page to see subscriptions in action. Have fun exploring! 🎉
 
-### 5. Subscriptions Debugger
+### 7. Subscriptions Debugger
 
 You can use the Graphcool Playground to test subscriptions.
 

@@ -38,7 +38,6 @@ This created the following file structure in the current directory:
 └── server
     ├── graphcool.yml
     ├── types.graphql
-    ├── .graphcoolrc
     └── src
         ├── hello.graphql
         └── hello.js
@@ -93,6 +92,7 @@ return fetch('__RELAY_API_ENDPOINT__', {
 ### 6. Install dependencies & run locally
 
 ```sh
+cd ..
 yarn install
 yarn relay # invoke relay compiler
 yarn start # open http://localhost:3000 in your browser

@@ -38,7 +38,6 @@ This created the following file structure in the current directory:
 └── server
     ├── graphcool.yml
     ├── types.graphql
-    ├── .graphcoolrc
     └── src
         ├── hello.graphql
         └── hello.js
@@ -91,6 +90,7 @@ const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__'
 ### 6. Install dependencies & run locally
 
 ```sh
+cd ..
 yarn install
 yarn start # open http://localhost:3000 in your browser
 ```
