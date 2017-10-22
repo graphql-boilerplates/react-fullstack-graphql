@@ -1,7 +1,0 @@
-type AuthenticateUserPayload {
-  token: String!
-}
-
-extend type Mutation {
-  authenticateUser(firebaseIdToken: String!): AuthenticateUserPayload
-}
