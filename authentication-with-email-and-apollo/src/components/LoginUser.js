@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { graphql, gql, compose } from 'react-apollo'
 
-class CreateLogin extends React.Component {
+class LoginUser extends React.Component {
   
   state = {
     email: '',
@@ -73,4 +73,4 @@ const userQuery = gql`
 export default compose(
   graphql(signinUser, {name: 'signinUser'}),
   graphql(userQuery, { options: { fetchPolicy: 'network-only' }})
-)(withRouter(CreateLogin))
+)(withRouter(LoginUser))
