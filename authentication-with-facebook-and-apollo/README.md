@@ -15,7 +15,7 @@ cd authentication-with-facebook-and-apollo/server
 
 ```sh
 # Install latest version of the Graphcool CLI
-npm install -g graphcool@next
+npm install -g graphcool
 
 # Install dependencies and deploy service
 yarn install

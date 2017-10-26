@@ -25,7 +25,7 @@ cd react-graphql/quickstart-with-relay-modern
 
 ```sh
 # Install Graphcool Framework CLI
-npm install -g graphcool@next
+npm install -g graphcool
 
 # Create a new service inside a directory called `server`
 graphcool init server
