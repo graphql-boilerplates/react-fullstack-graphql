@@ -1,10 +1,9 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
-
+import gql from 'graphql-tag'
+import { graphql, compose } from 'react-apollo'
 
 class CreatePost extends React.Component {
-
   state = {
     description: '',
     imageUrl: '',
@@ -31,7 +30,7 @@ class CreatePost extends React.Component {
             onChange={(e) => this.setState({imageUrl: e.target.value})}
           />
           {this.state.imageUrl &&
-            <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
+            <img src={this.state.imageUrl} alt='presentation' className='w-100 mv3' />
           }
           {this.state.description && this.state.imageUrl &&
             <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handlePost}>Post</button>

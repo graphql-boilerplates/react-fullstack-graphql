@@ -1,6 +1,8 @@
 import React from 'react'
-import { graphql, gql } from 'react-apollo'
+import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
+
 import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
 
@@ -9,7 +11,7 @@ class App extends React.Component {
   _logout = () => {
     // remove token from local storage and reload page to reset apollo client
     localStorage.removeItem('graphcoolToken')
-    location.reload()
+    window.location.reload()
   }
 
   _showLogin = () => {
@@ -85,12 +87,10 @@ class App extends React.Component {
   }
 }
 
-const userQuery = gql`
-  query {
-    loggedInUser {
-      id
-    }
+const userQuery = gql`query {
+  loggedInUser {
+    id
   }
-`
+}`
 
 export default graphql(userQuery, { options: {fetchPolicy: 'network-only'}})(withRouter(App))

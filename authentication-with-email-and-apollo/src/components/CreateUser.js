@@ -1,9 +1,9 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
+import { graphql, compose } from 'react-apollo'
 
 class CreateUser extends React.Component {
-
   constructor(props) {
     super()
 
