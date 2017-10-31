@@ -1,39 +1,39 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { ApolloClient, InMemoryCache } from 'apollo-client-preset'
+import { createHttpLink } from 'apollo-link-http'
+import { setContext } from 'apollo-link-context'
+import { ApolloProvider } from 'react-apollo'
+
 import App from './components/App'
 import CreatePost from './components/CreatePost'
 import CreateUser from './components/CreateUser'
 import LoginUser from './components/LoginUser'
-import { Router, Route, browserHistory } from 'react-router'
-import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
+
 import 'tachyons'
 
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
-
-networkInterface.use([{
-  applyMiddleware (req, next) {
-    if (!req.options.headers) {
-      req.options.headers = {}
-    }
-
-    // get the authentication token from local storage if it exists
-    if (localStorage.getItem('graphcoolToken')) {
-      req.options.headers.authorization = `Bearer ${localStorage.getItem('graphcoolToken')}`
-    }
-    next()
-  },
-}])
-
-const client = new ApolloClient({ networkInterface })
+const httpLink = createHttpLink({ uri: '__SIMPLE_API_ENDPOINT__' })
+const middlewareLink = setContext(() => ({
+  headers: {
+    authorization: `Bearer ${localStorage.getItem('graphcoolToken')}` || null,
+  }
+}))
+const client = new ApolloClient({
+  link: middlewareLink.concat(httpLink),
+  cache: new InMemoryCache(),
+})
 
 ReactDOM.render((
   <ApolloProvider client={client}>
-    <Router history={browserHistory}>
-      <Route path='/' component={App} />
-      <Route path='create' component={CreatePost} />
-      <Route path='login' component={LoginUser} />
-      <Route path='signup' component={CreateUser} />
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={App} />
+        <Route exact path='/create' component={CreatePost} />
+        <Route exact path='/login' component={LoginUser} />
+        <Route exact path='/signup' component={CreateUser} />
+      </Switch>
+    </BrowserRouter>
   </ApolloProvider>
   ),
   document.getElementById('root')

@@ -1,18 +1,14 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
+import { graphql, compose } from 'react-apollo'
 
 class CreateUser extends React.Component {
-
-  constructor(props) {
-    super()
-
-    this.state = {
-      email: props.location.query.email || '',
-      password: '',
-      name: '',
-      emailSubscription: false,
-    }
+  state = {
+    email:  '',
+    password: '',
+    name: '',
+    emailSubscription: false,
   }
 
   render () {
@@ -23,7 +19,7 @@ class CreateUser extends React.Component {
     // redirect if user is logged in
     if (this.props.data.loggedInUser.id) {
       console.warn('already logged in')
-      this.props.router.replace('/')
+      this.props.history.push('/')
     }
 
     return (
@@ -64,10 +60,10 @@ class CreateUser extends React.Component {
       const user = await this.props.createUser({variables: {email, password, name}})
       console.log(`received response: `, user)
       localStorage.setItem('graphcoolToken', user.data.signupUser.token)
-      this.props.router.replace('/')
+      this.props.history.push('/')
     } catch (e) {
       console.error(`An error occured: `, e)
-      this.props.router.replace('/')
+      this.props.history.push('/')
     }
 
   }

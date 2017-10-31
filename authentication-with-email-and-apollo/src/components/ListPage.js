@@ -1,6 +1,8 @@
+import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
+
 import React from 'react'
 import Post from '../components/Post'
-import { graphql, gql } from 'react-apollo'
 
 class ListPage extends React.Component {
 

@@ -29,10 +29,10 @@ When prompted which cluster you want to deploy to, choose any of the `Backend-as
 
 #### 3. Connect the app with your GraphQL API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createHttpLink` call:
 
 ```js
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+const httpLink = createHttpLink({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
 > Note: You can get access to your endpoint using the `graphcool info` command.

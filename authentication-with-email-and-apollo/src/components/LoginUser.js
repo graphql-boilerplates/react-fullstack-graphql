@@ -1,9 +1,9 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
+import { graphql, compose } from 'react-apollo'
 
-class CreateLogin extends React.Component {
-  
+class LoginUser extends React.Component {
   state = {
     email: '',
     password: '',
@@ -17,7 +17,7 @@ class CreateLogin extends React.Component {
     // redirect if user is logged in
     if (this.props.data.loggedInUser.id) {
       console.warn('already logged in')
-      this.props.router.replace('/')
+      this.props.location.push('/')
     }
 
     return (
@@ -50,7 +50,7 @@ class CreateLogin extends React.Component {
 
     const response = await this.props.signinUser({variables: {email, password}})
     localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
-    this.props.router.replace('/')
+    this.props.history.push('/')
   }
 }
 
@@ -73,4 +73,4 @@ const userQuery = gql`
 export default compose(
   graphql(signinUser, {name: 'signinUser'}),
   graphql(userQuery, { options: { fetchPolicy: 'network-only' }})
-)(withRouter(CreateLogin))
+)(withRouter(LoginUser))
