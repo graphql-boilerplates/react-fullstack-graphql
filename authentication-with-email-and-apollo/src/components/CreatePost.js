@@ -52,7 +52,7 @@ class CreatePost extends React.Component {
     const authorId = this.props.data.loggedInUser.id
 
     await this.props.mutate({variables: { description, imageUrl, authorId }})
-    this.props.router.replace('/')
+    this.props.history.push('/')
   }
 }
 

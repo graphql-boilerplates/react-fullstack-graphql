@@ -15,11 +15,11 @@ class App extends React.Component {
   }
 
   _showLogin = () => {
-    this.props.router.push('/login')
+    this.props.history.push('/login')
   }
 
   _showSignup = () => {
-    this.props.router.push('/signup')
+    this.props.history.push('/signup')
   }
 
   _isLoggedIn = () => {
