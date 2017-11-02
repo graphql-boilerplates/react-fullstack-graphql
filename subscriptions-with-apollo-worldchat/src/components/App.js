@@ -9,10 +9,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 
-const httpLink = createHttpLink({ uri: 'https://api.graph.cool/simple/v1/cj9ihb4741hh30130wisvov4s' })
+const serviceId = ``
+
+const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/${serviceId}` })
 
 const wsLink = new WebSocketLink({
-  uri: 'wss://subscriptions.graph.cool/v1/cj9ihb4741hh30130wisvov4s',
+  uri: `wss://subscriptions.graph.cool/v1/${serviceId}`,
   options: {
     reconnect: true
   }
@@ -37,7 +39,6 @@ const WORLDCHAT_USERNAME_KEY = 'WORLDCHAT_USERNAME'
 class App extends Component {
 
   componentWillMount() {
-
     let name = localStorage.getItem(WORLDCHAT_USERNAME_KEY)
     if (!name) {
       name = generateStupidName()

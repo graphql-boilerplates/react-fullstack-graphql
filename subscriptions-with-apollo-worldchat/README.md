@@ -99,29 +99,19 @@ graphcool deploy
 
 When prompted which cluster you want to deploy to, choose any of the **Shared Clusters** options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
-Save the HTTP endpoint for the `Simple API` from the output as well as the websocket endpoint for the `Subscriptions API`, you'll need them in the next step.
+Save the ID of your service, you'll need it in the next step.
 
 > **Note**: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
 
 ### 5. Connect the app with your GraphQL API
 
-#### 5.1. Simple API
-
-Copy the `Simple API` endpoint to `./src/App.js` as the `uri` argument in the `createNetworkInterface` call:
+Paste your service ID to `./src/App.js` as the value for the currently empty `serviceId` variable:
 
 ```js
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+const serviceId = `__YOUR_SERVICE_ID__`
 ```
 
-#### 5.2. Subscriptions API
-
-Copy the `Subscriptions API` endpoint to `./src/App.js` as the argument for the constructor of the `SubscriptionClient`:
-
-```js
-const wsClient = new SubscriptionClient('__SUBSCRIPTIONS_API_ENDPOINT__')
-```
-
-> **Note**: If you ever lose your endpoints, you can get access to them again with the `graphcool info` command.
+> **Note**: You can always get access to your service ID by running the `graphcool info` command.
 
 ### 6. Install dependencies & run locally
 
