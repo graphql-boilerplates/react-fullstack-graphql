@@ -17,3 +17,6 @@ npm-debug.log
 #IDE
 .idea/*
 *.swp
+
+server
+.graphcoolrc
