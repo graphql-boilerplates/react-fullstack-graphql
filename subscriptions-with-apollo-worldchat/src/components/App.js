@@ -9,6 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 
+// Paste your own service ID here
 const serviceId = ``
 
 const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/${serviceId}` })
