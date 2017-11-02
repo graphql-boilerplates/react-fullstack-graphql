@@ -6,13 +6,14 @@ import DetailPage from './components/DetailPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 import './index.css'
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cj9i84jd4076v01308utklht3' }),
+  //  __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
+  link: new HttpLink({ uri: '__SIMPLE_API_ENDPOINT__' }),
   cache: new InMemoryCache()
 })
 
