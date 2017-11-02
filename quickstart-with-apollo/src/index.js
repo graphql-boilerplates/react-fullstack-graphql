@@ -11,9 +11,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 import './index.css'
 
-const client = new ApolloClient({
   //  __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
-  link: new HttpLink({ uri: '__SIMPLE_API_ENDPOINT__' }),
+const httpLink = new HttpLink({ uri: '__SIMPLE_API_ENDPOINT__' })
+
+const client = new ApolloClient({
+  link: httpLink,
   cache: new InMemoryCache()
 })
 
