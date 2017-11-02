@@ -72,7 +72,7 @@ cd server
 graphcool deploy
 ```
 
-When prompted which cluster you want to deploy to, choose any of the **Backend-as-a-Service** options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
+When prompted which cluster you want to deploy to, choose any of the **Shared Clusters** options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
 Save the HTTP endpoint for the `Relay API` from the output, you'll need it in the next step.
 
