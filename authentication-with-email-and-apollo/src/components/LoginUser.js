@@ -1,6 +1,7 @@
 import React from 'react'
-import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
+import { graphql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class CreateLogin extends React.Component {
   
@@ -11,13 +12,18 @@ class CreateLogin extends React.Component {
 
   render () {
     if (this.props.data.loading) {
-      return (<div>Loading</div>)
+
+      return (
+        <div className='w-100 pa4 flex justify-center'>
+          <div>Loading</div>
+        </div>
+      )
     }
 
     // redirect if user is logged in
     if (this.props.data.loggedInUser.id) {
       console.warn('already logged in')
-      this.props.router.replace('/')
+      this.props.history.replace('/')
     }
 
     return (
@@ -38,39 +44,41 @@ class CreateLogin extends React.Component {
           />
 
           {this.state.email && this.state.password &&
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.signinUser}>Log in</button>
+          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.authenticateUser}>Log in</button>
           }
         </div>
       </div>
     )
   }
 
-  signinUser = async () => {
+  authenticateUser = async () => {
     const {email, password} = this.state
 
-    const response = await this.props.signinUser({variables: {email, password}})
+    const response = await this.props.authenticateUserMutation({variables: {email, password}})
     localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
-    this.props.router.replace('/')
+    this.props.history.replace('/')
   }
 }
 
-const signinUser = gql`
-  mutation ($email: String!, $password: String!) { 
+const AUTHENTICATE_USER_MUTATION = gql`
+  mutation AuthenticateUserMutation ($email: String!, $password: String!) { 
     authenticateUser(email: $email, password: $password) {
       token
     }
   }
 `
 
-const userQuery = gql`
-  query {
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
     loggedInUser {
       id
     }
   }
 `
-
 export default compose(
-  graphql(signinUser, {name: 'signinUser'}),
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})
+  graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
+  graphql(LOGGED_IN_USER_QUERY, { 
+    name: 'loggedInUserQuery',
+    options: { fetchPolicy: 'network-only' }
+  })
 )(withRouter(CreateLogin))

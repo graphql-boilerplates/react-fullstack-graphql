@@ -1,7 +1,7 @@
 import React from 'react'
-import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
-
+import { withRouter } from 'react-router-dom'
+import { graphql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class CreatePost extends React.Component {
 
@@ -11,7 +11,7 @@ class CreatePost extends React.Component {
   }
 
   render () {
-    if (this.props.data.loading) {
+    if (this.props.loggedInUserQuery.loading) {
       return (<div>Loading</div>)
     }
 
@@ -31,7 +31,7 @@ class CreatePost extends React.Component {
             onChange={(e) => this.setState({imageUrl: e.target.value})}
           />
           {this.state.imageUrl &&
-            <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
+            <img src={this.state.imageUrl} alt='' className='w-100 mv3' />
           }
           {this.state.description && this.state.imageUrl &&
             <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handlePost}>Post</button>
@@ -42,31 +42,30 @@ class CreatePost extends React.Component {
   }
 
   handlePost = async () => {
-
     // redirect if no user is logged in
-    if (!this.props.data.loggedInUser) {
+    if (!this.props.loggedInUserQuery.loggedInUser) {
       console.warn('only logged in users can create new posts')
       return
     }
 
     const { description, imageUrl } = this.state
-    const authorId = this.props.data.loggedInUser.id
+    const authorId = this.props.loggedInUserQuery.loggedInUser.id
 
-    await this.props.mutate({variables: { description, imageUrl, authorId }})
-    this.props.router.replace('/')
+    await this.props.createPostMutation({variables: { description, imageUrl, authorId }})
+    this.props.history.replace('/')
   }
 }
 
-const createPost = gql`
-  mutation ($description: String!, $imageUrl: String!, $authorId: ID!) {
+const CREATE_POST_MUTATION = gql`
+  mutation CreatePostMutation ($description: String!, $imageUrl: String!, $authorId: ID!) {
     createPost(description: $description, imageUrl: $imageUrl, authorId: $authorId) {
       id
     }
   }
 `
 
-const userQuery = gql`
-  query {
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
     loggedInUser {
       id
     }
@@ -74,6 +73,9 @@ const userQuery = gql`
 `
 
 export default compose(
-  graphql(createPost),
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})
+  graphql(CREATE_POST_MUTATION, { name: 'createPostMutation' }),
+  graphql(LOGGED_IN_USER_QUERY, { 
+    name: 'loggedInUserQuery',
+    options: { fetchPolicy: 'network-only' }
+  })
 )(withRouter(CreatePost))

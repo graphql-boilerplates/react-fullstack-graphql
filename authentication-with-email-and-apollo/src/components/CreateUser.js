@@ -1,6 +1,7 @@
 import React from 'react'
-import { withRouter } from 'react-router'
-import { graphql, gql, compose } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
+import { graphql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class CreateUser extends React.Component {
 
@@ -8,7 +9,7 @@ class CreateUser extends React.Component {
     super()
 
     this.state = {
-      email: props.location.query.email || '',
+      email: '',
       password: '',
       name: '',
       emailSubscription: false,
@@ -16,14 +17,14 @@ class CreateUser extends React.Component {
   }
 
   render () {
-    if (this.props.data.loading) {
+    if (this.props.loggedInUserQuery.loading) {
       return (<div>Loading</div>)
     }
 
     // redirect if user is logged in
-    if (this.props.data.loggedInUser.id) {
-      console.warn('already logged in')
-      this.props.router.replace('/')
+    if (this.props.loggedInUserQuery.loggedInUser.id) {
+      console.warn('Already logged in')
+      this.props.history.replace('/')
     }
 
     return (
@@ -50,31 +51,30 @@ class CreateUser extends React.Component {
           />
 
           {this.state.name && this.state.email && this.state.password &&
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.createUser}>Sign up</button>
+          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.signupUser}>Sign up</button>
           }
         </div>
       </div>
     )
   }
 
-  createUser = async () => {
+  signupUser = async () => {
     const { email, password, name } = this.state
 
     try {
-      const user = await this.props.createUser({variables: {email, password, name}})
-      console.log(`received response: `, user)
+      const user = await this.props.signupUserMutation({variables: {email, password, name}})
       localStorage.setItem('graphcoolToken', user.data.signupUser.token)
-      this.props.router.replace('/')
+      this.props.history.replace('/')
     } catch (e) {
       console.error(`An error occured: `, e)
-      this.props.router.replace('/')
+      this.props.history.replace('/')
     }
 
   }
 }
 
-const createUser = gql`
-  mutation ($email: String!, $password: String!, $name: String) {
+const SIGNUP_USER_MUTATION = gql`
+  mutation SignupUserMutation ($email: String!, $password: String!, $name: String) {
     signupUser(email: $email, password: $password, name: $name) {
       id
       token
@@ -82,8 +82,8 @@ const createUser = gql`
   }
 `
 
-const userQuery = gql`
-  query {
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
     loggedInUser {
       id
     }
@@ -91,6 +91,9 @@ const userQuery = gql`
 `
 
 export default compose(
-  graphql(createUser, {name: 'createUser'}),
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }}),
+  graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
+  graphql(LOGGED_IN_USER_QUERY, { 
+    name: 'loggedInUserQuery',
+    options: { fetchPolicy: 'network-only' }
+  })
 )(withRouter(CreateUser))

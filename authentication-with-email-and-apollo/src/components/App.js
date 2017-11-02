@@ -1,36 +1,36 @@
 import React from 'react'
-import { graphql, gql } from 'react-apollo'
-import { withRouter } from 'react-router'
+import { graphql } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
 import ListPage from './ListPage'
 import NewPostLink from './NewPostLink'
+import gql from 'graphql-tag'
 
 class App extends React.Component {
 
   _logout = () => {
     // remove token from local storage and reload page to reset apollo client
     localStorage.removeItem('graphcoolToken')
-    location.reload()
+    window.location.reload()
   }
 
   _showLogin = () => {
-    this.props.router.push('/login')
+    this.props.history.replace('/login')
   }
 
   _showSignup = () => {
-    this.props.router.push('/signup')
+    this.props.history.replace('/signup')
   }
 
   _isLoggedIn = () => {
-    return this.props.data.loggedInUser && this.props.data.loggedInUser.id !== null
+    return this.props.loggedInUserQuery.loggedInUser && this.props.loggedInUserQuery.loggedInUser.id !== null
   }
 
   render () {
 
-    if (this.props.data.loading) {
+    if (this.props.loggedInUserQuery.loading) {
       return (<div>Loading</div>)
     }
 
-    console.log(this.props)
     if (this._isLoggedIn()) {
       return this.renderLoggedIn()
     } else {
@@ -42,7 +42,7 @@ class App extends React.Component {
     return (
       <div>
         <span>
-          User ID: {this.props.data.loggedInUser.id}
+          User ID: {this.props.loggedInUserQuery.loggedInUser.id}
         </span>
         <div className='pv3'>
           <span
@@ -85,12 +85,15 @@ class App extends React.Component {
   }
 }
 
-const userQuery = gql`
-  query {
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
     loggedInUser {
       id
     }
   }
 `
 
-export default graphql(userQuery, { options: {fetchPolicy: 'network-only'}})(withRouter(App))
+export default graphql(LOGGED_IN_USER_QUERY, {
+  name: 'loggedInUserQuery',
+  options: {fetchPolicy: 'network-only'}
+})(withRouter(App))
