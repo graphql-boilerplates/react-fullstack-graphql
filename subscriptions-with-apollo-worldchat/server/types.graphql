@@ -1,0 +1,37 @@
+type Traveller @model {
+  # Required system field
+  id: ID! @isUnique # read-only (managed by Graphcool)
+
+  # Optional system fields (remove if not needed)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
+  name: String!
+  location: Location! @relation(name: "TravellerLocation")
+  messages: [Message!]! @relation(name: "MessagesFromTraveller")
+}
+
+type Message @model {
+  # Required system field
+  id: ID! @isUnique # read-only (managed by Graphcool)
+
+  # Optional system fields (remove if not needed)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
+  text: String!
+  sentBy: Traveller!  @relation(name: "MessagesFromTraveller")
+}
+
+type Location @model {
+  # Required system field
+  id: ID! @isUnique # read-only (managed by Graphcool)
+
+  # Optional system fields (remove if not needed)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
+  traveller: Traveller! @relation(name: "TravellerLocation")
+  latitude: Float!
+  longitude: Float!
+}

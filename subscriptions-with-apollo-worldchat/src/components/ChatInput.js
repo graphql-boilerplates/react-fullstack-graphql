@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import './ChatInput.css'
+import '../styles/ChatInput.css'
 
 class ChatInput extends Component {
 
@@ -26,10 +26,3 @@ class ChatInput extends Component {
 }
 
 export default ChatInput
-
-ChatInput.propTypes = {
-  message: React.PropTypes.string.isRequired,
-  onTextInput: React.PropTypes.func.isRequired,
-  onResetText: React.PropTypes.func.isRequired,
-  onSend: React.PropTypes.func.isRequired,
-}

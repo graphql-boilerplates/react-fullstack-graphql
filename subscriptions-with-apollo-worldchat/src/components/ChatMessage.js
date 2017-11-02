@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
-import './ChatMessage.css'
-import {timeDifference} from './utils'
+import '../styles/ChatMessage.css'
+import {timeDifference} from '../utils'
 
 class ChatMessage extends Component {
 
@@ -24,9 +24,3 @@ class ChatMessage extends Component {
 }
 
 export default ChatMessage
-
-ChatMessage.propTypes = {
-  message: React.PropTypes.string.isRequired,
-  username: React.PropTypes.string.isRequired,
-  time: React.PropTypes.string.isRequired,
-}

@@ -1,38 +1,38 @@
 import React, { Component } from 'react'
-import './WorldChat.css'
+import '../styles/WorldChat.css'
 import _ from 'lodash'
-import { GoogleMap, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
-import withScriptjs from "react-google-maps/lib/async/withScriptjs"
+import { GoogleMap, withGoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps'
 import Chat from './Chat'
 import Banner from './Banner'
-import { withApollo, graphql, gql } from 'react-apollo'
+import { withApollo, graphql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
 
 const allLocations = gql`
-    query allLocations {
-        allLocations {
-            id
-            latitude
-            longitude
-            traveller {
-                id
-                name
-            }
-        }
+  query allLocations {
+    allLocations {
+      id
+      latitude
+      longitude
+      traveller {
+        id
+        name
+      }
     }
+  }
 `
 
 const travellerForId = gql`
-    query travellerForId($id: ID!) {
-        Traveller(id: $id) {
-            id
-            name
-            location {
-                id
-                latitude
-                longitude
-            }
-        }
+  query travellerForId($id: ID!) {
+    Traveller(id: $id) {
+      id
+      name
+      location {
+        id
+        latitude
+        longitude
+      }
     }
+  }
 `
 
 const createLocationAndTraveller = gql`
@@ -52,17 +52,17 @@ const createLocationAndTraveller = gql`
 `
 
 const updateLocation = gql`
-    mutation updateLocation($locationId: ID!, $latitude: Float!, $longitude: Float!) {
-        updateLocation(id: $locationId, latitude: $latitude, longitude: $longitude) {
-            traveller {
-                id
-                name
-            }
-            id
-            latitude
-            longitude
-        }
+  mutation updateLocation($locationId: ID!, $latitude: Float!, $longitude: Float!) {
+    updateLocation(id: $locationId, latitude: $latitude, longitude: $longitude) {
+      traveller {
+        id
+        name
+      }
+      id
+      latitude
+      longitude
     }
+  }
 `
 
 const WorldChatGoogleMap =  _.flowRight(
@@ -82,7 +82,7 @@ const WorldChatGoogleMap =  _.flowRight(
         <Marker
           {...marker}
           showInfo={false}
-          icon={marker.isOwnMarker ? require('./assets/marker_blue.svg') : require('./assets/marker.svg')}
+          icon={marker.isOwnMarker ? require('../assets/marker_blue.svg') : require('../assets/marker.svg')}
           onClick={() => props.onMarkerClick(marker)}
           defaultAnimation={2}
           key={index}
@@ -113,35 +113,35 @@ class WorldChat extends Component {
 
     this.locationSubscription = this.props.allLocationsQuery.subscribeToMore({
       document: gql`
-          subscription {
-              Location(filter: {
-                mutation_in: [CREATED, UPDATED]
-              }) {
-                  mutation
-                  node {
-                      id
-                      latitude
-                      longitude
-                      traveller {
-                          id
-                          name
-                      }
-                  }
+        subscription {
+          Location(filter: {
+              mutation_in: [CREATED, UPDATED]
+          }) {
+            mutation
+            node {
+              id
+              latitude
+              longitude
+              traveller {
+                id
+                name
               }
+            }
           }
+        }
       `,
       variables: null,
       updateQuery: (previousState, {subscriptionData}) => {
-        if (subscriptionData.data.Location.mutation === 'CREATED') {
-          const newLocation = subscriptionData.data.Location.node
+        if (subscriptionData.Location.mutation === 'CREATED') {
+          const newLocation = subscriptionData.Location.node
           const locations = previousState.allLocations.concat([newLocation])
           return {
             allLocations: locations,
           }
         }
-        else if (subscriptionData.data.Location.mutation === 'UPDATED') {
+        else if (subscriptionData.Location.mutation === 'UPDATED') {
           const locations = previousState.allLocations.slice()
-          const updatedLocation = subscriptionData.data.Location.node
+          const updatedLocation = subscriptionData.Location.node
           const oldLocationIndex = locations.findIndex(location => {
             return updatedLocation.id === location.id
           })
@@ -365,14 +365,8 @@ class WorldChat extends Component {
   }
 }
 
-export default withApollo(
-  graphql(allLocations, {name: 'allLocationsQuery'})(
-    graphql(createLocationAndTraveller, {name: 'createLocationAndTravellerMutation'})(
-      graphql(updateLocation, {name: 'updateLocationMutation'})(WorldChat)
-    )
-  )
-)
-
-WorldChat.propTypes = {
-  name: React.PropTypes.string.isRequired,
-}
+export default compose(
+  graphql(allLocations, {name: 'allLocationsQuery'}),
+  graphql(createLocationAndTraveller, {name: 'createLocationAndTravellerMutation'}),
+  graphql(updateLocation, {name: 'updateLocationMutation'})
+)(withApollo(WorldChat))

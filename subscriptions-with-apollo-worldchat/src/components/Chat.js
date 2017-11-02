@@ -1,36 +1,37 @@
 import React, { Component } from 'react'
-import './Chat.css'
+import '../styles/Chat.css'
 import ChatInput from './ChatInput'
 import ChatMessages from './ChatMessages'
 import TravellerCount from './TravellerCount'
-import { graphql, gql } from 'react-apollo'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 const createMessage = gql`
-    mutation createMessage($text: String!, $sentById: ID!) {
-        createMessage(text: $text, sentById: $sentById) {
-            id
-            text
-            createdAt
-            sentBy {
-                id
-                name
-            }
-        }
+  mutation createMessage($text: String!, $sentById: ID!) {
+    createMessage(text: $text, sentById: $sentById) {
+      id
+      text
+      createdAt
+      sentBy {
+        id
+        name
+      }
     }
+  }
 `
 
 const allMessages = gql`
-    query allMessages {
-        allMessages(last: 100) {
-            id
-            text
-            createdAt
-            sentBy {
-                id
-                name
-            }
-        }
+  query allMessages {
+    allMessages(last: 100) {
+      id
+      text
+      createdAt
+      sentBy {
+        id
+        name
+      }
     }
+  }
 `
 
 
@@ -41,27 +42,28 @@ class Chat extends Component {
   }
 
   componentDidMount() {
+    console.log(`Chat - componentDidMount`)
     // Subscribe to `CREATED`-mutations
     this.createMessageSubscription = this.props.allMessagesQuery.subscribeToMore({
       document: gql`
-          subscription {
-              Message(filter: {
-                mutation_in: [CREATED]
-              }) {
-                  node {
-                      id
-                      text
-                      createdAt
-                      sentBy {
-                          id
-                          name
-                      }
-                  }
+        subscription {
+          Message(filter: {
+              mutation_in: [CREATED]
+          }) {
+            node {
+              id
+              text
+              createdAt
+              sentBy {
+                id
+                name
               }
+            }
           }
+        }
       `,
       updateQuery: (previousState, {subscriptionData}) => {
-        const newMessage = subscriptionData.data.Message.node
+        const newMessage = subscriptionData.Message.node
         const messages = previousState.allMessages.concat([newMessage])
         return {
           allMessages: messages
@@ -87,12 +89,12 @@ class Chat extends Component {
           endRef={this._endRef}
         />
         {Boolean(this.props.travellerId) &&
-          <ChatInput
-            message={this.state.message}
-            onTextInput={(message) => this.setState({message})}
-            onResetText={() => this.setState({message: ''})}
-            onSend={this._onSend}
-          />
+        <ChatInput
+          message={this.state.message}
+          onTextInput={(message) => this.setState({message})}
+          onResetText={() => this.setState({message: ''})}
+          onSend={this._onSend}
+        />
         }
       </div>
     )
