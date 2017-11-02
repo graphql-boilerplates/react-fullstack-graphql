@@ -22,17 +22,18 @@ yarn install
 graphcool deploy
 ```
 
-When prompted which cluster you want to deploy to, choose any of the `Backend-as-a-Service` options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
+When prompted which cluster you want to deploy to, choose any of the **Shared Clusters** options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
 > Note: The service's schema is created based on the type definitions in [`./server/types.graphql`](./server/types.graphql).
 
 
 #### 3. Connect the app with your GraphQL API
 
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Paste the `Simple API` endpoint from the previous step to `./src/index.js` as the `uri` argument in the `createHttpLink` call:
 
 ```js
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+// replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
+const httpLink = new createHttpLinkHttpLink({ uri: '__SIMPLE_API_ENDPOINT__' })
 ```
 
 > Note: You can get access to your endpoint using the `graphcool info` command.
@@ -52,6 +53,7 @@ You can now use the app at `http://localhost:3000`.
 
 ## Next steps
 
+* [Documentation](https://docs-next.graph.cool)
 * [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
 * [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
 * [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)

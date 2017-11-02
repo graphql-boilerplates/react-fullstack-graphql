@@ -12,7 +12,8 @@ import { ApolloLink} from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 
-const httpLink = createHttpLink({ uri: 'https://api.graph.cool/simple/v1/cj8u9zl5f09d00157z94mgkq9' })
+// __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
+const httpLink = createHttpLink({ uri: '__SIMPLE_API_ENDPOINT__' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('graphcoolToken')
@@ -25,7 +26,6 @@ const middlewareLink = new ApolloLink((operation, forward) => {
   return forward(operation)
 })
 const httpLinkWithAuthToken = middlewareLink.concat(httpLink)
-
 
 const client = new ApolloClient({ 
   link: httpLinkWithAuthToken,
