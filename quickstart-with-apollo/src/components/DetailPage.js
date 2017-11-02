@@ -1,8 +1,9 @@
 import React from 'react'
-import { gql, graphql } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import Modal from 'react-modal'
 import modalStyle from '../constants/modalStyle'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import gql from 'graphql-tag'
 
 const detailModalStyle = {
   overlay: modalStyle.overlay,
@@ -15,7 +16,7 @@ const detailModalStyle = {
 class DetailPage extends React.Component {
 
   render() {
-    if (this.props.data.loading) {
+    if (this.props.postQuery.loading) {
       return (
         <div className='flex w-100 h-100 items-center justify-center pt7'>
           <div>
@@ -26,7 +27,7 @@ class DetailPage extends React.Component {
       )
     }
 
-    const {Post} = this.props.data
+    const {Post} = this.props.postQuery
 
     return (
       <Modal
@@ -67,26 +68,22 @@ class DetailPage extends React.Component {
     )
   }
 
-  // would be nice to trigger a "deleting... -> deleted." snackbar-style notification
-  // while this runs
   handleDelete = async () => {
-    await this.props.mutate({variables: {id: this.props.data.Post.id}})
-
-    // post is gone, so remove it from history stack
+    await this.props.deletePostMutation({variables: {id: this.props.postQuery.Post.id}})
     this.props.history.replace('/')
   }
 }
 
-const deleteMutation = gql`
-  mutation deletePost($id: ID!) {
+const DELETE_POST_MUTATION = gql`
+  mutation DeletePostMutation($id: ID!) {
     deletePost(id: $id) {
       id
     }
   }
 `
 
-const PostQuery = gql`
-  query post($id: ID!) {
+const POST_QUERY = gql`
+  query PostQuery($id: ID!) {
     Post(id: $id) {
       id
       imageUrl
@@ -95,18 +92,24 @@ const PostQuery = gql`
   }
 `
 
-// update w/ react-router v4 url params api
-//
-// see documentation on computing query variables from props in wrapper
-// http://dev.apollodata.com/react/queries.html#options-from-props
-const DetailPageWithData = graphql(PostQuery, {
-  options: ({match}) => ({
-    variables: {
-      id: match.params.id,
-    },
+const DetailPageWithGraphQL = compose(
+  graphql(POST_QUERY, {
+    name: 'postQuery',
+    // see documentation on computing query variables from props in wrapper
+    // http://dev.apollodata.com/react/queries.html#options-from-props
+    options: ({match}) => ({
+      variables: {
+        id: match.params.id,
+      },
+    }),
   }),
-})(DetailPage)
+  graphql(DELETE_POST_MUTATION, {
+    name: 'deletePostMutation'
+  })
+)(DetailPage)
 
-const DetailPageWithDelete = graphql(deleteMutation)(DetailPageWithData)
+
+
+const DetailPageWithDelete = graphql(DELETE_POST_MUTATION)(DetailPageWithGraphQL)
 
 export default withRouter(DetailPageWithDelete)

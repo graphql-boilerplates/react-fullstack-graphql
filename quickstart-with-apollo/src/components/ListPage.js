@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Post from '../components/Post'
-import { gql, graphql } from 'react-apollo'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class ListPage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
-      this.props.data.refetch()
+      this.props.allPostsQuery.refetch()
     }
   }
 
   render() {
-    if (this.props.data.loading) {
+    if (this.props.allPostsQuery.loading) {
       return (
         <div className='flex w-100 h-100 items-center justify-center pt7'>
           <div>
@@ -24,7 +25,6 @@ class ListPage extends React.Component {
     }
 
     let blurClass = ''
-
     if (this.props.location.pathname !== '/') {
       blurClass = ' blur'
     }
@@ -43,11 +43,11 @@ class ListPage extends React.Component {
             />
             <div>New Post</div>
           </Link>
-          {this.props.data.allPosts && this.props.data.allPosts.map(post => (
+          {this.props.allPostsQuery.allPosts && this.props.allPostsQuery.allPosts.map(post => (
             <Post
               key={post.id}
               post={post}
-              refresh={() => this.props.data.refetch()}
+              refresh={() => this.props.allPostsQuery.refetch()}
             />
           ))}
         </div>
@@ -57,18 +57,21 @@ class ListPage extends React.Component {
   }
 }
 
-const FeedQuery = gql`query allPosts {
-  allPosts(orderBy: createdAt_DESC) {
-    id
-    imageUrl
-    description
+const ALL_POSTS_QUERY = gql`
+  query AllPostsQuery {
+    allPosts(orderBy: createdAt_DESC) {
+      id
+      imageUrl
+      description
+    }
   }
-}`
+`
 
-const ListPageWithData = graphql(FeedQuery, {
+const ListPageWithQuery = graphql(ALL_POSTS_QUERY, {
+  name: 'allPostsQuery',
   options: {
-    fetchPolicy: 'network-only'
+    fetchPolicy: 'network-only',
   },
 })(ListPage)
 
-export default ListPageWithData
+export default ListPageWithQuery

@@ -1,8 +1,9 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { gql, graphql} from 'react-apollo'
+import { graphql} from 'react-apollo'
 import Modal from 'react-modal'
 import modalStyle from '../constants/modalStyle'
+import gql from 'graphql-tag'
 
 class CreatePage extends React.Component {
 
@@ -24,7 +25,7 @@ class CreatePage extends React.Component {
             {this.state.imageUrl &&
               <img
                 src={this.state.imageUrl}
-                role='presentation'
+                alt=''
                 className='w-100 mv3'
               />}
             <input
@@ -56,14 +57,14 @@ class CreatePage extends React.Component {
 
   handlePost = async () => {
     const {description, imageUrl} = this.state
-    await this.props.addPost({variables: {description, imageUrl}})
-
+    await this.props.createPostMutation({variables: {description, imageUrl}})
     window.location.pathname = '/'
   }
+  
 }
 
-const addMutation = gql`
-  mutation addPost($description: String!, $imageUrl: String!) {
+const CREATE_POST_MUTATION = gql`
+  mutation CreatePostMutation($description: String!, $imageUrl: String!) {
     createPost(description: $description, imageUrl: $imageUrl) {
       id
       description
@@ -72,6 +73,5 @@ const addMutation = gql`
   }
 `
 
-const PageWithMutation = graphql(addMutation, {name: 'addPost'})(CreatePage)
-
-export default withRouter(PageWithMutation)
+const CreatePageWithMutation = graphql(CREATE_POST_MUTATION, {name: 'createPostMutation'})(CreatePage)
+export default withRouter(CreatePageWithMutation)

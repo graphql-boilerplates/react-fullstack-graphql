@@ -3,16 +3,22 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "prettier-eslint-cli": "^3.2.0",
-    "react-scripts": "0.9.0"
+    "prettier-eslint-cli": "^4.4.0",
+    "react-scripts": "^1.0.16"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-apollo": "^1.2.0",
-    "react-dom": "^15.3.1",
-    "react-modal": "^1.6.5",
-    "react-router-dom": "^4.0.0",
-    "tachyons": "^4.3.1"
+    "apollo-cache-inmemory": "^1.0.0",
+    "apollo-client": "^2.0.1",
+    "apollo-link": "^1.0.0",
+    "apollo-link-http": "^1.1.0",
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.5.0",
+    "react": "^16.0.0",
+    "react-apollo": "^2.0.0",
+    "react-dom": "^16.0.0",
+    "react-modal": "^3.1.0",
+    "react-router-dom": "^4.2.2",
+    "tachyons": "^4.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

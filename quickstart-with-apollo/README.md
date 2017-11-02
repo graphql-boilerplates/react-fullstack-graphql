@@ -10,9 +10,7 @@
 
 ## Quickstart
 
-<!--
-For more information on how to get started [refer to the full react-apollo-instagram tutorial](https://www.graph.cool/docs/quickstart/react-apollo-instagram/) or watch the corresponding [video](https://www.youtube.com/watch?v=OoPQl8hcIug).
--->
+> For more information on how to get started refer to the full "React & Apollo"-[tutorial](https://www.graph.cool/docs/quickstart/frontend/react/apollo-tijghei9go/) or watch the corresponding [video](https://www.youtube.com/watch?v=OoPQl8hcIug).
 
 ### 1. Clone example repository
 
@@ -71,6 +69,8 @@ You're now ready to put your Graphcool service into production! Navigate into th
 cd server
 graphcool deploy
 ```
+
+When prompted which cluster you want to deploy to, choose any of the **Backend-as-a-Service** options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
 
 Save the HTTP endpoint for the `Simple API` from the output, you'll need it in the next step.
 

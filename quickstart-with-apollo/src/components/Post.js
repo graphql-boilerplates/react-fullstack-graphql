@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { gql, graphql } from 'react-apollo'
 
-class Post extends React.Component {
+export default class Post extends React.Component {
 
   render() {
     return (
@@ -25,23 +24,5 @@ class Post extends React.Component {
       </Link>
     )
   }
-  //<span className='red f6 pointer dim' onClick={this.handleDelete}>Delete</span>
 
-  // not currently used.
-  handleDelete = async () => {
-    await this.props.mutate({variables: {id: this.props.post.id}})
-    this.props.history.replace('/')
-  }
 }
-
-const deleteMutation = gql`
-  mutation deletePost($id: ID!) {
-    deletePost(id: $id) {
-      id
-    }
-  }
-`
-
-const PostWithMutation = graphql(deleteMutation)(Post)
-
-export default PostWithMutation

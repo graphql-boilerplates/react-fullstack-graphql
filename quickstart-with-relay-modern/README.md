@@ -72,6 +72,8 @@ cd server
 graphcool deploy
 ```
 
+When prompted which cluster you want to deploy to, choose any of the **Backend-as-a-Service** options (`shared-eu-west-1`, `shared-ap-northeast-1` or `shared-us-west-2`).
+
 Save the HTTP endpoint for the `Relay API` from the output, you'll need it in the next step.
 
 > **Note**: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations. Note that the Playground by default is running against the `Simple API` but can easily be adjusted to use the `Relay API`.
