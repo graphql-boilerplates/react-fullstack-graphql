@@ -105,7 +105,7 @@ Save the ID of your service, you'll need it in the next step.
 
 ### 5. Connect the app with your GraphQL API
 
-Paste your service ID to `./src/App.js` as the value for the currently empty `serviceId` variable:
+Paste your service ID to `./src/components/App.js` as the value for the currently empty `serviceId` variable:
 
 ```js
 const serviceId = `__YOUR_SERVICE_ID__`
