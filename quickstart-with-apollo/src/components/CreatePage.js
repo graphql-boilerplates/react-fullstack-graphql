@@ -58,7 +58,7 @@ class CreatePage extends React.Component {
   handlePost = async () => {
     const {description, imageUrl} = this.state
     await this.props.createPostMutation({variables: {description, imageUrl}})
-    window.location.pathname = '/'
+    this.props.history.replace('/')
   }
   
 }
