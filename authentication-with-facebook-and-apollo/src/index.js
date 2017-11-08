@@ -29,7 +29,7 @@ const link = split(
 	httpLink,
 )
 const middlewareLink = new ApolloLink((operation, forward) => {
-	const token = window.localStorage.getItem('AffiliateGenius:login')
+	const token = window.localStorage.getItem('graphcoolToken')
 	const authorizationHeader = token ? `Bearer ${token}` : null
 	operation.setContext({
 		headers: {
