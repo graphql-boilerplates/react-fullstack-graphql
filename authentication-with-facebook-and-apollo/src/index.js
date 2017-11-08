@@ -15,33 +15,33 @@ import { getMainDefinition } from 'apollo-utilities'
 
 const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/__SIMPLE_API_ENDPOINT__' })
 const wsLink = new WebSocketLink({
-	uri: 'wss://subscriptions.graph.cool/v1/__SIMPLE_API_ENDPOINT__',
-	options: {
-		reconnect: true
-	}
+  uri: 'wss://subscriptions.graph.cool/v1/__SIMPLE_API_ENDPOINT__',
+  options: {
+    reconnect: true
+  }
 })
 const link = split(
-	({ query }) => {
-		const { kind, operation } = getMainDefinition(query)
-		return kind === 'OperationDefinition' && operation === 'subscription'
-	},
-	wsLink,
-	httpLink,
+  ({ query }) => {
+    const { kind, operation } = getMainDefinition(query)
+    return kind === 'OperationDefinition' && operation === 'subscription'
+  },
+  wsLink,
+  httpLink,
 )
 const middlewareLink = new ApolloLink((operation, forward) => {
-	const token = window.localStorage.getItem('graphcoolToken')
-	const authorizationHeader = token ? `Bearer ${token}` : null
-	operation.setContext({
-		headers: {
-			authorization: authorizationHeader
-		}
-	})
-	return forward(operation)
+  const token = window.localStorage.getItem('graphcoolToken')
+  const authorizationHeader = token ? `Bearer ${token}` : null
+  operation.setContext({
+    headers: {
+      authorization: authorizationHeader
+    }
+  })
+  return forward(operation)
 })
 const httpLinkWithAuthToken = middlewareLink.concat(link)
 const client = new ApolloClient({
-	link: httpLinkWithAuthToken,
-	cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+  link: httpLinkWithAuthToken,
+  cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 })
 
 ReactDOM.render((
