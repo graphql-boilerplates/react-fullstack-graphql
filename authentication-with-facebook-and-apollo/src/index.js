@@ -4,7 +4,8 @@ import App from './components/App'
 import CreatePost from './components/CreatePost'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import 'tachyons'
-import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
+import { ApolloProvider, createNetworkInterface } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
 
 
 const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
