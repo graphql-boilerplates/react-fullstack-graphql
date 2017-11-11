@@ -97,7 +97,7 @@ yarn start # open http://localhost:3000 in your browser
 
 ## Next steps
 
-* [Documentation](https://docs-next.graph.cool)
+* [Documentation](https://www.graph.cool/docs)
 * [Advanced GraphQL features](https://www.graph.cool/docs/tutorials/advanced-features-eath7duf7d/)
 * [Authentication & Permissions](https://www.graph.cool/docs/reference/authorization/overview-iegoo0heez/)
 * [Implementing business logic with serverless functions](https://www.graph.cool/docs/reference/functions/overview-boo6uteemo/)
