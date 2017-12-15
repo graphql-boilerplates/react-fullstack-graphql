@@ -1,25 +1,29 @@
-const fromEvent = require('graphcool-lib').fromEvent
-const bcrypt = require('bcryptjs')
-const validator = require('validator')
+const fromEvent = require("graphcool-lib").fromEvent;
+const bcrypt = require("bcryptjs");
+const validator = require("validator");
 
 function getGraphcoolUser(api, email) {
-  return api.request(`
+  return api
+    .request(
+      `
     query {
       User(email: "${email}") {
         id
       }
-    }`)
-    .then((userQueryResult) => {
+    }`
+    )
+    .then(userQueryResult => {
       if (userQueryResult.error) {
-        return Promise.reject(userQueryResult.error)
-      } else {
-        return userQueryResult.User
+        return Promise.reject(userQueryResult.error);
       }
-    })
+      return userQueryResult.User;
+    });
 }
 
 function createGraphcoolUser(api, email, passwordHash, name) {
-  return api.request(`
+  return api
+    .request(
+      `
     mutation {
       createUser(
         email: "${email}",
@@ -28,49 +32,49 @@ function createGraphcoolUser(api, email, passwordHash, name) {
       ) {
         id
       }
-    }`)
-    .then((userMutationResult) => {
-      return userMutationResult.createUser.id
-    })
+    }`
+    )
+    .then(userMutationResult => {
+      return userMutationResult.createUser.id;
+    });
 }
 
 module.exports = function(event) {
   if (!event.context.graphcool.pat) {
-    console.log('Please provide a valid root token!')
-    return { error: 'Email Signup not configured correctly.'}
+    console.log("Please provide a valid root token!");
+    return { error: "Email Signup not configured correctly." };
   }
 
-  const email = event.data.email
-  const password = event.data.password
-  const name = event.data.name
-  const graphcool = fromEvent(event)
-  const api = graphcool.api('simple/v1')
-  const SALT_ROUNDS = 10
-  const salt = bcrypt.genSaltSync(SALT_ROUNDS)
+  const email = event.data.email;
+  const password = event.data.password;
+  const name = event.data.name;
+  const graphcool = fromEvent(event);
+  const api = graphcool.api("simple/v1");
+  const SALT_ROUNDS = 10;
+  const salt = bcrypt.genSaltSync(SALT_ROUNDS);
 
   if (validator.isEmail(email)) {
     return getGraphcoolUser(api, email)
       .then(graphcoolUser => {
         if (graphcoolUser === null) {
-          return bcrypt.hash(password, salt)
-            .then(hash => createGraphcoolUser(api, email, hash, name))
-        } else {
-          return Promise.reject("Email already in use")
+          return bcrypt
+            .hash(password, salt)
+            .then(hash => createGraphcoolUser(api, email, hash, name));
         }
+        return Promise.reject("Email already in use");
       })
       .then(graphcoolUserId => {
-        return graphcool.generateAuthToken(graphcoolUserId, 'User')
+        return graphcool
+          .generateAuthToken(graphcoolUserId, "User")
           .then(token => {
-            return { data: {id: graphcoolUserId, token}}
-        })
+            return { data: { id: graphcoolUserId, token } };
+          });
       })
-      .catch((error) => {
-        console.log(error)
-
+      .catch(error => {
+        console.log(error);
         // don't expose error message to client!
-        return { error: 'An unexpected error occured.' }
-      })
-  } else {
-    return { error: "Not a valid email" }
+        return { error: "An unexpected error occured." };
+      });
   }
-}
+  return { error: "Not a valid email" };
+};
