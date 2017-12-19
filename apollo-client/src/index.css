@@ -1,0 +1,83 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300, 400';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.box {
+  width: 350px;
+  height: 452px;
+}
+
+.post {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+.post .image {
+  width: 350px;
+  height: 350px;
+  flex: 0 0 350px;
+}
+
+.post .description {
+  flex: 1;
+  padding-left: 25px;
+  font-size: 25px;
+}
+
+.detail .image {
+  width: 600px;
+  height: 600px;
+  flex: 0 0 600px;
+}
+
+.detail .description {
+  flex: 1;
+  padding-left: 40px;
+  font-size: 38px;
+}
+
+.new-post {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.plus {
+  width: 34px;
+  height: 33px;
+}
+
+.blur {
+  filter: blur(7px);
+}
+
+.close {
+  opacity: 0.5;
+  margin-top: 60px;
+  margin-right: 60px;
+}
+.close img {
+  width: 34px;
+  height: 34px;
+}
+
+.delete {
+  background-color: rgb(242, 92, 94);
+  font-size: 14px;
+  padding: 6px 9px 7px 9px;
+  letter-spacing: 0.46px;
+  margin-top: 18px;
+  margin-left: 18px;
+}

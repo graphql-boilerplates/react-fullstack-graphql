@@ -13,21 +13,16 @@ Code examples & starter kits to see how React works with GraphQL and other techn
 The examples above cover the following technologies:
 
 * [GraphQL](http://graphql.org/)
-* [Apollo Client](http://dev.apollodata.com/react/)
-* [Relay Modern/Relay Classic](https://facebook.github.io/relay/)
-* [Auth0 Lock](https://github.com/auth0/lock)
-* [GraphQL subscriptions](https://www.graph.cool/docs/reference/simple-api/subscriptions-aip7oojeiv/)
-* [File upload](https://www.graph.cool/docs/reference/file-handling/overview-eer4wiang0/)
+* [Apollo Client](https://www.apollographql.com/docs/react/)
+* [Relay Modern](https://facebook.github.io/relay/)
 * ...
 
 > Are you looking for another example? [Request it here](https://github.com/graphcool-examples/react-graphql/issues/new).
 
 ## Tutorials
 
+* [How to GraphQL](https://www.howtographql.com/)
 * [How to use `create-react-app` with GraphQL & Apollo](https://www.graph.cool/docs/tutorials/create-react-apps-with-apollo-client-aidae4aeg5/)
-* [Freecom: Building Intercom with GraphQL and Apollo](https://www.graph.cool/docs/tutorials/freecom-overview-intercom-tutorial-e8a6ajt8ax/)
-* [User Authentication with Auth0 for React and Apollo](https://www.graph.cool/docs/tutorials/react-apollo-auth0-pheiph4ooj/)
-* [Learn Relay](https://www.learnrelay.org/) / [Learn Apollo](https://www.learnapollo.com/)
 
 ## Contributors
 
@@ -87,4 +82,3 @@ A big thank you to all contributors and supporters of this repository 💚
 Say hello in our [Slack](http://slack.graph.cool/) or visit the [Graphcool Forum](https://www.graph.cool/forum) if you run into issues or have questions. We love talking to you!
 
 ![](http://i.imgur.com/5RHR6Ku.png)
-
