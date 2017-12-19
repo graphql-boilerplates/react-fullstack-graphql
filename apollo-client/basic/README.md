@@ -5,7 +5,7 @@
   * [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
 * **Backend**
   * [Graphcool](https://www.graph.cool): Powerful GraphQL database
-  * [`graphql-yoga`](https://github.com/graphcool/graphql-yoga/: Fully-featured GraphQL Server with focus on easy setup, performance & great developer experience
+  * [`graphql-yoga`](https://github.com/graphcool/graphql-yoga/): Fully-featured GraphQL server with focus on easy setup, performance & great developer experience
   * [`graphcool-binding`](https://github.com/graphcool/graphcool-binding): GraphQL binding for Graphcool services
 
 ## Example
