@@ -1,0 +1,8 @@
+# the name for the service (will be part of the service's HTTP endpoint)
+service: graphql-boilerplate
+
+# the secret you need to access the database
+secret: mysecret123
+
+# the file path pointing to your data model
+datamodel: database/datamodel.graphql
