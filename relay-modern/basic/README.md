@@ -1,3 +1,5 @@
+❌ This project is currently in a **broken** state: The Relay setup on the frontend is not compatible yet with the API exposed by the backend. PRs are more than welcome. ❌ 
+
 # React & Relay Modern Quickstart
 
 * **Frontend**
