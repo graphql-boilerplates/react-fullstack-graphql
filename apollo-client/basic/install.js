@@ -1,20 +1,11 @@
 const fs = require('fs')
 const path = require('path')
-const commandExists = require('command-exists')
 
-module.exports = async ({ project, projectPath }) => {
+module.exports = async ({ project }) => {
   const templateName = 'graphql-boilerplate'
   replaceInFile('server/src/index.js', templateName, project)
   replaceInFile('server/package.json', templateName, project)
   replaceInFile('server/graphcool.yml', templateName, project)
-
-  process.chdir(path.join(projectPath, 'server'))
-  if (commandExists.sync('yarn')) {
-    await shell('yarn install')
-  } else {
-    await shell('npm install')
-  }
-  process.chdir(projectPath)
 
   console.log(`\
 Next steps:
@@ -35,18 +26,4 @@ function replaceInFile(filePath, searchValue, replaceValue) {
     replaceValue,
   )
   fs.writeFileSync(filePath, newContents)
-}
-
-function shell(command) {
-  return new Promise((resolve, reject) => {
-    const commandParts = command.split(' ')
-    const cmd = spawn(commandParts[0], commandParts.slice(1), {
-      cwd: process.cwd(),
-      detached: false,
-      stdio: 'inherit',
-    })
-
-    cmd.on('error', reject)
-    cmd.on('close', resolve)
-  })
 }
