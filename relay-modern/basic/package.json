@@ -5,7 +5,7 @@
   "devDependencies": {
     "babel-plugin-relay": "1.4.1",
     "relay-compiler": "1.4.1",
-    "autoprefixer": "7.1.0",
+    "autoprefixer": "7.2.3",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
