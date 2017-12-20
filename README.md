@@ -2,7 +2,7 @@
 
 🚀 Starter projects for fullstack applications based on React & GraphQL.
 
-![](https://imgur.com/fTTbNzS.png)
+![](https://imgur.com/qovPW7f.png)
 
 ## Quickstart
 
