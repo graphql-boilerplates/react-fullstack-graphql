@@ -1,4 +1,4 @@
-# React & Apollo Quickstart
+# react-fullstack-apollo-basic
 
 * **Frontend**
   * [React](https://facebook.github.io/react/): Frontend framework for building user interfaces

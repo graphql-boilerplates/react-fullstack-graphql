@@ -1,84 +1,27 @@
-# React & GraphQL examples
+# react-fullstack-graphql
 
-Code examples & starter kits to see how React works with GraphQL and other technologies.
+🚀 Starter projects for fullstack applications based on React & GraphQL.
 
-<hr>
+![](https://imgur.com/fTTbNzS.png)
 
-**<p align="center">Select an example** from the list above to get started ⤴️</p>
+## Quickstart
 
-<hr>
+**Select a boilerplate and follow the instructions in the belonging README to get started:**
 
-<p align="center"><img src="http://imgur.com/G9mMBFT.png" /></p>
+[**Apollo Client**](https://www.apollographql.com/client/):
 
-The examples above cover the following technologies:
+- `minimal` (_coming soon_): Minimal boilerplate with basic "Hello World" functionality
+- [`basic`](./apollo-client/basic): Basic boilerplate based on a simple data model and with a GraphQL database
+- `advanced` (_coming soon_): Advanced boilerplate with a GraphQL database, authentication and realtime subscriptions
 
-* [GraphQL](http://graphql.org/)
-* [Apollo Client](https://www.apollographql.com/docs/react/)
-* [Relay Modern](https://facebook.github.io/relay/)
-* ...
+[**Relay Modern**](https://facebook.github.io/relay/):
 
-> Are you looking for another example? [Request it here](https://github.com/graphcool-examples/react-graphql/issues/new).
+- `minimal` (_coming soon_): Minimal boilerplate with basic "Hello World" functionality
+- [`basic`](./relay-modern/basic): Basic boilerplate based on a simple data model and with a GraphQL database
+- `advanced` (_coming soon_): Advanced boilerplate with a GraphQL database, authentication and realtime subscriptions
 
-## Tutorials
+> All projects are using [`graphql-yoga`](https://github.com/graphcool/graphql-yoga/) on the server-side.
 
-* [How to GraphQL](https://www.howtographql.com/)
-* [How to use `create-react-app` with GraphQL & Apollo](https://www.graph.cool/docs/tutorials/create-react-apps-with-apollo-client-aidae4aeg5/)
+## Contributing [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
-## Contributors
-
-A big thank you to all contributors and supporters of this repository 💚 
-
-<a href="https://github.com/nikolasburk/" target="_blank">
-  <img src="https://github.com/nikolasburk.png?size=64" width="64" height="64" alt="nikolasburk">
-</a>
-<a href="https://github.com/schickling/" target="_blank">
-  <img src="https://github.com/schickling.png?size=64" width="64" height="64" alt="schickling">
-</a>
-<a href="https://github.com/marktani/" target="_blank">
-  <img src="https://github.com/marktani.png?size=64" width="64" height="64" alt="marktani">
-</a>
-<a href="https://github.com/stubailo/" target="_blank">
-  <img src="https://github.com/stubailo.png?size=64" width="64" height="64" alt="stubailo">
-</a>
-<a href="https://github.com/kuldarkalvik/" target="_blank">
-  <img src="https://github.com/kuldarkalvik.png?size=64" width="64" height="64" alt="kuldarkalvik">
-</a>
-<a href="https://github.com/gsans/" target="_blank">
-  <img src="https://github.com/gsans.png?size=64" width="64" height="64" alt="gsans">
-</a>
-<a href="https://github.com/kbrandwijk/" target="_blank">
-  <img src="https://github.com/kbrandwijk.png?size=64" width="64" height="64" alt="kbrandwijk">
-</a>
-<a href="https://github.com/fresh5447/" target="_blank">
-  <img src="https://github.com/fresh5447.png?size=64" width="64" height="64" alt="fresh5447">
-</a>
-<a href="https://github.com/sebasibarguen/" target="_blank">
-  <img src="https://github.com/sebasibarguen.png?size=64" width="64" height="64" alt="sebasibarguen">
-</a>
-<a href="https://github.com/heymartinadams/" target="_blank">
-  <img src="https://github.com/heymartinadams.png?size=64" width="64" height="64" alt="heymartinadams">
-</a>
-<a href="https://github.com/100ideas/" target="_blank">
-  <img src="https://github.com/100ideas.png?size=64" width="64" height="64" alt="100ideas">
-</a>
-<a href="https://github.com/brene/" target="_blank">
-  <img src="https://github.com/brene.png?size=64" width="64" height="64" alt="brene">
-</a>
-<a href="https://github.com/chrisgchambers/" target="_blank">
-  <img src="https://github.com/chrisgchambers.png?size=64" width="64" height="64" alt="chrisgchambers">
-</a>
-<a href="https://github.com/wesbos/" target="_blank">
-  <img src="https://github.com/wesbos.png?size=64" width="64" height="64" alt="wesbos">
-</a>
-<a href="https://github.com/jurosh/" target="_blank">
-  <img src="https://github.com/jurosh.png?size=64" width="64" height="64" alt="jurosh">
-</a>
-<a href="https://github.com/mstruebing/" target="_blank">
-  <img src="https://github.com/mstruebing.png?size=64" width="64" height="64" alt="mstruebing">
-</a>
-
-## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
-
-Say hello in our [Slack](http://slack.graph.cool/) or visit the [Graphcool Forum](https://www.graph.cool/forum) if you run into issues or have questions. We love talking to you!
-
-![](http://i.imgur.com/5RHR6Ku.png)
+Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions, join the [`#graphql-boilerplate`](https://graphcool.slack.com/messages/graphql-boilerplate) channel on our [Slack](https://graphcool.slack.com/).
