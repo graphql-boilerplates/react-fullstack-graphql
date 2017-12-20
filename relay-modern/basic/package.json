@@ -6,7 +6,7 @@
     "babel-plugin-relay": "1.4.1",
     "relay-compiler": "1.4.1",
     "autoprefixer": "7.1.0",
-    "babel-core": "6.24.1",
+    "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.0.0",
