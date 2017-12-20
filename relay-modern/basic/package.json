@@ -32,7 +32,7 @@
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.5",
     "promise": "7.1.1",
-    "react-dev-utils": "3.1.1",
+    "react-dev-utils": "4.2.1",
     "react-error-overlay": "1.0.10",
     "style-loader": "0.17.0",
     "sw-precache-webpack-plugin": "0.9.1",
