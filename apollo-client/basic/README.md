@@ -23,7 +23,7 @@ You need to have the following things installed:
 * GraphQL CLI: `npm i -g graphql-cli`
 * GraphQL Playground desktop app (optional): [Download](https://github.com/graphcool/graphql-playground/releases)
 
-## Example
+## Preview
 
 ![](http://imgur.com/3S6fUeI.gif)
 
@@ -41,7 +41,7 @@ yarn start
 
 # Navigate back into the project's root directory and launch the React app
 cd ..
-yarn start
+yarn start # open http://localhost:3000 in your browser
 ```
 
 <details>
@@ -54,14 +54,7 @@ TODO
 
 </details>
 
-
 ## Docs
-
-### Commands
-
-* `yarn start` starts GraphQL server
-* `yarn playground` opens the GraphQL Playground
-* `yarn deploy` deploys GraphQL server to [`now`](https://now.sh)
 
 ### Project structure
 
