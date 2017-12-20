@@ -31,7 +31,7 @@
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.5",
-    "promise": "7.1.1",
+    "promise": "7.3.1",
     "react-dev-utils": "3.1.1",
     "react-error-overlay": "1.0.10",
     "style-loader": "0.17.0",
