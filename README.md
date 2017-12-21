@@ -17,7 +17,7 @@
 [**Relay Modern**](https://facebook.github.io/relay/):
 
 - `minimal` (_coming soon_): Minimal boilerplate with basic "Hello World" functionality
-- [`basic`](./relay-modern/basic): Basic boilerplate based on a simple data model and with a GraphQL database
+- [`basic`](./relay-modern/basic) (_needs fix_): Basic boilerplate based on a simple data model and with a GraphQL database
 - `advanced` (_coming soon_): Advanced boilerplate with a GraphQL database, authentication and realtime subscriptions
 
 > All projects are using [`graphql-yoga`](https://github.com/graphcool/graphql-yoga/) on the server-side.
