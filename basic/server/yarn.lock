@@ -430,9 +430,9 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphcool-binding@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/graphcool-binding/-/graphcool-binding-0.4.0.tgz#6a171818a6e6baa3d5a3f3417678fbb074e93f18"
+graphcool-binding@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/graphcool-binding/-/graphcool-binding-0.4.1.tgz#b1c9008bab28b090c7213c2039f2abfcd51093b7"
   dependencies:
     "@types/jsonwebtoken" "^7.2.4"
     apollo-link "^1.0.7"
