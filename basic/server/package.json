@@ -6,7 +6,6 @@
   },
   "dependencies": {
     "graphcool-binding": "0.4.1",
-    "graphql-import": "0.1.9",
     "graphql-yoga": "0.7.0"
   },
   "devDependencies": {
