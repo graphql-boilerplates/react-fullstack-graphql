@@ -5,7 +5,7 @@
     "deploy": "now --public && now alias && now rm --yes --safe graphql-template-node"
   },
   "dependencies": {
-    "graphcool-binding": "0.4.1",
+    "graphcool-binding": "0.4.3",
     "graphql-yoga": "0.7.0"
   },
   "devDependencies": {
