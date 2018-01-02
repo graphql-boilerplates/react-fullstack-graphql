@@ -22,7 +22,7 @@ You need to have the following things installed:
 * Graphcool CLI: `npm i -g graphcool@beta`
 * GraphQL CLI: `npm i -g graphql-cli`
 * GraphQL Playground desktop app (optional): [Download](https://github.com/graphcool/graphql-playground/releases)
-* Docker & Docker-compose
+* Docker, Docker-compose & Docker-machine
 
 ## Preview
 
