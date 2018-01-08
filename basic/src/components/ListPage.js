@@ -58,8 +58,8 @@ const FEED_QUERY = gql`
   query FeedQuery {
     feed {
       id
-      imageUrl
-      description
+      text
+      title
     }
   }
 `

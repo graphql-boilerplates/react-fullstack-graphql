@@ -48,14 +48,14 @@ class DetailPage extends React.Component {
           <div
             className="image"
             style={{
-              backgroundImage: `url(${post.imageUrl})`,
+              backgroundImage: `url(${post.title})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               paddingBottom: '100%',
             }}
           />
-          <div className="flex items-center black-80 fw3 description">
-            {post.description}
+          <div className="flex items-center black-80 fw3 text">
+            {post.text}
           </div>
         </div>
       </Modal>
@@ -82,8 +82,8 @@ const POST_QUERY = gql`
   query PostQuery($id: ID!) {
     post(id: $id) {
       id
-      imageUrl
-      description
+      title
+      text
     }
   }
 `

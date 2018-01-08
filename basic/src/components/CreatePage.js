@@ -63,7 +63,7 @@ class CreatePage extends React.Component {
 
 const CREATE_DRAFT_MUTATION = gql`
   mutation CreateDraftMutation($title: String!, $text: String!) {
-    createDraft(title: $title, text: $text, isPublished: false) {
+    createDraft(title: $title, text: $text) {
       id
       title
       text
