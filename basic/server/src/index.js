@@ -4,38 +4,22 @@ const { Graphcool } = require('graphcool-binding')
 const resolvers = {
   Query: {
     feed(parent, args, ctx, info) {
-      return ctx.db.query.posts(
-        {
-          orderBy: 'createdAt_DESC',
-        },
-        info,
-      )
-    },
-    post(parent, args, ctx, info) {
-      return ctx.db.query.post(
-        {
-          where: { id: args.id },
-        },
-        info,
-      )
+      return ctx.db.query.posts({ where: { isPublished: true } }, info)
     },
   },
   Mutation: {
-    createPost(parent, args, ctx, info) {
+    createDraft(parent, { title, text }, ctx, info) {
       return ctx.db.mutation.createPost(
-        {
-          data: {
-            description: args.description,
-            imageUrl: args.imageUrl,
-          },
-        },
+        // TODO remove `isPublished` in favour of default value
+        { data: { title, text, isPublished: false } },
         info,
       )
     },
-    deletePost(parent, args, ctx, info) {
-      return ctx.db.mutation.deletePost(
+    publish(parent, { id }, ctx, info) {
+      return ctx.db.mutation.updatePost(
         {
-          where: { id: args.id },
+          where: { id },
+          data: { isPublished: true },
         },
         info,
       )
@@ -49,8 +33,8 @@ const server = new GraphQLServer({
   context: req => ({
     ...req,
     db: new Graphcool({
-      typeDefs: './database/schema.generated.graphql',
-      endpoint: 'http://localhost:60000/graphql-boilerplate/dev',
+      typeDefs: 'src/generated/graphcool.graphql',
+      endpoint: '__GRAPHCOOL_ENDPOINT__',
       secret: 'mysecret123',
     }),
   }),

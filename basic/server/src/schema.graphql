@@ -1,11 +1,10 @@
-# import Post from "../database/schema.generated.graphql"
+# import Post from "./generated/graphcool.graphql"
 
 type Query {
   feed: [Post!]!
-  post(id: ID!): Post
 }
 
 type Mutation {
-  createPost(description: String!, imageUrl: String!): Post!
-  deletePost(id: ID!): Post
+  createDraft(title: String!, text: String): Post
+  publish(id: ID!): Post
 }
