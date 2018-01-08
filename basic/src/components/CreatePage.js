@@ -7,38 +7,38 @@ import gql from 'graphql-tag'
 
 class CreatePage extends React.Component {
   state = {
-    description: '',
-    imageUrl: '',
+    title: '',
+    text: '',
   }
 
   render() {
     return (
       <Modal
         isOpen
-        contentLabel="Create Post"
+        contentLabel="Create Draft"
         style={modalStyle}
         onRequestClose={this.props.history.goBack}
       >
         <div className="pa4 flex justify-center bg-white">
           <div style={{ maxWidth: 400 }} className="">
-            {this.state.imageUrl && (
-              <img src={this.state.imageUrl} alt="" className="w-100 mv3" />
+            {this.state.text && (
+              <img src={this.state.text} alt="" className="w-100 mv3" />
             )}
             <input
               className="w-100 pa3 mv2"
-              value={this.state.imageUrl}
+              value={this.state.text}
               placeholder="Image Url"
-              onChange={e => this.setState({ imageUrl: e.target.value })}
+              onChange={e => this.setState({ text: e.target.value })}
               autoFocus
             />
             <input
               className="w-100 pa3 mv2"
-              value={this.state.description}
+              value={this.state.title}
               placeholder="Description"
-              onChange={e => this.setState({ description: e.target.value })}
+              onChange={e => this.setState({ title: e.target.value })}
             />
-            {this.state.description &&
-              this.state.imageUrl && (
+            {this.state.title &&
+              this.state.text && (
                 <button
                   className="pa3 bg-black-10 bn dim ttu pointer"
                   onClick={this.handlePost}
@@ -53,25 +53,25 @@ class CreatePage extends React.Component {
   }
 
   handlePost = async () => {
-    const { description, imageUrl } = this.state
-    await this.props.createPostMutation({
-      variables: { description, imageUrl },
+    const { title, text } = this.state
+    await this.props.createDraftMutation({
+      variables: { title, text },
     })
     this.props.history.replace('/')
   }
 }
 
-const CREATE_POST_MUTATION = gql`
-  mutation CreatePostMutation($description: String!, $imageUrl: String!) {
-    createPost(description: $description, imageUrl: $imageUrl) {
+const CREATE_DRAFT_MUTATION = gql`
+  mutation CreateDraftMutation($title: String!, $text: String!) {
+    createDraft(title: $title, text: $text, isPublished: false) {
       id
-      description
-      imageUrl
+      title
+      text
     }
   }
 `
 
-const CreatePageWithMutation = graphql(CREATE_POST_MUTATION, {
-  name: 'createPostMutation', // name of the injected prop: this.props.createPostMutation...
+const CreatePageWithMutation = graphql(CREATE_DRAFT_MUTATION, {
+  name: 'createDraftMutation', // name of the injected prop: this.props.createDraftMutation...
 })(CreatePage)
 export default withRouter(CreatePageWithMutation)
