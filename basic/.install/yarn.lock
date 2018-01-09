@@ -14,9 +14,9 @@ cross-spawn@5.1.0, cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-graphql-boilerplate-install@0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/graphql-boilerplate-install/-/graphql-boilerplate-install-0.1.5.tgz#34fd3c791ae517233df0334fc18adef3309015c1"
+graphql-boilerplate-install@0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/graphql-boilerplate-install/-/graphql-boilerplate-install-0.1.6.tgz#7e90219baac8b2f202eef68c4104c1154652eaa3"
   dependencies:
     cross-spawn "5.1.0"
     npm-run "4.1.2"
