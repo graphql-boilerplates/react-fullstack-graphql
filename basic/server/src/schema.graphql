@@ -2,6 +2,7 @@
 
 type Query {
   feed: [Post!]!
+  post(id: ID!): Post
 }
 
 type Mutation {

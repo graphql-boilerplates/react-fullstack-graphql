@@ -6,6 +6,9 @@ const resolvers = {
     feed(parent, args, ctx, info) {
       return ctx.db.query.posts({ where: { isPublished: true } }, info)
     },
+    post(parent, { id }, ctx, info) {
+      return ctx.db.query.post({ where: { id: id } }, info)
+    },
   },
   Mutation: {
     createDraft(parent, { title, text }, ctx, info) {
@@ -34,7 +37,7 @@ const server = new GraphQLServer({
     ...req,
     db: new Graphcool({
       typeDefs: 'src/generated/graphcool.graphql',
-      endpoint: '__GRAPHCOOL_ENDPOINT__',
+      endpoint: 'http://localhost:60000/my-app/dev',
       secret: 'mysecret123',
     }),
   }),
