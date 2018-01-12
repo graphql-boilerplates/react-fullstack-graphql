@@ -1,8 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
-import Modal from 'react-modal'
-import modalStyle from '../constants/modalStyle'
 import gql from 'graphql-tag'
 
 class CreatePage extends React.Component {
@@ -13,30 +11,28 @@ class CreatePage extends React.Component {
 
   render() {
     return (
-      <Modal
-        isOpen
-        contentLabel="Create Draft"
-        style={modalStyle}
-        onRequestClose={this.props.history.goBack}
-      >
+      <div className="w-100 justify-center pa6">
         <div className="pa4 flex justify-center bg-white">
-          <div style={{ maxWidth: 400 }} className="">
-            {this.state.text && (
-              <img src={this.state.text} alt="" className="w-100 mv3" />
-            )}
+        <div
+          className="close absolute right-0 top-0 pointer"
+          onClick={this.props.history.goBack}
+        >
+          <img src={require('../assets/close.svg')} alt="" />
+        </div>
+          <div style={{ maxWidth: 700 }} >
             <input
-              className="w-100 pa3 mv2"
+              className="w-100 pa2 mv2 br2 b--black-20 bw1"
+              style={{ width: 400 }}
               value={this.state.text}
-              placeholder="Image Url"
+              placeholder="Title"
               onChange={e => this.setState({ text: e.target.value })}
               autoFocus
             />
-            <input
-              className="w-100 pa3 mv2"
-              value={this.state.title}
-              placeholder="Description"
+            <textarea placeholder="Content" 
+              style={{ height: 150 }}
+             value={this.state.title}
               onChange={e => this.setState({ title: e.target.value })}
-            />
+            className="db w-100 ba bw1 b--black-20 pa2 br2 mb2"></textarea>
             {this.state.title &&
               this.state.text && (
                 <button
@@ -48,7 +44,7 @@ class CreatePage extends React.Component {
               )}
           </div>
         </div>
-      </Modal>
+        </div>
     )
   }
 
