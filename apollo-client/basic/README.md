@@ -33,15 +33,8 @@ You need to have the following things installed:
 # Bootstrap GraphQL server in directory `my-app`, based on `react-fullstack-basic` boilerplate
 graphql create my-app --boilerplate react-fullstack-basic
 
-# Navigate into the new project's `server` directory
-cd my-app/server
+# From here you can follow the directions in the terminal.
 
-# Deploy the Graphcool database & start the server (runs on http://localhost:4000)
-yarn start
-
-# Navigate back into the project's root directory and launch the React app
-cd ..
-yarn start # open http://localhost:3000 in your browser
 ```
 
 <details>
