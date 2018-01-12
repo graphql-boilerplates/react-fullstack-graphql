@@ -16,8 +16,13 @@ module.exports = async ({ project }) => {
   )
 
   console.log('Running $ graphcool deploy...')
+
+  process.chdir('server/')
+
   await deploy(false)
   const info = await getInfo()
+
+  process.chdir('../')
 
   replaceInFiles(['server/src/index.js'], '__GRAPHCOOL_ENDPOINT__', info.httpEndpoint)
 
