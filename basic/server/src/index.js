@@ -6,11 +6,13 @@ const resolvers = {
     feed(parent, args, ctx, info) {
       return ctx.db.query.posts({ where: { isPublished: true } }, info)
     },
+    post(parent, { id }, ctx, info) {
+      return ctx.db.query.post({ where: { id: id } }, info)
+    },
   },
   Mutation: {
     createDraft(parent, { title, text }, ctx, info) {
       return ctx.db.mutation.createPost(
-        // TODO remove `isPublished` in favour of default value
         { data: { title, text, isPublished: false } },
         info,
       )
