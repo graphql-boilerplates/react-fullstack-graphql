@@ -9,6 +9,6 @@
     "graphql-yoga": "1.1.5"
   },
   "devDependencies": {
-    "graphcool": "1.4.0"
+    "graphcool": "1.0.0-beta4.1.1"
   }
 }
