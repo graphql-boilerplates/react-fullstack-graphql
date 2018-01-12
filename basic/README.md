@@ -19,14 +19,9 @@
 You need to have the following things installed:
 
 * Node 8+
-* Graphcool CLI: `npm i -g graphcool@beta`
 * GraphQL CLI: `npm i -g graphql-cli`
 * GraphQL Playground desktop app (optional): [Download](https://github.com/graphcool/graphql-playground/releases)
-* Docker, Docker-compose & Docker-machine
-
-## Preview
-
-![](http://imgur.com/3S6fUeI.gif)
+* Docker, Docker-compose & Docker-machine (when developing locally)
 
 ## Getting started
 
@@ -34,15 +29,7 @@ You need to have the following things installed:
 # Bootstrap GraphQL server in directory `my-app`, based on `react-fullstack-basic` boilerplate
 graphql create my-app --boilerplate react-fullstack-basic
 
-# Navigate into the new project's `server` directory
-cd my-app/server
-
-# Deploy the Graphcool database & start the server (runs on http://localhost:4000)
-yarn start
-
-# Navigate back into the project's root directory and launch the React app
-cd ..
-yarn start # open http://localhost:3000 in your browser
+# From here you can follow the directions in the terminal.
 ```
 
 <details>
@@ -50,7 +37,7 @@ yarn start # open http://localhost:3000 in your browser
 <summary>Alternative: Clone repo</summary>
 
 ```sh
-TODO
+COMING SOON
 ```
 
 </details>
