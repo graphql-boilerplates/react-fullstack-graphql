@@ -1,53 +1,45 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Post from '../components/Post'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Post from '../components/Post';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 class DraftsPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
-      this.props.draftsQuery.refetch()
+      this.props.draftsQuery.refetch();
     }
   }
 
   render() {
     if (this.props.draftsQuery.loading) {
       return (
-        <div className='flex w-100 h-100 items-center justify-center pt7'>
+        <div className="flex w-100 h-100 items-center justify-center pt7">
           <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
         </div>
-      )
+      );
     }
 
     return (
-      <div className={'w-100 justify-center pa6'}>
-        <div className='w-100' style={{ maxWidth: 1150 }}>
-           <Link
-            to='/'
-            className='ma3 box new-post no-underline'
-          >
-            <div className='black-80 fw3 description no-underline' >View Feed</div>
+      <React.Fragment>
+        <div className="flex justify-between items-center">
+          <h1>Drafts</h1>
+          <Link to="/create" className="h-100 f6 link dim br1 ba ph3 pv2 mb2 dib black">
+            + Create New Draft
           </Link>
-          <Link
-            to='/create'
-            className='ma3 box new-post no-underline'
-          >
-            <div className='black-80 fw3 description no-underline' >+ Create New Draft</div>
-          </Link>
-          {this.props.draftsQuery.drafts &&
-            this.props.draftsQuery.drafts.map(draft => (
-              <Post
-                key={draft.id}
-                post={draft}
-                refresh={() => this.props.draftsQuery.refetch()}
-                isDraft={!draft.isPublished}
-              />
-            ))}
         </div>
+        {this.props.draftsQuery.drafts &&
+          this.props.draftsQuery.drafts.map(draft => (
+            <Post
+              key={draft.id}
+              post={draft}
+              refresh={() => this.props.draftsQuery.refetch()}
+              isDraft={!draft.isPublished}
+            />
+          ))}
         {this.props.children}
-      </div>
-    )
+      </React.Fragment>
+    );
   }
 }
 
@@ -60,11 +52,11 @@ const DRAFTS_QUERY = gql`
       isPublished
     }
   }
-`
+`;
 
 export default graphql(DRAFTS_QUERY, {
   name: 'draftsQuery', // name of the injected prop: this.props.feedQuery...
   options: {
-    fetchPolicy: 'network-only',
-  },
-})(DraftsPage)
+    fetchPolicy: 'network-only'
+  }
+})(DraftsPage);
