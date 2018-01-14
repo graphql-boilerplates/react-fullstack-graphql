@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Post from '../components/Post';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -24,9 +23,6 @@ class DraftsPage extends React.Component {
       <React.Fragment>
         <div className="flex justify-between items-center">
           <h1>Drafts</h1>
-          <Link to="/create" className="h-100 f6 link dim br1 ba ph3 pv2 mb2 dib black">
-            + Create New Draft
-          </Link>
         </div>
         {this.props.draftsQuery.drafts &&
           this.props.draftsQuery.drafts.map(draft => (

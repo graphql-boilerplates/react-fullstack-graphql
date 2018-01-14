@@ -18,40 +18,38 @@ class DetailPage extends React.Component {
     let action = this._renderAction(post);
 
     return (
-      <div className="w-100 justify-center pa6">
-        <div className="close absolute right-0 top-0 pointer" onClick={this.props.history.goBack}>
-          <img src={require('../assets/close.svg')} alt="" />
-        </div>
-        <div className="items-center black-80 fw3 title ">
-          {post.title}
-          <div className="flex black-80 fw3 text mt2 content">{post.text}</div>
-        </div>
+      <React.Fragment>
+        <h1 className="f3 black-80 fw4 lh-solid">{post.title}</h1>
+        <p className="black-80 fw3">{post.text}</p>
         {action}
-      </div>
+      </React.Fragment>
     );
   }
 
   _renderAction = ({ id, isPublished }) => {
     if (!isPublished) {
       return (
-        <button className="pa3 bg-black-10 bn dim ttu pointer" onClick={() => this.publishDraft(id)}>
-          Publish
-        </button>
-      );
-    } else {
-      return (
-        <button className="pa3 bg-black-10 bn dim ttu pointer" onClick={() => this.deletePost(id)}>
-          Delete
-        </button>
+        <React.Fragment>
+          <a className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer" onClick={() => this.publishDraft(id)}>
+            Publish
+          </a>{' '}
+          <a className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer" onClick={() => this.deletePost(id)}>
+            Delete
+          </a>
+        </React.Fragment>
       );
     }
+    return (
+      <a className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer" onClick={() => this.deletePost(id)}>
+        Delete
+      </a>
+    );
   };
 
   deletePost = async id => {
     await this.props.deletePost({
       variables: { id }
     });
-    console.log('deleted');
     this.props.history.replace('/');
   };
 
@@ -93,9 +91,8 @@ const DELETE_MUTATION = gql`
 
 export default compose(
   graphql(POST_QUERY, {
-    name: 'postQuery', // name of the injected prop: this.props.postQuery...
+    name: 'postQuery',
     options: props => ({
-      // https://www.apollographql.com/docs/react/basics/queries.html#options-from-props
       variables: {
         id: props.match.params.id
       }

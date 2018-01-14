@@ -9,9 +9,9 @@ export default class Post extends React.Component {
     }
 
     return (
-      <Link className="no-underline ma3" to={`/post/${this.props.post.id}`}>
-        <div className="items-center black-80 fw3 title ">{title}</div>
-        <div className="items-center black-80 fw3 description ">{this.props.post.text}</div>
+      <Link className="no-underline ma1" to={`/post/${this.props.post.id}`}>
+        <h2 className="f3 black-80 fw4 lh-solid">{title}</h2>
+        <p className="black-80 fw3">{this.props.post.text}</p>
       </Link>
     );
   }
