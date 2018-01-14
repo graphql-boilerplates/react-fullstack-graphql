@@ -5,8 +5,8 @@
     "playground": "prisma playground"
   },
   "dependencies": {
-    "prisma-binding": "1.3.6",
-    "graphql-yoga": "1.1.7"
+    "graphql-yoga": "1.1.7",
+    "prisma-binding": "1.3.7"
   },
   "devDependencies": {
     "prisma-cli": "beta"
