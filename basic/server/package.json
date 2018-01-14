@@ -9,6 +9,6 @@
     "graphql-yoga": "1.1.7"
   },
   "devDependencies": {
-    "prisma": "beta"
+    "prisma-cli": "beta"
   }
 }
