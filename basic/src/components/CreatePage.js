@@ -11,47 +11,46 @@ class CreatePage extends React.Component {
 
   render() {
     return (
-      <div className="w-100 justify-center pa6">
-        <div className="pa4 flex justify-center bg-white">
-          <div className="close absolute right-0 top-0 pointer" onClick={this.props.history.goBack}>
-            <img src={require('../assets/close.svg')} alt="" />
-          </div>
-          <div style={{ maxWidth: 700 }}>
-            <div className="black-80 fw3 description no-underline"> Create Draft</div>
-            <input
-              className="w-100 pa2 mv2 br2 b--black-20 bw1"
-              style={{ width: 400 }}
-              value={this.state.text}
-              placeholder="Title"
-              onChange={e => this.setState({ text: e.target.value })}
-              autoFocus
-            />
-            <textarea
-              placeholder="Content"
-              style={{ height: 150 }}
-              value={this.state.title}
-              onChange={e => this.setState({ title: e.target.value })}
-              className="db w-100 ba bw1 b--black-20 pa2 br2 mb2"
-            />
-            {this.state.title &&
-              this.state.text && (
-                <button className="pa3 bg-black-10 bn dim ttu pointer" onClick={this.handlePost}>
-                  Post
-                </button>
-              )}
-          </div>
-        </div>
+      <div className="pa4 flex justify-center bg-white">
+        <form onSubmit={this.handlePost}>
+          <h1>Create Draft</h1>
+          <input
+            autoFocus
+            className="w-100 pa2 mv2 br2 b--black-20 bw1"
+            onChange={e => this.setState({ text: e.target.value })}
+            placeholder="Title"
+            type="text"
+            value={this.state.text}
+          />
+          <textarea
+            className="db w-100 ba bw1 b--black-20 pa2 br2 mb2"
+            cols={50}
+            onChange={e => this.setState({ title: e.target.value })}
+            placeholder="Content"
+            rows={8}
+            value={this.state.title}
+          />
+          <input
+            className={`pa3 bg-black-10 bn ${this.state.text && this.state.title && 'dim pointer'}`}
+            disabled={!this.state.text || !this.state.title}
+            type="submit"
+            value="Create"
+          />{' '}
+          <a className="f6 pointer" onClick={this.props.history.goBack}>
+            or cancel
+          </a>
+        </form>
       </div>
     );
   }
 
-  handlePost = async () => {
+  handlePost = async e => {
+    e.preventDefault();
     const { title, text } = this.state;
-    const createDraft = await this.props.createDraftMutation({
+    await this.props.createDraftMutation({
       variables: { title, text }
     });
-    console.log(createDraft);
-    this.props.history.replace('/');
+    this.props.history.replace('/drafts');
   };
 }
 
@@ -65,16 +64,8 @@ const CREATE_DRAFT_MUTATION = gql`
   }
 `;
 
-const PUBLISH_MUTATION = gql`
-  mutation PublishMutation($id: ID!) {
-    publish(id: $id) {
-      id
-      isPublished
-    }
-  }
-`;
-
 const CreatePageWithMutation = graphql(CREATE_DRAFT_MUTATION, {
   name: 'createDraftMutation' // name of the injected prop: this.props.createDraftMutation...
 })(CreatePage);
+
 export default withRouter(CreatePageWithMutation);
