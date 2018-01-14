@@ -3,7 +3,7 @@
     "config:base",
     ":skipStatusChecks"
   ],
-  "ignoreDeps": ["graphcool"],
+  "ignoreDeps": ["prisma"],
   "automerge": true,
   "major": {
     "automerge": false

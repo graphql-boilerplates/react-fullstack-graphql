@@ -1,12 +1,12 @@
-import React from 'react';
-import Post from '../components/Post';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import React from 'react'
+import Post from '../components/Post'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class FeedPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
-      this.props.feedQuery.refetch();
+      this.props.feedQuery.refetch()
     }
   }
 
@@ -16,7 +16,7 @@ class FeedPage extends React.Component {
         <div className="flex w-100 h-100 items-center justify-center pt7">
           <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
         </div>
-      );
+      )
     }
 
     return (
@@ -33,7 +33,7 @@ class FeedPage extends React.Component {
           ))}
         {this.props.children}
       </React.Fragment>
-    );
+    )
   }
 }
 
@@ -46,11 +46,11 @@ const FEED_QUERY = gql`
       isPublished
     }
   }
-`;
+`
 
 export default graphql(FEED_QUERY, {
   name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
   options: {
-    fetchPolicy: 'network-only'
-  }
-})(FeedPage);
+    fetchPolicy: 'network-only',
+  },
+})(FeedPage)

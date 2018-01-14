@@ -1,7 +1,7 @@
-import React from 'react';
-import { graphql, compose } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
-import gql from 'graphql-tag';
+import React from 'react'
+import { graphql, compose } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
+import gql from 'graphql-tag'
 
 class DetailPage extends React.Component {
   render() {
@@ -10,12 +10,12 @@ class DetailPage extends React.Component {
         <div className="flex w-100 h-100 items-center justify-center pt7">
           <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
         </div>
-      );
+      )
     }
 
-    const { post } = this.props.postQuery;
+    const { post } = this.props.postQuery
 
-    let action = this._renderAction(post);
+    let action = this._renderAction(post)
 
     return (
       <React.Fragment>
@@ -23,42 +23,51 @@ class DetailPage extends React.Component {
         <p className="black-80 fw3">{post.text}</p>
         {action}
       </React.Fragment>
-    );
+    )
   }
 
   _renderAction = ({ id, isPublished }) => {
     if (!isPublished) {
       return (
         <React.Fragment>
-          <a className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer" onClick={() => this.publishDraft(id)}>
+          <a
+            className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+            onClick={() => this.publishDraft(id)}
+          >
             Publish
           </a>{' '}
-          <a className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer" onClick={() => this.deletePost(id)}>
+          <a
+            className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+            onClick={() => this.deletePost(id)}
+          >
             Delete
           </a>
         </React.Fragment>
-      );
+      )
     }
     return (
-      <a className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer" onClick={() => this.deletePost(id)}>
+      <a
+        className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+        onClick={() => this.deletePost(id)}
+      >
         Delete
       </a>
-    );
-  };
+    )
+  }
 
   deletePost = async id => {
     await this.props.deletePost({
-      variables: { id }
-    });
-    this.props.history.replace('/');
-  };
+      variables: { id },
+    })
+    this.props.history.replace('/')
+  }
 
   publishDraft = async id => {
     await this.props.publishDraft({
-      variables: { id }
-    });
-    this.props.history.replace('/');
-  };
+      variables: { id },
+    })
+    this.props.history.replace('/')
+  }
 }
 
 const POST_QUERY = gql`
@@ -70,7 +79,7 @@ const POST_QUERY = gql`
       isPublished
     }
   }
-`;
+`
 
 const PUBLISH_MUTATION = gql`
   mutation publish($id: ID!) {
@@ -79,7 +88,7 @@ const PUBLISH_MUTATION = gql`
       isPublished
     }
   }
-`;
+`
 
 const DELETE_MUTATION = gql`
   mutation deletePost($id: ID!) {
@@ -87,22 +96,22 @@ const DELETE_MUTATION = gql`
       id
     }
   }
-`;
+`
 
 export default compose(
   graphql(POST_QUERY, {
     name: 'postQuery',
     options: props => ({
       variables: {
-        id: props.match.params.id
-      }
-    })
+        id: props.match.params.id,
+      },
+    }),
   }),
   graphql(PUBLISH_MUTATION, {
-    name: 'publishDraft'
+    name: 'publishDraft',
   }),
   graphql(DELETE_MUTATION, {
-    name: 'deletePost'
+    name: 'deletePost',
   }),
-  withRouter
-)(DetailPage);
+  withRouter,
+)(DetailPage)

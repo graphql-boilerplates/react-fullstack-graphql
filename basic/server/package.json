@@ -2,13 +2,13 @@
   "name": "graphql-boilerplate",
   "scripts": {
     "start": "NODE_ENV=dev node src/index.js",
-    "playground": "graphcool playground"
+    "playground": "prisma playground"
   },
   "dependencies": {
-    "graphcool-binding": "1.3.5",
+    "prisma-binding": "1.3.6",
     "graphql-yoga": "1.1.7"
   },
   "devDependencies": {
-    "graphcool": "1.0.0-beta4.1.1"
+    "prisma": "beta"
   }
 }

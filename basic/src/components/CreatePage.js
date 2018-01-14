@@ -1,13 +1,13 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class CreatePage extends React.Component {
   state = {
     title: '',
-    text: ''
-  };
+    text: '',
+  }
 
   render() {
     return (
@@ -31,7 +31,9 @@ class CreatePage extends React.Component {
             value={this.state.title}
           />
           <input
-            className={`pa3 bg-black-10 bn ${this.state.text && this.state.title && 'dim pointer'}`}
+            className={`pa3 bg-black-10 bn ${this.state.text &&
+              this.state.title &&
+              'dim pointer'}`}
             disabled={!this.state.text || !this.state.title}
             type="submit"
             value="Create"
@@ -41,17 +43,17 @@ class CreatePage extends React.Component {
           </a>
         </form>
       </div>
-    );
+    )
   }
 
   handlePost = async e => {
-    e.preventDefault();
-    const { title, text } = this.state;
+    e.preventDefault()
+    const { title, text } = this.state
     await this.props.createDraftMutation({
-      variables: { title, text }
-    });
-    this.props.history.replace('/drafts');
-  };
+      variables: { title, text },
+    })
+    this.props.history.replace('/drafts')
+  }
 }
 
 const CREATE_DRAFT_MUTATION = gql`
@@ -62,10 +64,10 @@ const CREATE_DRAFT_MUTATION = gql`
       text
     }
   }
-`;
+`
 
 const CreatePageWithMutation = graphql(CREATE_DRAFT_MUTATION, {
-  name: 'createDraftMutation' // name of the injected prop: this.props.createDraftMutation...
-})(CreatePage);
+  name: 'createDraftMutation', // name of the injected prop: this.props.createDraftMutation...
+})(CreatePage)
 
-export default withRouter(CreatePageWithMutation);
+export default withRouter(CreatePageWithMutation)

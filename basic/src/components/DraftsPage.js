@@ -1,12 +1,12 @@
-import React from 'react';
-import Post from '../components/Post';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import React from 'react'
+import Post from '../components/Post'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class DraftsPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
-      this.props.draftsQuery.refetch();
+      this.props.draftsQuery.refetch()
     }
   }
 
@@ -16,7 +16,7 @@ class DraftsPage extends React.Component {
         <div className="flex w-100 h-100 items-center justify-center pt7">
           <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
         </div>
-      );
+      )
     }
 
     return (
@@ -35,7 +35,7 @@ class DraftsPage extends React.Component {
           ))}
         {this.props.children}
       </React.Fragment>
-    );
+    )
   }
 }
 
@@ -48,11 +48,11 @@ const DRAFTS_QUERY = gql`
       isPublished
     }
   }
-`;
+`
 
 export default graphql(DRAFTS_QUERY, {
   name: 'draftsQuery', // name of the injected prop: this.props.feedQuery...
   options: {
-    fetchPolicy: 'network-only'
-  }
-})(DraftsPage);
+    fetchPolicy: 'network-only',
+  },
+})(DraftsPage)
