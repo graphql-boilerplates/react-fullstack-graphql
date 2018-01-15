@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "prettier-eslint-cli": "4.7.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.1.0"
   },
   "dependencies": {
     "apollo-cache-inmemory": "1.1.5",
