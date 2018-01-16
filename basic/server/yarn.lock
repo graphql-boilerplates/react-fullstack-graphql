@@ -1655,16 +1655,6 @@ graphql-binding@1.2.0:
     graphql-tools "2.18.0"
     iterall "1.1.3"
 
-graphql-cli-prepare@1.4.10:
-  version "1.4.10"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.10.tgz#cd89b37363e4c1203ee2f2f8d99617ee9e52f926"
-  dependencies:
-    chalk "2.3.0"
-    fs-extra "5.0.0"
-    graphql-import "0.4.0"
-    graphql-static-binding "0.7.0"
-    lodash "4.17.4"
-
 graphql-cli-prepare@1.4.11:
   version "1.4.11"
   resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.11.tgz#21170b26c657992289c7c4d4c3257a8faad5ae9a"
@@ -1675,9 +1665,9 @@ graphql-cli-prepare@1.4.11:
     graphql-static-binding "0.8.0"
     lodash "4.17.4"
 
-graphql-cli@2.12.1:
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.12.1.tgz#c19ec8049473b058a956770a898bc1a29ace322e"
+graphql-cli@2.12.2:
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.12.2.tgz#d175e4835112eeeed0fc38126808e99808222c21"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.0"
@@ -1688,12 +1678,12 @@ graphql-cli@2.12.1:
     express "^4.16.2"
     express-request-proxy "^2.0.0"
     graphql "0.12.3"
-    graphql-cli-prepare "1.4.10"
+    graphql-cli-prepare "1.4.11"
     graphql-config "1.1.7"
     graphql-config-extension-graphcool "1.0.5"
     graphql-config-extension-prisma "0.0.3"
     graphql-playground-middleware-express "1.4.9"
-    graphql-schema-linter "0.0.26"
+    graphql-schema-linter "0.0.27"
     inquirer "5.0.0"
     is-url-superb "2.0.0"
     js-yaml "^3.10.0"
@@ -1780,13 +1770,6 @@ graphql-extensions@^0.0.x:
     core-js "^2.5.1"
     source-map-support "^0.5.0"
 
-graphql-import@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.3.1.tgz#953f31323e851b5246602ea8e3d36a95b8fc47b5"
-  dependencies:
-    graphql "^0.12.3"
-    lodash "^4.17.4"
-
 graphql-import@0.4.0, graphql-import@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.0.tgz#84c1b2dfde1c9af26525bd87a6d2f84a63853501"
@@ -1794,7 +1777,7 @@ graphql-import@0.4.0, graphql-import@^0.4.0:
     graphql "^0.12.3"
     lodash "^4.17.4"
 
-graphql-import@^0.4.1:
+graphql-import@0.4.1, graphql-import@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.1.tgz#ef1c047d6250bc8c009b12b64c26924ac4f4716c"
   dependencies:
@@ -1850,20 +1833,6 @@ graphql-request@^1.3.4, graphql-request@^1.4.0:
   dependencies:
     cross-fetch "1.1.1"
 
-graphql-schema-linter@0.0.26:
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.0.26.tgz#a505cc55b2eb561ee4b594a38ff178a9f0d137fb"
-  dependencies:
-    chalk "^2.0.1"
-    columnify "^1.5.4"
-    commander "^2.11.0"
-    cosmiconfig "^3.1.0"
-    figures "^2.0.0"
-    glob "^7.1.2"
-    graphql "^0.10.1"
-    graphql-config "^1.0.0"
-    lodash "^4.17.4"
-
 graphql-schema-linter@0.0.27:
   version "0.0.27"
   resolved "https://registry.yarnpkg.com/graphql-schema-linter/-/graphql-schema-linter-0.0.27.tgz#d777a069a8b50baf6f43a6a0b8030020e62512cb"
@@ -1877,13 +1846,6 @@ graphql-schema-linter@0.0.27:
     graphql "^0.10.1"
     graphql-config "^1.0.0"
     lodash "^4.17.4"
-
-graphql-static-binding@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.7.0.tgz#642ca2829d6720f25e52d63116ca7cb194bbef8f"
-  dependencies:
-    cucumber-html-reporter "^3.0.4"
-    graphql "0.12.3"
 
 graphql-static-binding@0.8.0:
   version "0.8.0"
@@ -3170,9 +3132,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prisma-binding@1.3.7:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.3.7.tgz#f182d3a1cfd4bea0e4033d82eb67fbab709f467c"
+prisma-binding@1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.3.8.tgz#2a92a1f2b97524c57b948eb7039c3297767f0a20"
   dependencies:
     apollo-link "1.0.7"
     apollo-link-error "1.0.3"
@@ -3181,14 +3143,14 @@ prisma-binding@1.3.7:
     cross-fetch "1.1.1"
     graphql "0.12.3"
     graphql-binding "1.2.0"
-    graphql-import "0.3.1"
+    graphql-import "0.4.1"
     graphql-tools "2.18.0"
     jsonwebtoken "^8.1.0"
     subscriptions-transport-ws "0.9.5"
 
-prisma-cli-core@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/prisma-cli-core/-/prisma-cli-core-0.0.6.tgz#eb5f40d02efbba0424205e4af967baa734047fa7"
+prisma-cli-core@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prisma-cli-core/-/prisma-cli-core-1.0.0.tgz#341944eacccfe64e48a3b4e7c3ce39f4dbefa5f7"
   dependencies:
     archiver "^2.0.3"
     callsites "^2.0.0"
@@ -3202,7 +3164,7 @@ prisma-cli-core@0.0.6:
     globby "^6.1.0"
     graphcool-inquirer "^1.0.3"
     graphql "^0.11.7"
-    graphql-cli "2.12.1"
+    graphql-cli "2.12.2"
     graphql-config "^1.0.9"
     inquirer "^3.3.0"
     isomorphic-fetch "^2.2.1"
@@ -3217,7 +3179,7 @@ prisma-cli-core@0.0.6:
     pause "^0.1.0"
     portfinder "^1.0.13"
     prisma-json-schema "^0.0.1"
-    prisma-yml "0.0.4"
+    prisma-yml "1.0.0"
     scuid "^1.0.2"
     semver "^5.4.1"
     sillyname "^0.1.0"
@@ -3229,9 +3191,9 @@ prisma-cli-core@0.0.6:
     util.promisify "^1.0.0"
     validator "^8.2.0"
 
-prisma-cli-engine@0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/prisma-cli-engine/-/prisma-cli-engine-0.0.15.tgz#60fc73ee457710f63955188f2bee79f654c52a3e"
+prisma-cli-engine@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prisma-cli-engine/-/prisma-cli-engine-1.0.0.tgz#308f5953ed78ad5c3947c742cdaa49c0a38f7236"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     "@types/fs-extra" "^4.0.2"
@@ -3273,11 +3235,12 @@ prisma-cli-engine@0.0.15:
     memfs "^2.5.3"
     opn "^5.1.0"
     prisma-json-schema "^0.0.1"
-    prisma-yml "0.0.17"
+    prisma-yml "1.0.0"
     raven "2.3.0"
     replaceall "^0.1.6"
     rwlockfile "^1.4.8"
     scuid "^1.0.2"
+    serialize-error "^2.1.0"
     source-map-support "^0.4.18"
     string "3.x"
     string-similarity "^1.2.0"
@@ -3288,13 +3251,13 @@ prisma-cli-engine@0.0.15:
     validator "^8.2.0"
     yaml-ast-parser "^0.0.34"
 
-prisma-cli@beta:
-  version "1.0.0-beta.4.1.3"
-  resolved "https://registry.yarnpkg.com/prisma-cli/-/prisma-cli-1.0.0-beta.4.1.3.tgz#545aa3764a779d543e090b2178d570b314974994"
+prisma-cli@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prisma-cli/-/prisma-cli-1.0.0.tgz#ac2b3bb8535b4fe1c792b55ed32c66911a3996ff"
   dependencies:
     fs-extra "^4.0.1"
-    prisma-cli-core "0.0.6"
-    prisma-cli-engine "0.0.15"
+    prisma-cli-core "1.0.0"
+    prisma-cli-engine "1.0.0"
     semver "^5.4.1"
     source-map-support "^0.4.18"
 
@@ -3302,9 +3265,9 @@ prisma-json-schema@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/prisma-json-schema/-/prisma-json-schema-0.0.1.tgz#0802e156a293faefdf21e5e41beb8d3681f45cb1"
 
-prisma-yml@0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-0.0.17.tgz#86d1c16f2d0c3c630f7be9ecb69f40cc1b927663"
+prisma-yml@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-0.0.4.tgz#66b54f5056f087ff548719bb62e5251ca49fe4b1"
   dependencies:
     ajv "^5.5.1"
     bluebird "^3.5.1"
@@ -3322,9 +3285,9 @@ prisma-yml@0.0.17:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-prisma-yml@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-0.0.4.tgz#66b54f5056f087ff548719bb62e5251ca49fe4b1"
+prisma-yml@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.0.tgz#e768ab859d0d729df9002dd298c055257a552c18"
   dependencies:
     ajv "^5.5.1"
     bluebird "^3.5.1"
@@ -3688,6 +3651,10 @@ sentence-case@^1.1.1:
   resolved "https://registry.yarnpkg.com/sentence-case/-/sentence-case-1.1.3.tgz#8034aafc2145772d3abe1509aa42c9e1042dc139"
   dependencies:
     lower-case "^1.1.1"
+
+serialize-error@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
 
 serializerr@^1.0.3:
   version "1.0.3"
