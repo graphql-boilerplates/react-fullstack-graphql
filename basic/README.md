@@ -2,8 +2,6 @@
 
 🚀 Basic starter code for a fullstack app based on React, GraphQL & Apollo Client.
 
-![](https://imgur.com/LG6r1q1.png)
-
 ## Technologies
 
 * **Frontend**
