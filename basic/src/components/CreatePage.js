@@ -17,18 +17,18 @@ class CreatePage extends React.Component {
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
-            onChange={e => this.setState({ text: e.target.value })}
+            onChange={e => this.setState({ title: e.target.value })}
             placeholder="Title"
             type="text"
-            value={this.state.text}
+            value={this.state.title}
           />
           <textarea
             className="db w-100 ba bw1 b--black-20 pa2 br2 mb2"
             cols={50}
-            onChange={e => this.setState({ title: e.target.value })}
+            onChange={e => this.setState({ text: e.target.value })}
             placeholder="Content"
             rows={8}
-            value={this.state.title}
+            value={this.state.text}
           />
           <input
             className={`pa3 bg-black-10 bn ${this.state.text &&
