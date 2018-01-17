@@ -10,7 +10,7 @@
 - [`basic`](./basic): Basic boilerplate based on a simple data model and with a GraphQL database
 - `advanced` (_coming soon_): Advanced boilerplate with a GraphQL database, authentication and realtime subscriptions
 
-> All projects are using [`graphql-yoga`](https://github.com/prisma/graphql-yoga/) on the server-side and [Apollo Client](https://www.apollographql.com/client/) on the frontend.
+> All projects are using [`graphql-yoga`](https://github.com/graphcool/graphql-yoga/) on the server-side and [Apollo Client](https://www.apollographql.com/client/) on the frontend.
 
 ## Contributing [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
