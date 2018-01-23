@@ -2,8 +2,6 @@
 
 🚀 Basic starter code for a fullstack app based on React, GraphQL & Apollo Client.
 
-![](https://imgur.com/LG6r1q1.png)
-
 ## Technologies
 
 * **Frontend**
@@ -76,4 +74,4 @@ yarn start
 
 ## Contributing
 
-Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions, join the [`#graphql-boilerplate`](https://prisma.slack.com/messages/graphql-boilerplate) channel on our [Slack](https://prisma.slack.com/).
+Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions, join the [`#graphql-boilerplates`](https://prisma.slack.com/messages/graphql-boilerplates) channel on our [Slack](https://prisma.slack.com/).
