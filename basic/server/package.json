@@ -3,7 +3,8 @@
   "scripts": {
     "start": "node src/index.js",
     "playground": "prisma playground",
-    "dev": "npm-run-all --parallel start playground"
+    "dev": "npm-run-all --parallel start playground",
+    "prisma": "prisma"
   },
   "dependencies": {
     "graphql-yoga": "1.2.0",
