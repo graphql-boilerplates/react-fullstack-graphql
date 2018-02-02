@@ -175,12 +175,6 @@ apollo-link-error@1.0.3:
   dependencies:
     apollo-link "^1.0.6"
 
-apollo-link-http@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.3.2.tgz#63537ee5ecf9c004efb0317f1222b7dbc6f21559"
-  dependencies:
-    apollo-link "^1.0.7"
-
 apollo-link-ws@1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/apollo-link-ws/-/apollo-link-ws-1.0.4.tgz#d0067aa0204470dbd3955aa5204f8dd72d389350"
@@ -877,6 +871,10 @@ dashdash@^1.12.0:
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
   dependencies:
     assert-plus "^1.0.0"
+
+dataloader@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
 
 debug@2.6.9, debug@^2.1.1, debug@^2.2.0:
   version "2.6.9"
@@ -1879,6 +1877,13 @@ graphql-import@0.4.1, graphql-import@^0.4.0, graphql-import@^0.4.1:
     graphql "^0.12.3"
     lodash "^4.17.4"
 
+graphql-import@0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.2.tgz#e4925e838cf41d69d81d3879788ef8ee77532977"
+  dependencies:
+    graphql "^0.12.3"
+    lodash "^4.17.4"
+
 graphql-playground-html@1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.4.4.tgz#3870bba04b160b81a84692bcda4f5c8fabd904a8"
@@ -1980,7 +1985,7 @@ graphql-tools@2.18.0:
     graphql-subscriptions "^0.5.6"
     uuid "^3.1.0"
 
-graphql-tools@^2.18.0:
+graphql-tools@2.19.0, graphql-tools@^2.18.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.19.0.tgz#04e1065532ab877aff3ad1883530fb56804ce9bf"
   dependencies:
@@ -2126,6 +2131,14 @@ http-errors@1.6.2, http-errors@~1.6.2:
     inherits "2.0.3"
     setprototypeof "1.0.3"
     statuses ">= 1.3.1 < 2"
+
+http-link-dataloader@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/http-link-dataloader/-/http-link-dataloader-0.1.0.tgz#892d92d9e5b3589b71f324f0578eb69a84c068e1"
+  dependencies:
+    apollo-link "^1.0.7"
+    cross-fetch "1.1.1"
+    dataloader "^1.4.0"
 
 http-signature@~1.1.0:
   version "1.1.1"
@@ -3318,19 +3331,19 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prisma-binding@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.0.tgz#f232579b231ed3f256be98b2d0251909e969a68a"
+prisma-binding@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.3.tgz#482437a093e17f47a34e39cabd173bb138f5206c"
   dependencies:
     apollo-link "1.0.7"
     apollo-link-error "1.0.3"
-    apollo-link-http "1.3.2"
     apollo-link-ws "1.0.4"
     cross-fetch "1.1.1"
     graphql "0.12.3"
     graphql-binding "1.2.0"
-    graphql-import "0.4.1"
-    graphql-tools "2.18.0"
+    graphql-import "0.4.2"
+    graphql-tools "2.19.0"
+    http-link-dataloader "^0.1.0"
     jsonwebtoken "^8.1.0"
     subscriptions-transport-ws "0.9.5"
 
