@@ -1716,14 +1716,14 @@ graphql-cli-prepare@1.4.11:
     graphql-static-binding "0.8.0"
     lodash "4.17.4"
 
-graphql-cli-prepare@1.4.12:
-  version "1.4.12"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.12.tgz#f046f5336e0745d44af84a7c16a9319a0d854595"
+graphql-cli-prepare@1.4.13:
+  version "1.4.13"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.13.tgz#5c41d030a6cff77371f6abe551db0dba028a3707"
   dependencies:
     chalk "2.3.0"
     fs-extra "5.0.0"
     graphql-import "0.4.1"
-    graphql-static-binding "0.8.0"
+    graphql-static-binding "0.8.1"
     lodash "4.17.4"
 
 graphql-cli@2.12.2:
@@ -1759,9 +1759,9 @@ graphql-cli@2.12.2:
     source-map-support "^0.5.0"
     yargs "10.1.1"
 
-graphql-cli@2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.13.0.tgz#3273a32cb07e9a398f3df1306940f8a6f08c6b45"
+graphql-cli@2.13.1:
+  version "2.13.1"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.13.1.tgz#68b8e3165d4c36ebd9473b91a5ab5809a0ad0b08"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.0"
@@ -1772,7 +1772,7 @@ graphql-cli@2.13.0:
     express "^4.16.2"
     express-request-proxy "^2.0.0"
     graphql "0.12.3"
-    graphql-cli-prepare "1.4.12"
+    graphql-cli-prepare "1.4.13"
     graphql-config "1.2.0"
     graphql-config-extension-graphcool "1.0.6"
     graphql-config-extension-openapi "1.0.1"
@@ -1964,6 +1964,13 @@ graphql-schema-linter@0.0.28:
 graphql-static-binding@0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.8.0.tgz#35858dfc89648573b9a5b6b61b431101b6b376af"
+  dependencies:
+    cucumber-html-reporter "^3.0.4"
+    graphql "0.12.3"
+
+graphql-static-binding@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/graphql-static-binding/-/graphql-static-binding-0.8.1.tgz#1e1ba7869c45e54456b014bcdaaaf0d119d964d9"
   dependencies:
     cucumber-html-reporter "^3.0.4"
     graphql "0.12.3"
