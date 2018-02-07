@@ -2011,9 +2011,9 @@ graphql-tools@^2.18.0:
     graphql-subscriptions "^0.5.6"
     uuid "^3.1.0"
 
-graphql-yoga@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.2.2.tgz#62cbabe666ed0c51ff8aeb5cdbcabb828a9b5d30"
+graphql-yoga@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.2.3.tgz#62889bf7f77e61b441848de3209bf73f762eab4f"
   dependencies:
     "@types/cors" "^2.8.3"
     "@types/express" "^4.0.39"
