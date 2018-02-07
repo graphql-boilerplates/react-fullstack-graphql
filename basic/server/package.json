@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "graphql-yoga": "1.2.2",
-    "prisma-binding": "1.5.4"
+    "prisma-binding": "1.5.5"
   },
   "devDependencies": {
     "graphql-cli": "2.13.1",
