@@ -38,14 +38,12 @@ graphql create my-app --boilerplate react-fullstack-basic
 cd my-app/server
 
 # 4. Start the server
-yarn start # the server is now running on http://localhost:4000
+yarn dev # runs server on http://localhost:4000, and opens GraphQL PLayground
 
 # 5. Open a new tab in the terminal and navigate back into my-app;
 # then run the app
 cd ..
 yarn start
-
-# 6. Open http://localhost:4000 in your browser
 ```
 
 ## Documentation
