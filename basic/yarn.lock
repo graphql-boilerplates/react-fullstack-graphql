@@ -6,10 +6,6 @@
   version "2.0.47"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
 
-"@types/graphql@>=0.8.6 <=0.11.7":
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.11.7.tgz#da39a2f7c74e793e32e2bb7b3b68da1691532dd5"
-
 "@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
@@ -2988,11 +2984,9 @@ graphql-anywhere@^4.1.3:
   dependencies:
     apollo-utilities "^1.0.6"
 
-graphql-tag@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.7.0.tgz#3d4412b87a894f2c7ccd73b515f887dc67736203"
-  dependencies:
-    "@types/graphql" ">=0.8.6 <=0.11.7"
+graphql-tag@2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.7.3.tgz#5040112a1b4623285ef017c252276f0dea37f03f"
 
 graphql@0.12.3:
   version "0.12.3"
