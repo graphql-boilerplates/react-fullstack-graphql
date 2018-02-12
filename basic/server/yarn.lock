@@ -1759,9 +1759,9 @@ graphql-cli@2.12.2:
     source-map-support "^0.5.0"
     yargs "10.1.1"
 
-graphql-cli@2.13.2:
-  version "2.13.2"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.13.2.tgz#8d4fd14c6084844673fe0d409a57f0e9d33373be"
+graphql-cli@2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.14.0.tgz#78f7e30a76f2425d1491940e582643a4dceef5e9"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.0"
