@@ -13,19 +13,11 @@
 - **Pre-configured Apollo Client:** The project comes with a preconfigured setup for Apollo Client
 - **Simple Hello World example:** Where it either returns `Hello <name>!` if name argument is provided or else it returns `Hello World!`
 
+![](https://i.imgur.com/Ip2ZXSC.png)
+
 For a fully-fledged **React & Apollo tutorial**, visit [How to GraphQL](https://www.howtographql.com/react-apollo/0-introduction/). You can more learn about the idea behind GraphQL boilerplates [here](https://blog.graph.cool/graphql-boilerplates-graphql-create-how-to-setup-a-graphql-project-6428be2f3a5).
 
-## Requirements
-
-You need to have the [GraphQL CLI](https://github.com/graphql-cli/graphql-cli) installed to bootstrap your GraphQL server using `graphql create`:
-
-```sh
-npm install -g graphql-cli
-```
-
 ## Getting started
-
-
 
 ## Documentation
 
@@ -35,7 +27,7 @@ npm install -g graphql-cli
 
 ### Server structure
 
-![](https://imgur.com/95faUsa.png)
+![](https://i.imgur.com/fMO23xJ.png)
 
 
 | File name 　　　　　　　　　　　　　　| Description 　　　　　　　　<br><br>| 
@@ -43,6 +35,17 @@ npm install -g graphql-cli
 | `└── src ` (_directory_) | _Contains the source files for your GraphQL server_ |
 | `　　├── index.js` | The entry point for your GraphQL server |
 
+### Frontend React Structure
+
+| File name 　　　　　　　　　　　　　　| Description 　　　　　　　　<br><br>| 
+| :--  | :--         |
+| `└── public ` (_directory_) | Contains the html file   |
+| `　　├── index.html` 
+| `└── src ` (_directory_) | Contains the html file   |
+| `　　├── `components(_directory_)| Contains React Component
+| `　　├── `index.js(file)|(Root file for React application)
+
+## Run your react application using `yarn run start`
 
 ## Contributing
 
