@@ -4,12 +4,9 @@ import { graphql } from 'react-apollo';
 import logo from '../logo.svg';
 import '../styles/App.css';
 
-
 const MY_QUERY = gql`
-query hello {
-  hello(name: $name) {
-    name
-  }
+query hello($name: String) {
+  hello(name: $name)
 }`;
 
 class App extends Component {
