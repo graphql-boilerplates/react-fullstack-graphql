@@ -7,11 +7,11 @@
     "prisma": "prisma"
   },
   "dependencies": {
-    "graphql-yoga": "1.2.4",
-    "prisma-binding": "1.5.7"
+    "graphql-yoga": "1.2.5",
+    "prisma-binding": "1.5.9"
   },
   "devDependencies": {
-    "graphql-cli": "2.13.1",
+    "graphql-cli": "2.14.0",
     "npm-run-all": "4.1.2",
     "prisma": "1.0.8"
   }
