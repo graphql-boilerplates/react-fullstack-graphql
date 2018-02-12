@@ -35,7 +35,7 @@ npm install -g graphql-cli
 
 ### Server structure
 
-![](https://imgur.com/95faUsa.png)
+![](https://preview.ibb.co/mY57Qn/Screen_Shot_2018_02_12_at_3_58_13_PM.png)
 
 
 | File name 　　　　　　　　　　　　　　| Description 　　　　　　　　<br><br>| 
