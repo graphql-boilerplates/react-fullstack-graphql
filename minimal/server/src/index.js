@@ -13,7 +13,7 @@ const opts = {
 const resolvers = {
   Query: {
     hello: (_, { name }) => { 
-      const returnValue = !name ? `Hello ${name || 'World!'}` : null
+      const returnValue = name ? `Hello ${name || 'World!'}` : `Hello World`
       return returnValue
     },
   },
