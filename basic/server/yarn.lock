@@ -189,6 +189,14 @@ apollo-link@1.0.7, apollo-link@^1.0.0, apollo-link@^1.0.6, apollo-link@^1.0.7:
     apollo-utilities "^1.0.0"
     zen-observable "^0.6.0"
 
+apollo-link@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.1.0.tgz#9d573b16387ee0d8e147b1f319e42c8c562f18f7"
+  dependencies:
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.0"
+    zen-observable "^0.7.0"
+
 apollo-server-core@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-1.3.2.tgz#f36855a3ebdc2d77b8b9c454380bf1d706105ffc"
@@ -1710,13 +1718,12 @@ graphcool-yml@0.4.8:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-binding@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-1.2.0.tgz#0876318735fb469631586d7721a2189eff7a8532"
+graphql-binding@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-1.2.1.tgz#60195fa62560a739727735eb42e37d3784080d27"
   dependencies:
-    graphql "0.12.3"
-    graphql-tools "2.18.0"
-    iterall "1.1.3"
+    graphql-tools "2.21.0"
+    iterall "1.1.4"
 
 graphql-cli-prepare@1.4.11:
   version "1.4.11"
@@ -1999,16 +2006,6 @@ graphql-subscriptions@^0.5.6:
     es6-promise "^4.1.1"
     iterall "^1.1.3"
 
-graphql-tools@2.18.0:
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.18.0.tgz#8e2d6436f9adba1d579c1a1710ae95e7f5e7248b"
-  dependencies:
-    apollo-link "^1.0.0"
-    apollo-utilities "^1.0.1"
-    deprecated-decorator "^0.1.6"
-    graphql-subscriptions "^0.5.6"
-    uuid "^3.1.0"
-
 graphql-tools@2.20.2:
   version "2.20.2"
   resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.20.2.tgz#b953ce7d62bbf6a1ca947101883ae725e1f58e02"
@@ -2016,6 +2013,16 @@ graphql-tools@2.20.2:
     apollo-link "^1.0.0"
     apollo-utilities "^1.0.1"
     deprecated-decorator "^0.1.6"
+    uuid "^3.1.0"
+
+graphql-tools@2.21.0:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.21.0.tgz#c0d0fbda6f40a87c8d267a2989ade2ae8b9a288e"
+  dependencies:
+    apollo-link "^1.1.0"
+    apollo-utilities "^1.0.1"
+    deprecated-decorator "^0.1.6"
+    iterall "^1.1.3"
     uuid "^3.1.0"
 
 graphql-tools@^2.18.0:
@@ -2500,7 +2507,7 @@ iterall@1.1.3, iterall@^1.1.0, iterall@^1.1.1, iterall@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.3.tgz#1cbbff96204056dde6656e2ed2e2226d0e6d72c9"
 
-iterall@1.1.x:
+iterall@1.1.4, iterall@1.1.x:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.4.tgz#0db40d38fdcf53ae14dc8ec674e62ab190d52cfc"
 
@@ -3401,16 +3408,16 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prisma-binding@1.5.9:
-  version "1.5.9"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.9.tgz#e5db678144f80536b29c83f522fd8ff46f121d04"
+prisma-binding@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.10.tgz#6d61bcd7afadb3cad5b3a390e889273f718b15a1"
   dependencies:
     apollo-link "1.0.7"
     apollo-link-error "1.0.3"
     apollo-link-ws "1.0.4"
     cross-fetch "1.1.1"
     graphql "0.13.0"
-    graphql-binding "1.2.0"
+    graphql-binding "1.2.1"
     graphql-import "0.4.3"
     graphql-tools "2.20.2"
     http-link-dataloader "^0.1.1"
@@ -4744,6 +4751,10 @@ z-schema@^3.18.2:
 zen-observable@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.6.1.tgz#01dbed3bc8d02cbe9ee1112c83e04c807f647244"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
 
 zip-stream@^1.2.0:
   version "1.2.0"
