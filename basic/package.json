@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "prettier-eslint-cli": "4.7.0",
+    "prettier-eslint-cli": "4.7.1",
     "react-scripts": "1.1.1"
   },
   "dependencies": {
