@@ -1718,12 +1718,12 @@ graphcool-yml@0.4.8:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-binding@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-1.2.1.tgz#60195fa62560a739727735eb42e37d3784080d27"
+graphql-binding@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-1.2.2.tgz#81a0439c3e951333d0cebde1887f418297a9193e"
   dependencies:
     graphql-tools "2.21.0"
-    iterall "1.1.4"
+    iterall "1.2.0"
 
 graphql-cli-prepare@1.4.11:
   version "1.4.11"
@@ -2491,9 +2491,13 @@ iterall@1.1.3, iterall@^1.1.0, iterall@^1.1.1, iterall@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.3.tgz#1cbbff96204056dde6656e2ed2e2226d0e6d72c9"
 
-iterall@1.1.4, iterall@1.1.x:
+iterall@1.1.x:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.4.tgz#0db40d38fdcf53ae14dc8ec674e62ab190d52cfc"
+
+iterall@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.0.tgz#434e9f41f0b99911ab9c3d49d95f0e079176a2a2"
 
 js-base64@^2.3.2:
   version "2.4.2"
@@ -3392,16 +3396,16 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prisma-binding@1.5.10:
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.10.tgz#6d61bcd7afadb3cad5b3a390e889273f718b15a1"
+prisma-binding@1.5.11:
+  version "1.5.11"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.11.tgz#f1c7a03ea054ecd76375f79d3bca79434614b6a1"
   dependencies:
     apollo-link "1.0.7"
     apollo-link-error "1.0.3"
     apollo-link-ws "1.0.4"
     cross-fetch "1.1.1"
     graphql "0.13.0"
-    graphql-binding "1.2.1"
+    graphql-binding "1.2.2"
     graphql-import "0.4.3"
     graphql-tools "2.20.2"
     http-link-dataloader "^0.1.1"
