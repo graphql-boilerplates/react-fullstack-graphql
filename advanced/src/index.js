@@ -73,16 +73,27 @@ const client = new ApolloClient({
   connectToDevTools: true
 })
 
-const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      return isAuthorized
-        ? <Component logout={logout} />
-        : <Redirect to={`/`} />;
-    }}
-  />
-);
+  const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
+    <Route
+      {...rest}
+      render={props => {
+        return isAuthorized
+          ? <Component logout={logout} />
+          : <Redirect to={`/`} />;
+      }}
+    />
+  );
+
+   const UnProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
+    <Route
+      {...rest}
+      render={props => {
+        return isAuthorized === false
+          ? <Component logout={logout} />
+          : <Redirect to={`/`} />;
+      }}
+    />
+  );
 
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -127,8 +138,8 @@ ReactDOM.render(
             <ProtectedRoute path="/drafts" component={DraftsPage} />
             <ProtectedRoute path="/create" component={CreatePage} />
             <Route path="/post/:id" component={DetailPage} />
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/signup" component={SignupPage}/>
+            <UnProtectedRoute path="/login" component={LoginPage}/>
+            <UnProtectedRoute path="/signup" component={SignupPage}/>
             <Route component={PageNotFound} />
           </Switch>
         </div>

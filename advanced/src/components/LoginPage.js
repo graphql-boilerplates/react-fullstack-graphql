@@ -6,7 +6,6 @@ import gql from 'graphql-tag'
 class LoginPage extends React.Component {
 
   state = {
-    login: true, // switch between Login and SignUp
     email: '',
     password: '',
     name: '',
@@ -15,41 +14,63 @@ class LoginPage extends React.Component {
   render() {
     return (
       <div className="pa4 flex justify-center bg-white">
-        <form onSubmit={this.handlePost}>
+        <div>
           <h3>Do not have an account? <a href="/signup">Signup</a></h3>
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Email"
             type="email"
-            value={this.state.title}
+            value={this.state.email}
           />
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Password"
             type="password"
-            value={this.state.title}
+            value={this.state.password}
           />
-          <a class="f6 link dim ph3 pv2 mb2 dib white bg-navy" href="#0">Submit</a>
-        </form>
+          {this.state.email && this.state.password &&
+          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.authenticateUser}>Log in</button>
+          }
+        </div>
       </div>
     )
   }
+
+  authenticateUser = async () => {
+    const {email, password} = this.state
+
+    const response = await this.props.authenticateUserMutation({variables: {email, password}})
+    localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
+    this.props.history.replace('/')
+  }
+
 }
 
-const LOGIN_USER = gql `
-    mutation LoginMutation($email: String!, $password: String!) {
-      login(email: $email, text: $password) {
-        token
-        user{
-          id
-          name
-          email
-        }
-      }
+const AUTHENTICATE_USER_MUTATION = gql`
+  mutation AuthenticateUserMutation ($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
+      token
     }
-  `
+  }
+`
+
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
+    loggedInUser {
+      id
+    }
+  }
+`
+
+export default compose(
+  graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
+  graphql(LOGGED_IN_USER_QUERY, {
+    name: 'loggedInUserQuery',
+    options: { fetchPolicy: 'network-only' }
+  })
+)(withRouter(LoginPage))
 
 const LoginPageWithMutation = graphql(LOGIN_USER)(LoginPage)
 export default withRouter(LoginPageWithMutation)
