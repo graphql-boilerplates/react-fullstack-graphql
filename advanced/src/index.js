@@ -9,7 +9,6 @@ import {
   Redirect
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
-import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 
 
@@ -20,13 +19,19 @@ import DetailPage from './components/DetailPage'
 import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import PageNotFound from './components/PageNotFound'
+import { USER_ID, AUTH_TOKEN } from './constant'
 
 import 'tachyons'
 import './index.css'
 
-const networkInterface = createBatchingNetworkInterface({
-  uri: 'http://localhost:4000'
-})
+import { HttpLink, InMemoryCache, ApolloClient } from 'apollo-client-preset'
+
+const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+});
 
 const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
   reconnect: true,
@@ -36,11 +41,11 @@ const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
 })
 
 const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
-  networkInterface,
+  httpLink,
   wsClient
 )
 
-networkInterface.use([{
+httpLink.use([{
   applyBatchMiddleware (req, next) {
     if (!req.options.headers) {
       req.options.headers = {}
@@ -50,11 +55,6 @@ networkInterface.use([{
     next()
   }
 }])
-
-const apolloClient = new ApolloClient({
-  networkInterface: networkInterfaceWithSubscriptions,
-  connectToDevTools: true
-})
 
 const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
   <Route
