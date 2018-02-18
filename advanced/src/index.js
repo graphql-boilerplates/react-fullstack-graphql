@@ -34,11 +34,11 @@ const httpLink = new HttpLink({ uri: 'https://uniserver.now.sh/' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem(AUTH_TOKEN)
+  const tokenValue = localStorage.getItem(AUTH_TOKEN)
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
-      Authorization: token ? `Bearer ${token}` : "",
+      Authorization: tokenValue ? `Bearer ${tokenValue}` : "",
     }
   })
   return forward(operation)
@@ -74,6 +74,7 @@ const client = new ApolloClient({
   connectToDevTools: true
 })
 
+  const token = localStorage.getItem (AUTH_TOKEN)
   const ProtectedRoute = ({component: Component, token, ...rest}) => {
       return  token  ? (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />) : (
       <Redirect to="/login" />
@@ -132,11 +133,11 @@ ReactDOM.render(
         <div className="fl w-100 pl4 pr4">
           <Switch>
             <Route exact path="/" component={FeedPage} />
-            <ProtectedRoute path="/drafts" component={DraftsPage} />
-            <ProtectedRoute path="/create" component={CreatePage} />
+            <ProtectedRoute token={token} path="/drafts" component={DraftsPage} />
+            <ProtectedRoute token={token} path="/create" component={CreatePage} />
             <Route path="/post/:id" component={DetailPage} />
-            <UnProtectedRoute path="/login" component={LoginPage}/>
-            <UnProtectedRoute path="/signup" component={SignupPage}/>
+            <UnProtectedRoute token={token} path="/login" component={LoginPage}/>
+            <UnProtectedRoute token={token} path="/signup" component={SignupPage}/>
             <Route path="/logout" component={LogoutPage}/>
             <Route component={PageNotFound} />
           </Switch>
