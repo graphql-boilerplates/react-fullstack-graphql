@@ -42,7 +42,7 @@ class LoginPage extends React.Component {
     const {email, password} = this.state
 
     const response = await this.props.authenticateUserMutation({variables: {email, password}})
-    localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
+    localStorage.setItem('AUTH_TOKEN', response.data.authenticateUser.token)
     this.props.history.replace('/')
   }
 
