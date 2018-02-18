@@ -21,6 +21,7 @@ class SignupPage extends React.Component {
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Name"
             type="text"
+            onChange={e => this.setState({ name: e.target.value })}
             value={this.state.name}
           />
           <input
@@ -28,6 +29,7 @@ class SignupPage extends React.Component {
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Email"
             type="email"
+            onChange={e => this.setState({ email: e.target.value })}
             value={this.state.email}
           />
           <input
@@ -35,6 +37,7 @@ class SignupPage extends React.Component {
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Enter Password"
             type="password"
+            onChange={e => this.setState({ password: e.target.value })}
             value={this.state.password}
           />
 
