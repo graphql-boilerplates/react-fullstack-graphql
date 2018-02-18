@@ -78,4 +78,4 @@ const SIGNUP_USER = gql `
   `
 
 export default graphql(SIGNUP_USER,
-{ name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(LoginPage))
+{ name: 'SignedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(LoginPage))
