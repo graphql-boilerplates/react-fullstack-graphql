@@ -38,4 +38,63 @@ class LoginPage extends React.Component {
   }
 }
 
+const LOGIN_USER = gql `
+    mutation LoginMutation($email: String!, $password: String!) {
+      login(email: $email, text: $password) {
+        token
+        user{
+          id
+          name
+          email
+        }
+      }
+    }
+  `
+  export default {
+    data: () => ({
+      email: '',
+      password: ''
+    }),
+    // Attribute
+    methods: {
+      create() {
+        const email = this.email
+        const password = this.password
+        // Mutation
+        this.$apollo.mutate({
+          mutation: LOGIN_USER,
+          variables: {
+            email,
+            password,
+          },
+        }).then((data) => {
+          // Result
+          console.log(data);
+          this.$router.push({ path: 'Blog' })
+        }).catch((error) => {
+          // Error
+          alert(`Error from ${error}`)
+          console.error(error)
+        })
+      },
+      saveUserData (user, token) {
+        // localStorage.setItem(USER_ID, user)
+        localStorage.setItem(AUTH_TOKEN, token)
+        this.$root.$data.token = localStorage.getItem(USER_TOKEN)
+      }
+    },
+    computed: {
+      canLogin: function () {
+        return {
+          disabled: !this.email && !this.password
+        }
+      },
+      classObject: function(){
+        return {
+          dim: this.email && this.password
+        }
+      }
+    }
+  }
+
 export default withRouter(LoginPage)

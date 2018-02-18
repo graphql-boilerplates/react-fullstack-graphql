@@ -56,8 +56,6 @@ const apolloClient = new ApolloClient({
   connectToDevTools: true
 })
 
-
-
 const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
   <Route
     {...rest}
@@ -109,8 +107,8 @@ ReactDOM.render(
         <div className="fl w-100 pl4 pr4">
           <Switch>
             <Route exact path="/" component={FeedPage} />
-            <Route path="/drafts" component={DraftsPage} />
-            <Route path="/create" component={CreatePage} />
+            <ProtectedRoute path="/drafts" component={DraftsPage} />
+            <ProtectedRoute path="/create" component={CreatePage} />
             <Route path="/post/:id" component={DetailPage} />
             <Route path="/login" component={LoginPage}/>
             <Route path="/signup" component={SignupPage}/>
