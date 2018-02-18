@@ -17,6 +17,13 @@ class SignupPage extends React.Component {
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
+            placeholder="Name"
+            type="text"
+            value={this.state.title}
+          />
+          <input
+            autoFocus
+            className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Email"
             type="email"
             value={this.state.title}

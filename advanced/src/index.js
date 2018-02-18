@@ -12,6 +12,7 @@ import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 
 import FeedPage from './components/FeedPage'
 import DraftsPage from './components/DraftsPage'
@@ -31,6 +32,14 @@ const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),
 })
+
+const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
+  reconnect: true,
+  connectionParams: {
+    Authorisation: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
+  }
+})
+
 
 const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
   <Route

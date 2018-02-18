@@ -16,14 +16,7 @@ class LoginPage extends React.Component {
     return (
       <div className="pa4 flex justify-center bg-white">
         <form onSubmit={this.handlePost}>
-          <h3>Do not have an acoount? <a href="/signup">Signup</a></h3>
-          <input
-            autoFocus
-            className="w-100 pa2 mv2 br2 b--black-20 bw1"
-            placeholder="Name"
-            type="text"
-            value={this.state.title}
-          />
+          <h3>Do not have an account? <a href="/signup">Signup</a></h3>
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"

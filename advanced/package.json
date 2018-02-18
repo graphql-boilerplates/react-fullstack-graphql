@@ -22,12 +22,12 @@
     "eslint-plugin-react": "^7.5.1",
     "graphql": "0.13.1",
     "graphql-tag": "2.7.3",
-    "jwt-decode": "^2.2.0",
     "react": "16.2.0",
     "react-apollo": "2.0.4",
     "react-dom": "16.2.0",
     "react-modal": "3.2.1",
     "react-router-dom": "4.2.2",
+    "subscriptions-transport-ws": "^0.9.5",
     "tachyons": "4.9.1"
   },
   "scripts": {
