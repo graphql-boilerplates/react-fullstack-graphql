@@ -49,4 +49,17 @@ class SignupPage extends React.Component {
   }
 }
 
+const SIGNUP_USER = gql `
+    mutation SIGNUP_Mutation($email: String!, $password: String!, $name: String!) {
+      signup(email: $email, password: $password, name: $name) {
+        token
+        user{
+          id
+          name
+          email
+        }
+      }
+    }
+  `
+
 export default withRouter(SignupPage)
