@@ -1,23 +1,17 @@
 import React from 'react'
+import {
+  Link
+} from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-class PageNotFound extends React.Component {
-  state = {
-    title: '',
-    text: '',
-  }
 
-  render() {
-    return (
-      <div className="pa4 flex justify-center bg-white">
-        <form onSubmit={this.handlePost}>
-          <h1>PageNotFound</h1>
-        </form>
-      </div>
-    )
-  }
-}
+const PageNotFound = ({ location }) => (
+  <div>
+    <p>Sorry, no page found at {location.pathname}</p>
+    <Link to="/">Go Home</Link>
+  </div>
+)
 
-export default withRouter(PageNotFound)
+export default PageNotFound

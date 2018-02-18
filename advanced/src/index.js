@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
@@ -18,6 +19,8 @@ import CreatePage from './components/CreatePage'
 import DetailPage from './components/DetailPage'
 import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
+import PageNotFound from './components/PageNotFound'
+import { isTokenExpired } from './jwtHelper'
 
 import 'tachyons'
 import './index.css'
@@ -28,6 +31,17 @@ const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),
 })
+
+const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => {
+      return isAuthorized
+        ? <Component logout={logout} />
+        : <Redirect to={`/`} />;
+    }}
+  />
+);
 
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -74,6 +88,18 @@ ReactDOM.render(
             <Route path="/post/:id" component={DetailPage} />
             <Route path="/login" component={LoginPage}/>
             <Route path="/signup" component={SignupPage}/>
+            <ProtectedRoute
+            path="(/)?"
+            exact
+            component={FeedPage}
+            logout={this.logout}
+            isAuthorized={(
+              this.state.auth0Token &&
+              this.state.graphcoolToken &&
+              !isTokenExpired(this.state.auth0Token)
+            )}
+          />
+            <Route component={PageNotFound} />
           </Switch>
         </div>
       </React.Fragment>
