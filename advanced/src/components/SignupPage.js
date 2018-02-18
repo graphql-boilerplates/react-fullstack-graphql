@@ -5,35 +5,36 @@ import gql from 'graphql-tag'
 
 class SignupPage extends React.Component {
   state = {
-    title: '',
-    text: '',
+    email: '',
+    password: '',
+    name: '',
   }
 
   render() {
     return (
       <div className="pa4 flex justify-center bg-white">
-        <form onSubmit={this.handlePost}>
+        <form onSubmit={this.handleSignup}>
           <h3> Already have an account!!! <a href="/login"> Login</a></h3>
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Name"
             type="text"
-            value={this.state.title}
+            value={this.state.name}
           />
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Email"
             type="email"
-            value={this.state.title}
+            value={this.state.email}
           />
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
             placeholder="Enter Password"
             type="password"
-            value={this.state.title}
+            value={this.state.password}
           />
           <input
             autoFocus
@@ -42,7 +43,12 @@ class SignupPage extends React.Component {
             type="password"
             value={this.state.title}
           />
-          <a class="f6 link dim ph3 pv2 mb2 dib white bg-navy" href="#0">Submit</a>
+          <input
+            className={`pa3 bg-black-10 bn ${this.state.text && this.state.title && 'dim pointer'}`}
+            disabled={!this.state.email || !this.state.name || !this.state.password}
+            type="submit"
+            value="Sign Up"
+          />
         </form>
       </div>
     )
