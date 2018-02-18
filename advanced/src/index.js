@@ -78,7 +78,8 @@ const client = new ApolloClient({
     <Route
       {...rest}
       render={props => {
-        return isAuthorized
+        var token = localStorage.getItem (AUTH_TOKEN)
+        return token === ''
           ? <Component logout={logout} />
           : <Redirect to={`/`} />;
       }}
