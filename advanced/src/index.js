@@ -122,6 +122,12 @@ ReactDOM.render(
             Drafts
           </NavLink>
           <Link
+            to="/logout"
+            className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+          >
+           Logout
+          </Link>
+          <Link
             to="/create"
             className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
           >
