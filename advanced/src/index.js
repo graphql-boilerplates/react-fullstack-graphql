@@ -24,6 +24,7 @@ import DetailPage from './components/DetailPage'
 import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import PageNotFound from './components/PageNotFound'
+import LogoutPage from './components/LogoutPage'
 import { USER_ID, AUTH_TOKEN } from './constant'
 
 import 'tachyons'
@@ -140,6 +141,7 @@ ReactDOM.render(
             <Route path="/post/:id" component={DetailPage} />
             <UnProtectedRoute path="/login" component={LoginPage}/>
             <UnProtectedRoute path="/signup" component={SignupPage}/>
+            <Route path="/logout" component={LogoutPage}/>
             <Route component={PageNotFound} />
           </Switch>
         </div>
