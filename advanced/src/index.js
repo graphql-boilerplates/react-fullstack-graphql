@@ -21,7 +21,6 @@ import DetailPage from './components/DetailPage'
 import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import PageNotFound from './components/PageNotFound'
-import { isTokenExpired } from './jwtHelper'
 
 import 'tachyons'
 import './index.css'
@@ -39,7 +38,6 @@ const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
     Authorisation: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
   }
 })
-
 
 const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
   <Route
