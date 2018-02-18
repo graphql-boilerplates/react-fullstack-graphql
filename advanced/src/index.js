@@ -88,17 +88,6 @@ ReactDOM.render(
             <Route path="/post/:id" component={DetailPage} />
             <Route path="/login" component={LoginPage}/>
             <Route path="/signup" component={SignupPage}/>
-            <ProtectedRoute
-            path="(/)?"
-            exact
-            component={FeedPage}
-            logout={this.logout}
-            isAuthorized={(
-              this.state.auth0Token &&
-              this.state.graphcoolToken &&
-              !isTokenExpired(this.state.auth0Token)
-            )}
-          />
             <Route component={PageNotFound} />
           </Switch>
         </div>

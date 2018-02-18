@@ -4,9 +4,12 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
 class LoginPage extends React.Component {
+
   state = {
-    title: '',
-    text: '',
+    login: true, // switch between Login and SignUp
+    email: '',
+    password: '',
+    name: '',
   }
 
   render() {
@@ -14,6 +17,13 @@ class LoginPage extends React.Component {
       <div className="pa4 flex justify-center bg-white">
         <form onSubmit={this.handlePost}>
           <h3>Do not have an acoount? <a href="/signup">Signup</a></h3>
+          <input
+            autoFocus
+            className="w-100 pa2 mv2 br2 b--black-20 bw1"
+            placeholder="Name"
+            type="text"
+            value={this.state.title}
+          />
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
