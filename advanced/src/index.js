@@ -74,19 +74,18 @@ const client = new ApolloClient({
   connectToDevTools: true
 })
 
-  const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
-    <Route
-      {...rest}
-      render={props => {
-        return isAuthorized
-          ? <Component logout={logout} />
-          : <Redirect to={`/`} />;
-      }}
-    />
-  );
 
-  const UnProtectedRoute = ({component: Component, AUTH_TOKEN, ...rest}) => {
-    return  AUTH_TOKEN === null ? (<Redirect to="/" />) : (
+
+
+  const ProtectedRoute = ({component: Component, token, ...rest}) => {
+      return  token  ? (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />) : (
+      <Redirect to="/login" />
+    )
+  };
+
+
+  const UnProtectedRoute = ({component: Component, token, ...rest}) => {
+    return  token === null ? (<Redirect to="/" />) : (
   <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
   )
   };
