@@ -37,13 +37,7 @@ class SignupPage extends React.Component {
             type="password"
             value={this.state.password}
           />
-          <input
-            autoFocus
-            className="w-100 pa2 mv2 br2 b--black-20 bw1"
-            placeholder="Confirm Password"
-            type="password"
-            value={this.state.title}
-          />
+
           <input
             className={`pa3 bg-black-10 bn ${this.state.text && this.state.title && 'dim pointer'}`}
             disabled={!this.state.email || !this.state.name || !this.state.password}

@@ -78,24 +78,18 @@ const client = new ApolloClient({
     <Route
       {...rest}
       render={props => {
-        var token = localStorage.getItem (AUTH_TOKEN)
-        return token === ''
+        return isAuthorized
           ? <Component logout={logout} />
           : <Redirect to={`/`} />;
       }}
     />
   );
 
-   const UnProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
-    <Route
-      {...rest}
-      render={props => {
-        return isAuthorized === false
-          ? <Component logout={logout} />
-          : <Redirect to={`/`} />;
-      }}
-    />
-  );
+  const UnProtectedRoute = ({component: Component, AUTH_TOKEN, ...rest}) => {
+    return  AUTH_TOKEN === null ? (<Redirect to="/" />) : (
+  <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
+  )
+  };
 
 ReactDOM.render(
   <ApolloProvider client={client}>
