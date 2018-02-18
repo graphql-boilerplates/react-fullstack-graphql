@@ -2,6 +2,8 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
+import { USER_ID, AUTH_TOKEN  } from '../constant'
+
 
 class LoginPage extends React.Component {
 
@@ -48,28 +50,21 @@ class LoginPage extends React.Component {
 
 }
 
-const AUTHENTICATE_USER_MUTATION = gql`
-  mutation AuthenticateUserMutation ($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
-      token
+const LOGIN_USER = gql `
+    mutation LoginMutation($email: String!, $password: String!) {
+      login(email: $email, password: $password) {
+        token
+        user{
+          id
+          name
+          email
+        }
+      }
     }
-  }
-`
+  `
 
-const LOGGED_IN_USER_QUERY = gql`
-  query LoggedInUserQuery {
-    loggedInUser {
-      id
-    }
-  }
-`
-
-export default compose(
-  graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
-  graphql(LOGGED_IN_USER_QUERY, {
-    name: 'loggedInUserQuery',
-    options: { fetchPolicy: 'network-only' }
-  })
-)(withRouter(LoginPage))
+export default graphql(LOGGED_IN_USER_QUERY,
+{ name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})
+(withRouter(LoginPage))
 
 

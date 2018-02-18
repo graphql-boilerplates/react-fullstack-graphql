@@ -24,7 +24,7 @@ import DetailPage from './components/DetailPage'
 import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import PageNotFound from './components/PageNotFound'
-import { USER_ID, graphcoolToken } from './constant'
+import { USER_ID, AUTH_TOKEN } from './constant'
 
 import 'tachyons'
 import './index.css'
@@ -33,7 +33,7 @@ const httpLink = new HttpLink({ uri: 'https://uniserver.now.sh/' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem(graphcoolToken)
+  const token = localStorage.getItem(AUTH_TOKEN)
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
