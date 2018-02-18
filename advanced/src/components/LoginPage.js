@@ -64,7 +64,6 @@ const LOGIN_USER = gql `
   `
 
 export default graphql(LOGGED_IN_USER_QUERY,
-{ name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})
-(withRouter(LoginPage))
+{ name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(LoginPage))
 
 
