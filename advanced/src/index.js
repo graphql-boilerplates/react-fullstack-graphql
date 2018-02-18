@@ -16,6 +16,8 @@ import FeedPage from './components/FeedPage'
 import DraftsPage from './components/DraftsPage'
 import CreatePage from './components/CreatePage'
 import DetailPage from './components/DetailPage'
+import LoginPage from './components/LoginPage'
+import SignupPage from './components/SignupPage'
 
 import 'tachyons'
 import './index.css'
@@ -70,6 +72,8 @@ ReactDOM.render(
             <Route path="/drafts" component={DraftsPage} />
             <Route path="/create" component={CreatePage} />
             <Route path="/post/:id" component={DetailPage} />
+            <Route path="/login" component={LoginPage}/>
+            <Route path="/signup" component={SignupPage}/>
           </Switch>
         </div>
       </React.Fragment>
