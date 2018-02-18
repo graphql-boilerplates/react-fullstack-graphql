@@ -44,6 +44,9 @@ const FEED_QUERY = gql`
       text
       title
       isPublished
+       author{
+          name
+      }
     }
   }
 `
