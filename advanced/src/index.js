@@ -9,7 +9,12 @@ import {
   Redirect
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
-import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
+import { HttpLink, InMemoryCache, ApolloClient } from 'apollo-client-preset'
+import { setContext } from 'apollo-link-context'
+import { WebSocketLink } from 'apollo-link-ws'
+import { ApolloLink, split } from 'apollo-link'
+import { withClientState } from 'apollo-link-state'
+import { getMainDefinition } from 'apollo-utilities'
 
 
 import FeedPage from './components/FeedPage'
@@ -24,37 +29,49 @@ import { USER_ID, AUTH_TOKEN } from './constant'
 import 'tachyons'
 import './index.css'
 
-import { HttpLink, InMemoryCache, ApolloClient } from 'apollo-client-preset'
+const httpLink = new HttpLink({ uri: 'https://uniserver.now.sh/' })
 
-const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
+const middlewareLink = new ApolloLink((operation, forward) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem(AUTH_TOKEN)
+  // return the headers to the context so httpLink can read them
+  operation.setContext({
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    }
+  })
+  return forward(operation)
+})
 
-const client = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache()
-});
+// Authenticated httplink
+const httpLinkAuth = middlewareLink.concat(httpLink)
 
-const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
-  reconnect: true,
-  connectionParams: {
-    Authorisation: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
+const wsLink = new WebSocketLink({
+  uri: `wss://uniserver.now.sh/`,
+  options: {
+    reconnect: true,
+    connectionParams: {
+      Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
+    }
   }
 })
 
-const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
-  httpLink,
-  wsClient
+const link = split(
+  // split based on operation type
+  ({ query }) => {
+    const { kind, operation } = getMainDefinition(query)
+    return kind === 'OperationDefinition' && operation === 'subscription'
+  },
+  wsLink,
+  httpLinkAuth,
 )
 
-httpLink.use([{
-  applyBatchMiddleware (req, next) {
-    if (!req.options.headers) {
-      req.options.headers = {}
-    }
-    const token = localStorage.getItem(AUTH_TOKEN)
-    req.options.headers.authorization = token ? `Bearer ${token}` : null
-    next()
-  }
-}])
+// apollo client setup
+const client = new ApolloClient({
+  link: ApolloLink.from([link]),
+  cache: new InMemoryCache(),
+  connectToDevTools: true
+})
 
 const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
   <Route
