@@ -18,9 +18,20 @@
     "react-dom": "16.2.0",
     "react-modal": "3.2.1",
     "react-router-dom": "4.2.2",
-    "tachyons": "4.9.1"
+    "tachyons": "4.9.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-prettier": "^2.8.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.5.1"
   },
   "scripts": {
+    "commitmsg": "node ./scripts/validate-commit-message.js $GIT_PARAMS",
+    "precommit": "yarn run lint && yarn run flow",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
