@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { graphql } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 
 class LoginPage extends React.Component {
@@ -72,5 +72,4 @@ export default compose(
   })
 )(withRouter(LoginPage))
 
-const LoginPageWithMutation = graphql(LOGIN_USER)(LoginPage)
-export default withRouter(LoginPageWithMutation)
+
