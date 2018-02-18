@@ -50,4 +50,6 @@ const LOGIN_USER = gql `
       }
     }
   `
-export default withRouter(LoginPage)
+
+const LoginPageWithMutation = graphql(LOGIN_USER)(LoginPage)
+export default withRouter(LoginPageWithMutation)
