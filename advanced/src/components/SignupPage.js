@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { USER_ID, AUTH_TOKEN  } from '../constant'
 
 class SignupPage extends React.Component {
   state = {
@@ -53,6 +54,14 @@ class SignupPage extends React.Component {
       </div>
     )
   }
+
+  handleSignup = async e => {
+    e.preventDefault()
+    const { email, name, password } = this.state
+    localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
+    this.props.history.replace('/')
+  }
+
 }
 
 const SIGNUP_USER = gql `
