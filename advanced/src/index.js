@@ -9,10 +9,9 @@ import {
   Redirect
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { HttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
+
 
 import FeedPage from './components/FeedPage'
 import DraftsPage from './components/DraftsPage'
@@ -25,11 +24,8 @@ import PageNotFound from './components/PageNotFound'
 import 'tachyons'
 import './index.css'
 
-const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
-
-const client = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache(),
+const networkInterface = createBatchingNetworkInterface({
+  uri: 'http://localhost:4000'
 })
 
 const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
@@ -38,6 +34,29 @@ const wsClient = new SubscriptionClient('__SUBSCRIPTION_API_ENDPOINT__', {
     Authorisation: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
   }
 })
+
+const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
+  networkInterface,
+  wsClient
+)
+
+networkInterface.use([{
+  applyBatchMiddleware (req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {}
+    }
+    const token = localStorage.getItem(AUTH_TOKEN)
+    req.options.headers.authorization = token ? `Bearer ${token}` : null
+    next()
+  }
+}])
+
+const apolloClient = new ApolloClient({
+  networkInterface: networkInterfaceWithSubscriptions,
+  connectToDevTools: true
+})
+
+
 
 const ProtectedRoute = ({ component: Component, isAuthorized, logout, ...rest }) => (
   <Route
