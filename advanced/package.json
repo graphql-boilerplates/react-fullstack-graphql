@@ -32,6 +32,8 @@
   "scripts": {
     "commitmsg": "node ./scripts/validate-commit-message.js $GIT_PARAMS",
     "precommit": "yarn run lint && yarn run flow",
+    "flow": "flow",
+    "lint": "eslint .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
