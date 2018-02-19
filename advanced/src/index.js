@@ -30,7 +30,7 @@ import { USER_ID, AUTH_TOKEN } from './constant'
 import 'tachyons'
 import './index.css'
 
-const httpLink = new HttpLink({ uri: 'https://uniserver.now.sh/' })
+const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
