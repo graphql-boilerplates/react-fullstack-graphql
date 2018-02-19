@@ -48,7 +48,6 @@ class LoginPage extends React.Component {
 
     //const response = await this.props.authenticateUserMutation({variables: {email, password}})
     localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
-    debugger
     this.props.refreshFn && this.props.refreshFn({
       token : AUTH_TOKEN
     })
