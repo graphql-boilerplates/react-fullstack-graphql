@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {
   NavLink,
@@ -88,68 +88,98 @@ const client = new ApolloClient({
   )
   };
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <Router>
-      <React.Fragment>
-        <nav className="pa3 pa4-ns">
-          <Link
-            className="link dim black b f6 f5-ns dib mr3"
-            to="/"
-            title="Feed"
-          >
-            Blog
-          </Link>
-          <NavLink
-            className="link dim f6 f5-ns dib mr3 black"
-            activeClassName="gray"
-            exact={true}
-            to="/"
-            title="Feed"
-          >
-            Feed
-          </NavLink>
-          { token && <NavLink
-            className="link dim f6 f5-ns dib mr3 black"
-            activeClassName="gray"
-            exact={true}
-            to="/drafts"
-            title="Drafts"
-          >
-            Drafts
-          </NavLink> }
-          {token ? (<Link
-            to="/logout"
-            className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
-          >
-           Logout
-          </Link>) : (<Link
-            to="/login"
-            className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
-          >
-           Login
-          </Link>) }
-          {token && <Link
-            to="/create"
-            className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
-          >
-            + Create Draft
-          </Link> }
-        </nav>
-        <div className="fl w-100 pl4 pr4">
-          <Switch>
-            <Route exact path="/" component={FeedPage} />
-            <ProtectedRoute token={token} path="/drafts" component={DraftsPage} />
-            <ProtectedRoute token={token} path="/create" component={CreatePage} />
-            <Route path="/post/:id" component={DetailPage} />
-            <Route token={token} path="/login" component={LoginPage}/>
-            <Route token={token} path="/signup" component={SignupPage}/>
-            <Route path="/logout" component={LogoutPage}/>
-            <Route component={PageNotFound} />
-          </Switch>
-        </div>
-      </React.Fragment>
-    </Router>
-  </ApolloProvider>,
-  document.getElementById('root'),
-)
+
+
+class SuperContainer extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.refreshFn = this.refreshFn.bind(this)
+
+    this.state = {
+      token : props.token
+    }
+  }
+
+  refreshFn(data= {}) {
+    debugger
+    this.setState({
+      token : data.token
+    })
+  }
+
+  render() {
+    return (<ApolloProvider client={this.props.client}>
+      <Router>
+        <React.Fragment>
+          <nav className="pa3 pa4-ns">
+            <Link
+              className="link dim black b f6 f5-ns dib mr3"
+              to="/"
+              title="Feed"
+            >
+              Blog
+            </Link>
+            <NavLink
+              className="link dim f6 f5-ns dib mr3 black"
+              activeClassName="gray"
+              exact={true}
+              to="/"
+              title="Feed"
+            >
+              Feed
+            </NavLink>
+            { this.state.token && <NavLink
+              className="link dim f6 f5-ns dib mr3 black"
+              activeClassName="gray"
+              exact={true}
+              to="/drafts"
+              title="Drafts"
+            >
+              Drafts
+            </NavLink> }
+            {this.state.token ? (<Link
+              to="/logout"
+              className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+            >
+             Logout
+            </Link>) : (<Link
+              to="/login"
+              className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+            >
+             Login
+            </Link>) }
+            {this.state.token && <Link
+              to="/create"
+              className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+            >
+              + Create Draft
+            </Link> }
+          </nav>
+          <div className="fl w-100 pl4 pr4">
+            <Switch>
+              <Route exact path="/" component={FeedPage} />
+              <ProtectedRoute token={this.state.token} path="/drafts" component={DraftsPage} />
+              <ProtectedRoute token={this.state.token} path="/create" component={CreatePage} />
+              <Route path="/post/:id" component={DetailPage} />
+
+              <Route token={this.state.token} path="/login" render={(props) => <LoginPage refreshFn={this.refreshFn} />}/>
+              <Route token={this.state.token} path="/signup" component={SignupPage}/>
+              <Route path="/logout" component={LogoutPage}/>
+              <Route component={PageNotFound} />
+            </Switch>
+          </div>
+        </React.Fragment>
+      </Router>
+    </ApolloProvider>)
+  }
+}
+
+function RenderDom() {
+  ReactDOM.render(<SuperContainer client={client} token={token}/> ,document.getElementById('root'))
+}
+
+RenderDom()
+
+export default SuperContainer
