@@ -143,7 +143,7 @@ ReactDOM.render(
             <ProtectedRoute token={token} path="/create" component={CreatePage} />
             <Route path="/post/:id" component={DetailPage} />
             <Route token={token} path="/login" component={LoginPage}/>
-            <UnProtectedRoute token={token} path="/signup" component={SignupPage}/>
+            <Route token={token} path="/signup" component={SignupPage}/>
             <Route path="/logout" component={LogoutPage}/>
             <Route component={PageNotFound} />
           </Switch>
