@@ -163,7 +163,6 @@ class SuperContainer extends Component {
               <ProtectedRoute token={this.state.token} path="/drafts" component={DraftsPage} />
               <ProtectedRoute token={this.state.token} path="/create" component={CreatePage} />
               <Route path="/post/:id" component={DetailPage} />
-
               <Route token={this.state.token} path="/login" render={(props) => <LoginPage refreshFn={this.refreshFn} />}/>
               <Route token={this.state.token} path="/signup" render={(props) => <SignupPage refreshFn={this.refreshFn} />}/>
               <Route path="/logout" component={LogoutPage}/>
