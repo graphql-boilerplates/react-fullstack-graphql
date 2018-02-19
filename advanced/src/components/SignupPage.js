@@ -56,6 +56,9 @@ class SignupPage extends React.Component {
     e.preventDefault()
     const { email, name, password } = this.state
     localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
+    this.props.refreshFn && this.props.refreshFn({
+      token : AUTH_TOKEN
+    })
     this.props.history.replace('/')
   }
 
