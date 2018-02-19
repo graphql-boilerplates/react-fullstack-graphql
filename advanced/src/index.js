@@ -75,8 +75,9 @@ const client = new ApolloClient({
 })
 
   const token = localStorage.getItem (AUTH_TOKEN)
+
   const ProtectedRoute = ({component: Component, token, ...rest}) => {
-      return  token  ? (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />) : (
+      return  token ? (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />) : (
       <Redirect to="/login" />
     )
   };
@@ -136,7 +137,7 @@ ReactDOM.render(
             <ProtectedRoute token={token} path="/drafts" component={DraftsPage} />
             <ProtectedRoute token={token} path="/create" component={CreatePage} />
             <Route path="/post/:id" component={DetailPage} />
-            <UnProtectedRoute token={token} path="/login" component={LoginPage}/>
+            <Route token={token} path="/login" component={LoginPage}/>
             <UnProtectedRoute token={token} path="/signup" component={SignupPage}/>
             <Route path="/logout" component={LogoutPage}/>
             <Route component={PageNotFound} />
