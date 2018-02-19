@@ -5,7 +5,7 @@
   "dependencies": {
     "apollo-client-preset": "1.0.8",
     "graphql": "0.13.1",
-    "graphql-tag": "2.7.3",
+    "graphql-tag": "2.8.0",
     "react": "16.2.0",
     "react-apollo": "2.0.4",
     "react-dom": "16.2.0",
