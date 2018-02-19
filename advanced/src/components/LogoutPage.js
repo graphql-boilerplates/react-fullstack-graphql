@@ -12,7 +12,7 @@ class LogoutPage extends React.Component {
   render() {
     return (
       <div className="pa4 flex justify-center bg-white">
-        <form onSubmit={this.handlePost}>
+        <form>
           <h1>You are logged out</h1>
         </form>
       </div>
