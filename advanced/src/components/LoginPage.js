@@ -52,7 +52,7 @@ class LoginPage extends React.Component {
     const token = result.data.login.token;
     localStorage.setItem (AUTH_TOKEN, token);
     this.props.refreshFn && this.props.refreshFn({
-          token : AUTH_TOKEN
+          token : token
     })
 
     }).catch ( err => {
@@ -61,18 +61,6 @@ class LoginPage extends React.Component {
 
     this.props.history.replace('/')
   }
-
-  // authenticateUser = async () => {
-  //   const {email, password} = this.state
-
-  //   //const response = await this.props.authenticateUserMutation({variables: {email, password}})
-  //   localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
-  //   this.props.refreshFn && this.props.refreshFn({
-  //     token : AUTH_TOKEN
-  //   })
-  //   this.props.history.replace('/')
-  // }
-
 }
 
 const LOGIN_USER = gql `
@@ -88,6 +76,6 @@ const LOGIN_USER = gql `
     }
   `
 
-export default graphql(LOGIN_USER, { name: 'loginMutation', cachePolicy: { query: true, data: false } })(withRouter(LoginPage))
+export default graphql(LOGIN_USER, { name: 'loginMutation'})(withRouter(LoginPage))
 
 
