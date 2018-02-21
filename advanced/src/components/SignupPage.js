@@ -14,8 +14,8 @@ class SignupPage extends React.Component {
   render() {
     return (
       <div className="pa4 flex justify-center bg-white">
-        <form onSubmit={this.handleSignup}>
-          <h3> Already have an account!!! <a href="/login"> Login</a></h3>
+        <form onSubmit={this._signup}>
+        <h3> Already have an account!!! <a href="/login"> Login</a></h3>
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
@@ -52,20 +52,32 @@ class SignupPage extends React.Component {
     )
   }
 
-  handleSignup = async e => {
+  _signup = async e => {
     e.preventDefault()
     const { email, name, password } = this.state
-    localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
+    this.props.signupMutation ({ variables : {
+      name: name,
+      email: email,
+      password: password
+    }}).then( result => {
+
+    const token = result.data.login.token;
+    localStorage.setItem (AUTH_TOKEN, token);
     this.props.refreshFn && this.props.refreshFn({
-      token : AUTH_TOKEN
+          token : AUTH_TOKEN
     })
+
+    }).catch ( err => {
+      console.log('error')
+    });
+
     this.props.history.replace('/')
   }
 
 }
 
 const SIGNUP_USER = gql `
-    mutation SIGNUP_Mutation($email: String!, $password: String!, $name: String!) {
+    mutation SignupMutation($email: String!, $password: String!, $name: String!) {
       signup(email: $email, password: $password, name: $name) {
         token
         user{
@@ -77,4 +89,4 @@ const SIGNUP_USER = gql `
     }
   `
 
-export default graphql(SIGNUP_USER,{ name: 'SignedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(SignupPage))
+export default graphql(SIGNUP_USER,{ name: 'signupMutation' })(withRouter(SignupPage))

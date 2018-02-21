@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import { HttpLink, InMemoryCache, ApolloClient } from 'apollo-client-preset'
+import { setContext } from 'apollo-link-context'
 import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloLink, split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
@@ -28,7 +29,7 @@ import { AUTH_TOKEN } from './constant'
 import 'tachyons'
 import './index.css'
 
-const httpLink = new HttpLink({ uri: 'wss://uniserver.now.sh/' })
+const httpLink = new HttpLink({ uri: 'http://localhost:4000/' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -46,7 +47,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `wss://uniserver.now.sh/`,
+  uri: `wss://localhost:4000/`,
   options: {
     reconnect: true,
     connectionParams: {
@@ -77,12 +78,6 @@ const client = new ApolloClient({
   const ProtectedRoute = ({component: Component, token, ...rest}) => {
       return  token ? (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />) : (
       <Redirect to="/login" />
-    )
-  };
-
-  const UnProtectedRoute = ({component: Component, token, ...rest}) => {
-    return  token ? (<Redirect to="/" />) : (
-    <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
     )
   };
 
@@ -134,18 +129,18 @@ class SuperContainer extends Component {
             >
               Drafts
             </NavLink> }
-            {this.state.token ? (<Link
-              to="/"
+            {this.state.token ? (<div
               onClick={() => {
                 localStorage.removeItem(AUTH_TOKEN)
-                this.props.refreshFn && this.props.refreshFn({
-                  token : AUTH_TOKEN
-                })
+                // location.href('/')
+                // this.refreshFn && this.refreshFn({
+                //   token : null
+                // })
               }}
               className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
             >
              Logout
-            </Link>) : (<Link
+            </div>) : (<Link
               to="/login"
               className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
             >

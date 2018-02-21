@@ -2,15 +2,14 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { USER_ID, AUTH_TOKEN  } from '../constant'
+import { AUTH_TOKEN  } from '../constant'
 
 class LoginPage extends React.Component {
 
   state = {
     email: '',
     password: '',
-    name: '',
-    text:''
+    name: ''
   }
 
   render() {
@@ -35,23 +34,44 @@ class LoginPage extends React.Component {
             value={this.state.password}
           />
           {this.state.email && this.state.password &&
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.authenticateUser}>Log in</button>
+          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this._login}>Log in</button>
           }
         </div>
       </div>
     )
   }
 
-  authenticateUser = async () => {
-    const {email, password} = this.state
+  _login = () => {
 
-    //const response = await this.props.authenticateUserMutation({variables: {email, password}})
-    localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
+    const {email, password} = this.state
+    this.props.loginMutation ({ variables : {
+      email: email,
+      password: password
+    }}).then( result => {
+
+    const token = result.data.login.token;
+    localStorage.setItem (AUTH_TOKEN, token);
     this.props.refreshFn && this.props.refreshFn({
-      token : AUTH_TOKEN
+          token : AUTH_TOKEN
     })
+
+    }).catch ( err => {
+      console.log('error')
+    });
+
     this.props.history.replace('/')
   }
+
+  // authenticateUser = async () => {
+  //   const {email, password} = this.state
+
+  //   //const response = await this.props.authenticateUserMutation({variables: {email, password}})
+  //   localStorage.setItem('AUTH_TOKEN', AUTH_TOKEN)
+  //   this.props.refreshFn && this.props.refreshFn({
+  //     token : AUTH_TOKEN
+  //   })
+  //   this.props.history.replace('/')
+  // }
 
 }
 
@@ -68,6 +88,6 @@ const LOGIN_USER = gql `
     }
   `
 
-export default graphql(LOGIN_USER, { name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(LoginPage))
+export default graphql(LOGIN_USER, { name: 'loginMutation', cachePolicy: { query: true, data: false } })(withRouter(LoginPage))
 
 
