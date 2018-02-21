@@ -80,11 +80,11 @@ const client = new ApolloClient({
     )
   };
 
-  // const UnProtectedRoute = ({component: Component, token, ...rest}) => {
-  //   return  token === null ? (<Redirect to="/" />) : (
-  // <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
-  // )
-  // };
+  const UnProtectedRoute = ({component: Component, token, ...rest}) => {
+    return  token ? (<Redirect to="/" />) : (
+    <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
+    )
+  };
 
 class SuperContainer extends Component {
 
@@ -99,7 +99,6 @@ class SuperContainer extends Component {
   }
 
   refreshFn(data= {}) {
-    debugger
     this.setState({
       token : data.token
     })
@@ -137,6 +136,12 @@ class SuperContainer extends Component {
             </NavLink> }
             {this.state.token ? (<Link
               to="/"
+              onClick={() => {
+                localStorage.removeItem(AUTH_TOKEN)
+                this.props.refreshFn && this.props.refreshFn({
+                  token : AUTH_TOKEN
+                })
+              }}
               className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
             >
              Logout
