@@ -14,5 +14,8 @@
     "graphql-cli": "2.14.2",
     "npm-run-all": "4.1.2",
     "prisma": "1.0.8"
+  },
+  "resolutions": {
+    "graphql": "0.13.1"
   }
 }
