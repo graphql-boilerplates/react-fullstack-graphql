@@ -10,10 +10,8 @@ import {
 } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import { HttpLink, InMemoryCache, ApolloClient } from 'apollo-client-preset'
-import { setContext } from 'apollo-link-context'
 import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloLink, split } from 'apollo-link'
-import { withClientState } from 'apollo-link-state'
 import { getMainDefinition } from 'apollo-utilities'
 
 
@@ -25,12 +23,12 @@ import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import PageNotFound from './components/PageNotFound'
 import LogoutPage from './components/LogoutPage'
-import { USER_ID, AUTH_TOKEN } from './constant'
+import { AUTH_TOKEN } from './constant'
 
 import 'tachyons'
 import './index.css'
 
-const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
+const httpLink = new HttpLink({ uri: 'wss://uniserver.now.sh/' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -82,13 +80,11 @@ const client = new ApolloClient({
     )
   };
 
-  const UnProtectedRoute = ({component: Component, token, ...rest}) => {
-    return  token === null ? (<Redirect to="/" />) : (
-  <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
-  )
-  };
-
-
+  // const UnProtectedRoute = ({component: Component, token, ...rest}) => {
+  //   return  token === null ? (<Redirect to="/" />) : (
+  // <Route {...rest} render={matchProps => (<Component {...matchProps} />)} />
+  // )
+  // };
 
 class SuperContainer extends Component {
 
@@ -140,7 +136,7 @@ class SuperContainer extends Component {
               Drafts
             </NavLink> }
             {this.state.token ? (<Link
-              to="/logout"
+              to="/"
               className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
             >
              Logout

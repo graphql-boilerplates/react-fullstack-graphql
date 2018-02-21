@@ -1,9 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { graphql, compose } from 'react-apollo'
+import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { USER_ID, AUTH_TOKEN  } from '../constant'
-
 
 class LoginPage extends React.Component {
 
@@ -69,7 +68,6 @@ const LOGIN_USER = gql `
     }
   `
 
-export default graphql(LOGIN_USER,
-{ name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(LoginPage))
+export default graphql(LOGIN_USER, { name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }})(withRouter(LoginPage))
 
 

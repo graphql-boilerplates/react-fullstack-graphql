@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { USER_ID, AUTH_TOKEN  } from '../constant'
+import { AUTH_TOKEN  } from '../constant'
 
 class SignupPage extends React.Component {
   state = {
