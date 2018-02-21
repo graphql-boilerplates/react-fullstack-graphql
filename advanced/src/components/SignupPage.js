@@ -61,7 +61,7 @@ class SignupPage extends React.Component {
       password: password
     }}).then( result => {
 
-    const token = result.data.login.token;
+    const token = result.data.signup.token;
     localStorage.setItem (AUTH_TOKEN, token);
     this.props.refreshFn && this.props.refreshFn({
       [AUTH_TOKEN] : token
