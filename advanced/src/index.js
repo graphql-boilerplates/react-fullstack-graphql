@@ -132,10 +132,10 @@ class SuperContainer extends Component {
             {this.state.token ? (<div
               onClick={() => {
                 localStorage.removeItem(AUTH_TOKEN)
-                // location.href('/')
-                // this.refreshFn && this.refreshFn({
-                //   token : null
-                // })
+                window.location.href('/')
+                this.refreshFn && this.refreshFn({
+                  [AUTH_TOKEN] : null
+                })
               }}
               className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
             >
