@@ -35,7 +35,6 @@
     "tachyons": "4.9.1"
   },
   "scripts": {
-    "commitmsg": "node ./scripts/validate-commit-message.js $GIT_PARAMS",
     "precommit": "yarn run lint && yarn run flow",
     "flow": "flow",
     "lint": "eslint .",
