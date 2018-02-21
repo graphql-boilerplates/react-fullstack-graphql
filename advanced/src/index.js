@@ -73,13 +73,13 @@ const client = new ApolloClient({
   connectToDevTools: true
 })
 
-  const token = localStorage.getItem (AUTH_TOKEN)
+const token = localStorage.getItem (AUTH_TOKEN)
 
-  const ProtectedRoute = ({component: Component, token, ...rest}) => {
-      return  token ? (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />) : (
-      <Redirect to="/login" />
-    )
-  };
+const ProtectedRoute = ({component: Component, token, ...rest}) => {
+    return  token ?
+    (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />)
+    :(<Redirect to="/login" />)
+};
 
 class SuperContainer extends React.Component {
 
