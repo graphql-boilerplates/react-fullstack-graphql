@@ -29,7 +29,7 @@ import { AUTH_TOKEN } from './constant'
 import 'tachyons'
 import './index.css'
 
-const httpLink = new HttpLink({ uri: 'http://localhost:4000/' })
+const httpLink = new HttpLink({ uri: 'http://uniserver.now.sh/' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -47,7 +47,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `wss://localhost:4000/`,
+  uri: `wss://uniserver.now.sh/`,
   options: {
     reconnect: true,
     connectionParams: {
