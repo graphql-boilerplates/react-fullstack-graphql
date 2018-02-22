@@ -63,15 +63,14 @@ class SignupPage extends React.Component {
 
     const token = result.data.signup.token;
     localStorage.setItem (AUTH_TOKEN, token);
-    this.props.refreshFn && this.props.refreshFn({
+    this.props.refreshTokenFn && this.props.refreshTokenFn({
       [AUTH_TOKEN] : token
     })
 
+    this.props.history.replace('/')
     }).catch ( err => {
       console.log('error')
     });
-
-    this.props.history.replace('/')
   }
 
 }
