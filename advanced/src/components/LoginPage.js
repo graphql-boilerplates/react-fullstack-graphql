@@ -55,11 +55,12 @@ class LoginPage extends React.Component {
             [AUTH_TOKEN] : token
     })
 
+    this.props.history.replace('/')
+
     }).catch ( err => {
       console.log('error')
     });
 
-    this.props.history.replace('/')
   }
 }
 
