@@ -51,7 +51,7 @@ class LoginPage extends React.Component {
 
     const token = result.data.login.token;
     localStorage.setItem (AUTH_TOKEN, token);
-    this.props.refreshFn && this.props.refreshFn({
+    this.props.refreshTokenFn && this.props.refreshTokenFn({
             [AUTH_TOKEN] : token
     })
 
