@@ -13,12 +13,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@heroku/linewrap/-/linewrap-1.0.0.tgz#a9d4e99f0a3e423a899b775f5f3d6747a1ff15c6"
 
-"@kbrandwijk/swagger-to-graphql@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-1.4.2.tgz#3d15b9396cc0f519e81f156202dbb6c7147971c9"
+"@kbrandwijk/swagger-to-graphql@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-2.4.3.tgz#7c0fb2410eb0b6b9cc81fad28cc20f9386153cf1"
   dependencies:
     babel-runtime "^6.25.0"
-    graphql "^0.12.3"
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.8.4"
     json-schema-ref-parser "^3.1.2"
@@ -1824,9 +1823,9 @@ graphql-cli@2.12.2:
     source-map-support "^0.5.0"
     yargs "10.1.1"
 
-graphql-cli@2.15.2:
-  version "2.15.2"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.2.tgz#d2c933b7944064d07c3ecd3bd05ecbfedf6fb384"
+graphql-cli@2.15.5:
+  version "2.15.5"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.5.tgz#6c812124119f8d533054672193d56025915cb386"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.1"
@@ -1840,7 +1839,7 @@ graphql-cli@2.15.2:
     graphql-cli-prepare "1.4.16"
     graphql-config "2.0.0"
     graphql-config-extension-graphcool "1.0.7"
-    graphql-config-extension-openapi "1.0.2"
+    graphql-config-extension-openapi "1.0.5"
     graphql-config-extension-prisma "0.0.7"
     graphql-playground-middleware-express "1.5.6"
     graphql-schema-linter "0.1.1"
@@ -1880,11 +1879,11 @@ graphql-config-extension-graphcool@1.0.7:
     graphcool-yml "0.4.15"
     graphql-config "2.0.0"
 
-graphql-config-extension-openapi@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-config-extension-openapi/-/graphql-config-extension-openapi-1.0.2.tgz#81c3660b7a281b35aaee13ddef7139ad06cb7d9f"
+graphql-config-extension-openapi@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-openapi/-/graphql-config-extension-openapi-1.0.5.tgz#6877d31832eb7586c541c1b9686aae8c2de9986c"
   dependencies:
-    "@kbrandwijk/swagger-to-graphql" "1.4.2"
+    "@kbrandwijk/swagger-to-graphql" "2.4.3"
     graphql-config "2.0.0"
 
 graphql-config-extension-prisma@0.0.3:
