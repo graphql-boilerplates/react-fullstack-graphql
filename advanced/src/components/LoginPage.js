@@ -1,15 +1,15 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
-import { AUTH_TOKEN } from "../constant";
+import React from "react"
+import { withRouter } from "react-router-dom"
+import { graphql } from "react-apollo"
+import gql from "graphql-tag"
+import { AUTH_TOKEN } from "../constant"
 
 class LoginPage extends React.Component {
   state = {
     email: "",
     password: "",
     name: ""
-  };
+  }
 
   render() {
     return (
@@ -42,7 +42,7 @@ class LoginPage extends React.Component {
             </button>}
         </div>
       </div>
-    );
+    )
   }
 
   _login = () => {
@@ -60,14 +60,14 @@ class LoginPage extends React.Component {
         this.props.refreshTokenFn &&
           this.props.refreshTokenFn({
             [AUTH_TOKEN]: token
-          });
+          })
 
         this.props.history.replace("/")
       })
       .catch(err => {
         console.log("error")
-      });
-  };
+      })
+  }
 }
 
 const LOGIN_USER = gql`
@@ -81,8 +81,8 @@ const LOGIN_USER = gql`
         }
       }
     }
-  `;
+  `
 
 export default graphql(LOGIN_USER, { name: "loginMutation" })(
   withRouter(LoginPage)
-);
+)

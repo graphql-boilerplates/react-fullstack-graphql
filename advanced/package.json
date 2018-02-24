@@ -43,7 +43,7 @@
     "prettier-dry-run": "prettier-eslint \"src/**/*.+(js|jsx)\" -l debug"
   },
   "prettier": {
-    "semi": false,
+    "semi": true,
     "singleQuote": true,
     "trailingComma": "all"
   }
