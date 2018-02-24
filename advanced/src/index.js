@@ -18,7 +18,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
-      Authorization: tokenValue ? `Bearer ${tokenValue}` : "",
+      Authorization: tokenValue ? `Bearer ${tokenValue}` : '',
     }
   })
   return forward(operation)

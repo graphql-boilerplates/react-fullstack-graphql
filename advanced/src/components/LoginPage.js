@@ -34,7 +34,7 @@ class LoginPage extends React.Component {
             value={this.state.password}
           />
           {this.state.email && this.state.password &&
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this._login}>Log in</button>
+          <button className="pa3 bg-black-10 bn dim ttu pointer" onClick={this._login}>Log in</button>
           }
         </div>
       </div>
@@ -49,8 +49,8 @@ class LoginPage extends React.Component {
       password: password
     }}).then( result => {
 
-    const token = result.data.login.token;
-    localStorage.setItem (AUTH_TOKEN, token);
+    const token = result.data.login.token
+    localStorage.setItem (AUTH_TOKEN, token)
     this.props.refreshTokenFn && this.props.refreshTokenFn({
             [AUTH_TOKEN] : token
     })
@@ -59,7 +59,7 @@ class LoginPage extends React.Component {
 
     }).catch ( err => {
       console.log('error')
-    });
+    })
 
   }
 }

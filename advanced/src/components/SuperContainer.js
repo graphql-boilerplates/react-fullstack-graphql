@@ -23,7 +23,7 @@ const ProtectedRoute = ({component: Component, token, ...rest}) => {
     return  token ?
     (<Route {...rest} render={matchProps => (<Component {...matchProps} />)} />)
     :(<Redirect to="/login" />)
-};
+}
 
 class SuperContainer extends React.Component {
 
