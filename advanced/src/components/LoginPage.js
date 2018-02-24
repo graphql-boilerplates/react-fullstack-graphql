@@ -1,16 +1,15 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import { AUTH_TOKEN  } from '../constant'
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+import { AUTH_TOKEN } from "../constant";
 
 class LoginPage extends React.Component {
-
   state = {
-    email: '',
-    password: '',
-    name: ''
-  }
+    email: "",
+    password: "",
+    name: ""
+  };
 
   render() {
     return (
@@ -33,38 +32,45 @@ class LoginPage extends React.Component {
             onChange={e => this.setState({ password: e.target.value })}
             value={this.state.password}
           />
-          {this.state.email && this.state.password &&
-          <button className="pa3 bg-black-10 bn dim ttu pointer" onClick={this._login}>Log in</button>
-          }
+          {this.state.email &&
+            this.state.password &&
+            <button
+              className="pa3 bg-black-10 bn dim ttu pointer"
+              onClick={this._login}
+            >
+              Log in
+            </button>}
         </div>
       </div>
-    )
+    );
   }
 
   _login = () => {
+    const { email, password } = this.state;
+    this.props
+      .loginMutation({
+        variables: {
+          email: email,
+          password: password
+        }
+      })
+      .then(result => {
+        const token = result.data.login.token;
+        localStorage.setItem(AUTH_TOKEN, token);
+        this.props.refreshTokenFn &&
+          this.props.refreshTokenFn({
+            [AUTH_TOKEN]: token
+          });
 
-    const {email, password} = this.state
-    this.props.loginMutation ({ variables : {
-      email: email,
-      password: password
-    }}).then( result => {
-
-    const token = result.data.login.token
-    localStorage.setItem (AUTH_TOKEN, token)
-    this.props.refreshTokenFn && this.props.refreshTokenFn({
-            [AUTH_TOKEN] : token
-    })
-
-    this.props.history.replace('/')
-
-    }).catch ( err => {
-      console.log('error')
-    })
-
-  }
+        this.props.history.replace("/");
+      })
+      .catch(err => {
+        console.log("error");
+      });
+  };
 }
 
-const LOGIN_USER = gql `
+const LOGIN_USER = gql`
     mutation LoginMutation($email: String!, $password: String!) {
       login(email: $email, password: $password) {
         token
@@ -75,8 +81,8 @@ const LOGIN_USER = gql `
         }
       }
     }
-  `
+  `;
 
-export default graphql(LOGIN_USER, { name: 'loginMutation'})(withRouter(LoginPage))
-
-
+export default graphql(LOGIN_USER, { name: "loginMutation" })(
+  withRouter(LoginPage)
+);
