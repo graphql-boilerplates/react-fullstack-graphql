@@ -58,7 +58,7 @@ class SignupPage extends React.Component {
 
   _signup = async e => {
     e.preventDefault();
-    const { email, name, password } = this.state;
+    const { email, name, password } = this.state
     this.props
       .signupMutation({
         variables: {
@@ -68,17 +68,17 @@ class SignupPage extends React.Component {
         }
       })
       .then(result => {
-        const token = result.data.signup.token;
-        localStorage.setItem(AUTH_TOKEN, token);
+        const token = result.data.signup.token
+        localStorage.setItem(AUTH_TOKEN, token)
         this.props.refreshTokenFn &&
           this.props.refreshTokenFn({
             [AUTH_TOKEN]: token
           });
 
-        this.props.history.replace("/");
+        this.props.history.replace("/")
       })
       .catch(err => {
-        console.log("error");
+        console.log("error")
       });
   };
 }

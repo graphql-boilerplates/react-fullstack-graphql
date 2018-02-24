@@ -46,7 +46,7 @@ class LoginPage extends React.Component {
   }
 
   _login = () => {
-    const { email, password } = this.state;
+    const { email, password } = this.state
     this.props
       .loginMutation({
         variables: {
@@ -55,17 +55,17 @@ class LoginPage extends React.Component {
         }
       })
       .then(result => {
-        const token = result.data.login.token;
-        localStorage.setItem(AUTH_TOKEN, token);
+        const token = result.data.login.token
+        localStorage.setItem(AUTH_TOKEN, token)
         this.props.refreshTokenFn &&
           this.props.refreshTokenFn({
             [AUTH_TOKEN]: token
           });
 
-        this.props.history.replace("/");
+        this.props.history.replace("/")
       })
       .catch(err => {
-        console.log("error");
+        console.log("error")
       });
   };
 }
