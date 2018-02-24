@@ -1780,13 +1780,13 @@ graphql-cli-prepare@1.4.11:
     graphql-static-binding "0.8.0"
     lodash "4.17.4"
 
-graphql-cli-prepare@1.4.16:
-  version "1.4.16"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.16.tgz#9ef39bf3df29a05f23f249bb6ab0238cf8ed94dd"
+graphql-cli-prepare@1.4.17:
+  version "1.4.17"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.17.tgz#80b321e655b109030845df2bd333a1ead145ccb8"
   dependencies:
     chalk "2.3.1"
     fs-extra "5.0.0"
-    graphql-import "0.4.3"
+    graphql-import "0.4.4"
     graphql-static-binding "0.9.3"
     lodash "4.17.5"
 
@@ -1823,9 +1823,9 @@ graphql-cli@2.12.2:
     source-map-support "^0.5.0"
     yargs "10.1.1"
 
-graphql-cli@2.15.5:
-  version "2.15.5"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.5.tgz#6c812124119f8d533054672193d56025915cb386"
+graphql-cli@2.15.6:
+  version "2.15.6"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.6.tgz#4a5240cdaf8a01f964982e4be3bad91dc07b7ae1"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.1"
@@ -1836,12 +1836,12 @@ graphql-cli@2.15.5:
     express "^4.16.2"
     express-request-proxy "^2.0.0"
     graphql "0.13.1"
-    graphql-cli-prepare "1.4.16"
+    graphql-cli-prepare "1.4.17"
     graphql-config "2.0.0"
     graphql-config-extension-graphcool "1.0.7"
     graphql-config-extension-openapi "1.0.5"
     graphql-config-extension-prisma "0.0.7"
-    graphql-playground-middleware-express "1.5.6"
+    graphql-playground-middleware-express "1.5.7"
     graphql-schema-linter "0.1.1"
     inquirer "5.1.0"
     is-url-superb "2.0.0"
@@ -1941,17 +1941,17 @@ graphql-import@0.4.3:
     graphql "^0.13.0"
     lodash "^4.17.4"
 
+graphql-import@0.4.4, graphql-import@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
+  dependencies:
+    lodash "^4.17.4"
+
 graphql-import@^0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.1.tgz#ef1c047d6250bc8c009b12b64c26924ac4f4716c"
   dependencies:
     graphql "^0.12.3"
-    lodash "^4.17.4"
-
-graphql-import@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
-  dependencies:
     lodash "^4.17.4"
 
 graphql-playground-html@1.4.4:
@@ -1962,12 +1962,6 @@ graphql-playground-html@1.4.4:
     graphql-config "^1.1.1"
     graphql-config-extension-graphcool "1.0.4"
     graphql-config-extension-prisma "0.0.3"
-
-graphql-playground-html@1.5.4:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.5.4.tgz#82752ec4ee36c62d64ccebf7d3ca47477c213bb6"
-  dependencies:
-    graphql-config "1.1.7"
 
 graphql-playground-html@1.5.5:
   version "1.5.5"
@@ -1980,12 +1974,6 @@ graphql-playground-middleware-express@1.4.9:
   resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.4.9.tgz#fa7f0f629955e8a6b729704afcd8c5f2e2916d74"
   dependencies:
     graphql-playground-html "1.4.4"
-
-graphql-playground-middleware-express@1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.5.6.tgz#db3c4b0ab5fd999cd9ed0ee16460dca321878afd"
-  dependencies:
-    graphql-playground-html "1.5.4"
 
 graphql-playground-middleware-express@1.5.7:
   version "1.5.7"
