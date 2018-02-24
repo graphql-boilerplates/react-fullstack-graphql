@@ -56,10 +56,6 @@ const client = new ApolloClient({
 
 const token = localStorage.getItem (AUTH_TOKEN)
 
-function RenderDom() {
-  ReactDOM.render(<SuperContainer client={client} token={token}/> ,document.getElementById('root'))
-}
-
-RenderDom()
+ReactDOM.render(<SuperContainer client={client} token={token}/> ,document.getElementById('root'))
 
 export default SuperContainer
