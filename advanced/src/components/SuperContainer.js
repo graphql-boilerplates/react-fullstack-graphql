@@ -15,7 +15,6 @@ import LoginPage from './LoginPage'
 import SignupPage from './SignupPage'
 import PageNotFound from './PageNotFound'
 import LogoutPage from './LogoutPage'
-import { ApolloProvider } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
 import { isTokenExpired } from '../helper/jwtHelper'
 import { graphql } from 'react-apollo'
@@ -78,7 +77,6 @@ class SuperContainer extends React.Component {
 
   render() {
     return (
-      <ApolloProvider client={this.props.client}>
         <Router>
           <React.Fragment>
             <nav className="pa3 pa4-ns">
@@ -173,7 +171,6 @@ class SuperContainer extends React.Component {
             </div>
           </React.Fragment>
         </Router>
-      </ApolloProvider>
     )
   }
 }
@@ -187,7 +184,6 @@ query me {
   }
 }`
 
-//export default graphql(ME,{})(SuperContainer)
+export default graphql(ME,{})(SuperContainer)
 
-export default SuperContainer
 

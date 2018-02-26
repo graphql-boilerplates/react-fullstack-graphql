@@ -6,6 +6,7 @@ import { ApolloLink, split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { AUTH_TOKEN } from './constant'
 import SuperContainer from './components/SuperContainer'
+import { ApolloProvider } from 'react-apollo'
 
 import 'tachyons'
 import './index.css'
@@ -57,8 +58,12 @@ const client = new ApolloClient({
 const token = localStorage.getItem(AUTH_TOKEN)
 
 ReactDOM.render(
-  <SuperContainer client={client} token={token} />,
+  <ApolloProvider client={client}>
+  <SuperContainer client={client} token={token}/>
+  </ApolloProvider>
+  ,
   document.getElementById('root')
 )
+
 
 
