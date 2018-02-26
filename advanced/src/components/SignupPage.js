@@ -6,9 +6,9 @@ import { AUTH_TOKEN } from '../constant'
 
 class SignupPage extends React.Component {
   state = {
-    email: "",
-    password: "",
-    name: ""
+    email: '',
+    password: '',
+    name: ''
   }
 
   render() {
@@ -16,7 +16,6 @@ class SignupPage extends React.Component {
       <div className="pa4 flex justify-center bg-white">
         <form onSubmit={this._signup}>
           <h3>
-            {' '}
             Already have an account!!! <a href="/login"> Login</a>
           </h3>
           <input
