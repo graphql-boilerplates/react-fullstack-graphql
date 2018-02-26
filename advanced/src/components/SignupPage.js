@@ -8,7 +8,7 @@ class SignupPage extends React.Component {
   state = {
     email: '',
     password: '',
-    name: ''
+    name: '',
   }
 
   render() {
@@ -98,5 +98,6 @@ const SIGNUP_USER = gql`
   }
 `
 
-export default graphql(SIGNUP_USER, { name: 'signupMutation' })(withRouter(SignupPage)
+export default graphql(SIGNUP_USER, { name: 'signupMutation' })(
+  withRouter(SignupPage)
 )
