@@ -1,8 +1,8 @@
-import React from "react"
-import { withRouter } from "react-router-dom"
-import { graphql } from "react-apollo"
-import gql from "graphql-tag"
-import { AUTH_TOKEN } from "../constant"
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import { AUTH_TOKEN } from '../constant'
 
 class SignupPage extends React.Component {
   state = {
@@ -15,7 +15,10 @@ class SignupPage extends React.Component {
     return (
       <div className="pa4 flex justify-center bg-white">
         <form onSubmit={this._signup}>
-          <h3> Already have an account!!! <a href="/login"> Login</a></h3>
+          <h3>
+            {' '}
+            Already have an account!!! <a href="/login"> Login</a>
+          </h3>
           <input
             autoFocus
             className="w-100 pa2 mv2 br2 b--black-20 bw1"
@@ -42,9 +45,9 @@ class SignupPage extends React.Component {
           />
 
           <input
-            className={
-              `pa3 bg-black-10 bn ${this.state.text && this.state.title && "dim pointer"}`
-            }
+            className={`pa3 bg-black-10 bn ${this.state.text &&
+              this.state.title &&
+              'dim pointer'}`}
             disabled={
               !this.state.email || !this.state.name || !this.state.password
             }
@@ -64,38 +67,38 @@ class SignupPage extends React.Component {
         variables: {
           name: name,
           email: email,
-          password: password
-        }
+          password: password,
+        },
       })
       .then(result => {
         const token = result.data.signup.token
         localStorage.setItem(AUTH_TOKEN, token)
         this.props.refreshTokenFn &&
           this.props.refreshTokenFn({
-            [AUTH_TOKEN]: token
+            [AUTH_TOKEN]: token,
           })
 
-        this.props.history.replace("/")
+        this.props.history.replace('/')
       })
       .catch(err => {
-        console.log("error")
+        console.log('error')
       })
   }
 }
 
 const SIGNUP_USER = gql`
-    mutation SignupMutation($email: String!, $password: String!, $name: String!) {
-      signup(email: $email, password: $password, name: $name) {
-        token
-        user{
-          id
-          name
-          email
-        }
+  mutation SignupMutation($email: String!, $password: String!, $name: String!) {
+    signup(email: $email, password: $password, name: $name) {
+      token
+      user {
+        id
+        name
+        email
       }
     }
-  `
+  }
+`
 
-export default graphql(SIGNUP_USER, { name: "signupMutation" })(
-  withRouter(SignupPage)
+export default graphql(SIGNUP_USER, { name: 'signupMutation' })(
+  withRouter(SignupPage),
 )
