@@ -59,7 +59,7 @@ class LoginPage extends React.Component {
       })
       .then(result => {
         const token = result.data.login.token
-        localStorage.setItem(AUTH_TOKEN, token)
+
         this.props.refreshTokenFn &&
           this.props.refreshTokenFn({
             [AUTH_TOKEN]: token,
