@@ -86,6 +86,4 @@ const LOGIN_USER = gql`
   }
 `
 
-export default graphql(LOGIN_USER, { name: 'loginMutation' })(
-  withRouter(LoginPage),
-)
+export default graphql(LOGIN_USER, { name: 'loginMutation' })(withRouter(LoginPage))
