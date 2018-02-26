@@ -3,6 +3,8 @@
   "rules": {
     "semi": ["error", "never"],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-extra-semi": 0,
+    "no-console": 0           // disallow use of console (off by default in the node environment)         // disallow unnecessary semicolons
   }
 }

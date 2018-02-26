@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { HttpLink, InMemoryCache, ApolloClient } from 'apollo-client-preset'
-import { WebSocketLink } from 'apollo-link-ws'
-import { ApolloLink, split } from 'apollo-link'
-import { getMainDefinition } from 'apollo-utilities'
-import { AUTH_TOKEN } from './constant'
-import SuperContainer from './components/SuperContainer'
+import React from "react"
+import ReactDOM from "react-dom"
+import { HttpLink, InMemoryCache, ApolloClient } from "apollo-client-preset"
+import { WebSocketLink } from "apollo-link-ws"
+import { ApolloLink, split } from "apollo-link"
+import { getMainDefinition } from "apollo-utilities"
+import { AUTH_TOKEN } from "./constant"
+import SuperContainer from "./components/SuperContainer"
 
-import 'tachyons'
-import './index.css'
+import "tachyons"
+import "./index.css"
 
-const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
+const httpLink = new HttpLink({ uri: "http://localhost:4000" })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -18,7 +18,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
-      Authorization: tokenValue ? `Bearer ${tokenValue}` : "",
+      Authorization: tokenValue ? `Bearer ${tokenValue}` : ""
     }
   })
   return forward(operation)
@@ -41,10 +41,10 @@ const link = split(
   // split based on operation type
   ({ query }) => {
     const { kind, operation } = getMainDefinition(query)
-    return kind === 'OperationDefinition' && operation === 'subscription'
+    return kind === "OperationDefinition" && operation === "subscription"
   },
   wsLink,
-  httpLinkAuth,
+  httpLinkAuth
 )
 
 // apollo client setup
@@ -54,12 +54,11 @@ const client = new ApolloClient({
   connectToDevTools: true
 })
 
-const token = localStorage.getItem (AUTH_TOKEN)
+const token = localStorage.getItem(AUTH_TOKEN)
 
-function RenderDom() {
-  ReactDOM.render(<SuperContainer client={client} token={token}/> ,document.getElementById('root'))
-}
-
-RenderDom()
+ReactDOM.render(
+  <SuperContainer client={client} token={token} />,
+  document.getElementById("root")
+)
 
 export default SuperContainer
