@@ -59,7 +59,7 @@ const token = localStorage.getItem(AUTH_TOKEN)
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-  <SuperContainer client={client} token={token}/>
+  <SuperContainer token={token}/>
   </ApolloProvider>
   ,
   document.getElementById('root')
