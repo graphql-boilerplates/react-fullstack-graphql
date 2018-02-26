@@ -17,7 +17,7 @@ import PageNotFound from './PageNotFound'
 import LogoutPage from './LogoutPage'
 import { ApolloProvider } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
-
+import { isTokenExpired } from '../helper/jwtHelper'
 
 const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   return token ? (
@@ -30,18 +30,48 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
 class SuperContainer extends React.Component {
   constructor(props) {
     super(props)
-
     this.refreshTokenFn = this.refreshTokenFn.bind(this)
 
     this.state = {
       token: props.token,
+      expireToken: false,
     }
   }
 
   refreshTokenFn(data = {}) {
+    const { token } = data
+
+    if(token) {
+      localStorage.setItem(AUTH_TOKEN, token)
+    } else {
+      localStorage.removeItem(AUTH_TOKEN)
+    }
+
     this.setState({
       token: data.token,
     })
+  }
+
+  bootStrapData() {
+    try {
+      const token = localStorage.getItem(AUTH_TOKEN)
+      if (token !== null && token !== undefined) {
+        const expired = isTokenExpired(token)
+        if (!expired) {
+          this.setState({ token: token, expireToken: expired })
+        } else {
+          localStorage.removeItem(AUTH_TOKEN)
+          this.setState({ token: null, expireToken: false })
+        }
+      }
+    } catch(e) {
+      console.log('')
+    }
+  }
+
+  //verify cookie check
+  componentDidMount() {
+    this.bootStrapData()
   }
 
   render() {
@@ -80,7 +110,6 @@ class SuperContainer extends React.Component {
               {this.state.token ? (
                 <div
                   onClick={() => {
-                    localStorage.removeItem(AUTH_TOKEN)
                     window.location.href('/')
                     this.refreshTokenFn &&
                       this.refreshTokenFn({
