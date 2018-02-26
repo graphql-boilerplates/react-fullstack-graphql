@@ -18,6 +18,8 @@ import LogoutPage from './LogoutPage'
 import { ApolloProvider } from 'react-apollo'
 import { AUTH_TOKEN } from '../constant'
 import { isTokenExpired } from '../helper/jwtHelper'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   return token ? (
@@ -110,11 +112,11 @@ class SuperContainer extends React.Component {
               {this.state.token ? (
                 <div
                   onClick={() => {
-                    window.location.href('/')
                     this.refreshTokenFn &&
                       this.refreshTokenFn({
                         [AUTH_TOKEN]: null,
                       })
+                      window.location.href('/')
                   }}
                   className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
                 >
@@ -185,4 +187,7 @@ query me {
   }
 }`
 
+//export default graphql(ME,{})(SuperContainer)
+
 export default SuperContainer
+
