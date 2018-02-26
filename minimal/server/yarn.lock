@@ -944,10 +944,6 @@ encoding@^0.1.11:
   dependencies:
     iconv-lite "~0.4.13"
 
-es6-promise@^4.1.1:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.4.tgz#dc4221c2b16518760bd8c39a52d8f356fc00ed29"
-
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -1176,14 +1172,14 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphql-config@1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-1.1.7.tgz#546c443d3ad877ceb8e13f40fbc8937af0d35dbe"
+graphql-config@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-config/-/graphql-config-2.0.0.tgz#daf69091055c6f675d63893a2d14c48f3fec3327"
   dependencies:
-    graphql "^0.12.3"
     graphql-import "^0.4.0"
     graphql-request "^1.4.0"
     js-yaml "^3.10.0"
+    lodash "^4.17.4"
     minimatch "^3.0.4"
 
 graphql-extensions@^0.0.x:
@@ -1193,30 +1189,36 @@ graphql-extensions@^0.0.x:
     core-js "^2.5.3"
     source-map-support "^0.5.1"
 
-graphql-import@^0.4.0, graphql-import@^0.4.1:
+graphql-import@^0.4.0:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.3.tgz#5fc68244e0908d6d8f2b91658a82be3d11f4ec62"
   dependencies:
     graphql "^0.13.0"
     lodash "^4.17.4"
 
-graphql-playground-html@1.5.4:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.5.4.tgz#82752ec4ee36c62d64ccebf7d3ca47477c213bb6"
+graphql-import@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
   dependencies:
-    graphql-config "1.1.7"
+    lodash "^4.17.4"
 
-graphql-playground-middleware-express@1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.5.6.tgz#db3c4b0ab5fd999cd9ed0ee16460dca321878afd"
+graphql-playground-html@1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.5.5.tgz#e2aca543eb66b435ead495b45244b2604d6b2d48"
   dependencies:
-    graphql-playground-html "1.5.4"
+    graphql-config "2.0.0"
 
-graphql-playground-middleware-lambda@1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-lambda/-/graphql-playground-middleware-lambda-1.4.2.tgz#6954ed6e7166049468287d730810942e288b5b98"
+graphql-playground-middleware-express@1.5.7:
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.5.7.tgz#a07418791d9f3728b2bda18fc2c6edcaf997cc93"
   dependencies:
-    graphql-playground-html "1.5.4"
+    graphql-playground-html "1.5.5"
+
+graphql-playground-middleware-lambda@1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-lambda/-/graphql-playground-middleware-lambda-1.4.3.tgz#017ed8124eac7360f676ccc6a23b1e4e24a04c50"
+  dependencies:
+    graphql-playground-html "1.5.5"
 
 graphql-request@^1.4.0:
   version "1.4.1"
@@ -1224,12 +1226,11 @@ graphql-request@^1.4.0:
   dependencies:
     cross-fetch "1.1.1"
 
-graphql-subscriptions@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.5.6.tgz#0d8e960fbaaf9ecbe7900366e86da2fc143fc5b2"
+graphql-subscriptions@^0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.5.8.tgz#13a6143c546bce390404657dc73ca501def30aa7"
   dependencies:
-    es6-promise "^4.1.1"
-    iterall "^1.1.3"
+    iterall "^1.2.1"
 
 graphql-tools@^2.18.0:
   version "2.20.2"
@@ -1240,9 +1241,9 @@ graphql-tools@^2.18.0:
     deprecated-decorator "^0.1.6"
     uuid "^3.1.0"
 
-graphql-yoga@1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.3.3.tgz#aaac1307726a4f5c9cf1362805ea25bda746af02"
+graphql-yoga@1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.4.3.tgz#a5e17c131454a4c244f1df65eeddf5afb7ab3f26"
   dependencies:
     "@types/cors" "^2.8.3"
     "@types/express" "^4.0.39"
@@ -1255,19 +1256,19 @@ graphql-yoga@1.3.3:
     body-parser-graphql "1.0.0"
     cors "^2.8.4"
     express "^4.16.2"
-    graphql "^0.13.0"
-    graphql-import "^0.4.1"
-    graphql-playground-middleware-express "1.5.6"
-    graphql-playground-middleware-lambda "1.4.2"
-    graphql-subscriptions "^0.5.6"
+    graphql "^0.11.0 || ^0.12.0 || ^0.13.0"
+    graphql-import "^0.4.4"
+    graphql-playground-middleware-express "1.5.7"
+    graphql-playground-middleware-lambda "1.4.3"
+    graphql-subscriptions "^0.5.8"
     graphql-tools "^2.18.0"
-    subscriptions-transport-ws "^0.9.5"
+    subscriptions-transport-ws "^0.9.6"
 
-graphql@^0.12.3:
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.12.3.tgz#11668458bbe28261c0dcb6e265f515ba79f6ce07"
+"graphql@^0.11.0 || ^0.12.0 || ^0.13.0":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.1.tgz#9b3db3d8e40d1827e4172404bfdd2e4e17a58b55"
   dependencies:
-    iterall "1.1.3"
+    iterall "^1.2.0"
 
 graphql@^0.13.0:
   version "0.13.0"
@@ -1458,13 +1459,13 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-iterall@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.3.tgz#1cbbff96204056dde6656e2ed2e2226d0e6d72c9"
-
-iterall@1.1.x, iterall@^1.1.1, iterall@^1.1.3:
+iterall@1.1.x:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.4.tgz#0db40d38fdcf53ae14dc8ec674e62ab190d52cfc"
+
+iterall@^1.2.0, iterall@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.1.tgz#59a347ae8001d2d4bc546b8487ca755d61849965"
 
 jmespath@0.15.0:
   version "0.15.0"
@@ -2106,13 +2107,13 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-subscriptions-transport-ws@^0.9.5:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.5.tgz#faa9eb1230d5f2efe355368cd973b867e4483c53"
+subscriptions-transport-ws@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.6.tgz#5ff86a0746316ca3eb2423b118b8bc74a6793e1b"
   dependencies:
     backo2 "^1.0.2"
     eventemitter3 "^2.0.3"
-    iterall "^1.1.1"
+    iterall "^1.2.1"
     lodash.assign "^4.2.0"
     lodash.isobject "^3.0.2"
     lodash.isstring "^4.0.1"
