@@ -175,4 +175,14 @@ class SuperContainer extends React.Component {
     )
   }
 }
+
+const ME = gql`
+query me {
+  me {
+    id
+    email
+    name
+  }
+}`
+
 export default SuperContainer
