@@ -70,7 +70,7 @@ class SuperContainer extends React.Component {
     }
   }
 
-  //verify cookie check
+  //verify localStorage check
   componentDidMount() {
     this.bootStrapData()
   }
