@@ -1799,13 +1799,13 @@ graphql-cli-prepare@1.4.11:
     graphql-static-binding "0.8.0"
     lodash "4.17.4"
 
-graphql-cli-prepare@1.4.17:
-  version "1.4.17"
-  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.17.tgz#80b321e655b109030845df2bd333a1ead145ccb8"
+graphql-cli-prepare@1.4.19:
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/graphql-cli-prepare/-/graphql-cli-prepare-1.4.19.tgz#9df5d608ba42c4947d7ef24f9fc39e3df0c89301"
   dependencies:
     chalk "2.3.1"
     fs-extra "5.0.0"
-    graphql-import "0.4.4"
+    graphql-import "0.4.5"
     graphql-static-binding "0.9.3"
     lodash "4.17.5"
 
@@ -1842,9 +1842,9 @@ graphql-cli@2.12.2:
     source-map-support "^0.5.0"
     yargs "10.1.1"
 
-graphql-cli@2.15.7:
-  version "2.15.7"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.7.tgz#d75f255809eb640ac38812de32b936093db35eb8"
+graphql-cli@2.15.8:
+  version "2.15.8"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.8.tgz#09fce214b6d5f02a564601569ac2ac624ea2cb88"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.1"
@@ -1855,7 +1855,7 @@ graphql-cli@2.15.7:
     express "^4.16.2"
     express-request-proxy "^2.0.0"
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0"
-    graphql-cli-prepare "1.4.17"
+    graphql-cli-prepare "1.4.19"
     graphql-config "2.0.1"
     graphql-config-extension-graphcool "1.0.8"
     graphql-config-extension-openapi "1.0.6"
@@ -1963,12 +1963,6 @@ graphql-import@0.4.0:
     graphql "^0.12.3"
     lodash "^4.17.4"
 
-graphql-import@0.4.4, graphql-import@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
-  dependencies:
-    lodash "^4.17.4"
-
 graphql-import@0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"
@@ -1980,6 +1974,12 @@ graphql-import@^0.4.0:
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.1.tgz#ef1c047d6250bc8c009b12b64c26924ac4f4716c"
   dependencies:
     graphql "^0.12.3"
+    lodash "^4.17.4"
+
+graphql-import@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.4.tgz#57a485f3b954fd3fa80ae58bf35d8d158e263e92"
+  dependencies:
     lodash "^4.17.4"
 
 graphql-playground-html@1.4.4:
