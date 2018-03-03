@@ -76,6 +76,8 @@ class SuperContainer extends React.Component {
   }
 
   render() {
+    let { data } = this.props
+
     return (
         <Router>
           <React.Fragment>
@@ -96,7 +98,7 @@ class SuperContainer extends React.Component {
               >
                 Feed
               </NavLink>
-              {this.state.token && (
+              {this.state.token && data.me.email (
                 <NavLink
                   className="link dim f6 f5-ns dib mr3 black"
                   activeClassName="gray"
@@ -107,7 +109,7 @@ class SuperContainer extends React.Component {
                   Drafts
                 </NavLink>
               )}
-              {this.state.token ? (
+              {this.state.token && data.me.email ? (
                 <div
                   onClick={() => {
                     this.refreshTokenFn &&
@@ -128,7 +130,7 @@ class SuperContainer extends React.Component {
                   Login
                 </Link>
               )}
-              {this.state.token && (
+              {this.state.token && data.me.email && (
                 <Link
                   to="/create"
                   className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
