@@ -34,8 +34,7 @@ class SuperContainer extends React.Component {
     this.refreshTokenFn = this.refreshTokenFn.bind(this)
 
     this.state = {
-      token: props.token,
-      expireToken: false,
+      token: props.token
     }
   }
 
@@ -59,10 +58,10 @@ class SuperContainer extends React.Component {
       if (token !== null && token !== undefined) {
         const expired = isTokenExpired(token)
         if (!expired) {
-          this.setState({ token: token, expireToken: expired })
+          this.setState({ token: token})
         } else {
           localStorage.removeItem(AUTH_TOKEN)
-          this.setState({ token: null, expireToken: false })
+          this.setState({ token: null})
         }
       }
     } catch(e) {
