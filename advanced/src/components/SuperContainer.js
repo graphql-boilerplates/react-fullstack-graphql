@@ -22,169 +22,168 @@ import gql from 'graphql-tag'
 
 const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   return token ? (
-    <Route {...rest} render={matchProps => <Component {...matchProps} />} />
+	<Route {...rest} render={matchProps => <Component {...matchProps} />} />
   ) : (
-    <Redirect to="/login" />
+	<Redirect to="/login" />
   )
 }
 
 class SuperContainer extends React.Component {
   constructor(props) {
-    super(props)
-    this.refreshTokenFn = this.refreshTokenFn.bind(this)
+	super(props)
+	this.refreshTokenFn = this.refreshTokenFn.bind(this)
 
-    this.state = {
-      token: props.token
-    }
+	this.state = {
+	  token: props.token
+	}
   }
 
   refreshTokenFn(data = {}) {
-    const { token } = data
+	const token  = data.AUTH_TOKEN
 
-    if(token) {
-      localStorage.setItem(AUTH_TOKEN, token)
-    } else {
-      localStorage.removeItem(AUTH_TOKEN)
-    }
+	if(token) {
+	  localStorage.setItem(AUTH_TOKEN, token)
+	} else {
+	  localStorage.removeItem(AUTH_TOKEN)
+	}
 
-    this.setState({
-      token: data.token,
-    })
+	this.setState({
+	  token: data.AUTH_TOKEN,
+	})
   }
 
   bootStrapData() {
-    try {
-      const token = localStorage.getItem(AUTH_TOKEN)
-      if (token !== null && token !== undefined) {
-        const expired = isTokenExpired(token)
-        if (!expired) {
-          this.setState({ token: token})
-        } else {
-          localStorage.removeItem(AUTH_TOKEN)
-          this.setState({ token: null})
-        }
-      }
-    } catch(e) {
-      console.log('')
-    }
+	try {
+	  const token = localStorage.getItem(AUTH_TOKEN)
+	  if (token !== null && token !== undefined) {
+		const expired = isTokenExpired(token)
+		if (!expired) {
+		  this.setState({ token: token})
+		} else {
+		  localStorage.removeItem(AUTH_TOKEN)
+		  this.setState({ token: null})
+		}
+	  }
+	} catch(e) {
+	  console.log('')
+	}
   }
 
   //verify localStorage check
   componentDidMount() {
-    this.bootStrapData()
+	this.bootStrapData()
   }
 
   render() {
-    let { data } = this.props
 
-    return (
-        <Router>
-          <React.Fragment>
-            <nav className="pa3 pa4-ns">
-              <Link
-                className="link dim black b f6 f5-ns dib mr3"
-                to="/"
-                title="Feed"
-              >
-                Blog
-              </Link>
-              <NavLink
-                className="link dim f6 f5-ns dib mr3 black"
-                activeClassName="gray"
-                exact={true}
-                to="/"
-                title="Feed"
-              >
-                Feed
-              </NavLink>
-              {this.state.token && data.me.email (
-                <NavLink
-                  className="link dim f6 f5-ns dib mr3 black"
-                  activeClassName="gray"
-                  exact={true}
-                  to="/drafts"
-                  title="Drafts"
-                >
-                  Drafts
-                </NavLink>
-              )}
-              {this.state.token && data.me.email ? (
-                <div
-                  onClick={() => {
-                    this.refreshTokenFn &&
-                      this.refreshTokenFn({
-                        [AUTH_TOKEN]: null,
-                      })
-                      window.location.href('/')
-                  }}
-                  className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
-                >
-                  Logout
-                </div>
-              ) : (
-                <Link
-                  to="/login"
-                  className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
-                >
-                  Login
-                </Link>
-              )}
-              {this.state.token && data.me.email && (
-                <Link
-                  to="/create"
-                  className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
-                >
-                  + Create Draft
-                </Link>
-              )}
-            </nav>
-            <div className="fl w-100 pl4 pr4">
-              <Switch>
-                <Route exact path="/" component={FeedPage} />
-                <ProtectedRoute
-                  token={this.state.token}
-                  path="/drafts"
-                  component={DraftsPage}
-                />
-                <ProtectedRoute
-                  token={this.state.token}
-                  path="/create"
-                  component={CreatePage}
-                />
-                <Route path="/post/:id" component={DetailPage} />
-                <Route
-                  token={this.state.token}
-                  path="/login"
-                  render={props => (
-                    <LoginPage refreshTokenFn={this.refreshTokenFn} />
-                  )}
-                />
-                <Route
-                  token={this.state.token}
-                  path="/signup"
-                  render={props => (
-                    <SignupPage refreshTokenFn={this.refreshTokenFn} />
-                  )}
-                />
-                <Route path="/logout" component={LogoutPage} />
-                <Route component={PageNotFound} />
-              </Switch>
-            </div>
-          </React.Fragment>
-        </Router>
-    )
+	return (
+		<Router>
+		  <React.Fragment>
+			<nav className="pa3 pa4-ns">
+			  <Link
+				className="link dim black b f6 f5-ns dib mr3"
+				to="/"
+				title="Feed"
+			  >
+				Blog
+			  </Link>
+			  <NavLink
+				className="link dim f6 f5-ns dib mr3 black"
+				activeClassName="gray"
+				exact={true}
+				to="/"
+				title="Feed"
+			  >
+				Feed
+			  </NavLink>
+			  {this.state.token &&
+				<NavLink
+				  className="link dim f6 f5-ns dib mr3 black"
+				  activeClassName="gray"
+				  exact={true}
+				  to="/drafts"
+				  title="Drafts"
+				>
+				  Drafts
+				</NavLink>
+			  }
+			  {this.state.token ? (
+				<div
+				  onClick={() => {
+					this.refreshTokenFn &&
+					  this.refreshTokenFn({
+						[AUTH_TOKEN]: null,
+					  })
+					  window.location.href = '/'
+				  }}
+				  className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+				>
+				  Logout
+				</div>
+			  ) : (
+				<Link
+				  to="/login"
+				  className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+				>
+				  Login
+				</Link>
+			  )}
+			  {this.state.token && (
+				<Link
+				  to="/create"
+				  className="f6 link dim br1 ba ph3 pv2 fr mb2 dib black"
+				>
+				  + Create Draft
+				</Link>
+			  )}
+			</nav>
+			<div className="fl w-100 pl4 pr4">
+			  <Switch>
+				<Route exact path="/" component={FeedPage} />
+				<ProtectedRoute
+				  token={this.state.token}
+				  path="/drafts"
+				  component={DraftsPage}
+				/>
+				<ProtectedRoute
+				  token={this.state.token}
+				  path="/create"
+				  component={CreatePage}
+				/>
+				<Route path="/post/:id" component={DetailPage} />
+				<Route
+				  token={this.state.token}
+				  path="/login"
+				  render={props => (
+					<LoginPage refreshTokenFn={this.refreshTokenFn} />
+				  )}
+				/>
+				<Route
+				  token={this.state.token}
+				  path="/signup"
+				  render={props => (
+					<SignupPage refreshTokenFn={this.refreshTokenFn} />
+				  )}
+				/>
+				<Route path="/logout" component={LogoutPage} />
+				<Route component={PageNotFound} />
+			  </Switch>
+			</div>
+		  </React.Fragment>
+		</Router>
+	)
   }
 }
 
 const ME = gql`
 query me {
   me {
-    id
-    email
-    name
+	id
+	email
+	name
   }
 }`
 
-export default graphql(ME,{})(SuperContainer)
+export default SuperContainer
 
 

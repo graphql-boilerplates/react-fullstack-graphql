@@ -51,19 +51,20 @@ class LoginPage extends React.Component {
     const { email, password } = this.state
     this.props.loginMutation({
         variables: {
-          email: email,
-          password: password,
+          email,
+          password,
         },
       })
       .then(result => {
         const token = result.data.login.token
 
+        this.props.history.replace('/')
         this.props.refreshTokenFn &&
           this.props.refreshTokenFn({
             [AUTH_TOKEN]: token,
           })
 
-        this.props.history.replace('/')
+
       })
       .catch(err => {
         console.log('error')
