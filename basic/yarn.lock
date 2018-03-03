@@ -182,9 +182,9 @@ apollo-link-http-common@^0.2.2:
   dependencies:
     apollo-link "^1.2.1"
 
-apollo-link-http@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.5.1.tgz#1cae092e994d86659f88cc418ccd10a914b312d3"
+apollo-link-http@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.5.2.tgz#cac4202b7f802869f892397f989d002c4ebb3b56"
   dependencies:
     apollo-link "^1.2.1"
     apollo-link-http-common "^0.2.2"
