@@ -29,6 +29,7 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
 }
 
 class SuperContainer extends React.Component {
+
   constructor(props) {
     super(props)
     this.refreshTokenFn = this.refreshTokenFn.bind(this)
