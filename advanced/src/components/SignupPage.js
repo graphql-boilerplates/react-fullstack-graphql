@@ -44,9 +44,7 @@ class SignupPage extends React.Component {
           />
 
           <input
-            className={`pa3 bg-black-10 bn ${this.state.text &&
-              this.state.title &&
-              'dim pointer'}`}
+            className={`pa3 bg-black-10 dim pointer}`}
             disabled={
               !this.state.email || !this.state.name || !this.state.password
             }
