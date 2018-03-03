@@ -188,6 +188,7 @@ class SuperContainer extends React.Component {
 
 }
 
+//me query
 const ME = gql`
   query me {
     me {
