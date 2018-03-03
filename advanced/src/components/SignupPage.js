@@ -1,15 +1,15 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
-import { AUTH_TOKEN } from "../constant";
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import { AUTH_TOKEN } from '../constant'
 
 class SignupPage extends React.Component {
   state = {
-    email: "",
-    password: "",
-    name: ""
-  };
+    email: '',
+    password: '',
+    name: '',
+  }
 
   render() {
     return (
@@ -53,30 +53,30 @@ class SignupPage extends React.Component {
           />
         </form>
       </div>
-    );
+    )
   }
 
   _signup = async e => {
-    e.preventDefault();
-    const { email, name, password } = this.state;
+    e.preventDefault()
+    const { email, name, password } = this.state
     const result = await this.props.signupMutation({
       variables: {
         name,
         email,
-        password
-      }
+        password,
+      },
     })
 
-    const token = result.data.signup.token;
-    localStorage.setItem(AUTH_TOKEN, token);
+    const token = result.data.signup.token
+    localStorage.setItem(AUTH_TOKEN, token)
 
     this.props.refreshTokenFn &&
       this.props.refreshTokenFn({
-        [AUTH_TOKEN]: token
+        [AUTH_TOKEN]: token,
       })
 
-    this.props.history.replace("/")
-  };
+    this.props.history.replace('/')
+  }
 }
 
 const SIGNUP_USER = gql`
@@ -90,8 +90,8 @@ const SIGNUP_USER = gql`
       }
     }
   }
-`;
+`
 
-export default graphql(SIGNUP_USER, { name: "signupMutation" })(
+export default graphql(SIGNUP_USER, { name: 'signupMutation' })(
   withRouter(SignupPage)
-);
+)

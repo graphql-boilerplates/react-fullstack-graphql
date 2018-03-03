@@ -7,7 +7,7 @@ import { AUTH_TOKEN } from '../constant'
 class LoginPage extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
   }
 
   render() {
@@ -49,7 +49,8 @@ class LoginPage extends React.Component {
 
   _login = async e => {
     const { email, password } = this.state
-    this.props.loginMutation({
+    this.props
+      .loginMutation({
         variables: {
           email,
           password,
@@ -63,8 +64,6 @@ class LoginPage extends React.Component {
           this.props.refreshTokenFn({
             [AUTH_TOKEN]: token,
           })
-
-
       })
       .catch(err => {
         console.log('error')
@@ -85,4 +84,6 @@ const LOGIN_USER = gql`
   }
 `
 
-export default graphql(LOGIN_USER, { name: 'loginMutation' })(withRouter(LoginPage))
+export default graphql(LOGIN_USER, { name: 'loginMutation' })(
+  withRouter(LoginPage)
+)
