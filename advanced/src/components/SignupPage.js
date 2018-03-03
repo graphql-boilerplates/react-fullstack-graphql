@@ -59,8 +59,7 @@ class SignupPage extends React.Component {
   _signup = async e => {
     e.preventDefault()
     const { email, name, password } = this.state
-    this.props
-      .signupMutation({
+    this.props.signupMutation({
         variables: {
           name: name,
           email: email,
