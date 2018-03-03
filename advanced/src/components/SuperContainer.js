@@ -17,7 +17,7 @@ import PageNotFound from './PageNotFound'
 import LogoutPage from './LogoutPage'
 import { AUTH_TOKEN } from '../constant'
 import { isTokenExpired } from '../helper/jwtHelper'
-import { withApollo, graphql  } from 'react-apollo'
+import { graphql  } from 'react-apollo'
 import gql from 'graphql-tag'
 
 const ProtectedRoute = ({ component: Component, token, ...rest }) => {
@@ -184,6 +184,6 @@ query me {
   }
 }`
 
-export default withApollo(graphql(ME,{})(SuperContainer))
+export default graphql(ME,{})(SuperContainer)
 
 
