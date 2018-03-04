@@ -1782,12 +1782,12 @@ graphcool-yml@0.4.8:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-binding@1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-1.2.4.tgz#ac1af63d98fca412dcd52ca04928cab2d6d08e0a"
+graphql-binding@1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-1.2.5.tgz#1c45b9da055cb0722f0348b6354be2e11b0a8c17"
   dependencies:
     graphql-tools "2.21.0"
-    iterall "1.2.1"
+    iterall "1.2.2"
 
 graphql-cli-prepare@1.4.11:
   version "1.4.11"
@@ -2551,9 +2551,9 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-iterall@1.2.1, iterall@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.1.tgz#59a347ae8001d2d4bc546b8487ca755d61849965"
+iterall@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
 
 iterall@^1.1.3:
   version "1.1.3"
@@ -2562,6 +2562,10 @@ iterall@^1.1.3:
 iterall@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.0.tgz#434e9f41f0b99911ab9c3d49d95f0e079176a2a2"
+
+iterall@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.1.tgz#59a347ae8001d2d4bc546b8487ca755d61849965"
 
 jmespath@0.15.0:
   version "0.15.0"
@@ -3464,15 +3468,15 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prisma-binding@1.5.15:
-  version "1.5.15"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.15.tgz#5cc49c60f1835e58e792c3760cdd1fb88ba1f52d"
+prisma-binding@1.5.16:
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.16.tgz#51c3c1fca96550ca1c45645d2615c595bc5aae79"
   dependencies:
     apollo-link "1.2.1"
     apollo-link-error "1.0.7"
     apollo-link-ws "1.0.7"
     cross-fetch "2.0.0"
-    graphql-binding "1.2.4"
+    graphql-binding "1.2.5"
     graphql-import "0.4.5"
     graphql-tools "2.21.0"
     http-link-dataloader "^0.1.2"
