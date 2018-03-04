@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Fullstack GraphQL Boilerplates for React.js & Node.js</strong></h1>
+<h1 align="center"><strong>Boilerplate for a Advanced Fullstack GraphQL App with React</strong></h1>
 
 <br />
 
