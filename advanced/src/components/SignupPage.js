@@ -76,6 +76,7 @@ class SignupPage extends React.Component {
       })
 
     this.props.history.replace('/')
+    window.location.reload()
   }
 }
 
