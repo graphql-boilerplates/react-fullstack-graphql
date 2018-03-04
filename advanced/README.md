@@ -5,7 +5,7 @@
 ![](https://imgur.com/ousyQaC.png)
 
 <div align="center"><strong>🚀 Bootstrap your fullstack GraphQL app within seconds</strong></div>
-<div align="center">Basic starter kit for a fullstack GraphQL app with React and Node.js - based on best practices from the GraphQL community.</div>
+<div align="center">Advanced starter kit for a fullstack GraphQL app with React and Node.js - based on best practices from the GraphQL community.</div>
 
 ## Features
 
