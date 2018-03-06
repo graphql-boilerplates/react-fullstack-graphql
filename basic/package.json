@@ -7,7 +7,7 @@
     "react-scripts": "1.1.1"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "1.1.9",
+    "apollo-cache-inmemory": "1.1.10",
     "apollo-client": "2.2.5",
     "apollo-link": "1.2.1",
     "apollo-link-http": "1.5.3",
