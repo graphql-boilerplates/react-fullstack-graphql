@@ -199,4 +199,8 @@ const ME = gql`
   }
 `
 
-export default graphql(ME, {})(SuperContainer)
+export default graphql(ME, {
+  options: {
+    errorPolicy: 'all'
+  }
+})(SuperContainer)
