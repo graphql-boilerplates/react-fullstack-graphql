@@ -91,7 +91,7 @@ export default graphql(FEED_QUERY, {
               return prev
             }
             return Object.assign({}, prev, {
-              feed : [...prev.feed, newFeed]
+              feed : [...prev.feed, newPost]
             })
           }
         })
