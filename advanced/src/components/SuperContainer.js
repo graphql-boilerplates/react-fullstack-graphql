@@ -207,7 +207,7 @@ const feedSubscribe = gql`
       text
     }
   }
-`;
+`
 
 export default graphql(ME, {
   options: {
