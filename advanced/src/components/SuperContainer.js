@@ -224,13 +224,13 @@ export default graphql(ME, {
             if (!subscriptionData.data) {
               return prev
             }
-            const newMessage = subscriptionData.data.feedSubscription
-            console.log(newMessage, prev.messages)
-            if (prev.messages.find(message => message.id === newMessage.id)) {
-              return prev
-            }
+            const newFeed = subscriptionData.data.feedSubscription
+            console.log(newFeed, prev.feed)
+            // if (prev.feed.find(message => message.id === newFeed.id)) {
+            //   return prev
+            // }
             return Object.assign({}, prev, {
-              messages: [...prev.messages, newMessage]
+              messages: [...prev.feed, newFeed]
             })
           }
         })
