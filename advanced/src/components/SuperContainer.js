@@ -220,11 +220,11 @@ export default graphql(ME, {
         return props.data.subscribeToMore({
           document: feedSubscribe,
           updateQuery: (prev, { subscriptionData }) => {
-            console.log("subscribed data", subscriptionData);
+            console.log("subscribed data", subscriptionData)
             if (!subscriptionData.data) {
               return prev;
             }
-            const newMessage = subscriptionData.data.feedSubscription;
+            const newMessage = subscriptionData.data.feedSubscription
             console.log(newMessage, prev.messages);
             if (prev.messages.find(message => message.id === newMessage.id)) {
               return prev;
