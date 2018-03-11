@@ -11,8 +11,8 @@ import { ApolloProvider } from 'react-apollo'
 import 'tachyons'
 import './index.css'
 //for testing purpose
-//const httpLink = new HttpLink({ uri: 'https://advdemo.now.sh' })
-const httpLink = new HttpLink({ uri: 'https://localhost:4000' })
+const httpLink = new HttpLink({ uri: 'https://advdemo.now.sh' })
+//const httpLink = new HttpLink({ uri: 'https://localhost:4000' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -30,7 +30,7 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `wss://localhost:4000`,
+  uri: `wss://advdemo.now.sh`,
   options: {
     reconnect: true,
     connectionParams: {

@@ -50,19 +50,9 @@ const FEED_QUERY = gql`
     }
   }
 `
-
-const messageSubscribe = gql`
-  subscription {
-    feedSubscription {
-      id
-      text
-    }
-  }
-`;
-
 export default graphql(FEED_QUERY, {
   name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
   options: {
     fetchPolicy: 'network-only',
-  },
+  }
 })(FeedPage)
