@@ -86,7 +86,7 @@ export default graphql(FEED_QUERY, {
               return prev
             }
             const newPost = subscriptionData.data.feedSubscription
-            console.log(newFeed, prev.feed)
+            console.log(newPost, prev.feed)
             if (prev.feed.find(post => post.id === newPost.id)) {
               return prev
             }
