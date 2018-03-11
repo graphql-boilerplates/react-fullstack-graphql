@@ -56,7 +56,7 @@ const FEED_QUERY = gql`
   }
 `
 const feedSubscribe = gql`
-  subscription {
+  subscription feedSubscription {
     feedSubscription {
       id
       text
