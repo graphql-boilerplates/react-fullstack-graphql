@@ -73,7 +73,7 @@ class SuperContainer extends React.Component {
   //verify localStorage check
   componentDidMount() {
     this.bootStrapData()
-    this.props.subscribeToNewMessage();
+    this.props.subscribeToNewFeed()
   }
 
   render() {
@@ -215,7 +215,7 @@ export default graphql(ME, {
   },
   props: props =>
     Object.assign({}, props, {
-      subscribeToNewMessage: params => {
+      subscribeToNewFeed: params => {
         console.log(props)
         return props.data.subscribeToMore({
           document: feedSubscribe,
