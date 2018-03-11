@@ -225,7 +225,7 @@ export default graphql(ME, {
               return prev
             }
             const newMessage = subscriptionData.data.feedSubscription
-            console.log(newMessage, prev.messages);
+            console.log(newMessage, prev.messages)
             if (prev.messages.find(message => message.id === newMessage.id)) {
               return prev
             }
