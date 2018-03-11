@@ -56,10 +56,15 @@ const FEED_QUERY = gql`
   }
 `
 const feedSubscribe = gql`
-  subscription feedSubscription {
+  subscription {
     feedSubscription {
       id
       text
+      title
+      isPublished
+       author{
+          name
+      }
     }
   }
 `
@@ -86,7 +91,7 @@ export default graphql(FEED_QUERY, {
             //   return prev
             // }
             return Object.assign({}, prev, {
-              feedQuery : [...prev.feed, newFeed]
+              feed : [...prev.feed, newFeed]
             })
           }
         })
