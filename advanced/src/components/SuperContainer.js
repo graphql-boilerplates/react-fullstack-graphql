@@ -73,7 +73,6 @@ class SuperContainer extends React.Component {
   //verify localStorage check
   componentDidMount() {
     this.bootStrapData()
-    this.props.subscribeToNewFeed()
   }
 
   render() {
@@ -200,40 +199,8 @@ const ME = gql`
   }
 `
 
-const feedSubscribe = gql`
-  subscription {
-    feedSubscription {
-      id
-      text
-    }
-  }
-`
-
 export default graphql(ME, {
   options: {
     errorPolicy: 'all'
-  },
-  props: props =>
-    Object.assign({}, props, {
-      subscribeToNewFeed: params => {
-        console.log(props)
-        return props.data.subscribeToMore({
-          document: feedSubscribe,
-          updateQuery: (prev, { subscriptionData }) => {
-            console.log('subscribed data', subscriptionData)
-            if (!subscriptionData.data) {
-              return prev
-            }
-            const newFeed = subscriptionData.data.feedSubscription
-            console.log(newFeed, prev.feed)
-            // if (prev.feed.find(message => message.id === newFeed.id)) {
-            //   return prev
-            // }
-            return Object.assign({}, prev, {
-              messages: [...prev.feed, newFeed]
-            })
-          }
-        })
-      }
-    })
+  }
 })(SuperContainer)

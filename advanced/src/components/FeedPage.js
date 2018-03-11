@@ -10,6 +10,10 @@ class FeedPage extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.props.subscribeToNewFeed()
+  }
+
   render() {
     if (this.props.feedQuery.loading) {
       return (
@@ -18,6 +22,7 @@ class FeedPage extends React.Component {
         </div>
       )
     }
+
 
     return (
       <React.Fragment>
@@ -50,9 +55,41 @@ const FEED_QUERY = gql`
     }
   }
 `
+const feedSubscribe = gql`
+  subscription {
+    feedSubscription {
+      id
+      text
+    }
+  }
+`
+
 export default graphql(FEED_QUERY, {
   name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
   options: {
     fetchPolicy: 'network-only',
-  }
+  },
+  props: props =>
+    Object.assign({}, props, {
+      subscribeToNewFeed: params => {
+        console.log(props)
+        return props.feedQuery.subscribeToMore({
+          document: feedSubscribe,
+          updateQuery: (prev, { subscriptionData }) => {
+            console.log('subscribed data', subscriptionData)
+            if (!subscriptionData.data) {
+              return prev
+            }
+            const newFeed = subscriptionData.data.feedSubscription
+            console.log(newFeed, prev.feed)
+            // if (prev.feed.find(message => message.id === newFeed.id)) {
+            //   return prev
+            // }
+            return Object.assign({}, prev, {
+              feedQuery : [...prev.feed, newFeed]
+            })
+          }
+        })
+      }
+    })
 })(FeedPage)
