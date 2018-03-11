@@ -216,24 +216,24 @@ export default graphql(ME, {
   props: props =>
     Object.assign({}, props, {
       subscribeToNewMessage: params => {
-        console.log(props);
+        console.log(props)
         return props.data.subscribeToMore({
           document: feedSubscribe,
           updateQuery: (prev, { subscriptionData }) => {
-            console.log("subscribed data", subscriptionData)
+            console.log('subscribed data', subscriptionData)
             if (!subscriptionData.data) {
-              return prev;
+              return prev
             }
             const newMessage = subscriptionData.data.feedSubscription
             console.log(newMessage, prev.messages);
             if (prev.messages.find(message => message.id === newMessage.id)) {
-              return prev;
+              return prev
             }
             return Object.assign({}, prev, {
               messages: [...prev.messages, newMessage]
-            });
+            })
           }
-        });
+        })
       }
     })
 })(SuperContainer)
