@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "apollo-cache-inmemory": "1.1.11",
-    "apollo-client": "2.2.6",
+    "apollo-client": "2.2.7",
     "apollo-link": "1.2.1",
     "apollo-link-http": "1.5.3",
     "graphql": "0.13.1",
