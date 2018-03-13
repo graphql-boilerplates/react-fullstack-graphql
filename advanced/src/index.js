@@ -12,7 +12,7 @@ import 'tachyons'
 import './index.css'
 //for testing purpose
 //const httpLink = new HttpLink({ uri: 'https://advdemo.now.sh' })
-const httpLink = new HttpLink({ uri: 'https://localhost:4000' })
+const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
