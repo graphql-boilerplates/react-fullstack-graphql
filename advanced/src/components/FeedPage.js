@@ -55,7 +55,7 @@ const FEED_QUERY = gql`
     }
   }
 `
-const feedSubscribe = gql`
+const FEED_SUBSCRIPTION = gql`
   subscription {
     feedSubscription {
       id
@@ -79,7 +79,7 @@ export default graphql(FEED_QUERY, {
       subscribeToNewFeed: params => {
         console.log(props)
         return props.feedQuery.subscribeToMore({
-          document: feedSubscribe,
+          document: FEED_SUBSCRIPTION,
           updateQuery: (prev, { subscriptionData }) => {
             console.log('subscribed data', subscriptionData)
             if (!subscriptionData.data) {
