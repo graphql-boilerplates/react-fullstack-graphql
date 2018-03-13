@@ -28,7 +28,7 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   )
 }
 
-class SuperContainer extends React.Component {
+class RootContainer extends React.Component {
 
   constructor(props) {
     super(props)
@@ -203,4 +203,4 @@ export default graphql(ME, {
   options: {
     errorPolicy: 'all'
   }
-})(SuperContainer)
+})(RootContainer)

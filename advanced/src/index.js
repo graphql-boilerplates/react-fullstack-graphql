@@ -5,7 +5,7 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloLink, split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { AUTH_TOKEN } from './constant'
-import SuperContainer from './components/SuperContainer'
+import RootContainer from './components/RootContainer'
 import { ApolloProvider } from 'react-apollo'
 
 import 'tachyons'
@@ -60,7 +60,7 @@ const token = localStorage.getItem(AUTH_TOKEN)
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-  <SuperContainer token={token}/>
+  <RootContainer token={token}/>
   </ApolloProvider>
   ,
   document.getElementById('root')
