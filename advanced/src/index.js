@@ -5,14 +5,14 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloLink, split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { AUTH_TOKEN } from './constant'
-import SuperContainer from './components/SuperContainer'
+import RootContainer from './components/RootContainer'
 import { ApolloProvider } from 'react-apollo'
 
 import 'tachyons'
 import './index.css'
 //for testing purpose
 //const httpLink = new HttpLink({ uri: 'https://advdemo.now.sh' })
-const httpLink = new HttpLink({ uri: 'https://localhost:4000' })
+const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   // get the authentication token from local storage if it exists
@@ -60,7 +60,7 @@ const token = localStorage.getItem(AUTH_TOKEN)
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-  <SuperContainer token={token}/>
+  <RootContainer token={token}/>
   </ApolloProvider>
   ,
   document.getElementById('root')
