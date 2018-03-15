@@ -7,7 +7,7 @@
     "prisma": "prisma"
   },
   "dependencies": {
-    "graphql-yoga": "1.5.2",
+    "graphql-yoga": "1.6.0",
     "prisma-binding": "1.5.16"
   },
   "devDependencies": {
