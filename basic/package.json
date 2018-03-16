@@ -11,7 +11,7 @@
     "apollo-client": "2.2.7",
     "apollo-link": "1.2.1",
     "apollo-link-http": "1.5.3",
-    "graphql": "0.13.1",
+    "graphql": "0.13.2",
     "graphql-tag": "2.8.0",
     "react": "16.2.0",
     "react-apollo": "2.0.4",
