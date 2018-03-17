@@ -1241,9 +1241,9 @@ graphql-tools@^2.18.0:
     deprecated-decorator "^0.1.6"
     uuid "^3.1.0"
 
-graphql-yoga@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.6.0.tgz#0c15bc922e7afd1274dfcd7dce8f7c88815158bc"
+graphql-yoga@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.6.1.tgz#3214952714f38c9214ed12cea6e5164f5aadf2a5"
   dependencies:
     "@types/cors" "^2.8.3"
     "@types/express" "^4.0.39"
