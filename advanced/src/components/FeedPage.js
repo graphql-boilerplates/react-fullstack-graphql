@@ -78,16 +78,13 @@ export default graphql(FEED_QUERY, {
   props: props =>
     Object.assign({}, props, {
       subscribeToNewFeed: params => {
-        console.log(props)
         return props.feedQuery.subscribeToMore({
           document: FEED_SUBSCRIPTION,
           updateQuery: (prev, { subscriptionData }) => {
-            console.log('subscribed data', subscriptionData)
             if (!subscriptionData.data) {
               return prev
             }
             const newPost = subscriptionData.data.feedSubscription.node
-            console.log(newPost, prev.feed)
             if (prev.feed.find(post => post.id === newPost.id)) {
               return prev
             }
