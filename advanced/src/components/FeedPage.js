@@ -58,16 +58,17 @@ const FEED_QUERY = gql`
 const FEED_SUBSCRIPTION = gql`
   subscription {
     feedSubscription {
-      id
-      text
-      title
-      isPublished
-       author{
-          name
+      node {
+        id
+        text
+        title
+        isPublished
+         author{
+            name
+        }
       }
     }
-  }
-`
+  }`
 
 export default graphql(FEED_QUERY, {
   name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
@@ -85,7 +86,7 @@ export default graphql(FEED_QUERY, {
             if (!subscriptionData.data) {
               return prev
             }
-            const newPost = subscriptionData.data.feedSubscription
+            const newPost = subscriptionData.data.feedSubscription.node
             console.log(newPost, prev.feed)
             if (prev.feed.find(post => post.id === newPost.id)) {
               return prev
