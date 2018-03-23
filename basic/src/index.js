@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import ReactDOM from 'react-dom'
 import {
   NavLink,
@@ -23,7 +23,7 @@ const client = new ApolloClient({ uri: 'http://localhost:4000' })
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Router>
-      <React.Fragment>
+      <Fragment>
         <nav className="pa3 pa4-ns">
           <Link
             className="link dim black b f6 f5-ns dib mr3"
@@ -65,7 +65,7 @@ ReactDOM.render(
             <Route path="/post/:id" component={DetailPage} />
           </Switch>
         </div>
-      </React.Fragment>
+      </Fragment>
     </Router>
   </ApolloProvider>,
   document.getElementById('root'),
