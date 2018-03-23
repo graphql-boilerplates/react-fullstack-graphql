@@ -1,45 +1,52 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
-import { graphql } from 'react-apollo'
+import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
-class DraftsPage extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    if (this.props.location.key !== nextProps.location.key) {
-      this.props.draftsQuery.refetch()
-    }
-  }
-
+export default class DraftsPage extends Component {
   render() {
-    if (this.props.draftsQuery.loading) {
-      return (
-        <div className="flex w-100 h-100 items-center justify-center pt7">
-          <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
-        </div>
-      )
-    }
-
     return (
-      <React.Fragment>
-        <div className="flex justify-between items-center">
-          <h1>Drafts</h1>
-        </div>
-        {this.props.draftsQuery.drafts &&
-          this.props.draftsQuery.drafts.map(draft => (
-            <Post
-              key={draft.id}
-              post={draft}
-              refresh={() => this.props.draftsQuery.refetch()}
-              isDraft={!draft.isPublished}
-            />
-          ))}
-        {this.props.children}
-      </React.Fragment>
+      <Query query={DRAFTS_QUERY}>
+        {({ data, loading, error, refetch }) => {
+          if (loading) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>Loading ...</div>
+              </div>
+            )
+          }
+
+          if (error) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>An unexpected error occured.</div>
+              </div>
+            )
+          }
+          return (
+            <Fragment>
+              <div className="flex justify-between items-center">
+                <h1>Drafts</h1>
+              </div>
+              {data.drafts &&
+                data.drafts.map(draft => (
+                  <Post
+                    key={draft.id}
+                    post={draft}
+                    refresh={() => refetch()}
+                    isDraft={!draft.isPublished}
+                  />
+                ))}
+              {this.props.children}
+            </Fragment>
+          )
+        }}
+      </Query>
     )
   }
 }
 
-const DRAFTS_QUERY = gql`
+export const DRAFTS_QUERY = gql`
   query DraftsQuery {
     drafts {
       id
@@ -49,10 +56,3 @@ const DRAFTS_QUERY = gql`
     }
   }
 `
-
-export default graphql(DRAFTS_QUERY, {
-  name: 'draftsQuery', // name of the injected prop: this.props.feedQuery...
-  options: {
-    fetchPolicy: 'network-only',
-  },
-})(DraftsPage)
