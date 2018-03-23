@@ -6,18 +6,11 @@ const typeDefs = `
   }
 `
 
-const opts = {
-  port: 4000 //configurable port no
-}
-
 const resolvers = {
   Query: {
-    hello: (_, { name }) => { 
-      const returnValue = name ? `Hello ${name || 'World!'}` : `Hello World`
-      return returnValue
-    },
+    hello: (_, args) => `Hello ${args.name || 'World'}!`,
   },
 }
 
-const server = new GraphQLServer({ typeDefs, resolvers, opts })
-server.start(() => console.log(`Server is running at http://localhost:${opts.port}`))
+const server = new GraphQLServer({ typeDefs, resolvers })
+server.start(() => console.log(`Server is running at http://localhost:4000`))
