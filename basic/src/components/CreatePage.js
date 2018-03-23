@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+import { DRAFTS_QUERY } from './DraftsPage'
 
 class CreatePage extends Component {
   state = {
@@ -11,7 +12,16 @@ class CreatePage extends Component {
 
   render() {
     return (
-      <Mutation mutation={CREATE_DRAFT_MUTATION}>
+      <Mutation
+        mutation={CREATE_DRAFT_MUTATION}
+        update={(cache, { data }) => {
+          const { drafts } = cache.readQuery({ query: DRAFTS_QUERY })
+          cache.writeQuery({
+            query: DRAFTS_QUERY,
+            data: { drafts: drafts.concat([data.createDraft]) },
+          })
+        }}
+      >
         {(createDraft, { data, loading, error }) => {
           return (
             <div className="pa4 flex justify-center bg-white">
@@ -61,14 +71,6 @@ class CreatePage extends Component {
     )
   }
 
-  handlePost = async e => {
-    e.preventDefault()
-    const { title, text } = this.state
-    await this.props.createDraftMutation({
-      variables: { title, text },
-    })
-    this.props.history.replace('/drafts')
-  }
 }
 
 const CREATE_DRAFT_MUTATION = gql`
@@ -80,9 +82,5 @@ const CREATE_DRAFT_MUTATION = gql`
     }
   }
 `
-
-// const CreatePageWithMutation = graphql(CREATE_DRAFT_MUTATION, {
-//   name: 'createDraftMutation', // name of the injected prop: this.props.createDraftMutation...
-// })(CreatePage)
 
 export default withRouter(CreatePage)

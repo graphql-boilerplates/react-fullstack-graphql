@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { Query, Mutation } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 import gql from 'graphql-tag'
+import { DRAFTS_QUERY } from './DraftsPage'
+import { FEED_QUERY } from './FeedPage'
 
 class DetailPage extends Component {
   render() {
@@ -40,7 +42,23 @@ class DetailPage extends Component {
 
   _renderAction = ({ id, isPublished }) => {
     const publishMutation = (
-      <Mutation mutation={PUBLISH_MUTATION}>
+      <Mutation
+        mutation={PUBLISH_MUTATION}
+        update={(cache, { data }) => {
+          const { drafts } = cache.readQuery({ query: DRAFTS_QUERY })
+          const { feed } = cache.readQuery({ query: FEED_QUERY })
+          cache.writeQuery({
+            query: FEED_QUERY,
+            data: { feed: feed.concat([data.publish]) },
+          })
+          cache.writeQuery({
+            query: DRAFTS_QUERY,
+            data: {
+              drafts: drafts.filter(draft => draft.id !== data.publish.id),
+            },
+          })
+        }}
+      >
         {(publish, { data, loading, error }) => {
           return (
             <a
@@ -59,7 +77,28 @@ class DetailPage extends Component {
       </Mutation>
     )
     const deleteMutation = (
-      <Mutation mutation={DELETE_MUTATION}>
+      <Mutation
+        mutation={DELETE_MUTATION}
+        update={(cache, { data }) => {
+          if (isPublished) {
+            const { feed } = cache.readQuery({ query: FEED_QUERY })
+            cache.writeQuery({
+              query: FEED_QUERY,
+              data: {
+                feed: feed.filter(post => post.id !== data.deletePost.id),
+              },
+            })
+          } else {
+            const { drafts } = cache.readQuery({ query: DRAFTS_QUERY })
+            cache.writeQuery({
+              query: DRAFTS_QUERY,
+              data: {
+                drafts: drafts.filter(draft => draft.id !== data.deletePost.id),
+              },
+            })
+          }
+        }}
+      >
         {(deletePost, { data, loading, error }) => {
           return (
             <a

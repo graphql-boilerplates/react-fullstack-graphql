@@ -45,7 +45,7 @@ export default class FeedPage extends Component {
   }
 }
 
-const FEED_QUERY = gql`
+export const FEED_QUERY = gql`
   query FeedQuery {
     feed {
       id

@@ -46,7 +46,7 @@ export default class DraftsPage extends Component {
   }
 }
 
-const DRAFTS_QUERY = gql`
+export const DRAFTS_QUERY = gql`
   query DraftsQuery {
     drafts {
       id
