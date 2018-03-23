@@ -1,58 +1,91 @@
-import React from 'react'
-import { graphql, compose } from 'react-apollo'
+import React, { Component, Fragment } from 'react'
+import { Query, Mutation } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 import gql from 'graphql-tag'
 
-class DetailPage extends React.Component {
+class DetailPage extends Component {
   render() {
-    if (this.props.postQuery.loading) {
-      return (
-        <div className="flex w-100 h-100 items-center justify-center pt7">
-          <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
-        </div>
-      )
-    }
-
-    const { post } = this.props.postQuery
-
-    let action = this._renderAction(post)
-
     return (
-      <React.Fragment>
-        <h1 className="f3 black-80 fw4 lh-solid">{post.title}</h1>
-        <p className="black-80 fw3">{post.text}</p>
-        {action}
-      </React.Fragment>
+      <Query query={POST_QUERY} variables={{ id: this.props.match.params.id }}>
+        {({ data, loading, error }) => {
+          if (loading) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>Loading ...</div>
+              </div>
+            )
+          }
+
+          if (error) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>An unexpected error occured.</div>
+              </div>
+            )
+          }
+
+          const { post } = data
+          const action = this._renderAction(post)
+          return (
+            <Fragment>
+              <h1 className="f3 black-80 fw4 lh-solid">{data.post.title}</h1>
+              <p className="black-80 fw3">{data.post.text}</p>
+              {action}
+            </Fragment>
+          )
+        }}
+      </Query>
     )
   }
 
   _renderAction = ({ id, isPublished }) => {
+    const publishMutation = (
+      <Mutation mutation={PUBLISH_MUTATION}>
+        {(publish, { data, loading, error }) => {
+          return (
+            <a
+              className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+              onClick={async () => {
+                await publish({
+                  variables: { id },
+                })
+                this.props.history.replace('/')
+              }}
+            >
+              Publish
+            </a>
+          )
+        }}
+      </Mutation>
+    )
+    const deleteMutation = (
+      <Mutation mutation={DELETE_MUTATION}>
+        {(deletePost, { data, loading, error }) => {
+          return (
+            <a
+              className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
+              onClick={async () => {
+                await deletePost({
+                  variables: { id },
+                })
+                this.props.history.replace('/')
+              }}
+            >
+              Delete
+            </a>
+          )
+        }}
+      </Mutation>
+    )
     if (!isPublished) {
       return (
-        <React.Fragment>
-          <a
-            className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
-            onClick={() => this.publishDraft(id)}
-          >
-            Publish
-          </a>{' '}
-          <a
-            className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
-            onClick={() => this.deletePost(id)}
-          >
-            Delete
-          </a>
-        </React.Fragment>
+        <Fragment>
+          {publishMutation}
+          {deleteMutation}
+        </Fragment>
       )
     }
-    return (
-      <a
-        className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
-        onClick={() => this.deletePost(id)}
-      >
-        Delete
-      </a>
-    )
+    return deleteMutation
   }
 
   deletePost = async id => {
@@ -98,20 +131,4 @@ const DELETE_MUTATION = gql`
   }
 `
 
-export default compose(
-  graphql(POST_QUERY, {
-    name: 'postQuery',
-    options: props => ({
-      variables: {
-        id: props.match.params.id,
-      },
-    }),
-  }),
-  graphql(PUBLISH_MUTATION, {
-    name: 'publishDraft',
-  }),
-  graphql(DELETE_MUTATION, {
-    name: 'deletePost',
-  }),
-  withRouter,
-)(DetailPage)
+export default withRouter(DetailPage)

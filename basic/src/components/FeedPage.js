@@ -1,38 +1,46 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
-import { graphql } from 'react-apollo'
+import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
-class FeedPage extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    if (this.props.location.key !== nextProps.location.key) {
-      this.props.feedQuery.refetch()
-    }
-  }
-
+export default class FeedPage extends Component {
   render() {
-    if (this.props.feedQuery.loading) {
-      return (
-        <div className="flex w-100 h-100 items-center justify-center pt7">
-          <div>Loading (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})</div>
-        </div>
-      )
-    }
-
     return (
-      <React.Fragment>
-        <h1>Feed</h1>
-        {this.props.feedQuery.feed &&
-          this.props.feedQuery.feed.map(post => (
-            <Post
-              key={post.id}
-              post={post}
-              refresh={() => this.props.feedQuery.refetch()}
-              isDraft={!post.isPublished}
-            />
-          ))}
-        {this.props.children}
-      </React.Fragment>
+      <Query query={FEED_QUERY}>
+        {({ data, loading, error, refetch }) => {
+          if (loading) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>Loading ...</div>
+              </div>
+            )
+          }
+
+          if (error) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>An unexpected error occured.</div>
+              </div>
+            )
+          }
+
+          return (
+            <Fragment>
+              <h1>Feed</h1>
+              {data.feed &&
+                data.feed.map(post => (
+                  <Post
+                    key={post.id}
+                    post={post}
+                    refresh={() => refetch()}
+                    isDraft={!post.isPublished}
+                  />
+                ))}
+              {this.props.children}
+            </Fragment>
+          )
+        }}
+      </Query>
     )
   }
 }
@@ -47,10 +55,3 @@ const FEED_QUERY = gql`
     }
   }
 `
-
-export default graphql(FEED_QUERY, {
-  name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
-  options: {
-    fetchPolicy: 'network-only',
-  },
-})(FeedPage)
