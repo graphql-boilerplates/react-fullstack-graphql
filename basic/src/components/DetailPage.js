@@ -141,7 +141,7 @@ const POST_QUERY = gql`
 `
 
 const PUBLISH_MUTATION = gql`
-  mutation publish($id: ID!) {
+  mutation PublishMutation($id: ID!) {
     publish(id: $id) {
       id
       isPublished
@@ -150,7 +150,7 @@ const PUBLISH_MUTATION = gql`
 `
 
 const DELETE_MUTATION = gql`
-  mutation deletePost($id: ID!) {
+  mutation DeleteMutatoin($id: ID!) {
     deletePost(id: $id) {
       id
     }
