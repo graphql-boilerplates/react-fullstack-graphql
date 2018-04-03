@@ -5715,9 +5715,9 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
-react-scripts@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.1.1.tgz#279d449f7311fed910506987a1ade014027788a8"
+react-scripts@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.1.2.tgz#2b6ead792a46ba9e7d1255ef9fb817f8a1cead51"
   dependencies:
     autoprefixer "7.1.6"
     babel-core "6.26.0"
