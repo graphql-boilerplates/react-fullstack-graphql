@@ -15,7 +15,7 @@
     "react-scripts": "1.1.4"
   },
   "dependencies": {
-    "apollo-client": "2.2.5",
+    "apollo-client": "2.2.8",
     "apollo-client-preset": "1.0.8",
     "apollo-link": "1.1.0",
     "apollo-link-ws": "1.0.5",
