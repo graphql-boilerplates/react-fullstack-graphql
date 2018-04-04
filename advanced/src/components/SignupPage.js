@@ -80,7 +80,7 @@ class SignupPage extends React.Component {
   }
 }
 
-const SIGNUP_USER = gql`
+const SIGNUP_USER_MUTATION = gql`
   mutation SignupMutation($email: String!, $password: String!, $name: String!) {
     signup(email: $email, password: $password, name: $name) {
       token
@@ -93,6 +93,6 @@ const SIGNUP_USER = gql`
   }
 `
 
-export default graphql(SIGNUP_USER, { name: 'signupMutation' })(
+export default graphql(SIGNUP_USER_MUTATION, { name: 'signupMutation' })(
   withRouter(SignupPage),
 )

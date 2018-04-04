@@ -72,7 +72,7 @@ class LoginPage extends React.Component {
   }
 }
 
-const LOGIN_USER = gql`
+const LOGIN_USER_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
@@ -85,6 +85,6 @@ const LOGIN_USER = gql`
   }
 `
 
-export default graphql(LOGIN_USER, { name: 'loginMutation' })(
+export default graphql(LOGIN_USER_MUTATION, { name: 'loginMutation' })(
   withRouter(LoginPage),
 )
