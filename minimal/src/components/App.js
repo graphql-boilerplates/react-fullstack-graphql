@@ -1,39 +1,53 @@
-import React, { Component } from 'react';
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-import logo from '../logo.svg';
-import '../styles/App.css';
+import React, { Component } from 'react'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
+import logo from '../logo.svg'
+import '../styles/App.css'
+import InputName from './InputName'
 
 class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <Query query={HELLO_QUERY}>
+            {props => {
+              console.log(props)
+              const { data, loading, error, refetch } = props
+              if (loading) {
+                return <div>Loading</div>
+              }
 
-   render() {
+              if (error) {
+                return <div>An unexpected error occurred</div>
+              }
 
-     let { data } = this.props
+              return (
+                <div>
+                  <p>What's your name?</p>
+                  <InputName
+                    onSubmit={name => {
+                      refetch({
+                        name,
+                      })
+                    }}
+                  />
+                  <h3>{data.hello}</h3>
+                </div>
+              )
+            }}
+          </Query>
+        </div>
+      </div>
+    )
+  }
+}
 
-     if (data.loading) {
-        return (<div>Loading</div>)
-     }
-
-     if(data.error) {
-       return (<div>An unexpected error occurred</div>)
-     }
-
-     return (
-       <div className="App">
-         <div className="App-header">
-           <img src={logo} className="App-logo" alt="logo" />
-           <h3>Welcome to React + GraphQL + Apollo minimal boilerplate</h3>
-           <h3>{data.hello}</h3>
-         </div>
-       </div>
-     );
-   }
- }
-
-const MY_QUERY = gql`
-  query hello($name: String) {
+const HELLO_QUERY = gql`
+  query HelloQuery($name: String) {
     hello(name: $name)
-  }`;
+  }
+`
 
-const AppWithData = graphql(MY_QUERY)(App); 
-export default AppWithData;
+export default App

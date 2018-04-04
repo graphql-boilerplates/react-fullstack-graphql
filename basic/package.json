@@ -1,21 +1,16 @@
 {
-  "name": "react-apollo-instagram-example",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-fullstack-basic",
+  "version": "1.0.0",
   "devDependencies": {
-    "prettier-eslint-cli": "4.7.1",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.4"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "1.1.11",
-    "apollo-client": "2.2.7",
-    "apollo-link": "1.2.1",
-    "apollo-link-http": "1.5.3",
+    "apollo-boost": "0.1.4",
     "graphql": "0.13.2",
     "graphql-tag": "2.8.0",
-    "react": "16.2.0",
-    "react-apollo": "2.0.4",
-    "react-dom": "16.2.0",
+    "react": "16.3.1",
+    "react-apollo": "2.1.2",
+    "react-dom": "16.3.1",
     "react-modal": "3.3.2",
     "react-router-dom": "4.2.2",
     "tachyons": "4.9.1"
@@ -24,8 +19,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "prettier": "prettier-eslint --write \"src/**/*.+(js|jsx)\"",
-    "prettier-dry-run": "prettier-eslint \"src/**/*.+(js|jsx)\" -l debug"
+    "eject": "react-scripts eject"
   }
 }
