@@ -17,9 +17,22 @@ module.exports = async ({ project, projectDir }) => {
 
   console.log('Running $ prisma deploy...')
   await deploy(false)
-  const info = await getInfo()
 
-  replaceInFiles(['src/index.js'], '__PRISMA_ENDPOINT__', info.httpEndpoint)
+  const info = await getInfo()
+  const cluster = info.workspace
+    ? `${info.workspace}/${info.cluster}`
+    : info.cluster
+
+  replaceInFiles(['.env'], '__PRISMA_ENDPOINT__', info.httpEndpoint)
+
+  replaceInFiles(['.env'], `__PRISMA_CLUSTER__`, cluster)
+  replaceInFiles(
+    ['database/prisma.yml'],
+    `cluster: ${cluster}`,
+    'cluster: ${env:PRISMA_CLUSTER}',
+  )
+
+  fs.appendFileSync('.gitignore', '.env*\n')
 
   console.log(`\
 Next steps:
