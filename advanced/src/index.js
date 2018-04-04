@@ -11,8 +11,6 @@ import { ApolloProvider } from 'react-apollo'
 import 'tachyons'
 import './index.css'
 
-//for testing purpose
-//const httpLink = new HttpLink({ uri: 'https://advdemo.now.sh' })
 const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
@@ -21,13 +19,13 @@ const middlewareLink = new ApolloLink((operation, forward) => {
   // return the headers to the context so httpLink can read them
   operation.setContext({
     headers: {
-      Authorization: tokenValue ? `Bearer ${tokenValue}` : ''
-    }
+      Authorization: tokenValue ? `Bearer ${tokenValue}` : '',
+    },
   })
   return forward(operation)
 })
 
-// Authenticated httplink
+// authenticated httplink
 const httpLinkAuth = middlewareLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
@@ -35,9 +33,9 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     connectionParams: {
-      Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
-    }
-  }
+      Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`,
+    },
+  },
 })
 
 const link = split(
@@ -47,25 +45,21 @@ const link = split(
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
   wsLink,
-  httpLinkAuth
+  httpLinkAuth,
 )
 
 // apollo client setup
 const client = new ApolloClient({
   link: ApolloLink.from([link]),
   cache: new InMemoryCache(),
-  connectToDevTools: true
+  connectToDevTools: true,
 })
 
 const token = localStorage.getItem(AUTH_TOKEN)
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-  <RootContainer token={token}/>
-  </ApolloProvider>
-  ,
-  document.getElementById('root')
+    <RootContainer token={token} />
+  </ApolloProvider>,
+  document.getElementById('root'),
 )
-
-
-

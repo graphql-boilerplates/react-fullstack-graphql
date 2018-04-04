@@ -29,7 +29,6 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
 }
 
 class RootContainer extends React.Component {
-
   constructor(props) {
     super(props)
     this.refreshTokenFn = this.refreshTokenFn.bind(this)
@@ -185,12 +184,10 @@ class RootContainer extends React.Component {
       </div>
     )
   }
-
 }
 
-//me query
-const ME = gql`
-  query me {
+const ME_QUERY = gql`
+  query MeQuery {
     me {
       id
       email
@@ -199,8 +196,8 @@ const ME = gql`
   }
 `
 
-export default graphql(ME, {
+export default graphql(ME_QUERY, {
   options: {
-    errorPolicy: 'all'
-  }
+    errorPolicy: 'all',
+  },
 })(RootContainer)

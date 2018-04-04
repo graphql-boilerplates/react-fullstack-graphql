@@ -94,5 +94,5 @@ const SIGNUP_USER = gql`
 `
 
 export default graphql(SIGNUP_USER, { name: 'signupMutation' })(
-  withRouter(SignupPage)
+  withRouter(SignupPage),
 )

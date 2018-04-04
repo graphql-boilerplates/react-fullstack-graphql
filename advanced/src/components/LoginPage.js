@@ -15,7 +15,7 @@ class LoginPage extends React.Component {
       <div className="pa4 flex justify-center bg-white">
         <div>
           <h3>
-            Do not have an account? <a href="/signup">Signup</a>
+            Don't have an account? <a href="/signup">Signup</a>
           </h3>
           <input
             autoFocus
@@ -86,5 +86,5 @@ const LOGIN_USER = gql`
 `
 
 export default graphql(LOGIN_USER, { name: 'loginMutation' })(
-  withRouter(LoginPage)
+  withRouter(LoginPage),
 )

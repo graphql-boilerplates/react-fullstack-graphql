@@ -6,7 +6,7 @@ class LogoutPage extends React.Component {
     return (
       <div className="pa4 flex justify-center bg-white">
         <form>
-          <h1>You are logged out. To see the drafts Kindly login :)</h1>
+          <h1>You are currently logged out. To see the drafts, please login.</h1>
         </form>
       </div>
     )

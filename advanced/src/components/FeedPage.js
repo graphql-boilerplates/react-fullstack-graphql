@@ -10,7 +10,7 @@ class FeedPage extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.subscribeToNewFeed()
   }
 
@@ -22,7 +22,6 @@ class FeedPage extends React.Component {
         </div>
       )
     }
-
 
     return (
       <React.Fragment>
@@ -49,26 +48,27 @@ const FEED_QUERY = gql`
       text
       title
       isPublished
-       author{
-          name
+      author {
+        name
       }
     }
   }
 `
 const FEED_SUBSCRIPTION = gql`
-  subscription {
+  subscription FeedSubscription {
     feedSubscription {
       node {
         id
         text
         title
         isPublished
-         author{
-            name
+        author {
+          name
         }
       }
     }
-  }`
+  }
+`
 
 export default graphql(FEED_QUERY, {
   name: 'feedQuery', // name of the injected prop: this.props.feedQuery...
@@ -89,10 +89,10 @@ export default graphql(FEED_QUERY, {
               return prev
             }
             return Object.assign({}, prev, {
-              feed : [...prev.feed, newPost]
+              feed: [...prev.feed, newPost],
             })
-          }
+          },
         })
-      }
-    })
+      },
+    }),
 })(FeedPage)

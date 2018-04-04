@@ -77,8 +77,8 @@ const POST_QUERY = gql`
       title
       text
       isPublished
-      author{
-          name
+      author {
+        name
       }
     }
   }

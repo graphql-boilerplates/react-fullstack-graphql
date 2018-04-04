@@ -46,7 +46,7 @@ const DRAFTS_QUERY = gql`
       text
       title
       isPublished
-      author{
+      author {
         name
       }
     }
