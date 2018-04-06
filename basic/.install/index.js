@@ -10,7 +10,7 @@ module.exports = async ({ project, projectDir }) => {
   const templateName = 'graphql-boilerplate'
 
   replaceInFiles(
-    ['src/index.js', 'package.json', 'server/database/prisma.yml'],
+    ['src/index.js', 'package.json', 'database/prisma.yml'],
     templateName,
     project,
   )
