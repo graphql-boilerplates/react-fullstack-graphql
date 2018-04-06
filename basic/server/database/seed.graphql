@@ -1,0 +1,25 @@
+mutation {
+  first: createPost(data: {
+    title: "Hello World"
+    text: "This is my first blog post ever!"
+    isPublished: true
+  }) {
+    id
+  }
+  
+  second: createPost(data: {
+    title: "My Second Post"
+    text: "My first post was good, but this one is better!"
+    isPublished: true
+  }) {
+    id
+  }
+  
+  third: createPost(data: {
+    title: "Solving World Hunger"
+    text: "This is a draft..."
+    isPublished: false
+  }) {
+    id
+  }
+}
