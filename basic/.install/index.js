@@ -10,20 +10,28 @@ module.exports = async ({ project, projectDir }) => {
   const templateName = 'graphql-boilerplate'
 
   replaceInFiles(
-    ['src/index.js', 'package.json', 'database/prisma.yml'],
+    ['server/src/index.js', 'server/package.json', 'server/database/prisma.yml'],
     templateName,
     project,
   )
 
   console.log('Running $ prisma deploy...')
+
+  process.chdir('server/')
+
   await deploy(false)
   const info = await getInfo()
 
-  replaceInFiles(['src/index.js'], '__PRISMA_ENDPOINT__', info.httpEndpoint)
+  process.chdir('../')
+
+  replaceInFiles(['server/src/index.js'], '__PRISMA_ENDPOINT__', info.httpEndpoint)
 
   console.log(`\
 Next steps:
-  1. Change directory: \`cd ${projectDir}\`
-  2. Start local server and open Playground: \`yarn dev\`
+  1. Change directory: \`cd ${projectDir}/server\`
+  2. Start local server: \`yarn start\` (you can now open a Playground at http://localhost:4000)
+  3. Change directory: \`cd ..\`
+  4. Start React app: \`yarn start\`
+  5. Open browser: http://localhost:3000
 `)
 }
