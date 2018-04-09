@@ -3799,9 +3799,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prisma-binding@1.5.16:
-  version "1.5.16"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.16.tgz#51c3c1fca96550ca1c45645d2615c595bc5aae79"
+prisma-binding@1.5.17:
+  version "1.5.17"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-1.5.17.tgz#ed18ed3e7b8e4001270a96b162e687b7682e88cd"
   dependencies:
     apollo-link "1.2.1"
     apollo-link-error "1.0.7"
