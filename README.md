@@ -23,7 +23,7 @@ Select a boilerplate and follow the instructions in the belonging README to get 
 
 - [`minimal`](./minimal): Minimal boilerplate with basic "Hello World" functionality
 - [`basic`](./basic): Basic boilerplate based on a simple data model and with a GraphQL database
-- `advanced` (_coming soon_): Advanced boilerplate with a GraphQL database, authentication and realtime subscriptions
+- [`advanced`](./advanced): Advanced boilerplate with a GraphQL database, authentication and realtime subscriptions
 
 All projects are based on [`graphql-yoga`](https://github.com/graphcool/graphql-yoga/) & [Apollo Client](https://github.com/apollographql/apollo-client).
 
