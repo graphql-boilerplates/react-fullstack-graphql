@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import { graphql, compose } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 import gql from 'graphql-tag'
 
-class DetailPage extends React.Component {
+class DetailPage extends Component {
   render() {
     if (this.props.postQuery.loading) {
       return (
@@ -18,18 +18,18 @@ class DetailPage extends React.Component {
     let action = this._renderAction(post)
 
     return (
-      <React.Fragment>
+      <Fragment>
         <h1 className="f3 black-80 fw4 lh-solid">{post.title}</h1>
         <p className="black-80 fw3">{post.text}</p>
         {action}
-      </React.Fragment>
+      </Fragment>
     )
   }
 
   _renderAction = ({ id, isPublished }) => {
     if (!isPublished) {
       return (
-        <React.Fragment>
+        <Fragment>
           <a
             className="f6 dim br1 ba ph3 pv2 mb2 dib black pointer"
             onClick={() => this.publishDraft(id)}
@@ -42,7 +42,7 @@ class DetailPage extends React.Component {
           >
             Delete
           </a>
-        </React.Fragment>
+        </Fragment>
       )
     }
     return (

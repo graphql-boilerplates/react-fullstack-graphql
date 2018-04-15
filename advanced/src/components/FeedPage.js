@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-class FeedPage extends React.Component {
+class FeedPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
       this.props.feedQuery.refetch()
@@ -24,7 +24,7 @@ class FeedPage extends React.Component {
     }
 
     return (
-      <React.Fragment>
+      <Fragment>
         <h1>Feed</h1>
         {this.props.feedQuery.feed &&
           this.props.feedQuery.feed.map(post => (
@@ -36,7 +36,7 @@ class FeedPage extends React.Component {
             />
           ))}
         {this.props.children}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
