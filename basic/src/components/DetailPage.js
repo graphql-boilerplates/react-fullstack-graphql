@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Query, Mutation } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
-import gql from 'graphql-tag'
+import  { gql } from 'apollo-boost'
 import { DRAFTS_QUERY } from './DraftsPage'
 import { FEED_QUERY } from './FeedPage'
 

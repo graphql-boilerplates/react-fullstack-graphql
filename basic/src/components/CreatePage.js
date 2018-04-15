@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
+import  { gql } from 'apollo-boost'
 import { DRAFTS_QUERY } from './DraftsPage'
 
 class CreatePage extends Component {
