@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
 import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import  { gql } from 'apollo-boost'
 
 class FeedPage extends Component {
   componentWillReceiveProps(nextProps) {

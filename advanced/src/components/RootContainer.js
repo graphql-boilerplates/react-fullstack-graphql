@@ -18,7 +18,7 @@ import LogoutPage from './LogoutPage'
 import { AUTH_TOKEN } from '../constant'
 import { isTokenExpired } from '../helper/jwtHelper'
 import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import  { gql } from 'apollo-boost'
 
 const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   return token ? (

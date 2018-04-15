@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { graphql, compose } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
-import gql from 'graphql-tag'
+import  { gql } from 'apollo-boost'
 
 class DetailPage extends Component {
   render() {
