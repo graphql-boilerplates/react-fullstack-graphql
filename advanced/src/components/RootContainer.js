@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   NavLink,
   Link,
@@ -28,7 +28,7 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   )
 }
 
-class RootContainer extends React.Component {
+class RootContainer extends Component {
   constructor(props) {
     super(props)
     this.refreshTokenFn = this.refreshTokenFn.bind(this)
@@ -77,10 +77,10 @@ class RootContainer extends React.Component {
   render() {
     return (
       <Router>
-        <React.Fragment>
+        <Fragment>
           {this.renderNavBar()}
           {this.renderRoute()}
-        </React.Fragment>
+        </Fragment>
       </Router>
     )
   }

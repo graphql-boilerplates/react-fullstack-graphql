@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-class DraftsPage extends React.Component {
+class DraftsPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
       this.props.draftsQuery.refetch()
@@ -20,7 +20,7 @@ class DraftsPage extends React.Component {
     }
 
     return (
-      <React.Fragment>
+      <Fragment>
         <div className="flex justify-between items-center">
           <h1>Drafts</h1>
         </div>
@@ -34,7 +34,7 @@ class DraftsPage extends React.Component {
             />
           ))}
         {this.props.children}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
