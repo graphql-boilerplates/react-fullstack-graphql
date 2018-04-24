@@ -116,6 +116,12 @@ adm-zip@^0.4.7:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.7.tgz#8606c2cbf1c426ce8c8ec00174447fd49b6eafc1"
 
+agent-base@4, agent-base@^4.1.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.2.0.tgz#9838b5c3392b962bad031e6a4c5e1024abec45ce"
+  dependencies:
+    es6-promisify "^5.0.0"
+
 ajv-keywords@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-2.1.1.tgz#617997fc5f60576894c435f940d819e135b80762"
@@ -537,6 +543,10 @@ buffer-equal-constant-time@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
 
+buffer-writer@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/buffer-writer/-/buffer-writer-1.0.1.tgz#22a936901e3029afcd7547eb4487ceb697a3bf08"
+
 buffer@4.9.1:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/buffer/-/buffer-4.9.1.tgz#6d1bb601b07a4efced97094132093027c95bc298"
@@ -938,7 +948,7 @@ debug@2.6.9, debug@^2.1.1, debug@^2.2.0:
   dependencies:
     ms "2.0.0"
 
-debug@^3.0.0, debug@^3.1.0:
+debug@3.1.0, debug@^3.0.0, debug@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -1180,9 +1190,15 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
-es6-promise@^4.1.1:
+es6-promise@^4.0.3, es6-promise@^4.1.1:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.4.tgz#dc4221c2b16518760bd8c39a52d8f356fc00ed29"
+
+es6-promisify@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-5.0.0.tgz#5109d62f3e56ea967c4b63505aef08291c8a5203"
+  dependencies:
+    es6-promise "^4.0.3"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -2167,6 +2183,13 @@ http-link-dataloader@^0.1.2:
     cross-fetch "2.0.0"
     dataloader "^1.4.0"
 
+http-proxy-agent@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-2.1.0.tgz#e4821beef5b2142a2026bd73926fe537631c5405"
+  dependencies:
+    agent-base "4"
+    debug "3.1.0"
+
 http-signature@~1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.1.1.tgz#df72e267066cd0ac67fb76adf8e134a8fbcf91bf"
@@ -2182,6 +2205,13 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+https-proxy-agent@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.1.tgz#51552970fa04d723e04c56d04178c3f92592bbc0"
+  dependencies:
+    agent-base "^4.1.0"
+    debug "^3.1.0"
 
 iconv-lite@0.4.19, iconv-lite@^0.4.17, iconv-lite@^0.4.8, iconv-lite@~0.4.13:
   version "0.4.19"
@@ -2232,21 +2262,20 @@ inquirer@5.1.0:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-inquirer@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.3.0.tgz#9dd2f2ad765dcab1ff0443b491442a20ba227dc9"
+inquirer@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.2.0.tgz#db350c2b73daca77ff1243962e9f22f099685726"
   dependencies:
     ansi-escapes "^3.0.0"
     chalk "^2.0.0"
     cli-cursor "^2.1.0"
     cli-width "^2.0.0"
-    external-editor "^2.0.4"
+    external-editor "^2.1.0"
     figures "^2.0.0"
     lodash "^4.3.0"
     mute-stream "0.0.7"
     run-async "^2.2.0"
-    rx-lite "^4.0.8"
-    rx-lite-aggregates "^4.0.8"
+    rxjs "^5.5.2"
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
@@ -2489,6 +2518,10 @@ jmespath@0.15.0:
 js-base64@^2.3.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.2.tgz#1896da010ef8862f385d8887648e9b6dc4a7a2e9"
+
+js-string-escape@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/js-string-escape/-/js-string-escape-1.0.1.tgz#e2625badbc0d67c7533e9edc1068c587ae4137ef"
 
 js-yaml@^3.10.0, js-yaml@^3.8.4, js-yaml@^3.9.0, js-yaml@^3.9.1:
   version "3.10.0"
@@ -3225,6 +3258,10 @@ package-json@^4.0.0:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
+packet-reader@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-0.3.1.tgz#cd62e60af8d7fea8a705ec4ff990871c46871f27"
+
 parse-github-url@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-1.0.2.tgz#242d3b65cbcdda14bb50439e3242acf6971db395"
@@ -3325,6 +3362,42 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
+pg-connection-string@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-0.1.3.tgz#da1847b20940e42ee1492beaf65d49d91b245df7"
+
+pg-pool@~2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.3.tgz#c022032c8949f312a4f91fb6409ce04076be3257"
+
+pg-types@~1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/pg-types/-/pg-types-1.12.1.tgz#d64087e3903b58ffaad279e7595c52208a14c3d2"
+  dependencies:
+    postgres-array "~1.0.0"
+    postgres-bytea "~1.0.0"
+    postgres-date "~1.0.0"
+    postgres-interval "^1.1.0"
+
+pg@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-7.4.1.tgz#f3411c8ddf9f692322fe05e7017a1888e47f78f1"
+  dependencies:
+    buffer-writer "1.0.1"
+    js-string-escape "1.0.1"
+    packet-reader "0.3.1"
+    pg-connection-string "0.1.3"
+    pg-pool "~2.0.3"
+    pg-types "~1.12.1"
+    pgpass "1.x"
+    semver "4.3.2"
+
+pgpass@1.x:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pgpass/-/pgpass-1.0.2.tgz#2a7bb41b6065b67907e91da1b07c1847c877b306"
+  dependencies:
+    split "^1.0.0"
+
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -3351,6 +3424,24 @@ portfinder@^1.0.13:
     debug "^2.2.0"
     mkdirp "0.5.x"
 
+postgres-array@~1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/postgres-array/-/postgres-array-1.0.2.tgz#8e0b32eb03bf77a5c0a7851e0441c169a256a238"
+
+postgres-bytea@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/postgres-bytea/-/postgres-bytea-1.0.0.tgz#027b533c0aa890e26d172d47cf9ccecc521acd35"
+
+postgres-date@~1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/postgres-date/-/postgres-date-1.0.3.tgz#e2d89702efdb258ff9d9cee0fe91bd06975257a8"
+
+postgres-interval@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/postgres-interval/-/postgres-interval-1.1.1.tgz#acdb0f897b4b1c6e496d9d4e0a853e1c428f06f0"
+  dependencies:
+    xtend "^4.0.0"
+
 prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
@@ -3374,9 +3465,9 @@ prisma-binding@1.5.17:
     jsonwebtoken "^8.1.0"
     subscriptions-transport-ws "0.9.6"
 
-prisma-cli-core@1.0.28:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/prisma-cli-core/-/prisma-cli-core-1.0.28.tgz#0a9e45962abd500fbd6d309748d7d6029afbab97"
+prisma-cli-core@1.0.36:
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/prisma-cli-core/-/prisma-cli-core-1.0.36.tgz#f0b9bab06f60c0b056f78b33bca5dfc61557bd69"
   dependencies:
     adm-zip "^0.4.7"
     archiver "^2.0.3"
@@ -3394,7 +3485,7 @@ prisma-cli-core@1.0.28:
     graphql "^0.13.1"
     graphql-cli "2.15.7"
     graphql-config "^2.0.1"
-    inquirer "^3.3.0"
+    inquirer "^5.2.0"
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.9.1"
     jwt-decode "^2.2.0"
@@ -3406,8 +3497,9 @@ prisma-cli-core@1.0.28:
     opn "^5.1.0"
     pause "^0.1.0"
     portfinder "^1.0.13"
-    prisma-json-schema "^0.0.1"
-    prisma-yml "1.0.37"
+    prisma-db-introspection "0.0.2"
+    prisma-json-schema "0.0.4"
+    prisma-yml "1.0.47"
     scuid "^1.0.2"
     semver "^5.4.1"
     sillyname "^0.1.0"
@@ -3416,9 +3508,9 @@ prisma-cli-core@1.0.28:
     util.promisify "^1.0.0"
     validator "^8.2.0"
 
-prisma-cli-engine@1.0.26:
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/prisma-cli-engine/-/prisma-cli-engine-1.0.26.tgz#8995e374073149b6c9a7bbdf4b89e71810bc6f64"
+prisma-cli-engine@1.0.36:
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/prisma-cli-engine/-/prisma-cli-engine-1.0.36.tgz#839e61e7c583a72058b09b29dc99ea30de3a3534"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     ajv "5"
@@ -3436,8 +3528,8 @@ prisma-cli-engine@1.0.26:
     figures "^2.0.0"
     find-up "^2.1.0"
     fs-extra "^5.0.0"
-    graphcool-inquirer "^1.0.3"
     graphql-request "^1.5.0"
+    inquirer "^5.2.0"
     isomorphic-fetch "^2.2.1"
     jsonwebtoken "^8.1.0"
     klaw-sync "^3.0.0"
@@ -3459,8 +3551,8 @@ prisma-cli-engine@1.0.26:
     marked-terminal "^2.0.0"
     memfs "^2.5.3"
     opn "^5.1.0"
-    prisma-json-schema "^0.0.1"
-    prisma-yml "1.0.37"
+    prisma-json-schema "0.0.4"
+    prisma-yml "1.0.47"
     raven "2.3.0"
     replaceall "^0.1.6"
     rwlockfile "^1.4.8"
@@ -3474,7 +3566,32 @@ prisma-cli-engine@1.0.26:
     treeify "^1.0.1"
     update-notifier "^2.3.0"
     validator "^8.2.0"
-    yaml-ast-parser "^0.0.34"
+
+prisma-db-introspection@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/prisma-db-introspection/-/prisma-db-introspection-0.0.2.tgz#c9426c5168bdc61e653e84e05f74daa760a351a3"
+  dependencies:
+    ajv "5"
+    bluebird "^3.5.1"
+    chalk "^2.3.0"
+    debug "^3.1.0"
+    dotenv "^4.0.0"
+    fs-extra "^5.0.0"
+    graphql-request "^1.5.0"
+    isomorphic-fetch "^2.2.1"
+    js-yaml "^3.10.0"
+    json-stable-stringify "^1.0.1"
+    jsonwebtoken "^8.1.0"
+    lodash "^4.17.4"
+    pg "^7.4.1"
+    prisma-json-schema "^0.0.1"
+    replaceall "^0.1.6"
+    scuid "^1.0.2"
+    yaml-ast-parser "^0.0.40"
+
+prisma-json-schema@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/prisma-json-schema/-/prisma-json-schema-0.0.4.tgz#4ecee29c351e382fb833dad83a38c62961380458"
 
 prisma-json-schema@^0.0.1:
   version "0.0.1"
@@ -3501,9 +3618,9 @@ prisma-yml@1.0.28:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-prisma-yml@1.0.37:
-  version "1.0.37"
-  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.37.tgz#c1155550f64964f985a451cfa270da90074dcb10"
+prisma-yml@1.0.47:
+  version "1.0.47"
+  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.47.tgz#e7ae47eaf6c53a690471eec4d1edabea63386c06"
   dependencies:
     ajv "5"
     bluebird "^3.5.1"
@@ -3512,23 +3629,25 @@ prisma-yml@1.0.37:
     dotenv "^4.0.0"
     fs-extra "^5.0.0"
     graphql-request "^1.5.0"
+    http-proxy-agent "^2.1.0"
+    https-proxy-agent "^2.2.1"
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.10.0"
     json-stable-stringify "^1.0.1"
     jsonwebtoken "^8.1.0"
     lodash "^4.17.4"
-    prisma-json-schema "^0.0.1"
+    prisma-json-schema "0.0.4"
     replaceall "^0.1.6"
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-prisma@1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/prisma/-/prisma-1.4.2.tgz#015d643eb4e85b8de53e4dea550e8e5d4d1b7c9d"
+prisma@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-1.7.0.tgz#6138a559ac5682647fcde1dc17f82b7dcdea9e61"
   dependencies:
     fs-extra "^5.0.0"
-    prisma-cli-core "1.0.28"
-    prisma-cli-engine "1.0.26"
+    prisma-cli-core "1.0.36"
+    prisma-cli-engine "1.0.36"
     semver "^5.4.1"
     source-map-support "^0.4.18"
 
@@ -3890,6 +4009,10 @@ semver-diff@^2.0.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
+semver@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.2.tgz#c7a07158a80bedd052355b770d82d6640f803be7"
+
 send@0.16.1:
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/send/-/send-0.16.1.tgz#a70e1ca21d1382c11d0d9f6231deb281080d7ab3"
@@ -4082,6 +4205,12 @@ spdx-license-ids@^1.0.2:
 split@0.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/split/-/split-0.3.3.tgz#cd0eea5e63a211dfff7eb0f091c4133e2d0dd28f"
+  dependencies:
+    through "2"
+
+split@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/split/-/split-1.0.1.tgz#605bd9be303aa59fb35f9229fbea0ddec9ea07d9"
   dependencies:
     through "2"
 
@@ -4597,10 +4726,6 @@ y18n@^3.2.1:
 yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
-
-yaml-ast-parser@^0.0.34:
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/yaml-ast-parser/-/yaml-ast-parser-0.0.34.tgz#d00f3cf9d773b7241409ae92a6740d1db19f49e6"
 
 yaml-ast-parser@^0.0.40:
   version "0.0.40"
