@@ -1,8 +1,5 @@
-# the name for the service (will be part of the service's HTTP endpoint)
-service: graphql-boilerplate
-
-# the cluster and stage the service is deployed to
-stage: dev
+# the endpoint of your service (this also defines the cluster the service will be deployed to)
+endpoint: __PRISMA_ENDPOINT__
 
 # to disable authentication:
 # disableAuth: true

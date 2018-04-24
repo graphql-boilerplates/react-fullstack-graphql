@@ -1,5 +1,5 @@
 {
-  "name": "graphql-boilerplate",
+  "name": "whoo22hoo",
   "scripts": {
     "start": "node src/index.js",
     "playground": "prisma playground",
