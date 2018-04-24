@@ -21,7 +21,7 @@ const resolvers = {
       )
     },
     deletePost(parent, { id }, ctx, info) {
-      return ctx.db.mutation.deletePost({where: { id } }, info)
+      return ctx.db.mutation.deletePost({ where: { id } }, info)
     },
     publish(parent, { id }, ctx, info) {
       return ctx.db.mutation.updatePost(
