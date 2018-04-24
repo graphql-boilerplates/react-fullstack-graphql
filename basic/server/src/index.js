@@ -21,7 +21,7 @@ const resolvers = {
       )
     },
     deletePost(parent, { id }, ctx, info) {
-      return ctx.db.mutation.deletePost({where: { id } }, info)
+      return ctx.db.mutation.deletePost({ where: { id } }, info)
     },
     publish(parent, { id }, ctx, info) {
       return ctx.db.mutation.updatePost(
@@ -42,7 +42,7 @@ const server = new GraphQLServer({
     ...req,
     db: new Prisma({
       typeDefs: 'src/generated/prisma.graphql',
-      endpoint: 'https://eu1.prisma.sh/public-mesquiteraptor-586/whoo22hoo/dev',
+      endpoint: '__PRISMA_ENDPOINT__',
       secret: 'mysecret123',
       debug: true,
     }),
