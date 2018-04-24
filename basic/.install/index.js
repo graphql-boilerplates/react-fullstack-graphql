@@ -18,7 +18,7 @@ module.exports = async ({ project, projectDir }) => {
     templateName,
     project,
   )
-  replaceInFiles(['src/index.ts'], '__PRISMA_ENDPOINT__', endpoint)
+  replaceInFiles(['src/index.js'], '__PRISMA_ENDPOINT__', endpoint)
   replaceInFiles(['database/prisma.yml'], '__PRISMA_ENDPOINT__', endpoint)
 
   console.log('Running $ prisma deploy...')
