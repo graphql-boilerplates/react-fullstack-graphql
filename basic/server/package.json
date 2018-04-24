@@ -1,5 +1,5 @@
 {
-  "name": "react-fullstack-basic",
+  "name": "graphql-boilerplate",
   "scripts": {
     "start": "node src/index.js",
     "playground": "prisma playground",
