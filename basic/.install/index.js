@@ -4,6 +4,7 @@ const {
   deploy,
   writeEnv,
   getInfo,
+  makeSandboxEndpoint,
 } = require('graphql-boilerplate-install')
 
 module.exports = async ({ project, projectDir }) => {
