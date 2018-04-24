@@ -1,5 +1,5 @@
 # the endpoint of your service (this also defines the cluster the service will be deployed to)
-endpoint: __PRISMA_ENDPOINT__
+endpoint: ${env:PRISMA_ENDPOINT}
 
 # to disable authentication:
 # disableAuth: true
