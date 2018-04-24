@@ -14,12 +14,14 @@ cross-spawn@5.1.0, cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-graphql-boilerplate-install@0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/graphql-boilerplate-install/-/graphql-boilerplate-install-0.1.8.tgz#7d71b3f5908d968aaa77c524765cc1b4d7bec348"
+graphql-boilerplate-install@0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/graphql-boilerplate-install/-/graphql-boilerplate-install-0.1.9.tgz#bcd7e8dbb2b685820e78a76a5dbb6f24fcadf2c8"
   dependencies:
     cross-spawn "5.1.0"
+    node-fetch "^2.1.2"
     npm-run "4.1.2"
+    sillyname "^0.1.0"
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -35,6 +37,10 @@ lru-cache@^4.0.1:
 minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
+
+node-fetch@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
 
 npm-path@^2.0.2, npm-path@^2.0.3:
   version "2.0.4"
@@ -84,6 +90,10 @@ shebang-command@^1.2.0:
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
+
+sillyname@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/sillyname/-/sillyname-0.1.0.tgz#cfd98858e2498671347775efe3bb5141f46c87d6"
 
 sync-exec@^0.6.2:
   version "0.6.2"
