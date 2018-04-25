@@ -10,13 +10,18 @@ const resolvers = {
       return ctx.db.query.posts({ where: { isPublished: false } }, info)
     },
     post(parent, { id }, ctx, info) {
-      return ctx.db.query.post({ where: { id: id } }, info)
+      return ctx.db.query.post({ where: { id } }, info)
     },
   },
   Mutation: {
     createDraft(parent, { title, text }, ctx, info) {
       return ctx.db.mutation.createPost(
-        { data: { title, text, isPublished: false } },
+        {
+          data: {
+            title,
+            text,
+          },
+        },
         info,
       )
     },
@@ -41,10 +46,10 @@ const server = new GraphQLServer({
   context: req => ({
     ...req,
     db: new Prisma({
-      typeDefs: 'src/generated/prisma.graphql',
-      endpoint: '__PRISMA_ENDPOINT__',
-      secret: 'mysecret123',
-      debug: true,
+      typeDefs: 'src/generated/prisma.graphql', // the auto-generated GraphQL schema of the Prisma API
+      endpoint: '__PRISMA_ENDPOINT__', // the endpoint of the Prisma API
+      debug: true, // log all GraphQL queries & mutations sent to the Prisma API
+      // secret: 'mysecret123', // only needed if specified in `database/prisma.yml`
     }),
   }),
 })
