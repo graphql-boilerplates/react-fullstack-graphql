@@ -1843,9 +1843,9 @@ graphql-cli@2.15.10:
     update-notifier "^2.3.0"
     yargs "11.0.0"
 
-graphql-cli@2.15.12:
-  version "2.15.12"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.12.tgz#ccce961cc2c9a85bd36f046e299063e309381b02"
+graphql-cli@2.15.13:
+  version "2.15.13"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.13.tgz#d0b326d838c8de27e9ff2137fd9ef5723cdd21b0"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^2.3.1"
@@ -1860,7 +1860,7 @@ graphql-cli@2.15.12:
     graphql-config "2.0.1"
     graphql-config-extension-graphcool "1.0.8"
     graphql-config-extension-openapi "1.0.6"
-    graphql-config-extension-prisma "0.0.10"
+    graphql-config-extension-prisma "0.0.11"
     graphql-playground-middleware-express "1.6.1"
     graphql-schema-linter "0.1.1"
     inquirer "5.1.0"
@@ -1899,6 +1899,13 @@ graphql-config-extension-prisma@0.0.10:
   dependencies:
     graphql-config "^2.0.1"
     prisma-yml "1.0.47"
+
+graphql-config-extension-prisma@0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/graphql-config-extension-prisma/-/graphql-config-extension-prisma-0.0.11.tgz#d194470cc7a18eae9dca3909c649714a1413f2c9"
+  dependencies:
+    graphql-config "^2.0.1"
+    prisma-yml "1.0.50"
 
 graphql-config@2.0.0:
   version "2.0.0"
@@ -3618,6 +3625,29 @@ prisma-yml@1.0.47:
 prisma-yml@1.0.48:
   version "1.0.48"
   resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.48.tgz#3bc841287d64473953e579b239ef2e7c4547605a"
+  dependencies:
+    ajv "5"
+    bluebird "^3.5.1"
+    chalk "^2.3.0"
+    debug "^3.1.0"
+    dotenv "^4.0.0"
+    fs-extra "^5.0.0"
+    graphql-request "^1.5.0"
+    http-proxy-agent "^2.1.0"
+    https-proxy-agent "^2.2.1"
+    isomorphic-fetch "^2.2.1"
+    js-yaml "^3.10.0"
+    json-stable-stringify "^1.0.1"
+    jsonwebtoken "^8.1.0"
+    lodash "^4.17.4"
+    prisma-json-schema "0.0.4"
+    replaceall "^0.1.6"
+    scuid "^1.0.2"
+    yaml-ast-parser "^0.0.40"
+
+prisma-yml@1.0.50:
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/prisma-yml/-/prisma-yml-1.0.50.tgz#c85de8fa55efc6cac59083496bc038278be04076"
   dependencies:
     ajv "5"
     bluebird "^3.5.1"
