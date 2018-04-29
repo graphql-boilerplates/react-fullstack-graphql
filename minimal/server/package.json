@@ -7,6 +7,6 @@
   "keywords": [],
   "author": "Manjula Dube",
   "dependencies": {
-    "graphql-yoga": "1.13.0"
+    "graphql-yoga": "1.13.1"
   }
 }
