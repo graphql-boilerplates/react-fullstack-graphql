@@ -25,13 +25,13 @@ ReactDOM.render(
     <Router>
       <Fragment>
         <nav className="pa3 pa4-ns">
-          <Link
-            className="link dim black b f6 f5-ns dib mr3"
-            to="/"
-            title="Feed"
-          >
-            Blog
-          </Link>
+//           <Link
+//             className="link dim black b f6 f5-ns dib mr3"
+//             to="/"
+//             title="Feed"
+//           >
+//             Blog
+//           </Link>
           <NavLink
             className="link dim f6 f5-ns dib mr3 black"
             activeClassName="gray"
