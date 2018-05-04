@@ -5,15 +5,15 @@ mutation {
     name: "Sarah"
     posts: {
       create: [{
-        title: "Hello World"
-        text: "This is my first blog post ever!"
+        title: "Hello World 👋"
+        text: "I like turtles."
         isPublished: true
       }, {
-        title: "My Second Post"
-        text: "My first post was good, but this one is better!"
+        title: "Join us at GraphQL Europe 🇪🇺 "
+        text: "Get a 10%-discount with this promo code on graphql-europe.org: gql-boilerplates"
         isPublished: true
       }, {
-        title: "Solving World Hunger"
+        title: "Solving world hunger"
         text: "This is a draft..."
         isPublished: false
       }]
