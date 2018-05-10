@@ -2046,9 +2046,9 @@ graphql-cli@2.15.10:
     update-notifier "^2.3.0"
     yargs "11.0.0"
 
-graphql-cli@2.15.14:
-  version "2.15.14"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.14.tgz#c8ae2af0f3284a806befbb757c56daef95f2d1ac"
+graphql-cli@2.15.15:
+  version "2.15.15"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.15.15.tgz#b8c0c0117f6da656fb5268643a6bdc2ffb11f318"
   dependencies:
     adm-zip "0.4.7"
     chalk "^2.3.1"
@@ -2064,7 +2064,7 @@ graphql-cli@2.15.14:
     graphql-config-extension-graphcool "1.0.8"
     graphql-config-extension-openapi "1.0.6"
     graphql-config-extension-prisma "0.0.11"
-    graphql-playground-middleware-express "1.6.1"
+    graphql-playground-middleware-express "1.6.2"
     graphql-schema-linter "0.1.1"
     inquirer "5.1.0"
     is-url-superb "2.0.0"
@@ -2181,6 +2181,12 @@ graphql-playground-html@1.5.5:
 graphql-playground-middleware-express@1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.6.1.tgz#d6287d124a1c55845a52a7d727c371da99cdf0b0"
+  dependencies:
+    graphql-playground-html "1.5.5"
+
+graphql-playground-middleware-express@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-express/-/graphql-playground-middleware-express-1.6.2.tgz#3efe103cd222d6cf39e71f70c48be550c47b7a9b"
   dependencies:
     graphql-playground-html "1.5.5"
 
