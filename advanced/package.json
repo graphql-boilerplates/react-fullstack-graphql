@@ -9,7 +9,7 @@
     "eslint-plugin-flowtype": "2.46.3",
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.8.1",
+    "eslint-plugin-react": "7.8.2",
     "jwt-decode": "2.2.0",
     "prettier-eslint-cli": "4.7.1",
     "react-scripts": "1.1.4"
