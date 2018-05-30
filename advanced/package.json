@@ -20,7 +20,7 @@
     "apollo-client-preset": "1.0.8",
     "apollo-link": "1.2.2",
     "apollo-link-ws": "1.0.8",
-    "apollo-utilities": "1.0.12",
+    "apollo-utilities": "1.0.13",
     "babel-cli": "6.26.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-babel": "4.1.2",
