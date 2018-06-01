@@ -2155,9 +2155,9 @@ graphql-cli@2.15.10:
     update-notifier "^2.3.0"
     yargs "11.0.0"
 
-graphql-cli@2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.16.0.tgz#eb3cb7fefae0b818eab053c0a05d4f9b102d39aa"
+graphql-cli@2.16.1:
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/graphql-cli/-/graphql-cli-2.16.1.tgz#8fe13f14490c846481044cc33c6a120d949594b3"
   dependencies:
     adm-zip "0.4.7"
     apollo-codegen "^0.19.1"
@@ -2183,7 +2183,7 @@ graphql-cli@2.16.0:
     mkdirp "^0.5.1"
     node-fetch "^2.0.0"
     npm-paths "^1.0.0"
-    npm-run "^5.0.1"
+    npm-run "4.1.2"
     opn "^5.2.0"
     ora "^1.4.0"
     parse-github-url "^1.0.2"
@@ -3687,7 +3687,7 @@ npm-conf@^1.1.0:
     config-chain "^1.1.11"
     pify "^3.0.0"
 
-npm-path@^2.0.2, npm-path@^2.0.3, npm-path@^2.0.4:
+npm-path@^2.0.2, npm-path@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/npm-path/-/npm-path-2.0.4.tgz#c641347a5ff9d6a09e4d9bce5580c4f505278e64"
   dependencies:
@@ -3720,7 +3720,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-npm-run@^4.1.2:
+npm-run@4.1.2, npm-run@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/npm-run/-/npm-run-4.1.2.tgz#1030e1ec56908c89fcc3fa366d03a2c2ba98eb99"
   dependencies:
@@ -3730,15 +3730,6 @@ npm-run@^4.1.2:
     npm-which "^3.0.1"
     serializerr "^1.0.3"
     sync-exec "^0.6.2"
-
-npm-run@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/npm-run/-/npm-run-5.0.1.tgz#1baea93389b50ae25a32382c8ca322398e50cd16"
-  dependencies:
-    minimist "^1.2.0"
-    npm-path "^2.0.4"
-    npm-which "^3.0.1"
-    serializerr "^1.0.3"
 
 npm-which@^3.0.1:
   version "3.0.1"
