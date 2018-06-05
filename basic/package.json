@@ -12,7 +12,7 @@
     "react-dom": "16.4.0",
     "react-modal": "3.4.5",
     "react-router-dom": "4.2.2",
-    "tachyons": "4.9.1"
+    "tachyons": "4.10.0"
   },
   "scripts": {
     "start": "react-scripts start",

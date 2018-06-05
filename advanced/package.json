@@ -33,7 +33,7 @@
     "react-modal": "3.4.5",
     "react-router-dom": "4.2.2",
     "subscriptions-transport-ws": "0.9.9",
-    "tachyons": "4.9.1"
+    "tachyons": "4.10.0"
   },
   "scripts": {
     "precommit": "yarn run lint && yarn run flow",
