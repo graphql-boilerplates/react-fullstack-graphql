@@ -31,7 +31,7 @@
     "react-apollo": "2.1.4",
     "react-dom": "16.4.0",
     "react-modal": "3.4.5",
-    "react-router-dom": "4.2.2",
+    "react-router-dom": "4.3.0",
     "subscriptions-transport-ws": "0.9.9",
     "tachyons": "4.10.0"
   },
