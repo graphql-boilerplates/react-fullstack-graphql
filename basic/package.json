@@ -5,7 +5,7 @@
     "react-scripts": "1.1.4"
   },
   "dependencies": {
-    "apollo-boost": "0.1.7",
+    "apollo-boost": "0.1.8",
     "graphql": "0.13.2",
     "react": "16.4.0",
     "react-apollo": "2.1.4",
