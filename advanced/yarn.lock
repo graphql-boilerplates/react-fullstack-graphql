@@ -6501,9 +6501,9 @@ style-loader@0.19.0:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
-subscriptions-transport-ws@0.9.10:
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.10.tgz#b8d3fa9fe3e77b874d5e625ad2a54394179f0efc"
+subscriptions-transport-ws@0.9.11:
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.11.tgz#76e9dd7ec1bd0aa0331eca9b7074e66ce626d13a"
   dependencies:
     backo2 "^1.0.2"
     eventemitter3 "^3.1.0"
