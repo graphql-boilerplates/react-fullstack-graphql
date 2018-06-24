@@ -7,7 +7,7 @@
     "eslint": "4.19.1",
     "eslint-config-react-app": "2.1.0",
     "eslint-plugin-flowtype": "2.49.3",
-    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.9.1",
     "jwt-decode": "2.2.0",
