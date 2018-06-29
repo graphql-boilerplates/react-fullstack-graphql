@@ -32,7 +32,7 @@
     "react-dom": "16.4.1",
     "react-modal": "3.4.5",
     "react-router-dom": "4.3.1",
-    "subscriptions-transport-ws": "0.9.11",
+    "subscriptions-transport-ws": "0.9.12",
     "tachyons": "4.10.0"
   },
   "scripts": {
