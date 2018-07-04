@@ -8,7 +8,7 @@
     "apollo-boost": "0.1.10",
     "graphql": "0.13.2",
     "react": "16.4.1",
-    "react-apollo": "2.1.8",
+    "react-apollo": "2.1.9",
     "react-dom": "16.4.1",
     "react-modal": "3.4.5",
     "react-router-dom": "4.3.1",
