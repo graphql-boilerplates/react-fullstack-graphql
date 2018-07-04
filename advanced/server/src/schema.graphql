@@ -21,7 +21,7 @@ type Subscription {
 
 type AuthPayload {
   token: String!
-  user: User!
+  user: User
 }
 
 type User {
