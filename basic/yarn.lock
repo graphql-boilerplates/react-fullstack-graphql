@@ -6218,9 +6218,9 @@ table@^4.0.1:
     slice-ansi "1.0.0"
     string-width "^2.1.1"
 
-tachyons@4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/tachyons/-/tachyons-4.10.0.tgz#87fa088e88d9759983f2a1b0efd01d767bbef87b"
+tachyons@4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/tachyons/-/tachyons-4.11.0.tgz#5b7e7c3419cef164363269cf68bf546a3c9f6344"
 
 tapable@^0.2.7:
   version "0.2.8"
