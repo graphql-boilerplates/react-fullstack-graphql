@@ -57,7 +57,7 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
 
-"@types/node@*", "@types/node@^9.4.6":
+"@types/node@*":
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.0.tgz#d3480ee666df9784b1001a1872a2f6ccefb6c2d7"
 
@@ -84,14 +84,6 @@ apollo-cache-control@^0.1.0:
   resolved "https://registry.yarnpkg.com/apollo-cache-control/-/apollo-cache-control-0.1.0.tgz#0c7c9abc312dea3a60e1cb70e0869df2cd970688"
   dependencies:
     graphql-extensions "^0.0.x"
-
-apollo-link@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.1.tgz#c120b16059f9bd93401b9f72b94d2f80f3f305d2"
-  dependencies:
-    "@types/node" "^9.4.6"
-    apollo-utilities "^1.0.0"
-    zen-observable-ts "^0.8.6"
 
 apollo-link@^1.2.2:
   version "1.2.2"
@@ -443,11 +435,11 @@ graphql-import@^0.6.0:
   dependencies:
     lodash "^4.17.4"
 
-graphql-middleware@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/graphql-middleware/-/graphql-middleware-1.5.0.tgz#b539cbc34df8ea7b077415102e87fd704188d7ec"
+graphql-middleware@1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/graphql-middleware/-/graphql-middleware-1.6.5.tgz#2a4c7a2393768439bb1c310586a294714dfb4be4"
   dependencies:
-    graphql-tools "^3.0.2"
+    graphql-tools "^3.0.5"
 
 graphql-playground-html@1.5.5:
   version "1.5.5"
@@ -495,19 +487,19 @@ graphql-tools@^3.0.0:
     deprecated-decorator "^0.1.6"
     iterall "^1.1.3"
 
-graphql-tools@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-3.0.2.tgz#fb79821c23b0f5d11d842c4d0c15000d856c6c8c"
+graphql-tools@^3.0.5:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-3.1.1.tgz#d593358f01e7c8b1671a17b70ddb034dea9dbc50"
   dependencies:
-    apollo-link "1.2.1"
+    apollo-link "^1.2.2"
     apollo-utilities "^1.0.1"
     deprecated-decorator "^0.1.6"
     iterall "^1.1.3"
     uuid "^3.1.0"
 
-graphql-yoga@1.15.1:
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.15.1.tgz#030614cb3cc7c637f65fa4c33fa062bca02beacb"
+graphql-yoga@1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.16.0.tgz#ac5d8ada0300c8f0a74091cb5c8cb576791dacea"
   dependencies:
     "@types/cors" "^2.8.4"
     "@types/express" "^4.11.1"
@@ -524,7 +516,7 @@ graphql-yoga@1.15.1:
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0"
     graphql-deduplicator "^2.0.1"
     graphql-import "^0.6.0"
-    graphql-middleware "1.5.0"
+    graphql-middleware "1.6.5"
     graphql-playground-middleware-express "1.7.2"
     graphql-playground-middleware-lambda "1.6.1"
     graphql-subscriptions "^0.5.8"
@@ -877,21 +869,11 @@ xmlbuilder@4.2.1, xmlbuilder@^4.1.0:
   dependencies:
     lodash "^4.0.0"
 
-zen-observable-ts@^0.8.6:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.8.tgz#1a586dc204fa5632a88057f879500e0d2ba06869"
-  dependencies:
-    zen-observable "^0.7.0"
-
 zen-observable-ts@^0.8.9:
   version "0.8.9"
   resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.9.tgz#d3c97af08c0afdca37ebcadf7cc3ee96bda9bab1"
   dependencies:
     zen-observable "^0.8.0"
-
-zen-observable@^0.7.0:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
 
 zen-observable@^0.8.0:
   version "0.8.9"
