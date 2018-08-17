@@ -15,12 +15,12 @@
     "react-scripts": "1.1.4"
   },
   "dependencies": {
-    "apollo-boost": "0.1.13",
-    "apollo-client": "2.3.8",
+    "apollo-boost": "0.1.14",
+    "apollo-client": "2.4.0",
     "apollo-client-preset": "1.0.8",
     "apollo-link": "1.2.2",
     "apollo-link-ws": "1.0.8",
-    "apollo-utilities": "1.0.18",
+    "apollo-utilities": "1.0.19",
     "babel-cli": "6.26.0",
     "eslint-config-prettier": "2.10.0",
     "eslint-plugin-babel": "4.1.2",
