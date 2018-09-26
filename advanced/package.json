@@ -24,7 +24,7 @@
     "babel-cli": "6.26.0",
     "eslint-config-prettier": "2.10.0",
     "eslint-plugin-babel": "4.1.2",
-    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-prettier": "2.7.0",
     "graphql": "0.13.2",
     "graphql-tag": "2.9.2",
     "react": "16.5.2",
