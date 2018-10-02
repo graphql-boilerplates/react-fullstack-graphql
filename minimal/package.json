@@ -6,7 +6,7 @@
     "apollo-boost": "0.1.16",
     "graphql": "0.13.2",
     "react": "16.5.2",
-    "react-apollo": "2.2.3",
+    "react-apollo": "2.2.4",
     "react-dom": "16.5.2",
     "react-scripts": "1.1.5"
   },
