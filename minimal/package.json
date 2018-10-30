@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-boost": "0.1.18",
+    "apollo-boost": "0.1.19",
     "graphql": "0.13.2",
     "react": "16.6.0",
     "react-apollo": "2.2.4",

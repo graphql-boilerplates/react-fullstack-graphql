@@ -201,14 +201,14 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-boost@0.1.18:
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.18.tgz#a97843b6c1d8fbc8aecc6dd21979b850d2818fa7"
-  integrity sha512-wOkP3DbaXDyeSOc1WhV8vHVTOSX2x9s6TdwBm1HVwqCKVDBwd6F/HrwzuifYnUb7IlXSVWv6XEth0QTVwO+m7Q==
+apollo-boost@0.1.19:
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.19.tgz#6ab4b94da38610eb3bee16bfbec99e34a38a5574"
+  integrity sha512-IjY8HpPbOTCGBzAoQhY3qh7cnIAiZAX4azFinkh7g4B2ut5YfJBnLwhfWOkM1rKUCrkoJ+QMZTRIIm53uYvkSw==
   dependencies:
-    apollo-cache "^1.1.19"
-    apollo-cache-inmemory "^1.3.7"
-    apollo-client "^2.4.4"
+    apollo-cache "^1.1.20"
+    apollo-cache-inmemory "^1.3.8"
+    apollo-client "^2.4.5"
     apollo-link "^1.0.6"
     apollo-link-error "^1.0.3"
     apollo-link-http "^1.3.1"
@@ -224,21 +224,21 @@ apollo-cache-inmemory@^1.1.7:
     apollo-utilities "^1.0.8"
     graphql-anywhere "^4.1.5"
 
-apollo-cache-inmemory@^1.3.7:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.7.tgz#a9dabead5939e19068040c97c7c1009619a9df37"
-  integrity sha512-7AKGBuVRfgsjtq1yxcTWgpzi0WDVpjX2HJU9GFoYd+j7I253bSRn7YbwCNwkxyrH6ilSDU6JKm8DQ3QMA/z7rQ==
+apollo-cache-inmemory@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.8.tgz#5529a58b7b72b4bb133ce11ab22a012951297bb7"
+  integrity sha512-bT1v8+kKgM9u8NvCODOZ2qKxdufsmBaUsnLp7s5+kv0Zq5u/Bw4Ltb3DxrYFQoqZYrKJKy1iMJE3MV2J/Dthjg==
   dependencies:
-    apollo-cache "^1.1.19"
-    apollo-utilities "^1.0.24"
+    apollo-cache "^1.1.20"
+    apollo-utilities "^1.0.25"
     optimism "^0.6.6"
 
-apollo-cache@1.1.19, apollo-cache@^1.1.19:
-  version "1.1.19"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.19.tgz#a9ff2b6c70ab888c29ea038d8642b5698f115a3a"
-  integrity sha512-p163+GVne1Gyw2v9L5kHEQhUhih7btWvyUFOl4uKf7brieqd4tHZt8ZA3vT1SaXbCeQZNSp/tFI3yFyi8RPKzw==
+apollo-cache@1.1.20, apollo-cache@^1.1.20:
+  version "1.1.20"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.20.tgz#6152cc4baf6a63e376efee79f75de4f5c84bf90e"
+  integrity sha512-+Du0/4kUSuf5PjPx0+pvgMGV12ezbHA8/hubYuqRQoy/4AWb4faa61CgJNI6cKz2mhDd9m94VTNKTX11NntwkQ==
   dependencies:
-    apollo-utilities "^1.0.24"
+    apollo-utilities "^1.0.25"
 
 apollo-cache@^1.1.4:
   version "1.1.4"
@@ -258,16 +258,16 @@ apollo-client-preset@1.0.8:
     apollo-link-http "^1.3.1"
     graphql-tag "^2.4.2"
 
-apollo-client@2.4.4, apollo-client@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.4.tgz#b96d4fc2dd856b24552bb2e2da466219b0d4eb1f"
-  integrity sha512-i29w/+aa9O4fe8NxzJNOViHdsjpN2723Q2mNl0HiOJFwG+VjA4RXdTpyZHPZqcO8FwgK1k43l8nULD4Cdlx/Ww==
+apollo-client@2.4.5, apollo-client@^2.4.5:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.5.tgz#545beda1ef60814943b5622f0feabc9f29ee9822"
+  integrity sha512-nUm06EGa4TP/IY68OzmC3lTD32TqkjLOQdb69uYo+lHl8NnwebtrAw3qFtsQtTEz6ueBp/Z/HasNZng4jwafVQ==
   dependencies:
     "@types/zen-observable" "^0.8.0"
-    apollo-cache "1.1.19"
+    apollo-cache "1.1.20"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "1.0.24"
+    apollo-utilities "1.0.25"
     symbol-observable "^1.0.2"
     zen-observable "^0.8.0"
   optionalDependencies:
@@ -350,10 +350,10 @@ apollo-link@^1.2.2:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.9"
 
-apollo-utilities@1.0.24, apollo-utilities@^1.0.24:
-  version "1.0.24"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.24.tgz#77d2d3008bb9ee52aa76b799ce7a8d6cb6cf8a1c"
-  integrity sha512-cOXtrkio3wKfggp/zKCzQYxSZZRND/njNVmUksM1cckoJF3g/2o3bhh6z0HPhNhee8qzJzVXtl+3vmwXYGh0Gg==
+apollo-utilities@1.0.25, apollo-utilities@^1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.25.tgz#899b00f5f990fb451675adf84cb3de82eb6372ea"
+  integrity sha512-AXvqkhni3Ir1ffm4SA1QzXn8k8I5BBl4PVKEyak734i4jFdp+xgfUyi2VCqF64TJlFTA/B73TRDUvO2D+tKtZg==
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
