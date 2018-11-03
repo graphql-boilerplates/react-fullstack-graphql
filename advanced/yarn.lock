@@ -201,13 +201,13 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-boost@0.1.19:
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.19.tgz#6ab4b94da38610eb3bee16bfbec99e34a38a5574"
-  integrity sha512-IjY8HpPbOTCGBzAoQhY3qh7cnIAiZAX4azFinkh7g4B2ut5YfJBnLwhfWOkM1rKUCrkoJ+QMZTRIIm53uYvkSw==
+apollo-boost@0.1.20:
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.20.tgz#cc3e418ebd2bea857656685d32a7a20443493363"
+  integrity sha512-n2MiEY5IGpD/cy0RH+pM9vbmobM/JZ5qz38XQAUA41FxxMPlLFQxf0IUMm0tijLOJvJJBub3pDt+Of4TVPBCqA==
   dependencies:
     apollo-cache "^1.1.20"
-    apollo-cache-inmemory "^1.3.8"
+    apollo-cache-inmemory "^1.3.9"
     apollo-client "^2.4.5"
     apollo-link "^1.0.6"
     apollo-link-error "^1.0.3"
@@ -224,10 +224,10 @@ apollo-cache-inmemory@^1.1.7:
     apollo-utilities "^1.0.8"
     graphql-anywhere "^4.1.5"
 
-apollo-cache-inmemory@^1.3.8:
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.8.tgz#5529a58b7b72b4bb133ce11ab22a012951297bb7"
-  integrity sha512-bT1v8+kKgM9u8NvCODOZ2qKxdufsmBaUsnLp7s5+kv0Zq5u/Bw4Ltb3DxrYFQoqZYrKJKy1iMJE3MV2J/Dthjg==
+apollo-cache-inmemory@^1.3.9:
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.9.tgz#10738ba6a04faaeeb0da21bbcc1f7c0b5902910c"
+  integrity sha512-Q2k84p/OqIuMUyeWGc6XbVXXZu0erYOO+wTx9p+CnQUspnNvf7zmvFNgFnmudXzfuG1m1CSzePk6fC/M1ehOqQ==
   dependencies:
     apollo-cache "^1.1.20"
     apollo-utilities "^1.0.25"
