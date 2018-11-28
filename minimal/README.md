@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Boilerplate for a Basic Fullstack GraphQL App with React</strong></h1>
+<h1 align="center"><strong>Boilerplate for a Minimal Fullstack GraphQL App with React</strong></h1>
 
 <br />
 
@@ -17,13 +17,43 @@
 
 For a fully-fledged **React & Apollo tutorial**, visit [How to GraphQL](https://www.howtographql.com/react-apollo/0-introduction/). You can more learn about the idea behind GraphQL boilerplates [here](https://blog.graph.cool/graphql-boilerplates-graphql-create-how-to-setup-a-graphql-project-6428be2f3a5).
 
+## Requirements
+
+You need to have the [GraphQL CLI](https://github.com/graphql-cli/graphql-cli) installed to bootstrap your GraphQL server using `graphql create`:
+
+```sh
+npm install -g graphql-cli
+```
+
+You need to be on `node>=8` version for these boilerpates to work.
+
 ## Getting started
+
+```sh
+# 1. Bootstrap GraphQL server in directory `my-app`, based on `react-fullstack-minimal` boilerplate
+graphql create my-app --boilerplate react-fullstack-minimal
+
+# 2. When prompted, deploy the Prisma service to a _public cluster_
+
+# 3. Navigate into the `server` directory of the new project
+cd my-app/server
+
+# 4. Start the server
+yarn start # runs server on http://localhost:4000, and opens GraphQL PLayground
+
+# 5. Open a new tab in the terminal and navigate back into my-app;
+# then run the app
+cd ..
+yarn start
+```
 
 ## Documentation
 
 ### Commands
 
-* `yarn start` or `npm run start` starts GraphQL server on `http://localhost:4000`
+* `yarn start` inside server starts GraphQL server on `http://localhost:4000` _and_ opens GraphQL Playground
+* `yarn start` in the root directory will start GraphQL client on `http://localhost:3000`
+
 
 ### Server structure
 
@@ -45,7 +75,6 @@ For a fully-fledged **React & Apollo tutorial**, visit [How to GraphQL](https://
 | `　　├── `components(_directory_)| Contains React Component
 | `　　├── `index.js(file)|(Root file for React application)
 
-## Run your react application using `yarn run start`
 
 ## Contributing
 
