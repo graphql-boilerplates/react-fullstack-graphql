@@ -33,7 +33,7 @@ export default class FeedPage extends Component {
                     key={post.id}
                     post={post}
                     refresh={() => refetch()}
-                    isDraft={!post.isPublished}
+                    isDraft={!post.published}
                   />
                 ))}
               {this.props.children}
@@ -49,9 +49,9 @@ export const FEED_QUERY = gql`
   query FeedQuery {
     feed {
       id
-      text
+      content
       title
-      isPublished
+      published
     }
   }
 `

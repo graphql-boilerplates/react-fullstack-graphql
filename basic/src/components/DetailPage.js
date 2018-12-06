@@ -31,7 +31,7 @@ class DetailPage extends Component {
           return (
             <Fragment>
               <h1 className="f3 black-80 fw4 lh-solid">{data.post.title}</h1>
-              <p className="black-80 fw3">{data.post.text}</p>
+              <p className="black-80 fw3">{data.post.content}</p>
               {action}
             </Fragment>
           )
@@ -40,7 +40,7 @@ class DetailPage extends Component {
     )
   }
 
-  _renderAction = ({ id, isPublished }) => {
+  _renderAction = ({ id, published }) => {
     const publishMutation = (
       <Mutation
         mutation={PUBLISH_MUTATION}
@@ -80,7 +80,7 @@ class DetailPage extends Component {
       <Mutation
         mutation={DELETE_MUTATION}
         update={(cache, { data }) => {
-          if (isPublished) {
+          if (published) {
             const { feed } = cache.readQuery({ query: FEED_QUERY })
             cache.writeQuery({
               query: FEED_QUERY,
@@ -116,7 +116,7 @@ class DetailPage extends Component {
         }}
       </Mutation>
     )
-    if (!isPublished) {
+    if (!published) {
       return (
         <Fragment>
           {publishMutation}
@@ -134,8 +134,8 @@ const POST_QUERY = gql`
     post(id: $id) {
       id
       title
-      text
-      isPublished
+      content
+      published
     }
   }
 `
@@ -144,7 +144,7 @@ const PUBLISH_MUTATION = gql`
   mutation PublishMutation($id: ID!) {
     publish(id: $id) {
       id
-      isPublished
+      published
     }
   }
 `

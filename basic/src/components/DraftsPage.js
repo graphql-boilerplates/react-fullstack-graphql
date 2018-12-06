@@ -34,7 +34,7 @@ export default class DraftsPage extends Component {
                     key={draft.id}
                     post={draft}
                     refresh={() => refetch()}
-                    isDraft={!draft.isPublished}
+                    isDraft={!draft.published}
                   />
                 ))}
               {this.props.children}
@@ -50,9 +50,9 @@ export const DRAFTS_QUERY = gql`
   query DraftsQuery {
     drafts {
       id
-      text
+      content
       title
-      isPublished
+      published
     }
   }
 `

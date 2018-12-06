@@ -7,7 +7,7 @@ import { DRAFTS_QUERY } from './DraftsPage'
 class CreatePage extends Component {
   state = {
     title: '',
-    text: '',
+    content: '',
   }
 
   render() {
@@ -28,9 +28,9 @@ class CreatePage extends Component {
               <form
                 onSubmit={async e => {
                   e.preventDefault()
-                  const { title, text } = this.state
+                  const { title, content } = this.state
                   await createDraft({
-                    variables: { title, text },
+                    variables: { title, content },
                   })
                   this.props.history.replace('/drafts')
                 }}
@@ -47,16 +47,16 @@ class CreatePage extends Component {
                 <textarea
                   className="db w-100 ba bw1 b--black-20 pa2 br2 mb2"
                   cols={50}
-                  onChange={e => this.setState({ text: e.target.value })}
+                  onChange={e => this.setState({ content: e.target.value })}
                   placeholder="Content"
                   rows={8}
-                  value={this.state.text}
+                  value={this.state.content}
                 />
                 <input
-                  className={`pa3 bg-black-10 bn ${this.state.text &&
+                  className={`pa3 bg-black-10 bn ${this.state.content &&
                     this.state.title &&
                     'dim pointer'}`}
-                  disabled={!this.state.text || !this.state.title}
+                  disabled={!this.state.content || !this.state.title}
                   type="submit"
                   value="Create"
                 />
@@ -74,11 +74,11 @@ class CreatePage extends Component {
 }
 
 const CREATE_DRAFT_MUTATION = gql`
-  mutation CreateDraftMutation($title: String!, $text: String!) {
-    createDraft(title: $title, text: $text) {
+  mutation CreateDraftMutation($title: String!, $content: String!) {
+    createDraft(title: $title, content: $content) {
       id
       title
-      text
+      content
     }
   }
 `

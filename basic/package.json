@@ -2,11 +2,11 @@
   "name": "react-fullstack-basic",
   "version": "1.0.0",
   "devDependencies": {
-    "react-scripts": "1.1.5"
+    "react-scripts": "2.1.1"
   },
   "dependencies": {
     "apollo-boost": "0.1.22",
-    "graphql": "0.13.2",
+    "graphql": "14.0.2",
     "react": "16.6.3",
     "react-apollo": "2.3.2",
     "react-dom": "16.6.3",
@@ -19,5 +19,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

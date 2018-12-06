@@ -14,12 +14,12 @@ module.exports = async ({ project, projectDir }) => {
 
   process.chdir('server/')
   replaceInFiles(
-    ['src/index.js', 'package.json', 'database/prisma.yml'],
+    ['src/index.js', 'package.json', 'prisma/prisma.yml'],
     templateName,
     project,
   )
   replaceInFiles(['src/index.js'], '__PRISMA_ENDPOINT__', endpoint)
-  replaceInFiles(['database/prisma.yml'], '__PRISMA_ENDPOINT__', endpoint)
+  replaceInFiles(['prisma/prisma.yml'], '__PRISMA_ENDPOINT__', endpoint)
 
   console.log('Running $ prisma deploy...')
 
@@ -29,7 +29,7 @@ module.exports = async ({ project, projectDir }) => {
   process.chdir('../')
 
   replaceInFiles(
-    ['server/src/index.js'],
+    ['server/src/generated/prisma-client/index.js'],
     '__PRISMA_ENDPOINT__',
     info.httpEndpoint,
   )
