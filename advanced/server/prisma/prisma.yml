@@ -1,0 +1,24 @@
+# Specifies the HTTP endpoint of your Prisma API (deployed to a Prisma Demo server).
+endpoint: __PRISMA_ENDPOINT__
+
+# Defines your models, each model is mapped to the database as a table.
+datamodel: datamodel.prisma
+
+# Specifies the language and directory for the generated Prisma client.
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
+
+# Seed your service with initial data based on `seed.graphql`.
+seed:
+  import: seed.graphql
+
+# Ensures Prisma client is re-generated after a datamodel change.
+hooks:
+  post-deploy:
+    - prisma generate
+
+# If specified, the `secret` must be used to generate a JWT which is attached
+# to the `Authorization` header of HTTP requests made against the Prisma API.
+# Info: https://www.prisma.io/docs/reference/prisma-api/concepts-utee3eiquo#authentication
+# secret: ${env:PRISMA_SECRET}

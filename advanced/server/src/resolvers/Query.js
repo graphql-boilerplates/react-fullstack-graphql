@@ -1,30 +1,25 @@
 const { getUserId } = require('../utils')
 
 const Query = {
-  feed(parent, args, ctx, info) {
-    return ctx.db.query.posts({ where: { isPublished: true } }, info)
+  feed(parent, args, context) {
+    return context.prisma.posts({ where: { published: true } })
   },
-
-  drafts(parent, args, ctx, info) {
-    const id = getUserId(ctx)
-
+  drafts(parent, args, context) {
+    const id = getUserId(context)
     const where = {
-      isPublished: false,
+      published: false,
       author: {
-        id
-      }
+        id,
+      },
     }
-
-    return ctx.db.query.posts({ where }, info)
+    return context.prisma.posts({ where })
   },
-
-  post(parent, { id }, ctx, info) {
-    return ctx.db.query.post({ where: { id } }, info)
+  post(parent, { id }, context) {
+    return context.prisma.post({ id })
   },
-
-  me(parent, args, ctx, info) {
-    const id = getUserId(ctx)
-    return ctx.db.query.user({ where: { id } }, info)
+  me(parent, args, context) {
+    const id = getUserId(context)
+    return context.prisma.user({ id })
   },
 }
 
