@@ -11,7 +11,7 @@ module.exports = async ({ project, projectDir }) => {
   const templateName = 'graphql-boilerplate'
 
   const endpoint = await makeSandboxEndpoint(project)
-
+  console.log(`Deployed Prisma to ${endpoint}.`)
   process.chdir('server/')
   replaceInFiles(
     ['src/index.js', 'package.json', 'prisma/prisma.yml'],
