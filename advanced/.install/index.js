@@ -19,7 +19,7 @@ module.exports = async ({ project, projectDir }) => {
     templateName,
     project,
   )
-  replaceInFiles(['server/.env'], '__PRISMA_ENDPOINT__', endpoint)
+  replaceInFiles(['.env'], '__PRISMA_ENDPOINT__', endpoint)
 
   console.log('Running $ prisma deploy...')
   await deploy(false)
