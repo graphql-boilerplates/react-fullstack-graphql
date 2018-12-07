@@ -14,7 +14,7 @@ module.exports = async ({ project, projectDir }) => {
 
   process.chdir('server/')
   replaceInFiles(
-    ['src/index.js', 'package.json', 'database/prisma.yml'],
+    ['src/index.js', 'package.json', 'prisma/prisma.yml'],
     templateName,
     project,
   )

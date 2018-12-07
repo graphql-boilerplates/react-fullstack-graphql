@@ -1,26 +1,18 @@
 const { getUserId } = require('../../utils')
 
 const post = {
-  async createDraft(parent, { title, text }, ctx, info) {
-    const userId = getUserId(ctx)
-    return ctx.db.mutation.createPost(
-      {
-        data: {
-          title,
-          text,
-          isPublished: false,
-          author: {
-            connect: { id: userId },
-          },
-        },
-      },
-      info
-    )
+  async createDraft(parent, { title, content }, context) {
+    const userId = getUserId(context)
+    return context.prisma.createPost({
+      title,
+      content,
+      author: { connect: { id: userId } },
+    })
   },
 
-  async publish(parent, { id }, ctx, info) {
-    const userId = getUserId(ctx)
-    const postExists = await ctx.db.exists.Post({
+  async publish(parent, { id }, context) {
+    const userId = getUserId(context)
+    const postExists = await context.prisma.$exists.post({
       id,
       author: { id: userId },
     })
@@ -28,18 +20,17 @@ const post = {
       throw new Error(`Post not found or you're not the author`)
     }
 
-    return ctx.db.mutation.updatePost(
+    return context.prisma.updatePost(
       {
         where: { id },
-        data: { isPublished: true },
+        data: { published: true },
       },
-      info,
     )
   },
 
-  async deletePost(parent, { id }, ctx, info) {
-    const userId = getUserId(ctx)
-    const postExists = await ctx.db.exists.Post({
+  async deletePost(parent, { id }, context) {
+    const userId = getUserId(context)
+    const postExists = await context.prisma.$exists.post({
       id,
       author: { id: userId },
     })
@@ -47,7 +38,7 @@ const post = {
       throw new Error(`Post not found or you're not the author`)
     }
 
-    return ctx.db.mutation.deletePost({ where: { id } })
+    return context.prisma.deletePost({ id })
   },
 }
 
