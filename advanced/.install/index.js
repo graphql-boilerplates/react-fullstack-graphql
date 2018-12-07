@@ -21,10 +21,16 @@ module.exports = async ({ project, projectDir }) => {
   replaceInFiles(['server/.env'], '__PRISMA_ENDPOINT__', endpoint)
 
   console.log('Running $ prisma deploy...')
+  process.chdir('server/')
   await deploy(false)
-  process.chdir('../')
 
-  fs.appendFileSync('server/.gitignore', '.env*\n')
+  replaceInFiles(
+    ['src/generated/prisma-client/index.js'],
+    '__PRISMA_ENDPOINT__',
+    endpoint,
+  )
+
+  fs.appendFileSync('.gitignore', '.env*\n')
 
   console.log(`\
 Next steps:
