@@ -12,8 +12,8 @@
     "prisma-client-lib": "1.22.1"
   },
   "devDependencies": {
-    "dotenv": "^6.2.0",
-    "nodemon": "^1.18.7",
+    "dotenv": "6.2.0",
+    "nodemon": "1.18.7",
     "prisma": "1.22.1"
   }
 }
