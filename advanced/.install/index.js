@@ -12,9 +12,9 @@ module.exports = async ({ project, projectDir }) => {
 
   const endpoint = await makeSandboxEndpoint(project)
   console.log(`Deployed Prisma to ${endpoint}.`)
-  process.chdir('server/')
+
   replaceInFiles(
-    ['src/index.js', 'package.json', 'prisma/prisma.yml'],
+    ['server/src/index.js', 'server/package.json', 'server/prisma/prisma.yml'],
     templateName,
     project,
   )
