@@ -317,20 +317,20 @@ apollo-link-state@^0.4.0:
     apollo-utilities "^1.0.8"
     graphql-anywhere "^4.1.0-alpha.0"
 
-apollo-link-ws@1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/apollo-link-ws/-/apollo-link-ws-1.0.11.tgz#10709e5233bf1ec4b9eb2ea917d8c6392bacc7d4"
-  integrity sha512-yTTxIZwwDVqhinnd+3FFo9hIdKgHTuOi2yqrHuiXwVb10YwfJLEeMiYPFD2LlBUa2ikd2ppq4LeKrYHasszhMw==
+apollo-link-ws@1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/apollo-link-ws/-/apollo-link-ws-1.0.12.tgz#e343bb0c071f2db0ae147a2327f03cc1740d0c2d"
+  integrity sha512-BjbskhfuuIgk9e4XHdrqmjxkY+RkD1tuerrs4PLiPTkJYcQrvA8t27lGBSrDUKHWH4esCdhQF1UhKPwhlouEHw==
   dependencies:
-    apollo-link "^1.2.5"
+    apollo-link "^1.2.6"
 
-apollo-link@1.2.5, apollo-link@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.5.tgz#f54932d6b8f1412a35e088bc199a116bce3f1f16"
-  integrity sha512-GJHEE4B06oEB58mpRRwW6ISyvgX2aCqCLjpcE3M/6/4e+ZVeX7fRGpMJJDq2zZ8n7qWdrEuY315JfxzpsJmUhA==
+apollo-link@1.2.6, apollo-link@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.6.tgz#d9b5676d79c01eb4e424b95c7171697f6ad2b8da"
+  integrity sha512-sUNlA20nqIF3gG3F8eyMD+mO80fmf3dPZX+GUOs3MI9oZR8ug09H3F0UsWJMcpEg6h55Yy5wZ+BMmAjrbenF/Q==
   dependencies:
     apollo-utilities "^1.0.0"
-    zen-observable-ts "^0.8.12"
+    zen-observable-ts "^0.8.13"
 
 apollo-link@^1.0.0, apollo-link@^1.0.6, apollo-link@^1.1.0:
   version "1.1.0"
@@ -9263,10 +9263,10 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-zen-observable-ts@^0.8.12:
-  version "0.8.12"
-  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.12.tgz#38810d98645285c074775ab26b69992cc847c830"
-  integrity sha512-wwqbD6K6CqDd1T67UFg4hgDqnu2YAnFJDCPYmwN/N6Yfa+2QgoSp+nJomh+FWUdOc1A+553/ElvfoW8Vc/vsLg==
+zen-observable-ts@^0.8.13:
+  version "0.8.13"
+  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.13.tgz#ae1fd77c84ef95510188b1f8bca579d7a5448fc2"
+  integrity sha512-WDb8SM0tHCb6c0l1k60qXWlm1ok3zN9U4VkLdnBKQwIYwUoB9psH7LIFgR+JVCCMmBxUgOjskIid8/N02k/2Bg==
   dependencies:
     zen-observable "^0.8.0"
 
