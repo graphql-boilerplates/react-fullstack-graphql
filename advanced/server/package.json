@@ -9,7 +9,7 @@
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.16.7",
     "jsonwebtoken": "8.4.0",
-    "prisma-client-lib": "1.22.1"
+    "prisma-client-lib": "1.23.0"
   },
   "devDependencies": {
     "dotenv": "6.2.0",
