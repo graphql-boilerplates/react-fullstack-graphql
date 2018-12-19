@@ -504,12 +504,12 @@ graphql-import@^0.7.0, graphql-import@^0.7.1:
     lodash "^4.17.4"
     resolve-from "^4.0.0"
 
-graphql-middleware@1.7.7:
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/graphql-middleware/-/graphql-middleware-1.7.7.tgz#0a7a7193a873c4769401df2aef4ffb9c6ca97f43"
-  integrity sha512-Y4aXFMVLaGiZ19ukibZ4x/RejuUPhsJteijQFRlvmkGpF+XBHG/xozeDTWt0M1aJRjJWmwjna0nko6/o/DJQRQ==
+graphql-middleware@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-middleware/-/graphql-middleware-3.0.0.tgz#df498cc2c19ca5936fc67e9e39df6c484dbf4d80"
+  integrity sha512-m1V5G8jTatG8ZbFWLWBqrlVbHNpJv/U15LJ8U3XAoLjxm5HRY9rVXns6I4gigJqUt/0i/xYO7Lk3YkxqHi8QmQ==
   dependencies:
-    graphql-tools "^4.0.1"
+    graphql-tools "^4.0.3"
 
 graphql-playground-html@1.6.4:
   version "1.6.4"
@@ -546,7 +546,7 @@ graphql-subscriptions@^0.5.8:
   dependencies:
     iterall "^1.2.1"
 
-graphql-tools@^4.0.0, graphql-tools@^4.0.1:
+graphql-tools@^4.0.0, graphql-tools@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-4.0.3.tgz#23b5cb52c519212b1b2e4630a361464396ad264b"
   integrity sha512-NNZM0WSnVLX1zIMUxu7SjzLZ4prCp15N5L2T2ro02OVyydZ0fuCnZYRnx/yK9xjGWbZA0Q58yEO//Bv/psJWrg==
@@ -557,10 +557,10 @@ graphql-tools@^4.0.0, graphql-tools@^4.0.1:
     iterall "^1.1.3"
     uuid "^3.1.0"
 
-graphql-yoga@1.16.7:
-  version "1.16.7"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.16.7.tgz#05bdfadf9a4623b0409bee3c5b75b7b3f7249e6f"
-  integrity sha512-N82SmBpKyDD7GXXo2NbVBMPffbxFWD+YOf/Vqx3Kujj/hNOX+0s/7G+EPp4TgJZqHQjcOw5TqQ0kOANO8w6Kmg==
+graphql-yoga@1.16.8:
+  version "1.16.8"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-1.16.8.tgz#b0c3c4fe196734b22b57bd2d11edaf0b2093b3d1"
+  integrity sha512-z9jQQa69z5VnIQ8Awjwp8AmwRMWdV495MhvR9p2uhfmCmSwbKxisS8jxZF89b3Wh/j7fnD6y09kPsvbdZat46A==
   dependencies:
     "@types/cors" "^2.8.4"
     "@types/express" "^4.11.1"
@@ -577,7 +577,7 @@ graphql-yoga@1.16.7:
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
     graphql-deduplicator "^2.0.1"
     graphql-import "^0.7.0"
-    graphql-middleware "1.7.7"
+    graphql-middleware "3.0.0"
     graphql-playground-middleware-express "1.7.6"
     graphql-playground-middleware-lambda "1.7.6"
     graphql-subscriptions "^0.5.8"
