@@ -1,7 +1,7 @@
 {
   "name": "minimal",
   "dependencies": {
-    "apollo-boost": "0.1.23",
+    "apollo-boost": "0.1.24",
     "graphql": "0.13.2",
     "react": "16.7.0",
     "react-apollo": "2.3.3",
