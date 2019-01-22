@@ -39,7 +39,7 @@ class RootContainer extends Component {
   }
 
   refreshTokenFn(data = {}) {
-    const token = data.AUTH_TOKEN
+    const token = data[AUTH_TOKEN]
 
     if (token) {
       localStorage.setItem(AUTH_TOKEN, token)
@@ -48,7 +48,7 @@ class RootContainer extends Component {
     }
 
     this.setState({
-      token: data.AUTH_TOKEN,
+      token: data[AUTH_TOKEN],
     })
   }
 
