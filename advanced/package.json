@@ -28,7 +28,7 @@
     "graphql": "0.13.2",
     "graphql-tag": "2.10.1",
     "react": "16.7.0",
-    "react-apollo": "2.4.0",
+    "react-apollo": "2.4.1",
     "react-dom": "16.7.0",
     "react-modal": "3.8.1",
     "react-router-dom": "4.3.1",
