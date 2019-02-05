@@ -4,6 +4,6 @@
     "start": "node src/index.js"
   },
   "dependencies": {
-    "graphql-yoga": "1.17.2"
+    "graphql-yoga": "1.17.4"
   }
 }
