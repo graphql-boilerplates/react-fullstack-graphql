@@ -3,9 +3,9 @@
   "dependencies": {
     "apollo-boost": "0.1.28",
     "graphql": "0.13.2",
-    "react": "16.8.2",
+    "react": "16.8.3",
     "react-apollo": "2.4.1",
-    "react-dom": "16.8.2",
+    "react-dom": "16.8.3",
     "react-scripts": "1.1.5"
   },
   "scripts": {
