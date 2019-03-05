@@ -6437,16 +6437,16 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.1.tgz#85934e1cf41ba88e2e96c921b44588f29d5daad6"
-  integrity sha512-obXPcmjJ5O75UkoizcsIbe0PXAXKRqm+SwNu059HQInB3FAab9PIn4wd/KglpPNiB9JXHe8OJDov0lFMcBbHEQ==
+react-apollo@2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.2.tgz#6732c6af55e6adc9ebf97bf189e867a893c449d3"
+  integrity sha512-lmglhG6NQ+lfAUDzx8ZgelWKUbvxBhhy1l7Z2ksgtQ8+FVqwX7i6p5O3zicAZZlIdKzdq82V0kqq5WkxEsffrA==
   dependencies:
     apollo-utilities "^1.2.1"
     hoist-non-react-statics "^3.0.0"
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
-    ts-invariant "^0.2.1"
+    ts-invariant "^0.3.0"
     tslib "^1.9.3"
 
 react-dev-utils@^5.0.2:
@@ -7691,6 +7691,13 @@ ts-invariant@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.2.1.tgz#3d587f9d6e3bded97bf9ec17951dd9814d5a9d3f"
   integrity sha512-Z/JSxzVmhTo50I+LKagEISFJW3pvPCqsMWLamCTX8Kr3N5aMrnGOqcflbe5hLUzwjvgPfnLzQtHZv0yWQ+FIHg==
+  dependencies:
+    tslib "^1.9.3"
+
+ts-invariant@^0.3.0:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.3.2.tgz#89a2ffeb70879b777258df1df1c59383c35209b0"
+  integrity sha512-QsY8BCaRnHiB5T6iE4DPlJMAKEG3gzMiUco9FEt1jUXQf0XP6zi0idT0i0rMTu8A326JqNSDsmlkA9dRSh1TRg==
   dependencies:
     tslib "^1.9.3"
 
