@@ -11,7 +11,7 @@
     "react-apollo": "2.5.2",
     "react-dom": "16.8.4",
     "react-modal": "3.8.1",
-    "react-router-dom": "4.4.0",
+    "react-router-dom": "4.4.0-beta.8",
     "tachyons": "4.11.1"
   },
   "scripts": {
