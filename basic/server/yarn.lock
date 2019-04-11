@@ -3100,10 +3100,10 @@ prisma-client-lib@1.22.1:
     ws "^6.1.0"
     zen-observable "^0.8.10"
 
-prisma-client-lib@1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/prisma-client-lib/-/prisma-client-lib-1.30.0.tgz#f9f3395037d6c9814c13b0a0f1252d7b49fb96f9"
-  integrity sha512-c9RTLndJ3CRH8fgedOMRTjEUnjEf/T5iHB7TnSCS8AC0dhfBQ87DuxtzNSF5U+98y4lY8QAjpr1PiWfbpDYNzA==
+prisma-client-lib@1.30.1:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/prisma-client-lib/-/prisma-client-lib-1.30.1.tgz#2f3ada4cbfe73dab4ca7c795b8e8db096a39024a"
+  integrity sha512-1oPg88WlC+H5fcPgnUtZavJtk48NgvRFeCWccUCB3sKBeGAlT8mxebLHQfvHIEQV27y7oRvluPyPgLYmkqkuWg==
   dependencies:
     "@types/node" "^10.12.0"
     "@types/prettier" "^1.13.2"
@@ -3114,17 +3114,17 @@ prisma-client-lib@1.30.0:
     jsonwebtoken "^8.3.0"
     lodash.flatten "^4.4.0"
     prettier "1.14.3"
-    prisma-datamodel "1.30.0"
-    prisma-generate-schema "1.30.0"
+    prisma-datamodel "1.30.1"
+    prisma-generate-schema "1.30.1"
     subscriptions-transport-ws "^0.9.15"
     uppercamelcase "^3.0.0"
     ws "^6.1.0"
     zen-observable "^0.8.10"
 
-prisma-datamodel@1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/prisma-datamodel/-/prisma-datamodel-1.30.0.tgz#c6701c91beeaa4c00c733d5aac77410e6cccbcf5"
-  integrity sha512-4IagbEhdf0f/cSkZDrcNAx0tIabf4LcTWLvBJ/ddE4/i4q/kKhRzvSwh4cSU4EeE54jTN60FlDRqbCTcq+c65Q==
+prisma-datamodel@1.30.1:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/prisma-datamodel/-/prisma-datamodel-1.30.1.tgz#97386f8c6b2e173ed489ce884d5736f28de7a092"
+  integrity sha512-TMGcXuRLIMMV8N5a2346uwsYjTx29BSQT/e39mjBnsGHWSta38gpmLPj8wHgE2milVDs7+HYmYtkyGrhhPTKMg==
   dependencies:
     graphql "^14.0.2"
     pluralize "^7.0.0"
@@ -3152,15 +3152,15 @@ prisma-generate-schema@1.22.1:
     pluralize "^7.0.0"
     popsicle "10"
 
-prisma-generate-schema@1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/prisma-generate-schema/-/prisma-generate-schema-1.30.0.tgz#62f123d4e5a6d21ec8421357b79af543292163ed"
-  integrity sha512-r2yUoq5s7B9sgi10OZ1WBaLVTo3Yv1xGn9VvcarIeIXSeLEWEGAYd6bU/CeZpbAlaeR0gKAc4rk4SB+WlQXiZA==
+prisma-generate-schema@1.30.1:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/prisma-generate-schema/-/prisma-generate-schema-1.30.1.tgz#7b80bf0d24354bac9f3808af76d960eb4a1a54ed"
+  integrity sha512-Iq0rYArUDLFTaFcKcDpjb1zMdrokBXlnUNUXNIQahoXsrvxqYwDWexF3Un1laKPC1AI3skgp9ZI9N9bXUKmyAw==
   dependencies:
     graphql "^14.0.2"
     pluralize "^7.0.0"
     popsicle "10"
-    prisma-datamodel "1.30.0"
+    prisma-datamodel "1.30.1"
 
 prisma-json-schema@0.1.3:
   version "0.1.3"
