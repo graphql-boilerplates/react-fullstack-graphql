@@ -1,6 +1,6 @@
 type Post {
-  id: ID! @unique
-  published: Boolean! @default(value: "false")
+  id: ID! @id
+  published: Boolean! @default(value: false)
   title: String!
   content: String!
 }
