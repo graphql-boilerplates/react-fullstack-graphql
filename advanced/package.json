@@ -12,7 +12,7 @@
     "eslint-plugin-react": "7.12.4",
     "jwt-decode": "2.2.0",
     "prettier-eslint-cli": "4.7.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "2.1.8"
   },
   "dependencies": {
     "apollo-boost": "0.3.1",
