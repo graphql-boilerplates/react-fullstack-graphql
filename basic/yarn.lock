@@ -1698,15 +1698,6 @@ apollo-utilities@^1.0.0:
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
-apollo-utilities@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.2.1.tgz#1c3a1ebf5607d7c8efe7636daaf58e7463b41b3c"
-  integrity sha512-Zv8Udp9XTSFiN8oyXOjf6PMHepD4yxxReLsl6dPUy5Ths7jti3nmlBzZUOxuTWRwZn0MoclqL7RQ5UEJN8MAxg==
-  dependencies:
-    fast-json-stable-stringify "^2.0.0"
-    ts-invariant "^0.2.1"
-    tslib "^1.9.3"
-
 append-transform@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
@@ -8528,16 +8519,16 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@2.5.5:
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.5.tgz#0f27079a8fa9d9ceea8b29a5977eb42885f88fb9"
-  integrity sha512-zoJYlkI3i7+f1ejCbFtWU2GLCxjrmB3Es6RANyEZcbl0yetf5TI6ofMjBzILTvwoqp6tiQHH/8q66vQF0KcLmQ==
+react-apollo@2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.6.tgz#98a59d0eea31432ed001e6a033e11a58139ffc31"
+  integrity sha512-WWX5UykTtmW6+awjqEsSWSdvVyZv/vsavUgpdI4ddn4CBdz47INC+iTdJBnYaUFMB24GmqjFFSoSd98gu1xqKA==
   dependencies:
-    apollo-utilities "^1.2.1"
+    apollo-utilities "^1.3.0"
     hoist-non-react-statics "^3.3.0"
     lodash.isequal "^4.5.0"
     prop-types "^15.7.2"
-    ts-invariant "^0.4.0"
+    ts-invariant "^0.4.2"
     tslib "^1.9.3"
 
 react-app-polyfill@^0.2.2:
@@ -10125,17 +10116,17 @@ tryer@^1.0.0:
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
 
-ts-invariant@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.2.1.tgz#3d587f9d6e3bded97bf9ec17951dd9814d5a9d3f"
-  integrity sha512-Z/JSxzVmhTo50I+LKagEISFJW3pvPCqsMWLamCTX8Kr3N5aMrnGOqcflbe5hLUzwjvgPfnLzQtHZv0yWQ+FIHg==
-  dependencies:
-    tslib "^1.9.3"
-
 ts-invariant@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.4.0.tgz#5b98ddc2b8a067ba400c13d99b808357e4ee9c2e"
   integrity sha512-dI1qXTqHx/QP6SvwSCen4sEza+CtB9KvHQREdpMVRzt05VlSPEfNxus4PsJWdK9ZfiI4yJnAB8j3+jcD3ct21g==
+  dependencies:
+    tslib "^1.9.3"
+
+ts-invariant@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.4.2.tgz#8685131b8083e67c66d602540e78763408be9113"
+  integrity sha512-PTAAn8lJPEdRBJJEs4ig6MVZWfO12yrFzV7YaPslmyhG7+4MA279y4BXT3f72gXeVl0mC1aAWq2rMX4eKTWU/Q==
   dependencies:
     tslib "^1.9.3"
 
