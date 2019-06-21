@@ -9460,12 +9460,13 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@2.5.6:
-  version "2.5.6"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.6.tgz#98a59d0eea31432ed001e6a033e11a58139ffc31"
-  integrity sha512-WWX5UykTtmW6+awjqEsSWSdvVyZv/vsavUgpdI4ddn4CBdz47INC+iTdJBnYaUFMB24GmqjFFSoSd98gu1xqKA==
+react-apollo@2.5.7:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.7.tgz#782b7f09a56fd9850520d112d3fdc2928f22bf1f"
+  integrity sha512-xNVnl3+XSFuPeSPJQncBuQt0tEazBSMtoCltEagreiYND+x/YlPhWVQX2shNQlnxe4g6yxlATaMHgur6iwQIhA==
   dependencies:
     apollo-utilities "^1.3.0"
+    fast-json-stable-stringify "^2.0.0"
     hoist-non-react-statics "^3.3.0"
     lodash.isequal "^4.5.0"
     prop-types "^15.7.2"
