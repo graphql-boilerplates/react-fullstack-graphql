@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "dotenv": "6.2.0",
-    "nodemon": "1.19.1",
+    "nodemon": "1.19.2",
     "prisma": "1.22.1"
   }
 }
