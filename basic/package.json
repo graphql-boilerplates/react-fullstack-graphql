@@ -14,6 +14,9 @@
     "react-router-dom": "4.4.0-beta.8",
     "tachyons": "4.11.1"
   },
+  "resolutions": {
+    "caniuse-lite": "1.0.30000971"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
