@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "apollo-boost": "0.4.7",
-    "apollo-client": "2.6.7",
+    "apollo-client": "2.6.8",
     "apollo-client-preset": "1.0.8",
     "apollo-link": "1.2.13",
     "apollo-link-ws": "1.0.19",
