@@ -9,6 +9,10 @@
 
 <br />
 
+## Deprecation note
+
+This repository has been deprecated and is currently unmaintained. You can find up-to-date examples for building GraphQL servers with a database [here](https://github.com/prisma/prisma-examples/).
+
 ## Features
 
 - **Rapid scaffolding**: Simply use `graphql create` (from the [GraphQL CLI](https://github.com/graphql-cli/graphql-cli)) to download the boilerplate you want.
