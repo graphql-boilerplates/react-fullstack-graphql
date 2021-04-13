@@ -30,7 +30,7 @@
     "react": "16.14.0",
     "react-apollo": "2.5.8",
     "react-dom": "16.14.0",
-    "react-modal": "3.12.1",
+    "react-modal": "3.13.1",
     "react-router-dom": "4.4.0-beta.8",
     "subscriptions-transport-ws": "0.9.18",
     "tachyons": "4.12.0"
