@@ -5453,10 +5453,10 @@ graphql-anywhere@^4.1.5:
   dependencies:
     apollo-utilities "^1.0.8"
 
-graphql-tag@2.12.4:
-  version "2.12.4"
-  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.12.4.tgz#d34066688a4f09e72d6f4663c74211e9b4b7c4bf"
-  integrity sha512-VV1U4O+9x99EkNpNmCUV5RZwq6MnK4+pGbRYWG+lA/m3uo7TSqJF81OkcOP148gFP6fzdl7JWYBrwWVTS9jXww==
+graphql-tag@2.12.5:
+  version "2.12.5"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.12.5.tgz#5cff974a67b417747d05c8d9f5f3cb4495d0db8f"
+  integrity sha512-5xNhP4063d16Pz3HBtKprutsPrmHZi5IdUGOWRxA2B6VF7BIRGOHZ5WQvDmJXZuPcBg7rYwaFxvQYjqkSdR3TQ==
   dependencies:
     tslib "^2.1.0"
 
