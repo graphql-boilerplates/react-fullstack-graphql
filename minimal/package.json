@@ -6,7 +6,7 @@
     "react": "16.14.0",
     "react-apollo": "2.5.8",
     "react-dom": "16.14.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
