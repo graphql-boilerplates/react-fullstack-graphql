@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
 import { graphql } from 'react-apollo'
-import  { gql } from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 class FeedPage extends Component {
   componentWillReceiveProps(nextProps) {
@@ -32,7 +32,7 @@ class FeedPage extends Component {
               key={post.id}
               post={post}
               refresh={() => this.props.feedQuery.refetch()}
-              isDraft={!post.isPublished}
+              isDraft={!post.published}
             />
           ))}
         {this.props.children}
@@ -45,9 +45,9 @@ const FEED_QUERY = gql`
   query FeedQuery {
     feed {
       id
-      text
+      content
       title
-      isPublished
+      published
       author {
         name
       }
@@ -59,9 +59,9 @@ const FEED_SUBSCRIPTION = gql`
     feedSubscription {
       node {
         id
-        text
+        content
         title
-        isPublished
+        published
         author {
           name
         }

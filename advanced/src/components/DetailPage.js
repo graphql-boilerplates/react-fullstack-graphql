@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { graphql, compose } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
-import  { gql } from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 class DetailPage extends Component {
   render() {
@@ -20,14 +20,14 @@ class DetailPage extends Component {
     return (
       <Fragment>
         <h1 className="f3 black-80 fw4 lh-solid">{post.title}</h1>
-        <p className="black-80 fw3">{post.text}</p>
+        <p className="black-80 fw3">{post.content}</p>
         {action}
       </Fragment>
     )
   }
 
-  _renderAction = ({ id, isPublished }) => {
-    if (!isPublished) {
+  _renderAction = ({ id, published }) => {
+    if (!published) {
       return (
         <Fragment>
           <a
@@ -75,8 +75,8 @@ const POST_QUERY = gql`
     post(id: $id) {
       id
       title
-      text
-      isPublished
+      content
+      published
       author {
         name
       }
@@ -88,7 +88,7 @@ const PUBLISH_MUTATION = gql`
   mutation publish($id: ID!) {
     publish(id: $id) {
       id
-      isPublished
+      published
     }
   }
 `

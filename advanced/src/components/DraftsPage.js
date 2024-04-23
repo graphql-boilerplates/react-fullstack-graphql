@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Post from '../components/Post'
 import { graphql } from 'react-apollo'
-import  { gql } from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 class DraftsPage extends Component {
   componentWillReceiveProps(nextProps) {
@@ -30,7 +30,7 @@ class DraftsPage extends Component {
               key={draft.id}
               post={draft}
               refresh={() => this.props.draftsQuery.refetch()}
-              isDraft={!draft.isPublished}
+              isDraft={!draft.published}
             />
           ))}
         {this.props.children}
@@ -43,9 +43,9 @@ const DRAFTS_QUERY = gql`
   query DraftsQuery {
     drafts {
       id
-      text
+      content
       title
-      isPublished
+      published
       author {
         name
       }
