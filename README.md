@@ -33,6 +33,6 @@ All projects are based on [`graphql-yoga`](https://github.com/graphcool/graphql-
 
 ## Contributing
 
-The GraphQL boilerplates are maintained by the GraphQL community, with official support from the [Apollo](https://dev-blog.apollodata.com) & [Graphcool](https://blog.graph.cool/) teams.
+The GraphQL boilerplates are maintained by the GraphQL community, with official support from the [Apollo](https://blog.apollographql.com) & [Prisma](https://www.prisma.io/blog/) teams.
 
-Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions or want to contribute yourself, join the [`#graphql-boilerplate`](https://graphcool.slack.com/messages/graphql-boilerplate) channel on our [Slack](https://graphcool.slack.com/).
+Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions or want to contribute yourself, join the [`#graphql-boilerplate`](https://graphcool.slack.com/messages/graphql-boilerplate) channel on our [Slack](https://prisma.slack.com/).
