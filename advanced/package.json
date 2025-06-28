@@ -10,7 +10,7 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.37.5",
-    "jwt-decode": "2.2.0",
+    "jwt-decode": "4.0.0",
     "prettier-eslint-cli": "4.7.1",
     "react-scripts": "2.1.8"
   },
